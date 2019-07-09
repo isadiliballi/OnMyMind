@@ -3,18 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
+		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
+		1E42FAEE22CD35EE0052D2C8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1E42FAED22CD35EE0052D2C8 /* fonts */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
 		1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EA22CD260F00C0970B /* ViewController.swift */; };
 		1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EC22CD260F00C0970B /* Main.storyboard */; };
 		1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EF22CD261000C0970B /* Assets.xcassets */; };
 		1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */; };
+		EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.debug.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.debug.xcconfig"; sourceTree = "<group>"; };
+		1E20D85522CE0BF700F1E236 /* treelettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treelettergame.swift; sourceTree = "<group>"; };
+		1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E42FAED22CD35EE0052D2C8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../isadiliballi.com/css/font/fonts; sourceTree = "<group>"; };
 		1EA7D3E522CD260F00C0970B /* OnMyMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnMyMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,8 @@
 		1EA7D3EF22CD261000C0970B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EA7D3F222CD261000C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA7D3F422CD261000C0970B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.release.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.release.xcconfig"; sourceTree = "<group>"; };
+		BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnMyMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,8 @@
 			children = (
 				1EA7D3E722CD260F00C0970B /* OnMyMind */,
 				1EA7D3E622CD260F00C0970B /* Products */,
+				2CA1531A642A125951A245CE /* Pods */,
+				93C47AD39BA3187918434B3D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +68,33 @@
 			isa = PBXGroup;
 			children = (
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
+				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
 				1EA7D3EA22CD260F00C0970B /* ViewController.swift */,
 				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
+				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
+				1E42FAED22CD35EE0052D2C8 /* fonts */,
 			);
 			path = OnMyMind;
+			sourceTree = "<group>";
+		};
+		2CA1531A642A125951A245CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */,
+				41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		93C47AD39BA3187918434B3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EA7D3F722CD261000C0970B /* Build configuration list for PBXNativeTarget "OnMyMind" */;
 			buildPhases = (
+				57855D859E70A93534725CA9 /* [CP] Check Pods Manifest.lock */,
 				1EA7D3E122CD260F00C0970B /* Sources */,
 				1EA7D3E222CD260F00C0970B /* Frameworks */,
 				1EA7D3E322CD260F00C0970B /* Resources */,
+				899B47C56B35635EC63FB5D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,11 +159,55 @@
 			files = (
 				1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */,
 				1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */,
+				1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */,
 				1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */,
+				1E42FAEE22CD35EE0052D2C8 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57855D859E70A93534725CA9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OnMyMind-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		899B47C56B35635EC63FB5D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OnMyMind/Pods-OnMyMind-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OnMyMind/Pods-OnMyMind-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OnMyMind/Pods-OnMyMind-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EA7D3E122CD260F00C0970B /* Sources */ = {
@@ -136,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
+				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
 				1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +360,7 @@
 		};
 		1EA7D3F822CD261000C0970B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +379,7 @@
 		};
 		1EA7D3F922CD261000C0970B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

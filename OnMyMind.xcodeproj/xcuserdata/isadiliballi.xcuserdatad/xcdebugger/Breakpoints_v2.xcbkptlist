@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnMyMind/ViewController.swift"
+            timestampString = "584397475.682932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.word.getter : Swift.String"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.385516"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.word.setter : Swift.String"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.388031"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.word.modify : Swift.String"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.390785"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.word.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.393039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; OnMyMind.ViewController"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.395961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OnMyMind.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;OnMyMind.ViewController&gt;"
+                  moduleName = "OnMyMind"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isadiliballi/Desktop/OnMyMind/OnMyMind/ViewController.swift"
+                  timestampString = "583935749.3986419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
