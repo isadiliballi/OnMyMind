@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
 		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
-		1E42FAEE22CD35EE0052D2C8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1E42FAED22CD35EE0052D2C8 /* fonts */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
 		1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EA22CD260F00C0970B /* ViewController.swift */; };
 		1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EC22CD260F00C0970B /* Main.storyboard */; };
@@ -22,7 +21,6 @@
 		1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.debug.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.debug.xcconfig"; sourceTree = "<group>"; };
 		1E20D85522CE0BF700F1E236 /* treelettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treelettergame.swift; sourceTree = "<group>"; };
 		1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1E42FAED22CD35EE0052D2C8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../isadiliballi.com/css/font/fonts; sourceTree = "<group>"; };
 		1EA7D3E522CD260F00C0970B /* OnMyMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnMyMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
-				1E42FAED22CD35EE0052D2C8 /* fonts */,
 			);
 			path = OnMyMind;
 			sourceTree = "<group>";
@@ -161,7 +158,6 @@
 				1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */,
 				1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */,
 				1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */,
-				1E42FAEE22CD35EE0052D2C8 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
