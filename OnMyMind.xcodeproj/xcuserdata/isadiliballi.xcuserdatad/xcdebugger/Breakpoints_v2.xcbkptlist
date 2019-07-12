@@ -14,8 +14,13 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
 <<<<<<< HEAD
+<<<<<<< HEAD
             startingLineNumber = "18"
             endingLineNumber = "18"
+=======
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
 =======
             startingLineNumber = "16"
             endingLineNumber = "16"
