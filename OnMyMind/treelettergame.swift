@@ -52,7 +52,6 @@ class treelettergame: UIViewController {
     
     var firstlife = 1
     
-    @IBOutlet weak var warningbackground: UIImageView!
     @IBOutlet weak var warning: UIImageView!
     @IBOutlet weak var warningtext: UILabel!
     @IBOutlet weak var warningclose: UIButton!
@@ -1599,7 +1598,6 @@ class treelettergame: UIViewController {
             else {
                 warning.isHidden = false
                 warningtext.isHidden = false
-                warningbackground.isHidden = false
                 warningclose.isHidden = false
             }
         }

@@ -36,8 +36,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>aldo.ttf</string>
-		<string>onmymindfont.otf</string>
+		<string>MindFont.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
