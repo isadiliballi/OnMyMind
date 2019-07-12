@@ -23,13 +23,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arkaplan" translatesAutoresizingMaskIntoConstraints="NO" id="pby-JL-dRY">
+                                <rect key="frame" x="-6" y="-9" width="1030" height="1378"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLa-5R-JZ4">
-                                <rect key="frame" x="164" y="80" width="47" height="47"/>
+                                <rect key="frame" x="164" y="99" width="47" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gamecoins"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xip-QZ-HGu">
-                                <rect key="frame" x="72" y="32" width="231" height="40"/>
+                                <rect key="frame" x="72" y="51" width="231" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,29 +43,35 @@
                                 <rect key="frame" x="45" y="167" width="284" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" image="giris3harfbutton">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="treelettergo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njp-f0-Utn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 3 Harf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-Hk-SEb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="giris3harfbutton" translatesAutoresizingMaskIntoConstraints="NO" id="NZv-aP-3Fn">
+                                <rect key="frame" x="45" y="167" width="284" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 3 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-Hk-SEb">
                                 <rect key="frame" x="96" y="185" width="183" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbS-2N-OEC">
-                                <rect key="frame" x="45" y="265" width="284" height="98"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbS-2N-OEC">
+                                <rect key="frame" x="43" y="261" width="288" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="giris4harfbutton"/>
+                                <state key="normal" title="Button" image="giris4harfbutton">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="fourlettergo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="whU-Ws-AQ6"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-iT-mAI">
                                 <rect key="frame" x="96" y="281" width="183" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -69,6 +79,8 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+=======
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HD-zx-HDx">
                                 <rect key="frame" x="60" y="369" width="254" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -88,11 +100,29 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gamestore"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gameayarlar" translatesAutoresizingMaskIntoConstraints="NO" id="EqS-qT-ai9">
+                                <rect key="frame" x="60" y="557" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCi-82-Ybk">
+                                <rect key="frame" x="60" y="557" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="settingbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xh1-uZ-4ga"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFU-Mm-RMV">
                                 <rect key="frame" x="259" y="557" width="56" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gameinfo"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-iT-mAI">
+                                <rect key="frame" x="96" y="279" width="183" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 Harfli" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-Ee-tTl">
                                 <rect key="frame" x="120" y="395" width="135" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -107,31 +137,28 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCi-82-Ybk">
-                                <rect key="frame" x="61" y="557" width="55" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="gameayarlar"/>
-                                <connections>
-                                    <action selector="settingbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xh1-uZ-4ga"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="coinstext" destination="Xip-QZ-HGu" id="pnz-xb-ehD"/>
+<<<<<<< HEAD
                         <outlet property="fourletterbuttonoutlet" destination="RbS-2N-OEC" id="4Jw-Hr-0n7"/>
                         <outlet property="fourlettertext" destination="6mZ-iT-mAI" id="EG2-Sw-gtk"/>
                         <outlet property="settingbuttonoutlet" destination="JCi-82-Ybk" id="cJx-C7-PIL"/>
+=======
+                        <outlet property="settingimage" destination="EqS-qT-ai9" id="QDn-Ih-eyh"/>
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
                         <outlet property="threeletterbuttonoutlet" destination="fzd-UF-QMd" id="iJr-fE-17o"/>
+                        <outlet property="threeletterimage" destination="NZv-aP-3Fn" id="O6F-sY-F0I"/>
                         <outlet property="threelettertext" destination="9PM-Hk-SEb" id="sv1-j9-hSL"/>
                         <segue destination="Rpr-nQ-7GY" kind="showDetail" identifier="threelettergo" id="F3s-t0-71G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="126.38680659670166"/>
+            <point key="canvasLocation" x="133.59999999999999" y="127.28635682158921"/>
         </scene>
         <!--Treelettergame-->
         <scene sceneID="bfa-DY-b4P">
@@ -141,6 +168,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arkaplan" translatesAutoresizingMaskIntoConstraints="NO" id="HMe-Ku-Ivw">
+                                <rect key="frame" x="-6" y="-7" width="1030" height="1374"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-k5-Iuh">
                                 <rect key="frame" x="63" y="176" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -333,6 +364,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warningbackground" translatesAutoresizingMaskIntoConstraints="NO" id="U7x-dJ-Q3w">
+                                <rect key="frame" x="-4" y="-7" width="1031" height="1377"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
                                 <rect key="frame" x="5" y="166" width="370" height="256"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -431,6 +466,7 @@
                         <outlet property="turnoutlet" destination="1Ga-YE-gFQ" id="a1x-99-2xj"/>
                         <outlet property="turnwordoutlet" destination="W4m-Rs-hiy" id="kzU-E3-Qx5"/>
                         <outlet property="warning" destination="7UF-E6-oyw" id="YSZ-bq-3a2"/>
+                        <outlet property="warningbackground" destination="U7x-dJ-Q3w" id="7cd-5b-utu"/>
                         <outlet property="warningclose" destination="5lF-OB-i8X" id="My8-Bl-UEv"/>
                         <outlet property="warningtext" destination="GdH-AU-tiZ" id="IeY-Oa-oZ5"/>
                         <outlet property="winpanel" destination="18k-9x-S5p" id="4qO-P1-9sb"/>
@@ -444,6 +480,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arkaplan" width="2048" height="2732"/>
         <image name="box" width="678" height="678"/>
         <image name="gameayarlar" width="894" height="894"/>
         <image name="gamecoins" width="676" height="676"/>
@@ -455,6 +492,7 @@
         <image name="giris6harfbutton" width="2697" height="885"/>
         <image name="turn" width="943" height="276"/>
         <image name="warning" width="745" height="541"/>
+        <image name="warningbackground" width="2049" height="2733"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qF7-OT-O8w"/>

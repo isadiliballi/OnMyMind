@@ -35,7 +35,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>aldo.ttf</string>
+		<string>onmymindfont.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
