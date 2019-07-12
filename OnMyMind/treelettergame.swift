@@ -137,6 +137,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -176,6 +177,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -215,6 +217,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -273,6 +276,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -313,6 +317,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -353,6 +358,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -412,6 +418,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -452,6 +459,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -492,6 +500,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -551,6 +560,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -591,6 +601,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -631,6 +642,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -690,6 +702,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -730,6 +743,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -770,6 +784,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -829,6 +844,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -869,6 +885,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -909,6 +926,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -968,6 +986,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1008,6 +1027,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1048,6 +1068,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -1107,6 +1128,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1147,6 +1169,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1187,6 +1210,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -1246,6 +1270,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1286,6 +1311,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=10
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
                     letter1.isHidden = false
@@ -1326,6 +1352,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
                     box2.isEnabled = false
                     box3.isEnabled = false
@@ -1489,6 +1516,7 @@ class treelettergame: UIViewController {
                 if firstlife >= 2 {
                     coins -= 1000
                     coinstexttreeletter.text = String(coins)
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 
                 
@@ -1610,6 +1638,8 @@ class treelettergame: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let vc = segue.destination as! ViewController
+        UserDefaults.standard.set(coins, forKey: "coinskey")
+        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         vc.coins = coins
         
     }

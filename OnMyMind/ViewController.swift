@@ -14,7 +14,7 @@ class ViewController: UIViewController {
    var ref : DatabaseReference!
    var boxpiece = 9
     var asd = String()
-    var coins = 200
+    var coins = Int()
    
     @IBOutlet weak var coinstext: UILabel!
 
@@ -25,12 +25,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var fourletterbuttonoutlet: UIButton!
     @IBOutlet weak var fourlettertext: UILabel!
     
+    @IBOutlet weak var fiveletterbuttonoutlet: UIButton!
+    @IBOutlet weak var fivelettertext: UILabel!
+    
+    @IBOutlet weak var sixletterbuttonoutlet: UIButton!
+    @IBOutlet weak var sixlettertext: UILabel!
+    
     @IBOutlet weak var settingbuttonoutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
-      
+        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
+        coinstext.text = String(coins)
+        
         let dbrandom = Int.random(in: 1...5)
         let dbrandomstring = String(dbrandom)
         
@@ -39,7 +47,7 @@ class ViewController: UIViewController {
             self.asd = snapshot.value as! String
         }
         
-        coinstext.text = String(coins)
+        
         
        
         background()
@@ -113,6 +121,16 @@ class ViewController: UIViewController {
         UIView.transition(with: fourlettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: fourletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
+    
+    @IBAction func fivelettergo(_ sender: Any) {
+        UIView.transition(with: fiveletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        UIView.transition(with: fivelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+    }
+    @IBAction func sixlettergo(_ sender: Any) {
+        UIView.transition(with: sixletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        UIView.transition(with: sixlettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
