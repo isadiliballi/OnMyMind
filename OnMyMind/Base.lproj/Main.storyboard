@@ -72,6 +72,7 @@
                                 </connections>
                             </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-iT-mAI">
                                 <rect key="frame" x="96" y="281" width="183" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -79,6 +80,8 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+=======
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
 =======
 >>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HD-zx-HDx">
@@ -144,9 +147,13 @@
                     <connections>
                         <outlet property="coinstext" destination="Xip-QZ-HGu" id="pnz-xb-ehD"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <outlet property="fourletterbuttonoutlet" destination="RbS-2N-OEC" id="4Jw-Hr-0n7"/>
                         <outlet property="fourlettertext" destination="6mZ-iT-mAI" id="EG2-Sw-gtk"/>
                         <outlet property="settingbuttonoutlet" destination="JCi-82-Ybk" id="cJx-C7-PIL"/>
+=======
+                        <outlet property="settingimage" destination="EqS-qT-ai9" id="QDn-Ih-eyh"/>
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
 =======
                         <outlet property="settingimage" destination="EqS-qT-ai9" id="QDn-Ih-eyh"/>
 >>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.

@@ -21,12 +21,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var threelettertext: UILabel!
     @IBOutlet weak var threeletterimage: UIImageView!
     @IBOutlet weak var threeletterbuttonoutlet: UIButton!
+<<<<<<< HEAD
 
     @IBOutlet weak var fourletterbuttonoutlet: UIButton!
     @IBOutlet weak var fourlettertext: UILabel!
     
     @IBOutlet weak var settingbuttonoutlet: UIButton!
     
+=======
+>>>>>>> parent of d729cb5... Responsive ile ilgili özellikler eklendi.
     
     override func viewDidLoad() {
         super.viewDidLoad()
