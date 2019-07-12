@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E080FC422D8C75E00EEF8BA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3F422CD261000C0970B /* Info.plist */; };
 		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
 		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
@@ -155,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */,
+				1E080FC422D8C75E00EEF8BA /* Info.plist in Resources */,
 				1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */,
 				1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */,
 				1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */,

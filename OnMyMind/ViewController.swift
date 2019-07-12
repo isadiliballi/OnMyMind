@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var fourletterbuttonoutlet: UIButton!
     @IBOutlet weak var fourlettertext: UILabel!
     
+    @IBOutlet weak var settingbuttonoutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +122,7 @@ class ViewController: UIViewController {
         
     }
     @IBAction func settingbutton(_ sender: Any) {
-        UIView.transition(with: settingimage, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        UIView.transition(with: settingbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
 }
