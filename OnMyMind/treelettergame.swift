@@ -72,9 +72,29 @@ class treelettergame: UIViewController {
     var ref : DatabaseReference!
     var replacementword = String()
     
+    var score = Int()
+    var highscore = 99
+    var scoretime = 0
+    @IBOutlet weak var scoretimetext: UILabel!
+    var scoretimer : Timer?
+    @IBOutlet weak var highscoretext: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
+        if firsopengame2  {
+            highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
+            highscoretext.text = String(highscore)
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame2")
+            highscoretext.text = String(highscore)
+            UserDefaults.standard.set(highscore, forKey: "highscorekey")
+        }
+        
         
         let dbrandom = Int.random(in: 1...5)
         let dbrandomstring = String(dbrandom)
@@ -229,6 +249,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -370,6 +391,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -512,6 +534,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -654,6 +677,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -796,6 +820,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -938,6 +963,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1080,6 +1106,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1222,6 +1249,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1364,6 +1392,7 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
+                    self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1430,6 +1459,9 @@ class treelettergame: UIViewController {
                 self.second.text = String(self.time)
                 
                 if self.time == 0 {
+                    
+                    self.scoretimestart()
+                    
                     self.izin = true
                     timer.invalidate()
                     self.turnoutlet.isHidden = false
@@ -1702,8 +1734,27 @@ class treelettergame: UIViewController {
     
       
        return viewDidLoad()
+    }
+    
+    func scoretimestart() {
+        self.scoretimetext.isHidden = false
+        scoretimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timerscore) in
+            self.scoretime += 1
+            self.scoretimetext.text = String(self.scoretime)
+        })
+    }
+    func scoretimefinish() {
+        scoretimer?.invalidate()
+        self.score = self.scoretime
+        if self.score < self.highscore {
+            self.highscore = self.score
+            self.highscoretext.text = String(self.highscore)
+            self.scoretime = 0
+            self.scoretimetext.isHidden = true
+            UserDefaults.standard.set(self.highscore, forKey: "highscorekey")
+            print("Yeni Rekor")
+        }
         
-       
     }
     
 
