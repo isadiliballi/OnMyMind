@@ -36,8 +36,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
-        coinstext.text = String(coins)
+        let firsopengame = UserDefaults.standard.bool(forKey: "firsopengame")
+        if firsopengame  {
+            coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
+            coinstext.text = String(coins)
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame")
+            coinstext.text = String(coins)
+            UserDefaults.standard.set(coins, forKey: "coinskey")
+        }
+        
+        
+        
         
         let dbrandom = Int.random(in: 1...5)
         let dbrandomstring = String(dbrandom)
@@ -52,13 +63,7 @@ class ViewController: UIViewController {
        
         background()
         responsive()
-    
-        
-     //   threelettertext.frame.origin.x = (self.view.bounds.size.width - threelettertext.frame.size.width) / 2
-      //  threelettertext.frame.origin.y = (threeletterbuttonoutlet.bounds.size.height - threelettertext.frame.size.height) / 2
-       // threelettertext.frame = CGRect(x: threelettertext.frame.origin.x, y: threelettertext.frame.origin.y, width: 100, height: 100)
-       // threelettertext.font = UIFont(name: "Marker Felt Wide", size: 50)
-        
+
     }
 
     

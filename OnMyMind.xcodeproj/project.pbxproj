@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
 		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
-		1E74D4E222D8DE8A00BE965A /* MindFont.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E74D4E122D8DE8A00BE965A /* MindFont.otf */; };
+		1E86105522D95B33006E985B /* OnMyMind.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E86105422D95B33006E985B /* OnMyMind.ttf */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
 		1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EA22CD260F00C0970B /* ViewController.swift */; };
 		1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EC22CD260F00C0970B /* Main.storyboard */; };
@@ -22,7 +22,7 @@
 		1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.debug.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.debug.xcconfig"; sourceTree = "<group>"; };
 		1E20D85522CE0BF700F1E236 /* treelettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treelettergame.swift; sourceTree = "<group>"; };
 		1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1E74D4E122D8DE8A00BE965A /* MindFont.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MindFont.otf; sourceTree = "<group>"; };
+		1E86105422D95B33006E985B /* OnMyMind.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind.ttf; sourceTree = "<group>"; };
 		1EA7D3E522CD260F00C0970B /* OnMyMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnMyMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 		1E74D4E022D8DE4600BE965A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				1E74D4E122D8DE8A00BE965A /* MindFont.otf */,
+				1E86105422D95B33006E985B /* OnMyMind.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -168,8 +168,8 @@
 				1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */,
 				1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */,
 				1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */,
+				1E86105522D95B33006E985B /* OnMyMind.ttf in Resources */,
 				1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */,
-				1E74D4E222D8DE8A00BE965A /* MindFont.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
