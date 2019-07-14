@@ -73,10 +73,8 @@ class treelettergame: UIViewController {
     var replacementword = String()
     
     var score = Int()
-    var highscore = 99
-    var scoretime = 1
+    var highscore = 0
     @IBOutlet weak var scoretimetext: UILabel!
-    var scoretimer : Timer?
     @IBOutlet weak var highscoretext: UILabel!
     
     @IBOutlet weak var finishpanelnext: UIButton!
@@ -197,7 +195,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -221,6 +218,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -251,7 +257,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -275,6 +280,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                    
                     finishpanel.isHidden = false
@@ -301,7 +315,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                   // self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -319,7 +334,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -343,6 +357,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                    
                     finishpanel.isHidden = false
@@ -379,7 +402,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -404,6 +426,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                    
                     finishpanel.isHidden = false
@@ -434,7 +465,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -459,6 +489,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -485,7 +524,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                   // self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -503,7 +543,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -528,6 +567,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                    
                     finishpanel.isHidden = false
@@ -564,7 +612,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -589,6 +636,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -619,7 +675,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -644,6 +699,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -670,7 +734,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                    //self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -688,7 +753,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -713,6 +777,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -749,7 +822,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -774,6 +846,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -804,7 +885,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -829,6 +909,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -855,7 +944,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                    //self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -873,7 +963,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -898,6 +987,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -934,7 +1032,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -959,6 +1056,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -989,7 +1095,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1014,6 +1119,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1040,7 +1154,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                    //self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1058,7 +1173,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1083,6 +1197,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1119,7 +1242,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1144,6 +1266,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1174,7 +1305,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1199,6 +1329,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1225,7 +1364,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                   // self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1243,7 +1383,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1268,6 +1407,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1304,7 +1452,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1329,6 +1476,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1359,7 +1515,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1384,6 +1539,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1410,7 +1574,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                    //self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1428,7 +1593,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1453,6 +1617,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1489,7 +1662,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1514,6 +1686,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1544,7 +1725,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1569,6 +1749,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1595,7 +1784,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                   // self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1613,7 +1803,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1638,6 +1827,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1674,7 +1872,6 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1699,6 +1896,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1728,8 +1934,8 @@ class treelettergame: UIViewController {
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
+                    
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1754,6 +1960,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1780,7 +1995,8 @@ class treelettergame: UIViewController {
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     self.coins+=110
-                    self.scoretimefinish()
+                    self.score += 10
+                    //self.scoretimefinish()
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     box1.isEnabled = false
@@ -1798,7 +2014,6 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
-                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1823,6 +2038,15 @@ class treelettergame: UIViewController {
                     }
                     UIView.animate(withDuration: 0.5) {
                         self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    if self.score > self.highscore {
+                        highscore = score
+                        UserDefaults.standard.set(highscore, forKey: "highscorekey")
+                        self.highscoretext.text = String(highscore)
+                        self.score = 0
+                    }
+                    else {
+                        self.score = 0
                     }
                     
                     finishpanel.isHidden = false
@@ -1862,7 +2086,7 @@ class treelettergame: UIViewController {
                 
                 if self.time == 0 {
                     
-                    self.scoretimestart()
+                //    self.scoretimestart()
                     
                     self.izin = true
                     timer.invalidate()
@@ -2152,7 +2376,7 @@ class treelettergame: UIViewController {
         finishpaneltext.frame = CGRect(origin: CGPoint(x: finishpaneltextx, y: finishpaneltexty), size: finishpaneltext.bounds.size)
         
     }
-    
+  /*
     func scoretimestart() {
         self.scoretimetext.isHidden = false
         scoretimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timerscore) in
@@ -2178,6 +2402,6 @@ class treelettergame: UIViewController {
         self.scoretime = 0
         self.scoretimetext.isHidden = true
     }
-    
+    */
 
 }
