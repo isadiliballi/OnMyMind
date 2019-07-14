@@ -74,11 +74,22 @@ class treelettergame: UIViewController {
     
     var score = Int()
     var highscore = 99
-    var scoretime = 0
+    var scoretime = 1
     @IBOutlet weak var scoretimetext: UILabel!
     var scoretimer : Timer?
     @IBOutlet weak var highscoretext: UILabel!
     
+    @IBOutlet weak var finishpanelnext: UIButton!
+    
+    var finishpanelbool = false
+    var finishpanelx = Int()
+    var finishpanely = Int()
+    var finishpanelbackbuttonx = Int()
+    var finishpanelbackbuttony = Int()
+    var finishpanelnextbuttonx = Int()
+    var finishpanelnextbuttony = Int()
+    var finishpaneltextx = Int()
+    var finishpaneltexty = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +105,19 @@ class treelettergame: UIViewController {
             highscoretext.text = String(highscore)
             UserDefaults.standard.set(highscore, forKey: "highscorekey")
         }
+        
+        if finishpanelbool == false { // finishpanel sürekli aynı konumdan aşağıdan yukarı hareket etmesini sağlıyor.
+            finishpanelx = Int(finishpanel.frame.origin.x)
+            finishpanely = Int(finishpanel.frame.origin.y)
+            finishpanelbackbuttonx = Int(finishpanelbutton.frame.origin.x)
+            finishpanelbackbuttony = Int(finishpanelbutton.frame.origin.y)
+            finishpanelnextbuttonx = Int(finishpanelnext.frame.origin.x)
+            finishpanelnextbuttony = Int(finishpanelnext.frame.origin.y)
+            finishpaneltextx = Int(finishpaneltext.frame.origin.x)
+            finishpaneltexty = Int(finishpaneltext.frame.origin.y)
+            finishpanelbool = true
+        }
+        
         
         
         let dbrandom = Int.random(in: 1...5)
@@ -173,6 +197,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -185,10 +210,23 @@ class treelettergame: UIViewController {
                     self.box1.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                   
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
+                    
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -213,6 +251,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -225,10 +264,23 @@ class treelettergame: UIViewController {
                     self.box1.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                    
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -267,6 +319,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -279,10 +332,23 @@ class treelettergame: UIViewController {
                     self.box1.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                    
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -313,6 +379,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -326,10 +393,23 @@ class treelettergame: UIViewController {
                     self.box2.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                    
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -354,6 +434,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -367,10 +448,23 @@ class treelettergame: UIViewController {
                     self.box2.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -409,6 +503,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -422,10 +517,23 @@ class treelettergame: UIViewController {
                     self.box2.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                    
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -456,6 +564,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -469,10 +578,23 @@ class treelettergame: UIViewController {
                     self.box3.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -497,6 +619,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -510,10 +633,23 @@ class treelettergame: UIViewController {
                     self.box3.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -552,6 +688,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -565,10 +702,23 @@ class treelettergame: UIViewController {
                     self.box3.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -599,6 +749,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -612,10 +763,23 @@ class treelettergame: UIViewController {
                     self.box4.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -640,6 +804,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -653,10 +818,23 @@ class treelettergame: UIViewController {
                     self.box4.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -695,6 +873,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -708,10 +887,23 @@ class treelettergame: UIViewController {
                     self.box4.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -742,6 +934,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -755,10 +948,23 @@ class treelettergame: UIViewController {
                     self.box5.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -783,6 +989,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -796,10 +1003,23 @@ class treelettergame: UIViewController {
                     self.box5.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -838,6 +1058,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -851,10 +1072,23 @@ class treelettergame: UIViewController {
                     self.box5.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -885,6 +1119,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -898,10 +1133,23 @@ class treelettergame: UIViewController {
                     self.box6.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -926,6 +1174,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -939,10 +1188,23 @@ class treelettergame: UIViewController {
                     self.box6.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -981,6 +1243,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -994,10 +1257,23 @@ class treelettergame: UIViewController {
                     self.box6.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1028,6 +1304,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1041,10 +1318,23 @@ class treelettergame: UIViewController {
                     self.box7.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1069,6 +1359,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1082,10 +1373,23 @@ class treelettergame: UIViewController {
                     self.box7.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1124,6 +1428,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1137,10 +1442,23 @@ class treelettergame: UIViewController {
                     self.box7.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1171,6 +1489,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1184,10 +1503,23 @@ class treelettergame: UIViewController {
                     self.box8.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1212,6 +1544,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1225,10 +1558,23 @@ class treelettergame: UIViewController {
                     self.box8.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1267,6 +1613,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1280,10 +1627,23 @@ class treelettergame: UIViewController {
                     self.box8.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1314,6 +1674,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1327,10 +1688,23 @@ class treelettergame: UIViewController {
                     self.box9.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1355,6 +1729,7 @@ class treelettergame: UIViewController {
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1368,10 +1743,23 @@ class treelettergame: UIViewController {
                     self.box9.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1410,6 +1798,7 @@ class treelettergame: UIViewController {
                     otherwordgo.isHidden = false
                 }
                 else {
+                    scoretimefinishclose()
                     letter1.isHidden = false
                     letter2.isHidden = false
                     letter3.isHidden = false
@@ -1423,10 +1812,23 @@ class treelettergame: UIViewController {
                     self.box9.setImage(UIImage(named: "false"), for: UIControl.State.normal)
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanel.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpaneltext.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelbutton.frame.origin.y -= 220
+                    }
+                    UIView.animate(withDuration: 0.5) {
+                        self.finishpanelnext.frame.origin.y -= 220
+                    }
                     
                     finishpanel.isHidden = false
                     finishpaneltext.isHidden = false
                     finishpanelbutton.isHidden = false
+                    finishpanelnext.isHidden = false
                     turnoutlet.isEnabled = false
                     box1.isEnabled = false
                     box2.isEnabled = false
@@ -1688,8 +2090,7 @@ class treelettergame: UIViewController {
         vc.coins = coins
         
     }
-    
-    @IBAction func otherwordgobutton(_ sender: Any) {
+    func otherwordgofunc() {
         rmix.removeAll()
         nineletter.removeAll()
         letters.removeAll()
@@ -1702,6 +2103,7 @@ class treelettergame: UIViewController {
         winpanel.isHidden = true
         winpaneltext.isHidden = true
         otherwordgo.isHidden = true
+        turnoutlet.isEnabled = true
         box1.isEnabled = true
         box2.isEnabled = true
         box3.isEnabled = true
@@ -1731,9 +2133,24 @@ class treelettergame: UIViewController {
         self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
         
         kelime = replacementword
-    
-      
-       return viewDidLoad()
+        
+        
+        return viewDidLoad()
+    }
+    @IBAction func otherwordgobutton(_ sender: Any) {
+        otherwordgofunc()
+    }
+    @IBAction func finishpanelnextbutton(_ sender: Any) {
+        otherwordgofunc()
+        finishpanel.isHidden = true
+        finishpaneltext.isHidden = true
+        finishpanelbutton.isHidden = true
+        finishpanelnext.isHidden = true
+        finishpanel.frame = CGRect(origin: CGPoint(x: finishpanelx, y: finishpanely), size: finishpanel.bounds.size)
+        finishpanelnext.frame = CGRect(origin: CGPoint(x: finishpanelnextbuttonx, y: finishpanelnextbuttony), size: finishpanelnext.bounds.size)
+        finishpanelbutton.frame = CGRect(origin: CGPoint(x: finishpanelbackbuttonx, y: finishpanelbackbuttony), size: finishpanelbutton.bounds.size)
+        finishpaneltext.frame = CGRect(origin: CGPoint(x: finishpaneltextx, y: finishpaneltexty), size: finishpaneltext.bounds.size)
+        
     }
     
     func scoretimestart() {
@@ -1749,12 +2166,17 @@ class treelettergame: UIViewController {
         if self.score < self.highscore {
             self.highscore = self.score
             self.highscoretext.text = String(self.highscore)
-            self.scoretime = 0
-            self.scoretimetext.isHidden = true
             UserDefaults.standard.set(self.highscore, forKey: "highscorekey")
-            print("Yeni Rekor")
+            
         }
+        self.scoretime = 0
+        self.scoretimetext.isHidden = true
         
+    }
+    func scoretimefinishclose() {
+        scoretimer?.invalidate()
+        self.scoretime = 0
+        self.scoretimetext.isHidden = true
     }
     
 
