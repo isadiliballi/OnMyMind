@@ -345,25 +345,72 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="18k-9x-S5p">
-                                <rect key="frame" x="51" y="466" width="280" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="18k-9x-S5p">
+                                <rect key="frame" x="-41" y="670" width="458" height="410"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEBRİKLER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQU-pl-7KW">
-                                <rect key="frame" x="118" y="498" width="145" height="34"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TEBRİKLER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQU-pl-7KW">
+                                <rect key="frame" x="114" y="747" width="145" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yg2-sQ-LlQ">
-                                <rect key="frame" x="97" y="540" width="189" height="48"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DOĞRU TAHMİN" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ae-hk-p9D">
+                                <rect key="frame" x="70" y="779" width="233" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="DİĞER KELİMEYE GEÇ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6y-g2-ifU">
+                                <rect key="frame" x="110" y="691" width="100" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="130" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su8-HJ-RRP">
+                                <rect key="frame" x="290" y="691" width="67" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cup" translatesAutoresizingMaskIntoConstraints="NO" id="r0v-3S-FQG">
+                                <rect key="frame" x="28" y="688" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gamecoins" translatesAutoresizingMaskIntoConstraints="NO" id="ybj-CW-0EE">
+                                <rect key="frame" x="211" y="688" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="MUy-A1-P9K">
+                                <rect key="frame" x="73" y="693" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-xR-S7H">
+                                <rect key="frame" x="256" y="693" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGY-0w-q9H">
+                                <rect key="frame" x="97" y="750" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="otherwordgobutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="2bQ-H8-Fm8"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="9IX-d8-s5X"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyc-kJ-JFA">
+                                <rect key="frame" x="197" y="750" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishpanelnextbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="uQZ-7Y-3gD"/>
                                 </connections>
                             </button>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
@@ -377,26 +424,6 @@
                                 <color key="textColor" red="1" green="0.51032543460000002" blue="0.018537080609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGY-0w-q9H">
-                                <rect key="frame" x="47" y="750" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="9IX-d8-s5X"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyc-kJ-JFA">
-                                <rect key="frame" x="247" y="750" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="next">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="finishpanelnextbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="uQZ-7Y-3gD"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qk-2c-FQA">
                                 <rect key="frame" x="229" y="50" width="99" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -438,10 +465,10 @@
                         <outlet property="box8" destination="l4k-xA-vMK" id="b6G-OA-H7w"/>
                         <outlet property="box9" destination="lvJ-UC-Scd" id="TWM-ot-Wir"/>
                         <outlet property="coinstexttreeletter" destination="9Qk-2c-FQA" id="ROl-fX-eVY"/>
-                        <outlet property="finishpanel" destination="2O9-0b-Cau" id="7Bh-Vi-YLb"/>
+                        <outlet property="finishpanel" destination="2O9-0b-Cau" id="djO-h2-3Fp"/>
                         <outlet property="finishpanelbutton" destination="OGY-0w-q9H" id="brR-Fn-0x0"/>
                         <outlet property="finishpanelnext" destination="Fyc-kJ-JFA" id="AtH-NT-f8F"/>
-                        <outlet property="finishpaneltext" destination="1xu-J7-9wu" id="55D-8C-zC3"/>
+                        <outlet property="finishpaneltext" destination="1xu-J7-9wu" id="DZT-jS-Ihg"/>
                         <outlet property="highscoretext" destination="1aI-kz-QU5" id="1QP-fg-X9d"/>
                         <outlet property="letter1" destination="4m3-gz-1AA" id="hWV-BM-vvw"/>
                         <outlet property="letter2" destination="Cbz-eb-OKp" id="2Vu-fH-buP"/>
@@ -452,7 +479,6 @@
                         <outlet property="letter7" destination="HnT-gb-KhP" id="k8q-Gv-eWO"/>
                         <outlet property="letter8" destination="w5G-kZ-mw5" id="xFv-eq-xSy"/>
                         <outlet property="letter9" destination="oM5-NE-3Bg" id="NVd-Km-mnQ"/>
-                        <outlet property="otherwordgo" destination="yg2-sQ-LlQ" id="ZUy-Dl-zee"/>
                         <outlet property="scoretimetext" destination="LuS-5l-Ove" id="JX4-NT-Zmi"/>
                         <outlet property="second" destination="Su4-lf-iui" id="0pV-C9-e5P"/>
                         <outlet property="treeletterword" destination="VLN-cc-euQ" id="tCq-cy-Dtq"/>
@@ -461,8 +487,15 @@
                         <outlet property="warning" destination="7UF-E6-oyw" id="YSZ-bq-3a2"/>
                         <outlet property="warningclose" destination="5lF-OB-i8X" id="My8-Bl-UEv"/>
                         <outlet property="warningtext" destination="GdH-AU-tiZ" id="IeY-Oa-oZ5"/>
-                        <outlet property="winpanel" destination="18k-9x-S5p" id="4qO-P1-9sb"/>
-                        <outlet property="winpaneltext" destination="wQU-pl-7KW" id="siO-Yl-N4a"/>
+                        <outlet property="winpanel" destination="18k-9x-S5p" id="giL-ZN-YuO"/>
+                        <outlet property="winpanelcoins" destination="su8-HJ-RRP" id="pSk-MW-gMW"/>
+                        <outlet property="winpanelcoinsimage" destination="ybj-CW-0EE" id="b45-bv-se6"/>
+                        <outlet property="winpanelcoinsplus" destination="fBz-xR-S7H" id="b8W-JV-i0i"/>
+                        <outlet property="winpanelcupimage" destination="r0v-3S-FQG" id="KBn-AL-NWm"/>
+                        <outlet property="winpanelscore" destination="N6y-g2-ifU" id="Wdp-59-W34"/>
+                        <outlet property="winpanelscoreplus" destination="MUy-A1-P9K" id="IGr-fM-UmX"/>
+                        <outlet property="winpaneltext" destination="wQU-pl-7KW" id="8Z9-wA-8se"/>
+                        <outlet property="winpaneltexttwo" destination="9Ae-hk-p9D" id="8FX-b5-lqK"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="go" id="1UY-SD-ARG"/>
                     </connections>
                 </viewController>
@@ -472,7 +505,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="772" height="772"/>
+        <image name="back" width="802" height="802"/>
         <image name="box" width="633" height="673"/>
         <image name="cup" width="726.5" height="726"/>
         <image name="gameayarlar" width="894" height="894"/>
@@ -483,11 +516,13 @@
         <image name="giris4harfbutton" width="968" height="335"/>
         <image name="giris5harfbutton" width="968" height="335"/>
         <image name="giris6harfbutton" width="968" height="335"/>
-        <image name="next" width="772" height="772"/>
+        <image name="next" width="802" height="802"/>
+        <image name="plus" width="741" height="741"/>
         <image name="turn" width="965" height="292"/>
         <image name="warning" width="902" height="488.5"/>
+        <image name="win" width="902" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J25-Mv-I1C"/>
+        <segue reference="qF7-OT-O8w"/>
     </inferredMetricsTieBreakers>
 </document>
