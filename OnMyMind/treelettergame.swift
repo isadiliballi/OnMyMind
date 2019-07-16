@@ -54,6 +54,7 @@ class treelettergame: UIViewController {
     
     @IBOutlet weak var turnoutlet: UIButton!
     @IBOutlet weak var turnwordoutlet: UILabel!
+    @IBOutlet weak var plusthousandcoins: UIImageView!
     
     @IBOutlet weak var coinstexttreeletter: UILabel!
     var coins = Int()
@@ -85,6 +86,8 @@ class treelettergame: UIViewController {
     @IBOutlet weak var winpanelcoinsimage: UIImageView!
     @IBOutlet weak var winpanelscoreplus: UIImageView!
     @IBOutlet weak var winpanelcoinsplus: UIImageView!
+    @IBOutlet weak var winpanelnext: UIButton!
+    @IBOutlet weak var winpanelnexttext: UILabel!
     
     var ref : DatabaseReference!
     var replacementword = String()
@@ -124,6 +127,10 @@ class treelettergame: UIViewController {
     var winpanelscoreplusy = Int()
     var winpanelcoinsplusx = Int()
     var winpanelcoinsplusy = Int()
+    var winpanelnextx = Int()
+    var winpanelnexty = Int()
+    var winpanelnexttextx = Int()
+    var winpanelnexttexty = Int()
     
     
     
@@ -174,6 +181,10 @@ class treelettergame: UIViewController {
             winpanelscoreplusy = Int(winpanelscoreplus.frame.origin.y)
             winpanelcoinsplusx = Int(winpanelcoinsplus.frame.origin.x)
             winpanelcoinsplusy = Int(winpanelcoinsplus.frame.origin.y)
+            winpanelnextx = Int(winpanelnext.frame.origin.x)
+            winpanelnexty = Int(winpanelnext.frame.origin.y)
+            winpanelnexttextx = Int(winpanelnexttext.frame.origin.x)
+            winpanelnexttexty = Int(winpanelnexttext.frame.origin.y)
             winpanelbool = true
         }
         
@@ -518,10 +529,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -532,8 +543,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                     
                 }
@@ -911,10 +922,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -925,8 +936,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -1303,10 +1314,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -1317,8 +1328,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -1694,10 +1705,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -1708,8 +1719,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -2085,10 +2096,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -2099,8 +2110,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -2477,10 +2488,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -2491,8 +2502,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -2868,10 +2879,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -2882,8 +2893,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -3260,10 +3271,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -3274,8 +3285,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -3653,10 +3664,10 @@ class treelettergame: UIViewController {
                         self.winpanelcoinsplus.frame.origin.y -= 350
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelnext.frame.origin.y -= 220
+                        self.winpanelnext.frame.origin.y -= 220
                     }
                     UIView.animate(withDuration: 0.5) {
-                        self.finishpanelbutton.frame.origin.y -= 220
+                        self.winpanelnexttext.frame.origin.y -= 220
                     }
                     winpanel.isHidden = false
                     winpaneltext.isHidden = false
@@ -3667,8 +3678,8 @@ class treelettergame: UIViewController {
                     winpanelcoinsimage.isHidden = false
                     winpanelscoreplus.isHidden = false
                     winpanelcoinsplus.isHidden = false
-                    finishpanelbutton.isHidden = false  // KONTROL
-                    finishpanelnext.isHidden = false  // KONTROL
+                    winpanelnext.isHidden = false
+                    winpanelnexttext.isHidden = false
                     winpanelscore.text = String(score)
                 }
                 else {
@@ -3800,6 +3811,7 @@ class treelettergame: UIViewController {
                     self.second.text = String(self.time)
                     self.firstlife+=1
                     print(self.firstlife)
+                    self.plusthousandcoins.isHidden = false
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -3896,6 +3908,7 @@ class treelettergame: UIViewController {
                 
                 turnoutlet.isHidden = true
                 turnwordoutlet.isHidden = true
+                self.plusthousandcoins.isHidden = true
                 
                 
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
@@ -3907,6 +3920,7 @@ class treelettergame: UIViewController {
                         timer.invalidate()
                         self.turnoutlet.isHidden = false
                         self.turnwordoutlet.isHidden = false
+                        self.plusthousandcoins.isHidden = false
                         self.second.isHidden = true
                         self.time = 2
                         self.second.text = String(self.time)
@@ -4042,6 +4056,11 @@ class treelettergame: UIViewController {
        
     }
     @IBAction func warningclosebutton(_ sender: Any) {
+        warningtext.isHidden = true
+        warningclose.isHidden = true
+        warning.isHidden = true
+        
+        izin = true
     }
     
     
@@ -4067,6 +4086,8 @@ class treelettergame: UIViewController {
         winpaneltext.isHidden = true
        // otherwordgo.isHidden = true
         turnoutlet.isEnabled = true
+        turnwordoutlet.isEnabled = true
+        plusthousandcoins.isHidden = true
         box1.isEnabled = true
         box2.isEnabled = true
         box3.isEnabled = true
@@ -4116,8 +4137,6 @@ class treelettergame: UIViewController {
     
     @IBAction func finishpanelnextbutton(_ sender: Any) {
         otherwordgofunc()
-        
-        //finishpanel
         finishpanel.isHidden = true
         finishpaneltext.isHidden = true
         finishpanelbutton.isHidden = true
@@ -4127,7 +4146,11 @@ class treelettergame: UIViewController {
         finishpanelbutton.frame = CGRect(origin: CGPoint(x: finishpanelbackbuttonx, y: finishpanelbackbuttony), size: finishpanelbutton.bounds.size)
         finishpaneltext.frame = CGRect(origin: CGPoint(x: finishpaneltextx, y: finishpaneltexty), size: finishpaneltext.bounds.size)
         
-        //winpanel
+        
+    }
+    
+    @IBAction func winpanelnextbutton(_ sender: Any) {
+        otherwordgofunc()
         winpanel.isHidden = true
         winpaneltext.isHidden = true
         winpaneltexttwo.isHidden = true
@@ -4137,6 +4160,8 @@ class treelettergame: UIViewController {
         winpanelcoinsimage.isHidden = true
         winpanelscoreplus.isHidden = true
         winpanelcoinsplus.isHidden = true
+        winpanelnext.isHidden = true
+        winpanelnexttext.isHidden = true
         winpanel.frame = CGRect(origin: CGPoint(x: winpanelx, y: winpanely), size: winpanel.bounds.size)
         winpaneltext.frame = CGRect(origin: CGPoint(x: winpaneltextx, y: winpaneltexty), size: winpaneltext.bounds.size)
         winpaneltexttwo.frame = CGRect(origin: CGPoint(x: winpaneltexttwox, y: winpaneltexttwoy), size: winpaneltexttwo.bounds.size)
@@ -4146,6 +4171,8 @@ class treelettergame: UIViewController {
         winpanelcoinsimage.frame = CGRect(origin: CGPoint(x: winpanelcoinsimagex, y: winpanelcoinsimagey), size: winpanelcoinsimage.bounds.size)
         winpanelscoreplus.frame = CGRect(origin: CGPoint(x: winpanelscoreplusx, y: winpanelscoreplusy), size: winpanelscoreplus.bounds.size)
         winpanelcoinsplus.frame = CGRect(origin: CGPoint(x: winpanelcoinsplusx, y: winpanelcoinsplusy), size: winpanelcoinsplus.bounds.size)
+        winpanelnext.frame = CGRect(origin: CGPoint(x: winpanelnextx, y: winpanelnexty), size: winpanelnext.bounds.size)
+        winpanelnexttext.frame = CGRect(origin: CGPoint(x: winpanelnexttextx, y: winpanelnexttexty), size: winpanelnexttext.bounds.size)
     }
-
+    
 }
