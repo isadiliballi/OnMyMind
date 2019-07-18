@@ -472,6 +472,10 @@
                                 <rect key="frame" x="148" y="70" width="124" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plusonehundredcoins" translatesAutoresizingMaskIntoConstraints="NO" id="Q2o-jt-xLm">
+                                <rect key="frame" x="95" y="174" width="186" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
@@ -502,6 +506,7 @@
                         <outlet property="letter7" destination="HnT-gb-KhP" id="k8q-Gv-eWO"/>
                         <outlet property="letter8" destination="w5G-kZ-mw5" id="xFv-eq-xSy"/>
                         <outlet property="letter9" destination="oM5-NE-3Bg" id="NVd-Km-mnQ"/>
+                        <outlet property="plusonehundredcoins" destination="Q2o-jt-xLm" id="KBq-rR-R84"/>
                         <outlet property="plustencoins" destination="OOr-mY-JIl" id="exU-n3-jRj"/>
                         <outlet property="plusthousandcoins" destination="PeE-WD-CyQ" id="Crq-qe-Mcy"/>
                         <outlet property="scoretimetext" destination="LuS-5l-Ove" id="JX4-NT-Zmi"/>
@@ -547,6 +552,7 @@
         <image name="giris6harfbutton" width="968" height="335"/>
         <image name="next" width="802" height="802"/>
         <image name="plus" width="741" height="741"/>
+        <image name="plusonehundredcoins" width="951" height="383"/>
         <image name="plustencoins" width="626" height="332"/>
         <image name="plusthousandcoins" width="1037" height="383"/>
         <image name="truenext" width="995" height="322"/>
