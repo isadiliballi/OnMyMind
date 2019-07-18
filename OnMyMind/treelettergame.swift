@@ -54,7 +54,6 @@ class treelettergame: UIViewController {
     
     @IBOutlet weak var turnoutlet: UIButton!
     @IBOutlet weak var turnwordoutlet: UILabel!
-    @IBOutlet weak var plusthousandcoins: UIImageView!
     @IBOutlet weak var plusonehundredcoins: UIImageView!
     
     @IBOutlet weak var coinsimage: UIButton!
@@ -63,6 +62,7 @@ class treelettergame: UIViewController {
     var coins = Int()
     
     var kelime = String()
+    var trkelime = String()
     
     var firstlife = 1
     
@@ -94,11 +94,15 @@ class treelettergame: UIViewController {
     
     var ref : DatabaseReference!
     var replacementword = String()
+    var trreplacementword = String()
     
     var score = Int()
     var highscore = 0
     @IBOutlet weak var scoretimetext: UILabel!
     @IBOutlet weak var highscoretext: UILabel!
+    @IBOutlet weak var highscorewarning: UIImageView!
+    @IBOutlet weak var highscorewarningtext: UILabel!
+    @IBOutlet weak var highscorewarningclose: UIButton!
     
     
     var finishpanelbool = false
@@ -135,6 +139,9 @@ class treelettergame: UIViewController {
     var winpanelnexttextx = Int()
     var winpanelnexttexty = Int()
     
+    @IBOutlet weak var darkbackground: UIImageView!
+    @IBOutlet weak var blurbackground: UIVisualEffectView!
+    @IBOutlet weak var blurbackgroundtext: UILabel!
     
     
     
@@ -146,6 +153,8 @@ class treelettergame: UIViewController {
         if firsopengame2  {
             highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
             highscoretext.text = String(highscore)
+           // highscore = 0 // DELETE
+           // UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE
         }
         else {
             UserDefaults.standard.set(true, forKey: "firsopengame2")
@@ -191,15 +200,20 @@ class treelettergame: UIViewController {
             winpanelbool = true
         }
         
-        
-        
-        let dbrandom = Int.random(in: 1...20)
+       
+        let dbrandom = Int.random(in: 1...5)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
-        ref.child("3harf").child(dbrandomstring).observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
             self.replacementword = snapshot.value as! String
         }
+        ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+            self.trreplacementword = snapshottwo.value as! String
+        }
+        
+        print(trkelime)
+        print(kelime)
         
         coinstexttreeletter.text = String(coins)
         treeletterword.text = kelime
@@ -212,8 +226,6 @@ class treelettergame: UIViewController {
         for _ in 0..<looppieces {
             let rsayi = Int.random(in: 0...looppieces)
             randomletter += [alfabe[rsayi]]
-            
-            
         }
         nineletter = randomletter + letters
         
@@ -235,12 +247,10 @@ class treelettergame: UIViewController {
         letter8.text = rmix[7]
         letter9.text = rmix[8]
     
-        
         background()
     }
     
-    func background()
-    {
+    func background() {
         let backgroundImageView = UIImageView()
         view.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -252,11 +262,17 @@ class treelettergame: UIViewController {
         backgroundImageView.layer.zPosition = -1
     }
     
+    func backgrounddark() {
+       
+    }
+    
     
     @IBAction func boxone(_ sender: Any) {
         
+        izinequalfalse()
+        
         if izin == true {
-            box1.isEnabled = false
+            box1.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter1.text == letters[0] {
@@ -296,8 +312,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxtwo(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box2.isEnabled = false
+            box2.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter2.text == letters[0] {
@@ -336,8 +355,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxthree(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box3.isEnabled = false
+            box3.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter3.text == letters[0] {
@@ -357,7 +379,7 @@ class treelettergame: UIViewController {
                     IFlettertextequalletters()
                 }
                 else {
-                    boxthreeIFletterthreetextequalletters()
+                    boxthreeELSEletterthreetextequalletters()
                     ELSElettertextequalletters()
                 }
             }
@@ -376,8 +398,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxfour(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box4.isEnabled = false
+            box4.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter4.text == letters[0] {
@@ -416,8 +441,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxfive(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box5.isEnabled = false
+            box5.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter5.text == letters[0] {
@@ -456,8 +484,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxsix(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box6.isEnabled = false
+            box6.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter6.text == letters[0] {
@@ -496,8 +527,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxseven(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box7.isEnabled = false
+            box7.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter7.text == letters[0] {
@@ -536,8 +570,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxeight(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box8.isEnabled = false
+            box8.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter8.text == letters[0] {
@@ -576,8 +613,11 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func boxnine(_ sender: Any) {
+        
+        izinequalfalse()
+        
         if izin == true {
-            box9.isEnabled = false
+            box1.isUserInteractionEnabled = false
             
             if scontrol == 1 {
                 if letter9.text == letters[0] {
@@ -634,6 +674,8 @@ class treelettergame: UIViewController {
                 
                 if self.time == 0 {
                     
+                    self.blurbackgroundeffect()
+                    
                     self.izin = true
                     timer.invalidate()
                     self.turnoutlet.isHidden = false
@@ -643,7 +685,8 @@ class treelettergame: UIViewController {
                     self.second.text = String(self.time)
                     self.firstlife+=1
                     print(self.firstlife)
-                    self.plusthousandcoins.isHidden = false
+                    self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                    self.turnwordoutlet.isHidden = true
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -736,20 +779,23 @@ class treelettergame: UIViewController {
                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                 }
+                
                 turnoutlet.isHidden = true
                 turnwordoutlet.isHidden = true
-                self.plusthousandcoins.isHidden = true
+                self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                self.turnwordoutlet.isHidden = true
                 
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
                     self.time -= 1
                     self.second.text = String(self.time)
                     
                     if self.time == 0 {
+                        self.blurbackgroundeffect()
                         self.izin = true
                         timer.invalidate()
                         self.turnoutlet.isHidden = false
-                        self.turnwordoutlet.isHidden = false
-                        self.plusthousandcoins.isHidden = false
+                        self.turnwordoutlet.isHidden = true
+                        self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
                         self.second.isHidden = true
                         self.time = 2
                         self.second.text = String(self.time)
@@ -880,6 +926,8 @@ class treelettergame: UIViewController {
                 warning.isHidden = false
                 warningtext.isHidden = false
                 warningclose.isHidden = false
+                coinstexttreeletter.textColor = UIColor.red
+                darkbackground.isHidden = false
             }
         }
        
@@ -888,7 +936,16 @@ class treelettergame: UIViewController {
         warningtext.isHidden = true
         warningclose.isHidden = true
         warning.isHidden = true
+        coinstexttreeletter.textColor = UIColor.white
+        darkbackground.isHidden = true
         izin = true
+    }
+    @IBAction func highscorewarningclosebutton(_ sender: Any) {
+        highscorewarning.isHidden = true
+        highscorewarningtext.isHidden = true
+        highscorewarningclose.isHidden = true
+        highscoretext.textColor = UIColor.white
+        darkbackground.isHidden = true
     }
     
     
@@ -914,16 +971,17 @@ class treelettergame: UIViewController {
         winpaneltext.isHidden = true
         turnoutlet.isEnabled = true
         turnwordoutlet.isEnabled = true
-        plusthousandcoins.isHidden = true
-        box1.isEnabled = true
-        box2.isEnabled = true
-        box3.isEnabled = true
-        box4.isEnabled = true
-        box5.isEnabled = true
-        box6.isEnabled = true
-        box7.isEnabled = true
-        box8.isEnabled = true
-        box9.isEnabled = true
+        turnwordoutlet.isHidden = false
+        turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
+        box1.isUserInteractionEnabled = true
+        box2.isUserInteractionEnabled = true
+        box3.isUserInteractionEnabled = true
+        box4.isUserInteractionEnabled = true
+        box5.isUserInteractionEnabled = true
+        box6.isUserInteractionEnabled = true
+        box7.isUserInteractionEnabled = true
+        box8.isUserInteractionEnabled = true
+        box9.isUserInteractionEnabled = true
         letter1.isHidden = true
         letter2.isHidden = true
         letter3.isHidden = true
@@ -953,7 +1011,15 @@ class treelettergame: UIViewController {
         box8bool = false
         box9bool = false
         
+        highscorewarning.isHidden = true
+        highscorewarningtext.isHidden = true
+        highscorewarningclose.isHidden = true
+        highscoretext.textColor = UIColor.white
+        
+        darkbackground.isHidden = true
+        
         kelime = replacementword
+        trkelime = trreplacementword
         return viewDidLoad()
     }
     
@@ -1231,6 +1297,12 @@ class treelettergame: UIViewController {
             highscore = score
             UserDefaults.standard.set(highscore, forKey: "highscorekey")
             self.highscoretext.text = String(highscore)
+            self.highscorewarning.isHidden = false
+            self.highscorewarningtext.isHidden = false
+            self.highscorewarningtext.text = String(self.highscore)
+            highscorewarningclose.isHidden = false
+            highscoretext.textColor = UIColor.green
+            darkbackground.isHidden = false
             self.score = 0
         }
         else {
@@ -1242,30 +1314,30 @@ class treelettergame: UIViewController {
         finishpanelbutton.isHidden = false
         finishpanelnext.isHidden = false
         turnoutlet.isEnabled = false
-        box1.isEnabled = false
-        box2.isEnabled = false
-        box3.isEnabled = false
-        box4.isEnabled = false
-        box5.isEnabled = false
-        box6.isEnabled = false
-        box7.isEnabled = false
-        box8.isEnabled = false
-        box9.isEnabled = false
+        box1.isUserInteractionEnabled = false
+        box2.isUserInteractionEnabled = false
+        box3.isUserInteractionEnabled = false
+        box4.isUserInteractionEnabled = false
+        box5.isUserInteractionEnabled = false
+        box6.isUserInteractionEnabled = false
+        box7.isUserInteractionEnabled = false
+        box8.isUserInteractionEnabled = false
+        box9.isUserInteractionEnabled = false
     }
     
     func scontrolequalthree() { // 3. kutu doğru olduğunda...
         self.coins+=100
         self.coinstexttreeletter.text = String(self.coins)
         self.score += 10
-        box1.isEnabled = false
-        box2.isEnabled = false
-        box3.isEnabled = false
-        box4.isEnabled = false
-        box5.isEnabled = false
-        box6.isEnabled = false
-        box7.isEnabled = false
-        box8.isEnabled = false
-        box9.isEnabled = false
+        box1.isUserInteractionEnabled = false
+        box2.isUserInteractionEnabled = false
+        box3.isUserInteractionEnabled = false
+        box4.isUserInteractionEnabled = false
+        box5.isUserInteractionEnabled = false
+        box6.isUserInteractionEnabled = false
+        box7.isUserInteractionEnabled = false
+        box8.isUserInteractionEnabled = false
+        box9.isUserInteractionEnabled = false
         turnoutlet.isEnabled = false
         turnwordoutlet.isEnabled = false
         
@@ -1329,5 +1401,49 @@ class treelettergame: UIViewController {
             self.plusonehundredcoins.frame.size.height -= 200
             self.plusonehundredcoins.frame.size.width -= 200
         }
+    }
+    
+    func izinequalfalse() {
+        if izin == false {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews, animations: {
+            self.turnoutlet.frame.origin.x -= 15
+            self.turnoutlet.frame.origin.y -= 10
+            self.turnoutlet.frame.size.height += 30
+            self.turnoutlet.frame.size.width += 30
+            self.turnwordoutlet.isHidden = true
+            self.turnoutlet.setImage(UIImage(named: "turnerror"), for: UIControl.State.normal)
+        }){_ in
+            self.turnoutlet.frame.origin.x += 15
+            self.turnoutlet.frame.origin.y += 10
+            self.turnoutlet.frame.size.height -= 30
+            self.turnoutlet.frame.size.width -= 30
+            self.turnwordoutlet.isHidden = false
+            self.turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
+          }
+       }
+    }
+    
+    func blurbackgroundeffect() {
+        blurbackgroundtext.text = trkelime
+        var blurbackgroundtime = Double(0)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+            blurbackgroundtime += 0.1
+            if blurbackgroundtime == 0.5 {
+                timer.invalidate()
+                blurbackgroundtime = Double(0)
+                self.blurbackground.isHidden = false
+                self.blurbackgroundtext.isHidden = false
+                var blurbackgroundtimetwo = 0
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+                    blurbackgroundtimetwo += 1
+                    if blurbackgroundtimetwo == 4 {
+                        timer.invalidate()
+                        blurbackgroundtimetwo = 0
+                        self.blurbackground.isHidden = true
+                        self.blurbackgroundtext.isHidden = true
+                    }
+                })
+            }
+        })
     }
 }

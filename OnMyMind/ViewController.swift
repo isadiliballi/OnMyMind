@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     
    var ref : DatabaseReference!
    var boxpiece = 9
-    var asd = String()
+    var ingword = String()
+    var trword = String()
     var coins = Int()
    
     @IBOutlet weak var coinstext: UILabel!
@@ -50,12 +51,15 @@ class ViewController: UIViewController {
         
         
         
-        let dbrandom = Int.random(in: 1...20)
+        let dbrandom = Int.random(in: 1...5)
         let dbrandomstring = String(dbrandom)
         
        ref = Database.database().reference()
-        ref.child("3harf").child(dbrandomstring).observeSingleEvent(of: .value) { (snapshot) in
-            self.asd = snapshot.value as! String
+        ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+            self.ingword = snapshot.value as! String
+        }
+        ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+            self.trword = snapshottwo.value as! String
         }
         
         
@@ -113,7 +117,7 @@ class ViewController: UIViewController {
     @IBAction func treelettergo(_ sender: Any) {
         UIView.transition(with: threelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: threeletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-        if asd.isEmpty == true {
+        if ingword.isEmpty == true && trword.isEmpty == true {
             print("İnternet bağlantınızı kontrol edin veya tekrar deneyin")
         }
         else {
@@ -140,7 +144,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let vc = segue.destination as! treelettergame
-        vc.kelime = asd
+        vc.kelime = ingword
+        vc.trkelime = trword
         vc.coins = coins
         
     }
