@@ -308,7 +308,7 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-lf-iui">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-lf-iui">
                                 <rect key="frame" x="129" y="466" width="116" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="100"/>
@@ -394,13 +394,6 @@
                                     <action selector="finishpanelnextbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="uQZ-7Y-3gD"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuS-5l-Ove">
-                                <rect key="frame" x="137" y="512" width="100" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
-                                <color key="textColor" red="1" green="0.51032543460000002" blue="0.018537080609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-2H-G9S">
                                 <rect key="frame" x="46" y="750" width="284" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -425,35 +418,45 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qk-2c-FQA">
-                                <rect key="frame" x="269" y="54" width="75" height="30"/>
+                                <rect key="frame" x="274" y="54" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.82958460082481877" blue="0.017946490816058924" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aI-kz-QU5">
-                                <rect key="frame" x="134" y="55" width="50" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aI-kz-QU5">
+                                <rect key="frame" x="51" y="55" width="50" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
                                 <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmK-q3-yWK">
-                                <rect key="frame" x="222" y="41" width="130" height="50"/>
+                                <rect key="frame" x="227" y="41" width="130" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="gamescreencoins"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="qF7-OT-O8w"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gamescreencup" translatesAutoresizingMaskIntoConstraints="NO" id="PG3-qI-4oZ">
-                                <rect key="frame" x="88" y="41" width="130" height="50"/>
+                                <rect key="frame" x="16" y="41" width="130" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-jk-Voi">
-                                <rect key="frame" x="24" y="41" width="50" height="50"/>
+                                <rect key="frame" x="162" y="41" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="home"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Z3q-Xn-3ZY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-Ga-qTN">
+                                <rect key="frame" x="141" y="528" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="againturn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22s-sk-rhL">
+                                <rect key="frame" x="43" y="528" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="chance"/>
                             </button>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -510,18 +513,34 @@
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TÜRKÇE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw5-1f-mR2">
                                             <rect key="frame" x="0.0" y="285" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
+                                            <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="60"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MASA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxl-F6-Qfx">
+                                            <rect key="frame" x="67" y="150" width="241" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="60"/>
+                                            <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-Xb-MOi">
+                                <rect key="frame" x="239" y="528" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="hint"/>
+                                <connections>
+                                    <action selector="hint:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="ntF-kr-IF8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="Su4-lf-iui"/>
                                 <exclude reference="Kvb-bx-DhT"/>
                                 <exclude reference="7UF-E6-oyw"/>
                                 <exclude reference="GdH-AU-tiZ"/>
@@ -536,6 +555,7 @@
                     <connections>
                         <outlet property="blurbackground" destination="cFF-tU-pBe" id="8uL-1U-Oiv"/>
                         <outlet property="blurbackgroundtext" destination="tw5-1f-mR2" id="PYn-ng-ioZ"/>
+                        <outlet property="blurbackgroundtrtext" destination="Oxl-F6-Qfx" id="rtP-qu-b4K"/>
                         <outlet property="box1" destination="Zci-k5-Iuh" id="5Rz-44-Mw9"/>
                         <outlet property="box2" destination="vnd-Tq-l8V" id="deB-t8-WfO"/>
                         <outlet property="box3" destination="1gJ-ya-BI8" id="n8S-AZ-x2f"/>
@@ -556,6 +576,7 @@
                         <outlet property="highscorewarning" destination="zjR-0g-8Hu" id="AQu-mi-QMd"/>
                         <outlet property="highscorewarningclose" destination="56B-E6-Voy" id="Spg-Nb-4pF"/>
                         <outlet property="highscorewarningtext" destination="DCJ-pK-mr8" id="CcW-7n-S9D"/>
+                        <outlet property="hintoutlet" destination="eAe-Xb-MOi" id="KCO-vr-Qpp"/>
                         <outlet property="letter1" destination="4m3-gz-1AA" id="hWV-BM-vvw"/>
                         <outlet property="letter2" destination="Cbz-eb-OKp" id="2Vu-fH-buP"/>
                         <outlet property="letter3" destination="8ms-IE-1jb" id="9qj-VI-jFX"/>
@@ -567,7 +588,6 @@
                         <outlet property="letter9" destination="oM5-NE-3Bg" id="NVd-Km-mnQ"/>
                         <outlet property="plusonehundredcoins" destination="Q2o-jt-xLm" id="KBq-rR-R84"/>
                         <outlet property="plustencoins" destination="OOr-mY-JIl" id="exU-n3-jRj"/>
-                        <outlet property="scoretimetext" destination="LuS-5l-Ove" id="JX4-NT-Zmi"/>
                         <outlet property="second" destination="Su4-lf-iui" id="0pV-C9-e5P"/>
                         <outlet property="treeletterword" destination="VLN-cc-euQ" id="tCq-cy-Dtq"/>
                         <outlet property="turnoutlet" destination="1Ga-YE-gFQ" id="a1x-99-2xj"/>
@@ -595,9 +615,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="againturn" width="197" height="197"/>
         <image name="alert" width="1022" height="811"/>
         <image name="back" width="802" height="802"/>
         <image name="box" width="633" height="673"/>
+        <image name="chance" width="197" height="197"/>
         <image name="close" width="802" height="802"/>
         <image name="cup" width="847" height="846"/>
         <image name="darkbackground" width="751" height="1335"/>
@@ -612,6 +634,7 @@
         <image name="giris5harfbutton" width="968" height="335"/>
         <image name="giris6harfbutton" width="968" height="335"/>
         <image name="highscorewarning" width="958" height="957"/>
+        <image name="hint" width="197" height="197"/>
         <image name="home" width="130" height="130"/>
         <image name="next" width="802" height="802"/>
         <image name="plus" width="741" height="741"/>
@@ -623,6 +646,6 @@
         <image name="win" width="902" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qF7-OT-O8w"/>
+        <segue reference="1UY-SD-ARG"/>
     </inferredMetricsTieBreakers>
 </document>

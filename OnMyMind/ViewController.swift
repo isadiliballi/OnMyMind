@@ -117,7 +117,7 @@ class ViewController: UIViewController {
     @IBAction func treelettergo(_ sender: Any) {
         UIView.transition(with: threelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: threeletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-        if ingword.isEmpty == true && trword.isEmpty == true {
+        if ingword.isEmpty == true || trword.isEmpty == true {
             print("İnternet bağlantınızı kontrol edin veya tekrar deneyin")
         }
         else {
