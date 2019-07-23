@@ -154,7 +154,22 @@ class treelettergame: UIViewController {
     @IBOutlet weak var blurbackgroundtrtext: UILabel!
     
     @IBOutlet weak var hintoutlet: UIButton!
+    @IBOutlet weak var againturnoutlet: UIButton!
+    @IBOutlet weak var chanceoutlet: UIButton!
+    var chanceint = 6
+    var againturnint = 6
+    var hintint = 6
+    @IBOutlet weak var chancetext: UILabel!
+    @IBOutlet weak var againturntext: UILabel!
+    @IBOutlet weak var hinttext: UILabel!
+    @IBOutlet weak var chancenumber: UIImageView!
+    @IBOutlet weak var turnagainnumber: UIImageView!
+    @IBOutlet weak var hintnumber: UIImageView!
     
+    @IBOutlet weak var hintbuyscreen: UIImageView!
+    @IBOutlet weak var hintbuyscreentext: UILabel!
+    @IBOutlet weak var hintbuythousandcoins: UIButton!
+    @IBOutlet weak var hintbuyads: UIButton!
     
     
     override func viewDidLoad() {
@@ -165,8 +180,11 @@ class treelettergame: UIViewController {
         if firsopengame2  {
             highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
             highscoretext.text = String(highscore)
-           // highscore = 0 // DELETE
-           // UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE
+            
+          /*  coins = 99999 // DELETE
+            UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
+            highscore = 0 // DELETE
+            UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE */
         }
         else {
             UserDefaults.standard.set(true, forKey: "firsopengame2")
@@ -227,6 +245,9 @@ class treelettergame: UIViewController {
         print(trkelime)
         print(kelime)
         
+        chancetext.text = String(chanceint)
+        againturntext.text = String(againturnint)
+        hinttext.text = String(hintint)
         coinstexttreeletter.text = String(coins)
         treeletterword.text = kelime
         
@@ -687,15 +708,24 @@ class treelettergame: UIViewController {
                 if self.time == 0 {
                     self.izin = true
                     timer.invalidate()
-                    self.turnoutlet.isHidden = false
-                    self.turnwordoutlet.isHidden = false
+                   // self.turnoutlet.isHidden = false
+                   // self.turnwordoutlet.isHidden = false
+                    self.chanceoutlet.isHidden = false
+                    self.againturnoutlet.isHidden = false
+                    self.hintoutlet.isHidden = false
+                    self.chancetext.isHidden = false
+                    self.chancenumber.isHidden = false
+                    self.againturntext.isHidden = false
+                    self.turnagainnumber.isHidden = false
+                    self.hinttext.isHidden = false
+                    self.hintnumber.isHidden = false
                     self.second.isHidden = true
                     self.time = 2
                     self.second.text = String(self.time)
                     self.firstlife+=1
                     print(self.firstlife)
-                    self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                    self.turnwordoutlet.isHidden = true
+                //    self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                 //   self.turnwordoutlet.isHidden = true
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -781,165 +811,20 @@ class treelettergame: UIViewController {
             self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
             UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }
-        else {
-            if coins >= 1000 {
-                if firstlife >= 2 {
-                    coins -= 1000
-                    coinstexttreeletter.text = String(coins)
-                    UserDefaults.standard.set(coins, forKey: "coinskey")
-                }
-                
-                turnoutlet.isHidden = true
-                turnwordoutlet.isHidden = true
-                self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                self.turnwordoutlet.isHidden = true
-                
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-                    self.time -= 1
-                    self.second.text = String(self.time)
-                    
-                    if self.time == 0 {
-                        self.izin = true
-                        timer.invalidate()
-                        self.turnoutlet.isHidden = false
-                        self.turnwordoutlet.isHidden = true
-                        self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                        self.second.isHidden = true
-                        self.time = 2
-                        self.second.text = String(self.time)
-                        self.firstlife+=1
-                        print(self.firstlife)
-                        
-                        if self.box1bool == false {
-                        self.letter1.isHidden = true
-                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box2bool == false {
-                        self.letter2.isHidden = true
-                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box3bool == false {
-                        self.letter3.isHidden = true
-                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box4bool == false {
-                        self.letter4.isHidden = true
-                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box5bool == false {
-                        self.letter5.isHidden = true
-                        self.self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box6bool == false {
-                        self.letter6.isHidden = true
-                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box7bool == false {
-                        self.letter7.isHidden = true
-                        self.self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box8bool == false {
-                        self.letter8.isHidden = true
-                        self.self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box9bool == false {
-                        self.letter9.isHidden = true
-                        self.self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                    }
-                }
-                self.second.isHidden = false
-                
-                if self.box1bool == false {
-                self.letter1.isHidden = false
-                UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box2bool == false {
-                self.letter2.isHidden = false
-                UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box3bool == false {
-                self.letter3.isHidden = false
-                UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box4bool == false {
-                self.letter4.isHidden = false
-                UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box5bool == false {
-                self.letter5.isHidden = false
-                UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box6bool == false {
-                self.letter6.isHidden = false
-                UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box7bool == false {
-                self.letter7.isHidden = false
-                UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box8bool == false {
-                self.letter8.isHidden = false
-                UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box9bool == false {
-                self.letter9.isHidden = false
-                UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else {
-                warning.isHidden = false
-                warningtext.isHidden = false
-                warningclose.isHidden = false
-                darkbackground.isHidden = false
-            }
-        }
-       
     }
+    
     @IBAction func warningclosebutton(_ sender: Any) {
+        hintbuyscreen.isHidden = true
+        hintbuyscreentext.isHidden = true
+        hintbuythousandcoins.isHidden = true
+        hintbuyads.isHidden = true
+        warningclose.isHidden = true
+        
+        hintoutlet.isUserInteractionEnabled = true
+        chanceoutlet.isUserInteractionEnabled = true
+        againturnoutlet.isUserInteractionEnabled = true
+        
+        
         warningtext.isHidden = true
         warningclose.isHidden = true
         warning.isHidden = true
@@ -975,6 +860,7 @@ class treelettergame: UIViewController {
         winpanel.isHidden = true
         winpaneltext.isHidden = true
         turnoutlet.isEnabled = true
+        turnoutlet.isHidden = false
         turnwordoutlet.isEnabled = true
         turnwordoutlet.isHidden = false
         turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
@@ -1016,6 +902,16 @@ class treelettergame: UIViewController {
         box8bool = false
         box9bool = false
         
+        letter1bool = false
+        letter2bool = false
+        letter3bool = false
+        letter4bool = false
+        letter5bool = false
+        letter6bool = false
+        letter7bool = false
+        letter8bool = false
+        letter9bool = false
+        
         highscorewarning.isHidden = true
         highscorewarningtext.isHidden = true
         highscorewarningclose.isHidden = true
@@ -1042,6 +938,7 @@ class treelettergame: UIViewController {
     }
     
     @IBAction func winpanelnextbutton(_ sender: Any) {
+        blurbackgroundeffect()
         otherwordgofunc()
         winpanel.isHidden = true
         winpaneltext.isHidden = true
@@ -1327,6 +1224,15 @@ class treelettergame: UIViewController {
         finishpanelbutton.isHidden = false
         finishpanelnext.isHidden = false
         turnoutlet.isEnabled = false
+        chanceoutlet.isHidden = true
+        againturnoutlet.isHidden = true
+        hintoutlet.isHidden = true
+        chancetext.isHidden = true
+        chancenumber.isHidden = true
+        againturntext.isHidden = true
+        turnagainnumber.isHidden = true
+        hinttext.isHidden = true
+        hintnumber.isHidden = true
         box1.isUserInteractionEnabled = false
         box2.isUserInteractionEnabled = false
         box3.isUserInteractionEnabled = false
@@ -1351,8 +1257,17 @@ class treelettergame: UIViewController {
         box7.isUserInteractionEnabled = false
         box8.isUserInteractionEnabled = false
         box9.isUserInteractionEnabled = false
-        turnoutlet.isEnabled = false
-        turnwordoutlet.isEnabled = false
+        //turnoutlet.isEnabled = false
+      //  turnwordoutlet.isEnabled = false
+        self.chanceoutlet.isHidden = true
+        self.againturnoutlet.isHidden = true
+        self.hintoutlet.isHidden = true
+        chancetext.isHidden = true
+        chancenumber.isHidden = true
+        againturntext.isHidden = true
+        turnagainnumber.isHidden = true
+        hinttext.isHidden = true
+        hintnumber.isHidden = true
         
         UIView.animate(withDuration: 0.5) {
             self.winpanel.frame.origin.y -= 400
@@ -1414,16 +1329,16 @@ class treelettergame: UIViewController {
             self.plusonehundredcoins.frame.size.height -= 200
             self.plusonehundredcoins.frame.size.width -= 200
         }
-        self.winpanelnext.isUserInteractionEnabled = false
-        var translatetime = 0
+     /*    self.winpanelnext.isUserInteractionEnabled = false
+       var translatetime = 0
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
             translatetime += 1
             if translatetime == 1 {
                 timer.invalidate()
-                self.blurbackgroundeffect()
-                self.winpanelnext.isUserInteractionEnabled = true
+              //  self.blurbackgroundeffect()
+              //  self.winpanelnext.isUserInteractionEnabled = true
             }
-        }
+        } */
     }
     
     func izinequalfalse() {
@@ -1449,31 +1364,46 @@ class treelettergame: UIViewController {
     func blurbackgroundeffect() {
         blurbackgroundtext.text = trkelime
         blurbackgroundtrtext.text = kelime
-        var blurbackgroundtime = Double(0)
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
-            blurbackgroundtime += 0.1
-            if blurbackgroundtime == 0.5 {
-                timer.invalidate()
-                blurbackgroundtime = Double(0)
-                self.blurbackground.isHidden = false
-                self.blurbackgroundtext.isHidden = false
-                self.blurbackgroundtrtext.isHidden = false
-                var blurbackgroundtimetwo = 0
+        self.blurbackground.isHidden = false
+        self.blurbackgroundtext.isHidden = false
+        self.blurbackgroundtrtext.isHidden = false
+                var blurbackgroundtime = 0
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-                    blurbackgroundtimetwo += 1
-                    if blurbackgroundtimetwo == 2 {
+                    blurbackgroundtime += 1
+                    if blurbackgroundtime == 2 {
                         timer.invalidate()
-                        blurbackgroundtimetwo = 0
+                        blurbackgroundtime = 0
                         self.blurbackground.isHidden = true
                         self.blurbackgroundtext.isHidden = true
                         self.blurbackgroundtrtext.isHidden = true
                     }
                 })
-            }
-        })
+    
     }
     
     @IBAction func hint(_ sender: Any) {
+        if hintint >= 1 {
+            hintint -= 1
+            hinttext.text = String(hintint)
+            UserDefaults.standard.set(hintint, forKey: "hintkey")
+            hintfunc()
+        }
+        else {
+            darkbackground.isHidden = false
+            hintbuyscreen.isHidden = false
+            hintbuyscreentext.isHidden = false
+            hintbuythousandcoins.isHidden = false
+            hintbuyads.isHidden = false
+            warningclose.isHidden = false
+            
+            hintoutlet.isUserInteractionEnabled = false
+            chanceoutlet.isUserInteractionEnabled = false
+            againturnoutlet.isUserInteractionEnabled = false
+        }
+        
+    }
+    
+    func hintfunc() {
         if scontrol == 1 {
             if letter1.text == letters[0] && letter1bool == false {
                 UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
@@ -1643,7 +1573,7 @@ class treelettergame: UIViewController {
                 }
             }
         }
-        
+            
         else if scontrol == 3 {
             if letter1.text == letters[2] && letter1bool == false {
                 UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
@@ -1725,9 +1655,467 @@ class treelettergame: UIViewController {
                 }){_ in
                     self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                
                 }
             }
         }
+        
+    
     }
+    
+    @IBAction func againturn(_ sender: Any) {
+            if againturnint >= 1 {
+                if firstlife >= 2 {
+                    againturnint -= 1
+                    againturntext.text = String(againturnint)
+                    UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+                }
+                
+                turnoutlet.isHidden = true
+                turnwordoutlet.isHidden = true
+                self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                self.turnwordoutlet.isHidden = true
+                self.chanceoutlet.isHidden = true
+                self.againturnoutlet.isHidden = true
+                self.hintoutlet.isHidden = true
+                self.chancetext.isHidden = true
+                self.chancenumber.isHidden = true
+                self.againturntext.isHidden = true
+                self.turnagainnumber.isHidden = true
+                self.hinttext.isHidden = true
+                self.hintnumber.isHidden = true
+                
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+                    self.time -= 1
+                    self.second.text = String(self.time)
+                    
+                    if self.time == 0 {
+                        self.izin = true
+                        timer.invalidate()
+                       // self.turnoutlet.isHidden = false
+                      //  self.turnwordoutlet.isHidden = true
+                      //  self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                        self.chanceoutlet.isHidden = false
+                        self.againturnoutlet.isHidden = false
+                        self.hintoutlet.isHidden = false
+                        self.chancetext.isHidden = false
+                        self.chancenumber.isHidden = false
+                        self.againturntext.isHidden = false
+                        self.turnagainnumber.isHidden = false
+                        self.hinttext.isHidden = false
+                        self.hintnumber.isHidden = false
+                        self.second.isHidden = true
+                        self.time = 2
+                        self.second.text = String(self.time)
+                        self.firstlife+=1
+                        print(self.firstlife)
+                        
+                        if self.box1bool == false {
+                            self.letter1.isHidden = true
+                            self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box2bool == false {
+                            self.letter2.isHidden = true
+                            self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box3bool == false {
+                            self.letter3.isHidden = true
+                            self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box4bool == false {
+                            self.letter4.isHidden = true
+                            self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box5bool == false {
+                            self.letter5.isHidden = true
+                            self.self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box6bool == false {
+                            self.letter6.isHidden = true
+                            self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box7bool == false {
+                            self.letter7.isHidden = true
+                            self.self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box8bool == false {
+                            self.letter8.isHidden = true
+                            self.self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                        
+                        if self.box9bool == false {
+                            self.letter9.isHidden = true
+                            self.self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                            UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        }
+                    }
+                }
+                self.second.isHidden = false
+                
+                if self.box1bool == false {
+                    self.letter1.isHidden = false
+                    UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box2bool == false {
+                    self.letter2.isHidden = false
+                    UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box3bool == false {
+                    self.letter3.isHidden = false
+                    UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box4bool == false {
+                    self.letter4.isHidden = false
+                    UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box5bool == false {
+                    self.letter5.isHidden = false
+                    UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box6bool == false {
+                    self.letter6.isHidden = false
+                    UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box7bool == false {
+                    self.letter7.isHidden = false
+                    UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box8bool == false {
+                    self.letter8.isHidden = false
+                    UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+                
+                if self.box9bool == false {
+                    self.letter9.isHidden = false
+                    UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else {
+               
+            }
+        }
+    @IBAction func chance(_ sender: Any) {
+        if chanceint >= 1 {
+            chanceint -= 1
+            chancetext.text = String(chanceint)
+            UserDefaults.standard.set(chanceint, forKey: "chancekey")
+        if scontrol == 1 {
+            if letter1.text != letters[0] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text != letters[0] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text != letters[0] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text != letters[0] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text != letters[0] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text != letters[0] && letter6bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text != letters[0] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text != letters[0] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text != letters[0] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+        }
+            
+            
+        else if scontrol == 2 {
+            if letter1.text != letters[1] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text != letters[1] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text != letters[1] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text != letters[1] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text != letters[1] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text != letters[1] && letter6bool == false{
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text != letters[1] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text != letters[1] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text != letters[1] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+        }
+            
+        else if scontrol == 3 {
+            if letter1.text != letters[2] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text != letters[2] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text != letters[2] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text != letters[2] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text != letters[2] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text != letters[2] && letter6bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text != letters[2] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text != letters[2] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text != letters[2] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+        }
+        hintfunc()
+        }
+        else {
+           
+        }
+    }
+    
+    @IBAction func hintbuythousandcoinsbutton(_ sender: Any) {
+        if coins >= 1000 {
+            coins -= 1000
+            UserDefaults.standard.set(coins, forKey: "coinskey")
+            coinstexttreeletter.text = String(coins)
+            hintint += 1
+            UserDefaults.standard.set(hintint, forKey: "hintkey")
+            hintbuyscreentext.text = String(hintint)
+            hinttext.text = String(hintint)
+        }
+        else {
+            
+        }
+    }
+    @IBAction func hintbuyadsbutton(_ sender: Any) {
+    }
+    
     
 }

@@ -34,6 +34,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var settingbuttonoutlet: UIButton!
     
+    var chance = 6
+    var againturn = 6
+    var hint = 6
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -41,11 +45,19 @@ class ViewController: UIViewController {
         if firsopengame  {
             coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
             coinstext.text = String(coins)
+            
+            chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
+            againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
+            hint = UserDefaults.standard.object(forKey: "hintkey") as! Int
         }
         else {
             UserDefaults.standard.set(true, forKey: "firsopengame")
             coinstext.text = String(coins)
             UserDefaults.standard.set(coins, forKey: "coinskey")
+            
+            UserDefaults.standard.set(chance, forKey: "chancekey")
+            UserDefaults.standard.set(againturn, forKey: "againturnkey")
+            UserDefaults.standard.set(hint, forKey: "hintkey")
         }
         
         
@@ -147,6 +159,9 @@ class ViewController: UIViewController {
         vc.kelime = ingword
         vc.trkelime = trword
         vc.coins = coins
+        vc.chanceint = chance
+        vc.againturnint = againturn
+        vc.hintint = hint
         
     }
     @IBAction func settingbutton(_ sender: Any) {

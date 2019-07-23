@@ -308,7 +308,7 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-lf-iui">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-lf-iui">
                                 <rect key="frame" x="129" y="466" width="116" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="100"/>
@@ -448,25 +448,99 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="Z3q-Xn-3ZY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-Ga-qTN">
-                                <rect key="frame" x="141" y="528" width="98" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-Xb-MOi">
+                                <rect key="frame" x="241" y="444" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="hint"/>
+                                <connections>
+                                    <action selector="hint:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="ntF-kr-IF8"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfT-Ga-qTN">
+                                <rect key="frame" x="143" y="444" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="againturn"/>
+                                <connections>
+                                    <action selector="againturn:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="Vch-LE-NEv"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22s-sk-rhL">
-                                <rect key="frame" x="43" y="528" width="98" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22s-sk-rhL">
+                                <rect key="frame" x="45" y="444" width="98" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="chance"/>
+                                <connections>
+                                    <action selector="chance:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="35X-2c-1cr"/>
+                                </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hintnumber" translatesAutoresizingMaskIntoConstraints="NO" id="FQB-OJ-EjH">
+                                <rect key="frame" x="251" y="512" width="76" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-s6-gqX">
+                                <rect key="frame" x="262" y="522" width="47" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hintnumber" translatesAutoresizingMaskIntoConstraints="NO" id="U3v-ps-9iH">
+                                <rect key="frame" x="151" y="512" width="76" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKG-Ov-KW4">
+                                <rect key="frame" x="162" y="522" width="47" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.40392156862745099" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hintnumber" translatesAutoresizingMaskIntoConstraints="NO" id="Y8j-Dw-G2p">
+                                <rect key="frame" x="55" y="512" width="76" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-v9-yLT">
+                                <rect key="frame" x="66" y="522" width="47" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="18"/>
+                                <color key="textColor" red="0.019607843137254902" green="0.75686274509803919" blue="0.054901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hintbuy" translatesAutoresizingMaskIntoConstraints="NO" id="Wfk-dL-Xua">
+                                <rect key="frame" x="16" y="190" width="343" height="258"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxR-14-PzT">
+                                <rect key="frame" x="146" y="307" width="83" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rox-R1-HwI">
+                                <rect key="frame" x="42" y="375" width="158" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buythousandcoins"/>
+                                <connections>
+                                    <action selector="hintbuythousandcoinsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="gIW-bW-eZW"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWm-2L-eDj">
+                                <rect key="frame" x="182" y="363" width="158" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buyads"/>
+                                <connections>
+                                    <action selector="hintbuyadsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="eah-jq-A8Z"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
                                 <rect key="frame" x="5" y="177" width="378" height="298"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YETERİ KADAR ALTININIZ YOK !SATIN ALMAK İSTER MİSİNİZ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdH-AU-tiZ">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YETERİ KADAR ALTININIZ YOK !SATIN ALMAK İSTER MİSİNİZ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdH-AU-tiZ">
                                 <rect key="frame" x="25" y="246" width="325" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
@@ -474,7 +548,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-OB-i8X">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-OB-i8X">
                                 <rect key="frame" x="311" y="184" width="58" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="close">
@@ -484,18 +558,18 @@
                                     <action selector="warningclosebutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="6hY-Cl-3LM"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highscorewarning" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-0g-8Hu">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="highscorewarning" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-0g-8Hu">
                                 <rect key="frame" x="22" y="119" width="346" height="344"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-pK-mr8">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-pK-mr8">
                                 <rect key="frame" x="98" y="221" width="180" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="60"/>
                                 <color key="textColor" red="1" green="0.1614453432161006" blue="0.070150821642131489" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56B-E6-Voy">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56B-E6-Voy">
                                 <rect key="frame" x="158" y="434" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="close"/>
@@ -503,7 +577,7 @@
                                     <action selector="highscorewarningclosebutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="2MZ-iT-OIl"/>
                                 </connections>
                             </button>
-                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFF-tU-pBe">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFF-tU-pBe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="8il-vJ-hTg">
@@ -527,32 +601,13 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-Xb-MOi">
-                                <rect key="frame" x="239" y="528" width="98" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="hint"/>
-                                <connections>
-                                    <action selector="hint:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="ntF-kr-IF8"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Su4-lf-iui"/>
-                                <exclude reference="Kvb-bx-DhT"/>
-                                <exclude reference="7UF-E6-oyw"/>
-                                <exclude reference="GdH-AU-tiZ"/>
-                                <exclude reference="5lF-OB-i8X"/>
-                                <exclude reference="zjR-0g-8Hu"/>
-                                <exclude reference="DCJ-pK-mr8"/>
-                                <exclude reference="56B-E6-Voy"/>
-                                <exclude reference="cFF-tU-pBe"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
+                        <outlet property="againturnoutlet" destination="HfT-Ga-qTN" id="jwe-nX-L92"/>
+                        <outlet property="againturntext" destination="YKG-Ov-KW4" id="KuQ-zv-sbG"/>
                         <outlet property="blurbackground" destination="cFF-tU-pBe" id="8uL-1U-Oiv"/>
                         <outlet property="blurbackgroundtext" destination="tw5-1f-mR2" id="PYn-ng-ioZ"/>
                         <outlet property="blurbackgroundtrtext" destination="Oxl-F6-Qfx" id="rtP-qu-b4K"/>
@@ -565,6 +620,9 @@
                         <outlet property="box7" destination="BJa-XB-AZf" id="EBU-9w-sMG"/>
                         <outlet property="box8" destination="l4k-xA-vMK" id="b6G-OA-H7w"/>
                         <outlet property="box9" destination="lvJ-UC-Scd" id="TWM-ot-Wir"/>
+                        <outlet property="chancenumber" destination="Y8j-Dw-G2p" id="erh-eR-x7Z"/>
+                        <outlet property="chanceoutlet" destination="22s-sk-rhL" id="YbV-mX-y0t"/>
+                        <outlet property="chancetext" destination="kM6-v9-yLT" id="ODM-RM-wDD"/>
                         <outlet property="coinsimage" destination="tmK-q3-yWK" id="tTE-F7-HM1"/>
                         <outlet property="coinstexttreeletter" destination="9Qk-2c-FQA" id="ROl-fX-eVY"/>
                         <outlet property="darkbackground" destination="Kvb-bx-DhT" id="7NA-8n-QAW"/>
@@ -576,7 +634,13 @@
                         <outlet property="highscorewarning" destination="zjR-0g-8Hu" id="AQu-mi-QMd"/>
                         <outlet property="highscorewarningclose" destination="56B-E6-Voy" id="Spg-Nb-4pF"/>
                         <outlet property="highscorewarningtext" destination="DCJ-pK-mr8" id="CcW-7n-S9D"/>
+                        <outlet property="hintbuyads" destination="RWm-2L-eDj" id="BYl-tX-HS2"/>
+                        <outlet property="hintbuyscreen" destination="Wfk-dL-Xua" id="UvL-lN-Wr9"/>
+                        <outlet property="hintbuyscreentext" destination="UxR-14-PzT" id="vLj-jZ-zVx"/>
+                        <outlet property="hintbuythousandcoins" destination="Rox-R1-HwI" id="Pdr-49-MOc"/>
+                        <outlet property="hintnumber" destination="FQB-OJ-EjH" id="SBt-rw-jxg"/>
                         <outlet property="hintoutlet" destination="eAe-Xb-MOi" id="KCO-vr-Qpp"/>
+                        <outlet property="hinttext" destination="ka2-s6-gqX" id="25y-fh-Dv5"/>
                         <outlet property="letter1" destination="4m3-gz-1AA" id="hWV-BM-vvw"/>
                         <outlet property="letter2" destination="Cbz-eb-OKp" id="2Vu-fH-buP"/>
                         <outlet property="letter3" destination="8ms-IE-1jb" id="9qj-VI-jFX"/>
@@ -590,6 +654,7 @@
                         <outlet property="plustencoins" destination="OOr-mY-JIl" id="exU-n3-jRj"/>
                         <outlet property="second" destination="Su4-lf-iui" id="0pV-C9-e5P"/>
                         <outlet property="treeletterword" destination="VLN-cc-euQ" id="tCq-cy-Dtq"/>
+                        <outlet property="turnagainnumber" destination="U3v-ps-9iH" id="u6W-lK-ixc"/>
                         <outlet property="turnoutlet" destination="1Ga-YE-gFQ" id="a1x-99-2xj"/>
                         <outlet property="turnwordoutlet" destination="W4m-Rs-hiy" id="kzU-E3-Qx5"/>
                         <outlet property="warning" destination="7UF-E6-oyw" id="YSZ-bq-3a2"/>
@@ -619,6 +684,8 @@
         <image name="alert" width="1022" height="811"/>
         <image name="back" width="802" height="802"/>
         <image name="box" width="633" height="673"/>
+        <image name="buyads" width="180" height="91"/>
+        <image name="buythousandcoins" width="180" height="84"/>
         <image name="chance" width="197" height="197"/>
         <image name="close" width="802" height="802"/>
         <image name="cup" width="847" height="846"/>
@@ -635,6 +702,8 @@
         <image name="giris6harfbutton" width="968" height="335"/>
         <image name="highscorewarning" width="958" height="957"/>
         <image name="hint" width="197" height="197"/>
+        <image name="hintbuy" width="902" height="691"/>
+        <image name="hintnumber" width="115" height="65"/>
         <image name="home" width="130" height="130"/>
         <image name="next" width="802" height="802"/>
         <image name="plus" width="741" height="741"/>
