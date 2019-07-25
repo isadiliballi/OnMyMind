@@ -171,6 +171,16 @@ class treelettergame: UIViewController {
     @IBOutlet weak var hintbuythousandcoins: UIButton!
     @IBOutlet weak var hintbuyads: UIButton!
     
+    @IBOutlet weak var againturnscreen: UIImageView!
+    @IBOutlet weak var againturnscreentext: UILabel!
+    @IBOutlet weak var againturncoinsbuy: UIButton!
+    @IBOutlet weak var againturnadsbuy: UIButton!
+    
+    @IBOutlet weak var chancescreen: UIImageView!
+    @IBOutlet weak var chancescreentext: UILabel!
+    @IBOutlet weak var chancebuythousandcoins: UIButton!
+    @IBOutlet weak var chancebuyads: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +191,7 @@ class treelettergame: UIViewController {
             highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
             highscoretext.text = String(highscore)
             
-          /*  coins = 99999 // DELETE
+          /*  coins = 50000 // DELETE
             UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
             highscore = 0 // DELETE
             UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE */
@@ -231,7 +241,7 @@ class treelettergame: UIViewController {
         }
         
        
-        let dbrandom = Int.random(in: 1...5)
+        let dbrandom = Int.random(in: 1...30)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -725,7 +735,7 @@ class treelettergame: UIViewController {
                     self.firstlife+=1
                     print(self.firstlife)
                 //    self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                 //   self.turnwordoutlet.isHidden = true
+                 //    self.turnwordoutlet.isHidden = true
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -820,10 +830,19 @@ class treelettergame: UIViewController {
         hintbuyads.isHidden = true
         warningclose.isHidden = true
         
+        againturnscreen.isHidden = true
+        againturnscreentext.isHidden = true
+        againturncoinsbuy.isHidden = true
+        againturnadsbuy.isHidden = true
+        
+        chancescreen.isHidden = true
+        chancescreentext.isHidden = true
+        chancebuythousandcoins.isHidden = true
+        chancebuyads.isHidden = true
+        
         hintoutlet.isUserInteractionEnabled = true
         chanceoutlet.isUserInteractionEnabled = true
         againturnoutlet.isUserInteractionEnabled = true
-        
         
         warningtext.isHidden = true
         warningclose.isHidden = true
@@ -1348,14 +1367,14 @@ class treelettergame: UIViewController {
             self.turnoutlet.frame.origin.y -= 10
             self.turnoutlet.frame.size.height += 30
             self.turnoutlet.frame.size.width += 30
-            self.turnwordoutlet.isHidden = true
+        //    self.turnwordoutlet.isHidden = false
             self.turnoutlet.setImage(UIImage(named: "turnerror"), for: UIControl.State.normal)
         }){_ in
             self.turnoutlet.frame.origin.x += 15
             self.turnoutlet.frame.origin.y += 10
             self.turnoutlet.frame.size.height -= 30
             self.turnoutlet.frame.size.width -= 30
-            self.turnwordoutlet.isHidden = false
+       //     self.turnwordoutlet.isHidden = true
             self.turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
           }
        }
@@ -1386,6 +1405,7 @@ class treelettergame: UIViewController {
             hintint -= 1
             hinttext.text = String(hintint)
             UserDefaults.standard.set(hintint, forKey: "hintkey")
+            hintbuyscreentext.text = String(hintint)
             hintfunc()
         }
         else {
@@ -1669,6 +1689,7 @@ class treelettergame: UIViewController {
                     againturnint -= 1
                     againturntext.text = String(againturnint)
                     UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+                    againturnscreentext.text = String(againturnint)
                 }
                 
                 turnoutlet.isHidden = true
@@ -1685,6 +1706,16 @@ class treelettergame: UIViewController {
                 self.hinttext.isHidden = true
                 self.hintnumber.isHidden = true
                 
+                self.box1.isUserInteractionEnabled = false
+                self.box2.isUserInteractionEnabled = false
+                self.box3.isUserInteractionEnabled = false
+                self.box4.isUserInteractionEnabled = false
+                self.box5.isUserInteractionEnabled = false
+                self.box6.isUserInteractionEnabled = false
+                self.box7.isUserInteractionEnabled = false
+                self.box8.isUserInteractionEnabled = false
+                self.box9.isUserInteractionEnabled = false
+                
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
                     self.time -= 1
                     self.second.text = String(self.time)
@@ -1692,6 +1723,17 @@ class treelettergame: UIViewController {
                     if self.time == 0 {
                         self.izin = true
                         timer.invalidate()
+                        
+                        self.box1.isUserInteractionEnabled = true
+                        self.box2.isUserInteractionEnabled = true
+                        self.box3.isUserInteractionEnabled = true
+                        self.box4.isUserInteractionEnabled = true
+                        self.box5.isUserInteractionEnabled = true
+                        self.box6.isUserInteractionEnabled = true
+                        self.box7.isUserInteractionEnabled = true
+                        self.box8.isUserInteractionEnabled = true
+                        self.box9.isUserInteractionEnabled = true
+                        
                        // self.turnoutlet.isHidden = false
                       //  self.turnwordoutlet.isHidden = true
                       //  self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
@@ -1831,6 +1873,17 @@ class treelettergame: UIViewController {
                 }
             }
             else {
+                darkbackground.isHidden = false
+                
+                warningclose.isHidden = false
+                againturnscreen.isHidden = false
+                againturnscreentext.isHidden = false
+                againturncoinsbuy.isHidden = false
+                againturnadsbuy.isHidden = false
+                
+                hintoutlet.isUserInteractionEnabled = false
+                chanceoutlet.isUserInteractionEnabled = false
+                againturnoutlet.isUserInteractionEnabled = false
                
             }
         }
@@ -1839,6 +1892,7 @@ class treelettergame: UIViewController {
             chanceint -= 1
             chancetext.text = String(chanceint)
             UserDefaults.standard.set(chanceint, forKey: "chancekey")
+            chancescreentext.text = String(chanceint)
         if scontrol == 1 {
             if letter1.text != letters[0] && letter1bool == false {
                 UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
@@ -2096,7 +2150,16 @@ class treelettergame: UIViewController {
         hintfunc()
         }
         else {
-           
+            darkbackground.isHidden = false
+            warningclose.isHidden = false
+            chancescreen.isHidden = false
+            chancescreentext.isHidden = false
+            chancebuythousandcoins.isHidden = false
+            chancebuyads.isHidden = false
+            
+            hintoutlet.isUserInteractionEnabled = false
+            chanceoutlet.isUserInteractionEnabled = false
+            againturnoutlet.isUserInteractionEnabled = false
         }
     }
     
@@ -2116,6 +2179,42 @@ class treelettergame: UIViewController {
     }
     @IBAction func hintbuyadsbutton(_ sender: Any) {
     }
+    
+    @IBAction func againturncoinsbuybutton(_ sender: Any) {
+        if coins >= 1000 {
+            coins -= 1000
+            UserDefaults.standard.set(coins, forKey: "coinskey")
+            coinstexttreeletter.text = String(coins)
+            againturnint += 1
+            UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+            againturnscreentext.text = String(againturnint)
+            againturntext.text = String(againturnint)
+        }
+        else {
+            
+        }
+    }
+    @IBAction func againturnadsbuybutton(_ sender: Any) {
+    }
+    
+    @IBAction func chancebuycoinsbutton(_ sender: Any) {
+        if coins >= 1000 {
+            coins -= 1000
+            UserDefaults.standard.set(coins, forKey: "coinskey")
+            coinstexttreeletter.text = String(coins)
+            chanceint += 1
+            UserDefaults.standard.set(chanceint, forKey: "chancekey")
+            chancescreentext.text = String(chanceint)
+            chancetext.text = String(chanceint)
+        }
+        else {
+            
+        }
+    }
+    @IBAction func chancebuyadsbutton(_ sender: Any) {
+    }
+    
+    
     
     
 }

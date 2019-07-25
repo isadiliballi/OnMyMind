@@ -522,7 +522,7 @@
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rox-R1-HwI">
                                 <rect key="frame" x="42" y="375" width="158" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buythousandcoins"/>
                                 <connections>
                                     <action selector="hintbuythousandcoinsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="gIW-bW-eZW"/>
@@ -530,25 +530,21 @@
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWm-2L-eDj">
                                 <rect key="frame" x="182" y="363" width="158" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="buyads"/>
                                 <connections>
                                     <action selector="hintbuyadsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="eah-jq-A8Z"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
-                                <rect key="frame" x="5" y="177" width="378" height="298"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="againturnbuy" translatesAutoresizingMaskIntoConstraints="NO" id="yo2-W4-W1F">
+                                <rect key="frame" x="16" y="190" width="343" height="258"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YETERİ KADAR ALTININIZ YOK !SATIN ALMAK İSTER MİSİNİZ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdH-AU-tiZ">
-                                <rect key="frame" x="25" y="246" width="325" height="90"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chancebuy" translatesAutoresizingMaskIntoConstraints="NO" id="55J-dg-NJf">
+                                <rect key="frame" x="16" y="196" width="343" height="258"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-OB-i8X">
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-OB-i8X">
                                 <rect key="frame" x="311" y="184" width="58" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="close">
@@ -556,6 +552,53 @@
                                 </state>
                                 <connections>
                                     <action selector="warningclosebutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="6hY-Cl-3LM"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpp-sA-K7s">
+                                <rect key="frame" x="146" y="307" width="83" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FY-oq-4BW">
+                                <rect key="frame" x="42" y="375" width="158" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buythousandcoins"/>
+                                <connections>
+                                    <action selector="chancebuycoinsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="nOi-5v-8Fp"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qen-cF-eqq">
+                                <rect key="frame" x="182" y="363" width="158" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buyads"/>
+                                <connections>
+                                    <action selector="chancebuyadsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="xg0-yp-JRg"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAc-m0-RZ0">
+                                <rect key="frame" x="146" y="307" width="83" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEr-s4-Ovg">
+                                <rect key="frame" x="42" y="376" width="158" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buythousandcoins"/>
+                                <connections>
+                                    <action selector="againturncoinsbuybutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="0aX-UB-Y0A"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuV-rt-7QJ">
+                                <rect key="frame" x="181" y="363" width="158" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="buyads"/>
+                                <connections>
+                                    <action selector="againturnadsbuybutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="6YD-CG-TPz"/>
+                                    <action selector="hintbuyadsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="tfB-Fc-rfx"/>
                                 </connections>
                             </button>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="highscorewarning" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-0g-8Hu">
@@ -601,12 +644,28 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-E6-oyw">
+                                <rect key="frame" x="5" y="177" width="378" height="298"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YETERİ KADAR ALTININIZ YOK !SATIN ALMAK İSTER MİSİNİZ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdH-AU-tiZ">
+                                <rect key="frame" x="25" y="246" width="325" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
                     </view>
                     <connections>
+                        <outlet property="againturnadsbuy" destination="EuV-rt-7QJ" id="gMD-vu-or0"/>
+                        <outlet property="againturncoinsbuy" destination="zEr-s4-Ovg" id="ikm-CX-FmB"/>
                         <outlet property="againturnoutlet" destination="HfT-Ga-qTN" id="jwe-nX-L92"/>
+                        <outlet property="againturnscreen" destination="yo2-W4-W1F" id="4qa-OX-RdV"/>
+                        <outlet property="againturnscreentext" destination="RAc-m0-RZ0" id="DXG-60-A2z"/>
                         <outlet property="againturntext" destination="YKG-Ov-KW4" id="KuQ-zv-sbG"/>
                         <outlet property="blurbackground" destination="cFF-tU-pBe" id="8uL-1U-Oiv"/>
                         <outlet property="blurbackgroundtext" destination="tw5-1f-mR2" id="PYn-ng-ioZ"/>
@@ -620,8 +679,12 @@
                         <outlet property="box7" destination="BJa-XB-AZf" id="EBU-9w-sMG"/>
                         <outlet property="box8" destination="l4k-xA-vMK" id="b6G-OA-H7w"/>
                         <outlet property="box9" destination="lvJ-UC-Scd" id="TWM-ot-Wir"/>
+                        <outlet property="chancebuyads" destination="qen-cF-eqq" id="rO2-Tt-uYr"/>
+                        <outlet property="chancebuythousandcoins" destination="7FY-oq-4BW" id="XzT-F5-SJa"/>
                         <outlet property="chancenumber" destination="Y8j-Dw-G2p" id="erh-eR-x7Z"/>
                         <outlet property="chanceoutlet" destination="22s-sk-rhL" id="YbV-mX-y0t"/>
+                        <outlet property="chancescreen" destination="55J-dg-NJf" id="voS-mZ-6E6"/>
+                        <outlet property="chancescreentext" destination="Rpp-sA-K7s" id="zZ4-Ji-9O4"/>
                         <outlet property="chancetext" destination="kM6-v9-yLT" id="ODM-RM-wDD"/>
                         <outlet property="coinsimage" destination="tmK-q3-yWK" id="tTE-F7-HM1"/>
                         <outlet property="coinstexttreeletter" destination="9Qk-2c-FQA" id="ROl-fX-eVY"/>
@@ -681,12 +744,14 @@
     </scenes>
     <resources>
         <image name="againturn" width="197" height="197"/>
+        <image name="againturnbuy" width="902" height="691"/>
         <image name="alert" width="1022" height="811"/>
         <image name="back" width="802" height="802"/>
         <image name="box" width="633" height="673"/>
         <image name="buyads" width="180" height="91"/>
         <image name="buythousandcoins" width="180" height="84"/>
         <image name="chance" width="197" height="197"/>
+        <image name="chancebuy" width="902" height="691"/>
         <image name="close" width="802" height="802"/>
         <image name="cup" width="847" height="846"/>
         <image name="darkbackground" width="751" height="1335"/>

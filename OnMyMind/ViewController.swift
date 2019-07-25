@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         
         
         
-        let dbrandom = Int.random(in: 1...5)
+        let dbrandom = Int.random(in: 1...30)
         let dbrandomstring = String(dbrandom)
         
        ref = Database.database().reference()
