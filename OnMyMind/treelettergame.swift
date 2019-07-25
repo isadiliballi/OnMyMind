@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import GoogleMobileAds
 
-class treelettergame: UIViewController {
+class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
+    
+    
     
     var boxpieces = 9
     var randomletter : [String] = []
@@ -184,7 +187,10 @@ class treelettergame: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // GOOGLE ADS
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        // GOOGLE ADS
         
         let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
         if firsopengame2  {
@@ -2220,6 +2226,9 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func hintbuyadsbutton(_ sender: Any) {
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+        }
     }
     
     @IBAction func againturncoinsbuybutton(_ sender: Any) {
@@ -2239,6 +2248,9 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func againturnadsbuybutton(_ sender: Any) {
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+        }
     }
     
     @IBAction func chancebuycoinsbutton(_ sender: Any) {
@@ -2258,9 +2270,32 @@ class treelettergame: UIViewController {
         }
     }
     @IBAction func chancebuyadsbutton(_ sender: Any) {
+        if GADRewardBasedVideoAd.sharedInstance().isReady == true {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+        }
     }
-    
-    
-    
-    
+
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+    }
+   
+    func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {     // REKLAM TAMAMEN İZLENDİĞİNDE...
+        if hintbuyscreen.isHidden == false {
+            hintint += 2
+            UserDefaults.standard.set(hintint, forKey: "hintkey")
+            hinttext.text = String(hintint)
+            hintbuyscreentext.text = String(hintint)
+        }
+        if againturnscreen.isHidden == false {
+            againturnint += 2
+            UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+            againturntext.text = String(againturnint)
+            againturnscreentext.text = String(againturnint)
+        }
+        if chancescreen.isHidden == false {
+            chanceint += 2
+            UserDefaults.standard.set(chanceint, forKey: "chancekey")
+            chancetext.text = String(chanceint)
+            chancescreentext.text = String(chanceint)
+        }
+    }
 }
