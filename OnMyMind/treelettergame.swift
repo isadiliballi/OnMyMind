@@ -824,6 +824,16 @@ class treelettergame: UIViewController {
     }
     
     @IBAction func warningclosebutton(_ sender: Any) {
+        box1.isUserInteractionEnabled = true
+        box2.isUserInteractionEnabled = true
+        box3.isUserInteractionEnabled = true
+        box4.isUserInteractionEnabled = true
+        box5.isUserInteractionEnabled = true
+        box6.isUserInteractionEnabled = true
+        box7.isUserInteractionEnabled = true
+        box8.isUserInteractionEnabled = true
+        box9.isUserInteractionEnabled = true
+        
         hintbuyscreen.isHidden = true
         hintbuyscreentext.isHidden = true
         hintbuythousandcoins.isHidden = true
@@ -1409,6 +1419,16 @@ class treelettergame: UIViewController {
             hintfunc()
         }
         else {
+            box1.isUserInteractionEnabled = false
+            box2.isUserInteractionEnabled = false
+            box3.isUserInteractionEnabled = false
+            box4.isUserInteractionEnabled = false
+            box5.isUserInteractionEnabled = false
+            box6.isUserInteractionEnabled = false
+            box7.isUserInteractionEnabled = false
+            box8.isUserInteractionEnabled = false
+            box9.isUserInteractionEnabled = false
+            
             darkbackground.isHidden = false
             hintbuyscreen.isHidden = false
             hintbuyscreentext.isHidden = false
@@ -1873,6 +1893,16 @@ class treelettergame: UIViewController {
                 }
             }
             else {
+                box1.isUserInteractionEnabled = false
+                box2.isUserInteractionEnabled = false
+                box3.isUserInteractionEnabled = false
+                box4.isUserInteractionEnabled = false
+                box5.isUserInteractionEnabled = false
+                box6.isUserInteractionEnabled = false
+                box7.isUserInteractionEnabled = false
+                box8.isUserInteractionEnabled = false
+                box9.isUserInteractionEnabled = false
+                
                 darkbackground.isHidden = false
                 
                 warningclose.isHidden = false
@@ -2150,6 +2180,16 @@ class treelettergame: UIViewController {
         hintfunc()
         }
         else {
+            box1.isUserInteractionEnabled = false
+            box2.isUserInteractionEnabled = false
+            box3.isUserInteractionEnabled = false
+            box4.isUserInteractionEnabled = false
+            box5.isUserInteractionEnabled = false
+            box6.isUserInteractionEnabled = false
+            box7.isUserInteractionEnabled = false
+            box8.isUserInteractionEnabled = false
+            box9.isUserInteractionEnabled = false
+            
             darkbackground.isHidden = false
             warningclose.isHidden = false
             chancescreen.isHidden = false
@@ -2174,7 +2214,9 @@ class treelettergame: UIViewController {
             hinttext.text = String(hintint)
         }
         else {
-            
+            warningclose.isHidden = false
+            warning.isHidden = false
+            warningtext.isHidden = false
         }
     }
     @IBAction func hintbuyadsbutton(_ sender: Any) {
@@ -2191,7 +2233,9 @@ class treelettergame: UIViewController {
             againturntext.text = String(againturnint)
         }
         else {
-            
+            warningclose.isHidden = false
+            warning.isHidden = false
+            warningtext.isHidden = false
         }
     }
     @IBAction func againturnadsbuybutton(_ sender: Any) {
@@ -2208,7 +2252,9 @@ class treelettergame: UIViewController {
             chancetext.text = String(chanceint)
         }
         else {
-            
+            warningclose.isHidden = false
+            warning.isHidden = false
+            warningtext.isHidden = false
         }
     }
     @IBAction func chancebuyadsbutton(_ sender: Any) {

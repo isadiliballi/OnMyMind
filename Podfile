@@ -7,6 +7,8 @@ target 'OnMyMind' do
 
    pod 'Firebase/Core'
    pod 'Firebase/Database'
+   pod 'Firebase/Analytics'
+   pod 'Firebase/AdMob'
 
   # Pods for OnMyMind
 
