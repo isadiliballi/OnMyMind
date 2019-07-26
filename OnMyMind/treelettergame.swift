@@ -184,12 +184,23 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var chancebuythousandcoins: UIButton!
     @IBOutlet weak var chancebuyads: UIButton!
     
+    @IBOutlet weak var chanceplus: UIButton!
+    @IBOutlet weak var againturnplus: UIButton!
+    @IBOutlet weak var hintplus: UIButton!
+    
+    var interstitial: GADInterstitial!
+    var adscontrol = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
         // GOOGLE ADS
         
         let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
@@ -197,7 +208,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
             highscoretext.text = String(highscore)
             
-          /*  coins = 50000 // DELETE
+          /*  coins = 90000 // DELETE
             UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
             highscore = 0 // DELETE
             UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE */
@@ -735,6 +746,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     self.turnagainnumber.isHidden = false
                     self.hinttext.isHidden = false
                     self.hintnumber.isHidden = false
+                    self.chanceplus.isHidden = false
+                    self.againturnplus.isHidden = false
+                    self.hintplus.isHidden = false
                     self.second.isHidden = true
                     self.time = 2
                     self.second.text = String(self.time)
@@ -855,6 +869,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         chancescreentext.isHidden = true
         chancebuythousandcoins.isHidden = true
         chancebuyads.isHidden = true
+        
+        chanceplus.isUserInteractionEnabled = true
+        againturnplus.isUserInteractionEnabled = true
+        hintplus.isUserInteractionEnabled = true
         
         hintoutlet.isUserInteractionEnabled = true
         chanceoutlet.isUserInteractionEnabled = true
@@ -1268,6 +1286,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         turnagainnumber.isHidden = true
         hinttext.isHidden = true
         hintnumber.isHidden = true
+        self.chanceplus.isHidden = true
+        self.againturnplus.isHidden = true
+        self.hintplus.isHidden = true
+        
         box1.isUserInteractionEnabled = false
         box2.isUserInteractionEnabled = false
         box3.isUserInteractionEnabled = false
@@ -1277,9 +1299,26 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         box7.isUserInteractionEnabled = false
         box8.isUserInteractionEnabled = false
         box9.isUserInteractionEnabled = false
+        
+        adscontrol += 1
+        if adscontrol % 2 == 0 {
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
+            }
+            else {
+            }
+        }
     }
     
     func scontrolequalthree() { // 3. kutu doğru olduğunda...
+        adscontrol += 1
+        if adscontrol % 2 == 0 {
+            if interstitial.isReady {
+                interstitial.present(fromRootViewController: self)
+            }
+            else {
+            }
+        }
         self.coins+=100
         self.coinstexttreeletter.text = String(self.coins)
         self.score += 10
@@ -1303,6 +1342,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         turnagainnumber.isHidden = true
         hinttext.isHidden = true
         hintnumber.isHidden = true
+        self.chanceplus.isHidden = true
+        self.againturnplus.isHidden = true
+        self.hintplus.isHidden = true
         
         UIView.animate(withDuration: 0.5) {
             self.winpanel.frame.origin.y -= 400
@@ -1445,6 +1487,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             hintoutlet.isUserInteractionEnabled = false
             chanceoutlet.isUserInteractionEnabled = false
             againturnoutlet.isUserInteractionEnabled = false
+            
+            hintplus.isUserInteractionEnabled = false
+            chanceplus.isUserInteractionEnabled = false
+            againturnplus.isUserInteractionEnabled = false
         }
         
     }
@@ -1731,6 +1777,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 self.turnagainnumber.isHidden = true
                 self.hinttext.isHidden = true
                 self.hintnumber.isHidden = true
+                self.chanceplus.isHidden = true
+                self.againturnplus.isHidden = true
+                self.hintplus.isHidden = true
                 
                 self.box1.isUserInteractionEnabled = false
                 self.box2.isUserInteractionEnabled = false
@@ -1763,6 +1812,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                        // self.turnoutlet.isHidden = false
                       //  self.turnwordoutlet.isHidden = true
                       //  self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                        self.chanceplus.isHidden = false
+                        self.againturnplus.isHidden = false
+                        self.hintplus.isHidden = false
                         self.chanceoutlet.isHidden = false
                         self.againturnoutlet.isHidden = false
                         self.hintoutlet.isHidden = false
@@ -1920,6 +1972,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 hintoutlet.isUserInteractionEnabled = false
                 chanceoutlet.isUserInteractionEnabled = false
                 againturnoutlet.isUserInteractionEnabled = false
+                
+                hintplus.isUserInteractionEnabled = false
+                chanceplus.isUserInteractionEnabled = false
+                againturnplus.isUserInteractionEnabled = false
                
             }
         }
@@ -2206,8 +2262,95 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             hintoutlet.isUserInteractionEnabled = false
             chanceoutlet.isUserInteractionEnabled = false
             againturnoutlet.isUserInteractionEnabled = false
+            
+            hintplus.isUserInteractionEnabled = false
+            chanceplus.isUserInteractionEnabled = false
+            againturnplus.isUserInteractionEnabled = false
         }
     }
+    @IBAction func chanceplusbutton(_ sender: Any) {
+        chancescreentext.text = String(chanceint)
+        box1.isUserInteractionEnabled = false
+        box2.isUserInteractionEnabled = false
+        box3.isUserInteractionEnabled = false
+        box4.isUserInteractionEnabled = false
+        box5.isUserInteractionEnabled = false
+        box6.isUserInteractionEnabled = false
+        box7.isUserInteractionEnabled = false
+        box8.isUserInteractionEnabled = false
+        box9.isUserInteractionEnabled = false
+        
+        darkbackground.isHidden = false
+        warningclose.isHidden = false
+        chancescreen.isHidden = false
+        chancescreentext.isHidden = false
+        chancebuythousandcoins.isHidden = false
+        chancebuyads.isHidden = false
+        
+        hintoutlet.isUserInteractionEnabled = false
+        chanceoutlet.isUserInteractionEnabled = false
+        againturnoutlet.isUserInteractionEnabled = false
+        
+        hintplus.isUserInteractionEnabled = false
+        chanceplus.isUserInteractionEnabled = false
+        againturnplus.isUserInteractionEnabled = false
+    }
+    @IBAction func againturnplusbutton(_ sender: Any) {
+        againturnscreentext.text = String(againturnint)
+        box1.isUserInteractionEnabled = false
+        box2.isUserInteractionEnabled = false
+        box3.isUserInteractionEnabled = false
+        box4.isUserInteractionEnabled = false
+        box5.isUserInteractionEnabled = false
+        box6.isUserInteractionEnabled = false
+        box7.isUserInteractionEnabled = false
+        box8.isUserInteractionEnabled = false
+        box9.isUserInteractionEnabled = false
+        
+        darkbackground.isHidden = false
+        warningclose.isHidden = false
+        againturnscreen.isHidden = false
+        againturnscreentext.isHidden = false
+        againturncoinsbuy.isHidden = false
+        againturnadsbuy.isHidden = false
+        
+        hintoutlet.isUserInteractionEnabled = false
+        chanceoutlet.isUserInteractionEnabled = false
+        againturnoutlet.isUserInteractionEnabled = false
+        
+        hintplus.isUserInteractionEnabled = false
+        chanceplus.isUserInteractionEnabled = false
+        againturnplus.isUserInteractionEnabled = false
+    }
+    @IBAction func hintplusbutton(_ sender: Any) {
+        hintbuyscreentext.text = String(hintint)
+        box1.isUserInteractionEnabled = false
+        box2.isUserInteractionEnabled = false
+        box3.isUserInteractionEnabled = false
+        box4.isUserInteractionEnabled = false
+        box5.isUserInteractionEnabled = false
+        box6.isUserInteractionEnabled = false
+        box7.isUserInteractionEnabled = false
+        box8.isUserInteractionEnabled = false
+        box9.isUserInteractionEnabled = false
+        
+        darkbackground.isHidden = false
+        hintbuyscreen.isHidden = false
+        hintbuyscreentext.isHidden = false
+        hintbuythousandcoins.isHidden = false
+        hintbuyads.isHidden = false
+        warningclose.isHidden = false
+        
+        hintoutlet.isUserInteractionEnabled = false
+        chanceoutlet.isUserInteractionEnabled = false
+        againturnoutlet.isUserInteractionEnabled = false
+        
+        hintplus.isUserInteractionEnabled = false
+        chanceplus.isUserInteractionEnabled = false
+        againturnplus.isUserInteractionEnabled = false
+    }
+    
+    
     
     @IBAction func hintbuythousandcoinsbutton(_ sender: Any) {
         if coins >= 1000 {
