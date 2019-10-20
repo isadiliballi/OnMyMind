@@ -10,10 +10,11 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import GoogleMobileAds
+import AVFoundation
 
 class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
-    
+   
     
     var boxpieces = 9
     var randomletter : [String] = []
@@ -191,9 +192,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     var interstitial: GADInterstitial!
     var adscontrol = 0
     
+    var sound : AVAudioPlayer?
     
     
     override func viewDidLoad() {
+        UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
@@ -208,7 +211,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
             highscoretext.text = String(highscore)
             
-          /*  coins = 90000 // DELETE
+          /*  coins = 40000 // DELETE
             UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
             highscore = 0 // DELETE
             UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE */
@@ -258,7 +261,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
         
        
-        let dbrandom = Int.random(in: 1...30)
+        let dbrandom = Int.random(in: 1...110)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -326,6 +329,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
        
     }
     
+    @IBAction func home(_ sender: Any) {
+        buttonsound()
+    }
     
     @IBAction func boxone(_ sender: Any) {
         
@@ -339,6 +345,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                    boxoneIFletteronetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxoneELSEletteronetextequalletters()
@@ -350,6 +357,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                    boxoneIFletteronetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxoneELSEletteronetextequalletters()
@@ -362,6 +370,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxoneIFletteronetextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                     
                 }
                 else {
@@ -369,6 +378,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxtwo(_ sender: Any) {
@@ -383,6 +395,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxtwoIFlettertwotextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxtwoELSElettertwotextequalletters()
@@ -394,6 +407,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxtwoIFlettertwotextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxtwoELSElettertwotextequalletters()
@@ -406,12 +420,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxtwoIFlettertwotextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxtwoELSElettertwotextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxthree(_ sender: Any) {
@@ -426,6 +444,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                    boxthreeIFletterthreetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxthreeELSEletterthreetextequalletters()
@@ -437,6 +456,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxthreeIFletterthreetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxthreeELSEletterthreetextequalletters()
@@ -449,12 +469,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxthreeIFletterthreetextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                    boxthreeELSEletterthreetextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxfour(_ sender: Any) {
@@ -469,6 +493,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                    boxfourIFletterfourtextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                    boxfourELSEletterfourtextequalletters()
@@ -480,6 +505,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxfourIFletterfourtextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxfourELSEletterfourtextequalletters()
@@ -492,12 +518,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxfourIFletterfourtextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxfourELSEletterfourtextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxfive(_ sender: Any) {
@@ -512,6 +542,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxfiveIFletterfivetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxfiveELSEletterfivetextequalletters()
@@ -523,6 +554,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxfiveIFletterfivetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                    boxfiveELSEletterfivetextequalletters()
@@ -535,12 +567,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxfiveIFletterfivetextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                    boxfiveELSEletterfivetextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxsix(_ sender: Any) {
@@ -555,6 +591,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxsixIFlettersixtextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                    boxsixELSElettersixtextequalletters()
@@ -566,6 +603,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxsixIFlettersixtextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                    boxsixELSElettersixtextequalletters()
@@ -578,12 +616,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxsixIFlettersixtextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxsixELSElettersixtextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxseven(_ sender: Any) {
@@ -598,6 +640,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxsevenIFletterseventextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxsevenELSEletterseventextequalletters()
@@ -609,6 +652,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxsevenIFletterseventextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxsevenELSEletterseventextequalletters()
@@ -621,12 +665,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxsevenIFletterseventextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxsevenELSEletterseventextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxeight(_ sender: Any) {
@@ -641,6 +689,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxeightIFlettereightttextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxeightELSElettereightttextequalletters()
@@ -652,6 +701,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                    boxeightIFlettereightttextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxeightELSElettereightttextequalletters()
@@ -664,12 +714,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxeightIFlettereightttextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxeightELSElettereightttextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     @IBAction func boxnine(_ sender: Any) {
@@ -684,6 +738,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 2
                     boxnineIFletterninetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                 else {
                     boxnineELSEletterninetextequalletters()
@@ -695,6 +750,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     scontrol = 3
                     boxnineIFletterninetextequalletters()
                     IFlettertextequalletters()
+                    trueboxsound()
                 }
                     
                 else {
@@ -708,12 +764,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     boxnineIFletterninetextequalletters()
                     IFlettertextequalletters()
                     scontrolequalthree()
+                    nextgamesound()
                 }
                 else {
                     boxnineELSEletterninetextequalletters()
                     ELSElettertextequalletters()
                 }
             }
+        }
+        else {
+            boxturnwarningsound()
         }
     }
     
@@ -725,6 +785,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         self.izin = false
         
         if firstlife == 1 {
+            allboxturnsound()
             turnoutlet.isHidden = true
             turnwordoutlet.isHidden = true
             
@@ -733,6 +794,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 self.second.text = String(self.time)
                 
                 if self.time == 0 {
+                    self.allboxturnsound()
                     self.izin = true
                     timer.invalidate()
                    // self.turnoutlet.isHidden = false
@@ -883,6 +945,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         warning.isHidden = true
         darkbackground.isHidden = true
         izin = true
+        
+        buttonsound()
     }
     @IBAction func highscorewarningclosebutton(_ sender: Any) {
         highscorewarning.isHidden = true
@@ -901,6 +965,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
     }
     func otherwordgofunc() {
+        buttonsound()
         rmix.removeAll()
         nineletter.removeAll()
         letters.removeAll()
@@ -974,6 +1039,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         kelime = replacementword
         trkelime = trreplacementword
         return viewDidLoad()
+        
     }
     
     @IBAction func finishpanelnextbutton(_ sender: Any) {
@@ -987,7 +1053,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         finishpanelbutton.frame = CGRect(origin: CGPoint(x: finishpanelbackbuttonx, y: finishpanelbackbuttony), size: finishpanelbutton.bounds.size)
         finishpaneltext.frame = CGRect(origin: CGPoint(x: finishpaneltextx, y: finishpaneltexty), size: finishpaneltext.bounds.size)
         
-        
+        buttonsound()
+    }
+    
+    @IBAction func finishpanelhome(_ sender: Any) {
+        buttonsound()
     }
     
     @IBAction func winpanelnextbutton(_ sender: Any) {
@@ -1120,6 +1190,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
         coinstexttreeletter.text = String(coins)
         UserDefaults.standard.set(coins, forKey: "coinskey")
+        
     }
     
 
@@ -1256,6 +1327,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         UIView.animate(withDuration: 0.5) {
             self.finishpanelnext.frame.origin.y -= 220
         }
+        
         if self.score > self.highscore {
             highscore = score
             UserDefaults.standard.set(highscore, forKey: "highscorekey")
@@ -1267,6 +1339,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             highscoretext.textColor = UIColor.green
             darkbackground.isHidden = false
             self.score = 0
+            nextgamesound()
         }
         else {
             self.score = 0
@@ -1308,6 +1381,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             else {
             }
         }
+        
+         gameoversound()
     }
     
     func scontrolequalthree() { // 3. kutu doğru olduğunda...
@@ -1416,6 +1491,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
               //  self.winpanelnext.isUserInteractionEnabled = true
             }
         } */
+       
     }
     
     func izinequalfalse() {
@@ -1447,7 +1523,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 var blurbackgroundtime = 0
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                     blurbackgroundtime += 1
-                    if blurbackgroundtime == 2 {
+                    if blurbackgroundtime == 3 {
                         timer.invalidate()
                         blurbackgroundtime = 0
                         self.blurbackground.isHidden = true
@@ -1461,6 +1537,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBAction func hint(_ sender: Any) {
         if hintint >= 1 {
             hintint -= 1
+            oneboxturnsound()
             hinttext.text = String(hintint)
             UserDefaults.standard.set(hintint, forKey: "hintkey")
             hintbuyscreentext.text = String(hintint)
@@ -1491,6 +1568,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             hintplus.isUserInteractionEnabled = false
             chanceplus.isUserInteractionEnabled = false
             againturnplus.isUserInteractionEnabled = false
+            
+            lifeisoversound()
         }
         
     }
@@ -1758,6 +1837,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBAction func againturn(_ sender: Any) {
             if againturnint >= 1 {
                 if firstlife >= 2 {
+                    allboxturnsound()
                     againturnint -= 1
                     againturntext.text = String(againturnint)
                     UserDefaults.standard.set(againturnint, forKey: "againturnkey")
@@ -1796,6 +1876,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     self.second.text = String(self.time)
                     
                     if self.time == 0 {
+                        self.allboxturnsound() 
                         self.izin = true
                         timer.invalidate()
                         
@@ -1977,11 +2058,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 chanceplus.isUserInteractionEnabled = false
                 againturnplus.isUserInteractionEnabled = false
                
+                lifeisoversound()
             }
         }
     @IBAction func chance(_ sender: Any) {
         if chanceint >= 1 {
             chanceint -= 1
+            twoboxturnsound()
             chancetext.text = String(chanceint)
             UserDefaults.standard.set(chanceint, forKey: "chancekey")
             chancescreentext.text = String(chanceint)
@@ -2266,6 +2349,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             hintplus.isUserInteractionEnabled = false
             chanceplus.isUserInteractionEnabled = false
             againturnplus.isUserInteractionEnabled = false
+            
+            lifeisoversound()
         }
     }
     @IBAction func chanceplusbutton(_ sender: Any) {
@@ -2294,6 +2379,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         hintplus.isUserInteractionEnabled = false
         chanceplus.isUserInteractionEnabled = false
         againturnplus.isUserInteractionEnabled = false
+        
+        buttonsound()
     }
     @IBAction func againturnplusbutton(_ sender: Any) {
         againturnscreentext.text = String(againturnint)
@@ -2321,6 +2408,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         hintplus.isUserInteractionEnabled = false
         chanceplus.isUserInteractionEnabled = false
         againturnplus.isUserInteractionEnabled = false
+        
+        buttonsound()
     }
     @IBAction func hintplusbutton(_ sender: Any) {
         hintbuyscreentext.text = String(hintint)
@@ -2348,6 +2437,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         hintplus.isUserInteractionEnabled = false
         chanceplus.isUserInteractionEnabled = false
         againturnplus.isUserInteractionEnabled = false
+        
+        buttonsound()
     }
     
     
@@ -2361,11 +2452,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             UserDefaults.standard.set(hintint, forKey: "hintkey")
             hintbuyscreentext.text = String(hintint)
             hinttext.text = String(hintint)
+            okaysound()
         }
         else {
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
+            lifeisoversound()
         }
     }
     @IBAction func hintbuyadsbutton(_ sender: Any) {
@@ -2376,6 +2469,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     @IBAction func againturncoinsbuybutton(_ sender: Any) {
         if coins >= 1000 {
+            okaysound()
             coins -= 1000
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
@@ -2385,6 +2479,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             againturntext.text = String(againturnint)
         }
         else {
+            lifeisoversound()
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
@@ -2405,11 +2500,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             UserDefaults.standard.set(chanceint, forKey: "chancekey")
             chancescreentext.text = String(chanceint)
             chancetext.text = String(chanceint)
+            okaysound()
         }
         else {
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
+            lifeisoversound()
         }
     }
     @IBAction func chancebuyadsbutton(_ sender: Any) {
@@ -2428,17 +2525,159 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             hinttext.text = String(hintint)
             hintbuyscreentext.text = String(hintint)
         }
+        else {
+            okaysound()
+        }
+        
         if againturnscreen.isHidden == false {
             againturnint += 2
             UserDefaults.standard.set(againturnint, forKey: "againturnkey")
             againturntext.text = String(againturnint)
             againturnscreentext.text = String(againturnint)
         }
+        else {
+            okaysound()
+        }
+        
         if chancescreen.isHidden == false {
             chanceint += 2
             UserDefaults.standard.set(chanceint, forKey: "chancekey")
             chancetext.text = String(chanceint)
             chancescreentext.text = String(chanceint)
         }
+        else {
+            okaysound()
+        }
+        
     }
+    
+    
+    // SESLER
+
+    func boxturnwarningsound() {
+        let path = Bundle.main.path(forResource: "alarm.m4a", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func trueboxsound() {
+        let path = Bundle.main.path(forResource: "true.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func nextgamesound() {
+        let path = Bundle.main.path(forResource: "nextgame.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func gameoversound() {
+        let path = Bundle.main.path(forResource: "gameover.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func allboxturnsound() {
+        let path = Bundle.main.path(forResource: "allboxturn.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func lifeisoversound() {
+        let path = Bundle.main.path(forResource: "lifeisover.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func buttonsound() {
+           let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+           let url = URL(fileURLWithPath: path)
+           
+           do {
+               sound = try AVAudioPlayer(contentsOf: url)
+               sound?.play()
+           }
+           catch{
+               
+           }
+       }
+    func okaysound() {
+        let path = Bundle.main.path(forResource: "okay.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func oneboxturnsound() {
+        let path = Bundle.main.path(forResource: "oneboxturn.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+    func twoboxturnsound() {
+        let path = Bundle.main.path(forResource: "twoboxturn.wav", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            sound = try AVAudioPlayer(contentsOf: url)
+            sound?.play()
+        }
+        catch{
+            
+        }
+    }
+
+
+    // SESLER SON
 }
+
+
+

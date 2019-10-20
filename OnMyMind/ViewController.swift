@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -38,6 +39,8 @@ class ViewController: UIViewController {
     var againturn = 6
     var hint = 6
     
+    var gamegobuttonsound : AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -63,7 +66,7 @@ class ViewController: UIViewController {
         
         
         
-        let dbrandom = Int.random(in: 1...30)
+        let dbrandom = Int.random(in: 1...110)
         let dbrandomstring = String(dbrandom)
         
        ref = Database.database().reference()
@@ -74,12 +77,22 @@ class ViewController: UIViewController {
             self.trword = snapshottwo.value as! String
         }
         
-        
-        
-       
         background()
         responsive()
 
+    }
+    
+    func gamegobuttonsoundfunc() {
+        let path = Bundle.main.path(forResource: "gamegosound.m4a", ofType: nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
+            gamegobuttonsound?.play()
+        }
+        catch{
+            
+        }
     }
 
     
@@ -105,11 +118,11 @@ class ViewController: UIViewController {
             print("iPhone")
         }
         else if 1187...1310 ~= ratio { // iPhone X Series
-            threeletterbuttonoutlet.frame.origin.x = (self.view.bounds.size.width - threeletterbuttonoutlet.frame.size.width) / 2
+         /*   threeletterbuttonoutlet.frame.origin.x = (self.view.bounds.size.width - threeletterbuttonoutlet.frame.size.width) / 2
             threeletterbuttonoutlet.frame = CGRect(x: threeletterbuttonoutlet.frame.origin.x, y: threeletterbuttonoutlet.frame.origin.y, width: 284, height: 98)
             
             fourletterbuttonoutlet.frame.origin.x = (self.view.bounds.size.width - fourletterbuttonoutlet.frame.size.width) / 2
-            fourletterbuttonoutlet.frame = CGRect(x: fourletterbuttonoutlet.frame.origin.x, y: fourletterbuttonoutlet.frame.origin.y, width: 284, height: 98)
+            fourletterbuttonoutlet.frame = CGRect(x: fourletterbuttonoutlet.frame.origin.x, y: fourletterbuttonoutlet.frame.origin.y, width: 284, height: 98) */
             print("iPhone X Series")
         }
         else if ratio == 2028 { // iPad Pro 11 inch
@@ -127,9 +140,10 @@ class ViewController: UIViewController {
   
 
     @IBAction func treelettergo(_ sender: Any) {
+        gamegobuttonsoundfunc()
         UIView.transition(with: threelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: threeletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-        if ingword.isEmpty == true || trword.isEmpty == true {
+        if ingword.isEmpty == true && trword.isEmpty == true {
             print("İnternet bağlantınızı kontrol edin veya tekrar deneyin")
         }
         else {
@@ -139,15 +153,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fourlettergo(_ sender: Any) {
+        gamegobuttonsoundfunc()
         UIView.transition(with: fourlettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: fourletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
     @IBAction func fivelettergo(_ sender: Any) {
+        gamegobuttonsoundfunc()
         UIView.transition(with: fiveletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: fivelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     @IBAction func sixlettergo(_ sender: Any) {
+        gamegobuttonsoundfunc()
         UIView.transition(with: sixletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         UIView.transition(with: sixlettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }

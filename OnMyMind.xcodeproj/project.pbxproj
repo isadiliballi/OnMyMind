@@ -9,12 +9,27 @@
 /* Begin PBXBuildFile section */
 		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
 		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
+		1E38405D235C886400F366D0 /* lifeisover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E38405C235C886400F366D0 /* lifeisover.wav */; };
+		1E38405F235C962F00F366D0 /* button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E38405E235C962F00F366D0 /* button.wav */; };
+		1E384061235C9B7B00F366D0 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384060235C9B7A00F366D0 /* okay.wav */; };
+		1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384062235CA0FE00F366D0 /* oneboxturn.wav */; };
+		1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384064235CA10600F366D0 /* twoboxturn.wav */; };
+		1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F832F2358E13100D96AD2 /* alarm.m4a */; };
+		1E7F83322358E5CE00D96AD2 /* true.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83312358E5CE00D96AD2 /* true.wav */; };
+		1E7F83342358E7D200D96AD2 /* nextgame.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83332358E7D200D96AD2 /* nextgame.wav */; };
+		1E7F83362358E8E800D96AD2 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83352358E8E800D96AD2 /* gameover.wav */; };
+		1E7F833A2358EF7100D96AD2 /* allboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83392358EF7100D96AD2 /* allboxturn.wav */; };
 		1E86105522D95B33006E985B /* OnMyMind.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E86105422D95B33006E985B /* OnMyMind.ttf */; };
+		1E941ECA2300ACE4009B4ABD /* OnMyMind3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941EC92300ACE3009B4ABD /* OnMyMind3.ttf */; };
+		1E941ECC2300AF89009B4ABD /* OnMyMind4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */; };
+		1E941ECE2300B232009B4ABD /* OnMyMind5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */; };
+		1E941ED02300B526009B4ABD /* OnMyMind6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
 		1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EA22CD260F00C0970B /* ViewController.swift */; };
 		1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EC22CD260F00C0970B /* Main.storyboard */; };
 		1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EF22CD261000C0970B /* Assets.xcassets */; };
 		1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */; };
+		1EB3FD6122F35C2C007337ED /* gamegosound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3FD6022F35C2C007337ED /* gamegosound.m4a */; };
 		EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +37,21 @@
 		1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.debug.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.debug.xcconfig"; sourceTree = "<group>"; };
 		1E20D85522CE0BF700F1E236 /* treelettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treelettergame.swift; sourceTree = "<group>"; };
 		1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1E38405C235C886400F366D0 /* lifeisover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lifeisover.wav; sourceTree = "<group>"; };
+		1E38405E235C962F00F366D0 /* button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button.wav; sourceTree = "<group>"; };
+		1E384060235C9B7A00F366D0 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
+		1E384062235CA0FE00F366D0 /* oneboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oneboxturn.wav; sourceTree = "<group>"; };
+		1E384064235CA10600F366D0 /* twoboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twoboxturn.wav; sourceTree = "<group>"; };
+		1E7F832F2358E13100D96AD2 /* alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.m4a; sourceTree = "<group>"; };
+		1E7F83312358E5CE00D96AD2 /* true.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = true.wav; sourceTree = "<group>"; };
+		1E7F83332358E7D200D96AD2 /* nextgame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nextgame.wav; sourceTree = "<group>"; };
+		1E7F83352358E8E800D96AD2 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
+		1E7F83392358EF7100D96AD2 /* allboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = allboxturn.wav; sourceTree = "<group>"; };
 		1E86105422D95B33006E985B /* OnMyMind.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind.ttf; sourceTree = "<group>"; };
+		1E941EC92300ACE3009B4ABD /* OnMyMind3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind3.ttf; sourceTree = "<group>"; };
+		1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind4.ttf; sourceTree = "<group>"; };
+		1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind5.ttf; sourceTree = "<group>"; };
+		1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind6.ttf; sourceTree = "<group>"; };
 		1EA7D3E522CD260F00C0970B /* OnMyMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnMyMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +59,7 @@
 		1EA7D3EF22CD261000C0970B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EA7D3F222CD261000C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA7D3F422CD261000C0970B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EB3FD6022F35C2C007337ED /* gamegosound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gamegosound.m4a; sourceTree = "<group>"; };
 		41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.release.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.release.xcconfig"; sourceTree = "<group>"; };
 		BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnMyMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -49,7 +79,11 @@
 		1E74D4E022D8DE4600BE965A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1E941EC92300ACE3009B4ABD /* OnMyMind3.ttf */,
 				1E86105422D95B33006E985B /* OnMyMind.ttf */,
+				1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */,
+				1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */,
+				1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -75,6 +109,7 @@
 		1EA7D3E722CD260F00C0970B /* OnMyMind */ = {
 			isa = PBXGroup;
 			children = (
+				1EB3FD5F22F35C11007337ED /* Sound */,
 				1E74D4E022D8DE4600BE965A /* Fonts */,
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
 				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
@@ -86,6 +121,24 @@
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
 			);
 			path = OnMyMind;
+			sourceTree = "<group>";
+		};
+		1EB3FD5F22F35C11007337ED /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				1EB3FD6022F35C2C007337ED /* gamegosound.m4a */,
+				1E7F832F2358E13100D96AD2 /* alarm.m4a */,
+				1E7F83312358E5CE00D96AD2 /* true.wav */,
+				1E7F83332358E7D200D96AD2 /* nextgame.wav */,
+				1E7F83352358E8E800D96AD2 /* gameover.wav */,
+				1E7F83392358EF7100D96AD2 /* allboxturn.wav */,
+				1E38405C235C886400F366D0 /* lifeisover.wav */,
+				1E38405E235C962F00F366D0 /* button.wav */,
+				1E384060235C9B7A00F366D0 /* okay.wav */,
+				1E384062235CA0FE00F366D0 /* oneboxturn.wav */,
+				1E384064235CA10600F366D0 /* twoboxturn.wav */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		2CA1531A642A125951A245CE /* Pods */ = {
@@ -165,10 +218,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */,
+				1E7F83322358E5CE00D96AD2 /* true.wav in Resources */,
+				1E941ECC2300AF89009B4ABD /* OnMyMind4.ttf in Resources */,
+				1E38405D235C886400F366D0 /* lifeisover.wav in Resources */,
+				1E7F83342358E7D200D96AD2 /* nextgame.wav in Resources */,
+				1E7F833A2358EF7100D96AD2 /* allboxturn.wav in Resources */,
+				1EB3FD6122F35C2C007337ED /* gamegosound.m4a in Resources */,
+				1E384061235C9B7B00F366D0 /* okay.wav in Resources */,
+				1E941ECA2300ACE4009B4ABD /* OnMyMind3.ttf in Resources */,
+				1E38405F235C962F00F366D0 /* button.wav in Resources */,
 				1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */,
+				1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */,
+				1E941ECE2300B232009B4ABD /* OnMyMind5.ttf in Resources */,
+				1E7F83362358E8E800D96AD2 /* gameover.wav in Resources */,
 				1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */,
+				1E941ED02300B526009B4ABD /* OnMyMind6.ttf in Resources */,
 				1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */,
 				1E86105522D95B33006E985B /* OnMyMind.ttf in Resources */,
+				1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */,
 				1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
