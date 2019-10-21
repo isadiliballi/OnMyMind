@@ -194,10 +194,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     var sound : AVAudioPlayer?
     
+    @IBOutlet weak var homeoutlet: UIButton!
+    @IBOutlet weak var gamescreencup: UIImageView!
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
+        
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
@@ -259,7 +262,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             winpanelnexttexty = Int(winpanelnexttext.frame.origin.y)
             winpanelbool = true
         }
-        
        
         let dbrandom = Int.random(in: 1...110)
         let dbrandomstring = String(dbrandom)
@@ -311,6 +313,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         letter9.text = rmix[8]
     
         background()
+        responsive()
     }
     
     func background() {
@@ -1421,38 +1424,91 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         self.againturnplus.isHidden = true
         self.hintplus.isHidden = true
         
-        UIView.animate(withDuration: 0.5) {
-            self.winpanel.frame.origin.y -= 400
+        let screenheight = view.frame.size.height
+        let screenwidth = view.frame.size.width
+        let ratio = screenheight + screenwidth
+        
+        if 1042...1150 ~= ratio  { // iPhone 6-7-8 Series
+            
+            UIView.animate(withDuration: 0.5) {
+                self.winpanel.frame.origin.y -= 400
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltext.frame.origin.y -= 300
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltexttwo.frame.origin.y -= 300
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscore.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoins.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcupimage.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsimage.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscoreplus.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsplus.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnext.frame.origin.y -= 220
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnexttext.frame.origin.y -= 220
+            }
         }
-        UIView.animate(withDuration: 0.5) {
-            self.winpaneltext.frame.origin.y -= 300
+        else if ratio == 888 { // iPhone 5-5S-5C-5SE
+           
+            UIView.animate(withDuration: 0.5) {
+                self.winpanel.frame.origin.y -= 300
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltext.frame.origin.y -= 230
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltexttwo.frame.origin.y -= 230
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscore.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoins.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcupimage.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsimage.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscoreplus.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsplus.frame.origin.y -= 280
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnext.frame.origin.y -= 180
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnexttext.frame.origin.y -= 180
+            }
         }
-        UIView.animate(withDuration: 0.5) {
-            self.winpaneltexttwo.frame.origin.y -= 300
+            
+        else if 1187...1310 ~= ratio { // iPhone X Series
+            
         }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelscore.frame.origin.y -= 350
+        else if ratio == 2028 { // iPad Pro 11 inch
+            
         }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelcoins.frame.origin.y -= 350
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelcupimage.frame.origin.y -= 350
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelcoinsimage.frame.origin.y -= 350
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelscoreplus.frame.origin.y -= 350
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelcoinsplus.frame.origin.y -= 350
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelnext.frame.origin.y -= 220
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.winpanelnexttext.frame.origin.y -= 220
+        else if 1792...2390 ~= ratio { // iPad Series
+            
         }
         
         winpanel.isHidden = false
@@ -1520,6 +1576,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         self.blurbackground.isHidden = false
         self.blurbackgroundtext.isHidden = false
         self.blurbackgroundtrtext.isHidden = false
+        
+        blurbackgroundtext.center.x = self.view.center.x
+        blurbackgroundtrtext.center.x = self.view.center.x
+        
                 var blurbackgroundtime = 0
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
                     blurbackgroundtime += 1
@@ -2674,9 +2734,114 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             
         }
     }
-
-
     // SESLER SON
+    
+    func responsive() {
+        let screenheight = view.frame.size.height
+        let screenwidth = view.frame.size.width
+        let ratio = screenheight + screenwidth
+        
+        print(ratio)
+        
+        if 1042...1150 ~= ratio  { // iPhone 6-7-8 Series
+            
+        }
+        else if ratio == 888 { // iPhone 5-5S-5C-5SE
+           letter1.font = letter1.font.withSize(40)
+           letter2.font = letter2.font.withSize(40)
+           letter3.font = letter3.font.withSize(40)
+           letter4.font = letter4.font.withSize(40)
+           letter5.font = letter5.font.withSize(40)
+           letter6.font = letter6.font.withSize(40)
+           letter7.font = letter7.font.withSize(40)
+           letter8.font = letter8.font.withSize(40)
+           letter9.font = letter9.font.withSize(40)
+            
+            winpanelcoins.font = winpanelcoins.font.withSize(35)
+            winpanelscore.font = winpanelscore.font.withSize(35)
+            winpaneltext.font = winpaneltext.font.withSize(30)
+            winpaneltexttwo.font = winpaneltexttwo.font.withSize(30)
+            
+            coinstexttreeletter.font = coinstexttreeletter.font.withSize(20)
+            highscoretext.font = highscoretext.font.withSize(20)
+            coinstexttreeletter.frame.origin.y += 1
+            
+            warningtext.font = warningtext.font.withSize(20)
+        }
+            
+        else if 1187 == ratio { // iPhone X-XS Series
+            coinsimage.center = self.view.center
+            gamescreencup.center = self.view.center
+            homeoutlet.center = self.view.center
+            
+            homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x - 3, y: 55, width: 55, height: 55)
+            coinsimage.frame = CGRect(x: coinsimage.frame.origin.x + 100, y: 57.5, width: 130, height: 49)
+            gamescreencup.frame = CGRect(x: gamescreencup.frame.origin.x - 100, y: 57.5, width: 130, height: 49)
+            
+            highscoretext.frame.origin = CGPoint(x: 51, y: 68)
+            coinstexttreeletter.frame.origin = CGPoint(x: 274, y: 67)
+            
+            box1.center = self.view.center
+            box2.center = self.view.center
+            box3.center = self.view.center
+            box4.center = self.view.center
+            box5.center = self.view.center
+            box6.center = self.view.center
+            box7.center = self.view.center
+            box8.center = self.view.center
+            box9.center = self.view.center
+            
+            box1.frame = CGRect(x: box1.frame.origin.x - 95, y: box1.frame.origin.y - 95, width: 90, height: 90)
+            box2.frame = CGRect(x: box2.frame.origin.x, y: box2.frame.origin.y - 95, width: 90, height: 90)
+            box3.frame = CGRect(x: box3.frame.origin.x + 95, y: box3.frame.origin.y - 95, width: 90, height: 90)
+            box4.frame = CGRect(x: box4.frame.origin.x - 95, y: box4.frame.origin.y, width: 90, height: 90)
+            box5.frame = CGRect(x: box5.frame.origin.x, y: box5.frame.origin.y, width: 90, height: 90)
+            box6.frame = CGRect(x: box6.frame.origin.x + 95, y: box6.frame.origin.y, width: 90, height: 90)
+            box7.frame = CGRect(x: box7.frame.origin.x - 95, y: box7.frame.origin.y + 95, width: 90, height: 90)
+            box8.frame = CGRect(x: box8.frame.origin.x, y: box8.frame.origin.y + 95, width: 90, height: 90)
+            box9.frame = CGRect(x: box9.frame.origin.x + 95, y: box9.frame.origin.y + 95, width: 90, height: 90)
+            
+            letter1.center = box1.center
+            letter2.center = box2.center
+            letter3.center = box3.center
+            letter4.center = box4.center
+            letter5.center = box5.center
+            letter6.center = box6.center
+            letter7.center = box7.center
+            letter8.center = box8.center
+            letter9.center = box9.center
+            
+            letter1.frame.origin = CGPoint(x: letter1.frame.origin.x, y: letter1.frame.origin.y)
+            letter2.frame.origin = CGPoint(x: letter2.frame.origin.x, y: letter2.frame.origin.y)
+            letter3.frame.origin = CGPoint(x: letter3.frame.origin.x, y: letter3.frame.origin.y)
+            letter4.frame.origin = CGPoint(x: letter4.frame.origin.x, y: letter4.frame.origin.y)
+            letter5.frame.origin = CGPoint(x: letter5.frame.origin.x, y: letter5.frame.origin.y)
+            letter6.frame.origin = CGPoint(x: letter6.frame.origin.x, y: letter6.frame.origin.y)
+            letter7.frame.origin = CGPoint(x: letter7.frame.origin.x, y: letter7.frame.origin.y)
+            letter8.frame.origin = CGPoint(x: letter8.frame.origin.x, y: letter8.frame.origin.y)
+            letter9.frame.origin = CGPoint(x: letter9.frame.origin.x, y: letter9.frame.origin.y)
+            
+            treeletterword.center = self.view.center
+            treeletterword.font = treeletterword.font.withSize(80)
+            treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 150)
+            
+            turnoutlet.center = self.view.center
+            turnoutlet.frame = CGRect(x: turnoutlet.frame.origin.x, y: 600, width: 246, height: 70)
+            
+            turnwordoutlet.center = turnoutlet.center
+        }
+            
+        else if 1310 == ratio { // XS MAX - XR
+            
+        }
+            
+        else if ratio == 2028 { // iPad Pro 11 inch
+           
+        }
+        else if 1792...2390 ~= ratio { // iPad Series
+       
+        }
+    }
 }
 
 
