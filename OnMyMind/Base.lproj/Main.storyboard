@@ -507,9 +507,8 @@
                                     <action selector="hintplusbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="rQo-Ou-alt"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
+                                <rect key="frame" x="-188" y="-334" width="751" height="1335"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qk-2c-FQA">
                                 <rect key="frame" x="274" y="53" width="75" height="29"/>
@@ -688,6 +687,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kvb-bx-DhT" firstAttribute="centerY" secondItem="xWZ-GJ-W4A" secondAttribute="centerY" id="eZA-hL-KzD"/>
+                            <constraint firstItem="Kvb-bx-DhT" firstAttribute="centerX" secondItem="xWZ-GJ-W4A" secondAttribute="centerX" id="gMf-Nx-pGY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
                         <variation key="default">
                             <mask key="subviews">
@@ -728,6 +731,7 @@
                         <outlet property="darkbackground" destination="Kvb-bx-DhT" id="7NA-8n-QAW"/>
                         <outlet property="finishpanel" destination="2O9-0b-Cau" id="djO-h2-3Fp"/>
                         <outlet property="finishpanelbutton" destination="OGY-0w-q9H" id="brR-Fn-0x0"/>
+                        <outlet property="finishpanelhome" destination="OGY-0w-q9H" id="cCs-JK-Y2g"/>
                         <outlet property="finishpanelnext" destination="Fyc-kJ-JFA" id="AtH-NT-f8F"/>
                         <outlet property="finishpaneltext" destination="1xu-J7-9wu" id="DZT-jS-Ihg"/>
                         <outlet property="gamescreencup" destination="PG3-qI-4oZ" id="qsH-CW-lYY"/>

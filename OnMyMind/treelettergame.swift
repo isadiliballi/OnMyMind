@@ -196,10 +196,14 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     @IBOutlet weak var homeoutlet: UIButton!
     @IBOutlet weak var gamescreencup: UIImageView!
+    @IBOutlet weak var finishpanelhome: UIButton!
+    
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
+        
+        responsive()
         
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
@@ -313,7 +317,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         letter9.text = rmix[8]
     
         background()
-        responsive()
+        
     }
     
     func background() {
@@ -1428,7 +1432,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
         
-        if 1042...1150 ~= ratio  { // iPhone 6-7-8 Series
+         if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series
             
             UIView.animate(withDuration: 0.5) {
                 self.winpanel.frame.origin.y -= 400
@@ -1498,6 +1502,42 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelnexttext.frame.origin.y -= 180
+            }
+        }
+        else if 1187 == ratio { // iPhone X-XS Series
+            
+            UIView.animate(withDuration: 0.5) {
+                self.winpanel.frame.origin.y -= 400
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltext.frame.origin.y -= 300
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltexttwo.frame.origin.y -= 300
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscore.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoins.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcupimage.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsimage.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscoreplus.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsplus.frame.origin.y -= 350
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnext.frame.origin.y -= 230
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnexttext.frame.origin.y -= 230
             }
         }
             
@@ -2742,8 +2782,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         let ratio = screenheight + screenwidth
         
         print(ratio)
+        print(screenwidth)
         
-        if 1042...1150 ~= ratio  { // iPhone 6-7-8 Series
+        if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series
             
         }
         else if ratio == 888 { // iPhone 5-5S-5C-5SE
@@ -2791,15 +2832,15 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             box8.center = self.view.center
             box9.center = self.view.center
             
-            box1.frame = CGRect(x: box1.frame.origin.x - 95, y: box1.frame.origin.y - 95, width: 90, height: 90)
-            box2.frame = CGRect(x: box2.frame.origin.x, y: box2.frame.origin.y - 95, width: 90, height: 90)
-            box3.frame = CGRect(x: box3.frame.origin.x + 95, y: box3.frame.origin.y - 95, width: 90, height: 90)
-            box4.frame = CGRect(x: box4.frame.origin.x - 95, y: box4.frame.origin.y, width: 90, height: 90)
-            box5.frame = CGRect(x: box5.frame.origin.x, y: box5.frame.origin.y, width: 90, height: 90)
-            box6.frame = CGRect(x: box6.frame.origin.x + 95, y: box6.frame.origin.y, width: 90, height: 90)
-            box7.frame = CGRect(x: box7.frame.origin.x - 95, y: box7.frame.origin.y + 95, width: 90, height: 90)
-            box8.frame = CGRect(x: box8.frame.origin.x, y: box8.frame.origin.y + 95, width: 90, height: 90)
-            box9.frame = CGRect(x: box9.frame.origin.x + 95, y: box9.frame.origin.y + 95, width: 90, height: 90)
+            box1.frame = CGRect(x: box1.frame.origin.x - 110.5, y: box1.frame.origin.y - 105, width: 100, height: 100)
+            box2.frame = CGRect(x: box2.frame.origin.x - 3, y: box2.frame.origin.y - 105, width: 100, height: 100)
+            box3.frame = CGRect(x: box3.frame.origin.x + 104.5, y: box3.frame.origin.y - 105, width: 100, height: 100)
+            box4.frame = CGRect(x: box4.frame.origin.x - 110.5, y: box4.frame.origin.y + 2.5, width: 100, height: 100)
+            box5.frame = CGRect(x: box5.frame.origin.x - 3, y: box5.frame.origin.y + 2.5, width: 100, height: 100)
+            box6.frame = CGRect(x: box6.frame.origin.x + 104.5, y: box6.frame.origin.y + 2.5, width: 100, height: 100)
+            box7.frame = CGRect(x: box7.frame.origin.x - 110.5, y: box7.frame.origin.y + 110, width: 100, height: 100)
+            box8.frame = CGRect(x: box8.frame.origin.x - 3, y: box8.frame.origin.y + 110, width: 100, height: 100)
+            box9.frame = CGRect(x: box9.frame.origin.x + 104.5, y: box9.frame.origin.y + 110, width: 100, height: 100)
             
             letter1.center = box1.center
             letter2.center = box2.center
@@ -2826,13 +2867,164 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 150)
             
             turnoutlet.center = self.view.center
-            turnoutlet.frame = CGRect(x: turnoutlet.frame.origin.x, y: 600, width: 246, height: 70)
-            
+            turnoutlet.frame = CGRect(x: 40, y: 600, width: 295.2, height: 84)
+           
             turnwordoutlet.center = turnoutlet.center
+            
+            chanceoutlet.center = self.view.center
+            againturnoutlet.center = self.view.center
+            hintoutlet.center = self.view.center
+            
+            chanceoutlet.frame = CGRect(x: chanceoutlet.frame.origin.x - 115, y: 580, width: 90, height: 90)
+            againturnoutlet.frame = CGRect(x: againturnoutlet.frame.origin.x - 2.5, y: 580, width: 90, height: 90)
+            hintoutlet.frame = CGRect(x: hintoutlet.frame.origin.x + 110, y: 580, width: 90, height: 90)
+            
+            chanceplus.center = self.view.center
+            hintplus.center = self.view.center
+            againturnplus.center = self.view.center
+            
+            chanceplus.frame = CGRect(x: chanceplus.frame.origin.x - 80, y: 667, width: 35, height: 35)
+            hintplus.frame = CGRect(x: hintplus.frame.origin.x + 145, y: 667, width: 35, height: 35)
+            againturnplus.frame = CGRect(x: againturnplus.frame.origin.x + 32, y: 667, width: 35, height: 35)
+            
+            hintnumber.frame.origin = CGPoint(x: 258, y: 662)
+            turnagainnumber.frame.origin = CGPoint(x: 146, y: 662)
+            
+            hinttext.frame.origin = CGPoint(x: 270, y: 674)
+            againturntext.frame.origin = CGPoint(x: 158, y: 672)
+            chancetext.frame.origin = CGPoint(x: 46, y: 668)
+            
+           chancebuythousandcoins.frame = CGRect(x: chancebuythousandcoins.frame.origin.x, y: chancebuythousandcoins.frame.origin.y - 5, width: 158, height: 74)
+           chancebuyads.frame = CGRect(x: chancebuyads.frame.origin.x, y: chancebuyads.frame.origin.y, width: 158, height: 79)
+            
+           againturncoinsbuy.frame = CGRect(x: againturncoinsbuy.frame.origin.x, y: againturncoinsbuy.frame.origin.y - 15, width: 158, height: 74)
+           againturnadsbuy.frame = CGRect(x: againturnadsbuy.frame.origin.x, y: againturnadsbuy.frame.origin.y - 10, width: 158, height: 79)
+            
+           hintbuythousandcoins.frame = CGRect(x: hintbuythousandcoins.frame.origin.x, y: hintbuythousandcoins.frame.origin.y - 15, width: 158, height: 74)
+           hintbuyads.frame = CGRect(x: hintbuyads.frame.origin.x, y: hintbuyads.frame.origin.y - 10, width: 158, height: 79)
+            
+           warningclose.frame = CGRect(x: warningclose.frame.origin.x, y: warningclose.frame.origin.y + 20, width: 60, height: 60)
+            
+          finishpanelnext.frame = CGRect(x: finishpanelnext.frame.origin.x, y: finishpanelnext.frame.origin.y, width: 80, height: 79)
+          finishpanelhome.frame = CGRect(x: finishpanelhome.frame.origin.x, y: finishpanelhome.frame.origin.y, width: 80, height: 79)
         }
             
         else if 1310 == ratio { // XS MAX - XR
+            coinsimage.center = self.view.center
+            gamescreencup.center = self.view.center
+            homeoutlet.center = self.view.center
             
+            homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x, y: 55, width: 55, height: 55)
+            coinsimage.frame = CGRect(x: 250.25, y: 57.5, width: 130, height: 49)
+            gamescreencup.frame = CGRect(x: 35.25, y: 57.5, width: 130, height: 49)
+            
+            highscoretext.frame.origin = CGPoint(x: 60, y: 68)
+            coinstexttreeletter.frame.origin = CGPoint(x: 300, y: 66)
+            
+            box1.center = self.view.center
+            box2.center = self.view.center
+            box3.center = self.view.center
+            box4.center = self.view.center
+            box5.center = self.view.center
+            box6.center = self.view.center
+            box7.center = self.view.center
+            box8.center = self.view.center
+            box9.center = self.view.center
+            
+            box1.frame = CGRect(x: 49.75, y: 282.5, width: 100, height: 100)
+            box2.frame = CGRect(x: 157.25, y: 282.5, width: 100, height: 100)
+            box3.frame = CGRect(x: 264.75, y: 282.5, width: 100, height: 100)
+            box4.frame = CGRect(x: 49.75, y: 390, width: 100, height: 100)
+            box5.frame = CGRect(x: 157.25, y: 390, width: 100, height: 100)
+            box6.frame = CGRect(x: 264.75, y: 390, width: 100, height: 100)
+            box7.frame = CGRect(x: 49.75, y: 497.5, width: 100, height: 100)
+            box8.frame = CGRect(x: 157.25, y: 497.5, width: 100, height: 100)
+            box9.frame = CGRect(x: 264.75, y: 497.5, width: 100, height: 100)
+            
+            print("kutu1X = \(box1.frame.origin.x)")
+            print("kutu1Y = \(box1.frame.origin.y)")
+            print("kutu2X = \(box2.frame.origin.x)")
+            print("kutu2Y = \(box2.frame.origin.y)")
+            print("kutu3X = \(box3.frame.origin.x)")
+            print("kutu3Y = \(box3.frame.origin.y)")
+            print("kutu4X = \(box4.frame.origin.x)")
+            print("kutu4Y = \(box4.frame.origin.y)")
+            print("kutu5X = \(box5.frame.origin.x)")
+            print("kutu5Y = \(box5.frame.origin.y)")
+            print("kutu6X = \(box6.frame.origin.x)")
+            print("kutu6Y = \(box6.frame.origin.y)")
+            print("kutu7X = \(box7.frame.origin.x)")
+            print("kutu7Y = \(box7.frame.origin.y)")
+            print("kutu8X = \(box8.frame.origin.x)")
+            print("kutu8Y = \(box8.frame.origin.y)")
+            print("kutu9X = \(box9.frame.origin.x)")
+            print("kutu9Y = \(box9.frame.origin.y)")
+            
+            letter1.center = box1.center
+            letter2.center = box2.center
+            letter3.center = box3.center
+            letter4.center = box4.center
+            letter5.center = box5.center
+            letter6.center = box6.center
+            letter7.center = box7.center
+            letter8.center = box8.center
+            letter9.center = box9.center
+            
+            letter1.frame.origin = CGPoint(x: letter1.frame.origin.x, y: letter1.frame.origin.y)
+            letter2.frame.origin = CGPoint(x: letter2.frame.origin.x, y: letter2.frame.origin.y)
+            letter3.frame.origin = CGPoint(x: letter3.frame.origin.x, y: letter3.frame.origin.y)
+            letter4.frame.origin = CGPoint(x: letter4.frame.origin.x, y: letter4.frame.origin.y)
+            letter5.frame.origin = CGPoint(x: letter5.frame.origin.x, y: letter5.frame.origin.y)
+            letter6.frame.origin = CGPoint(x: letter6.frame.origin.x, y: letter6.frame.origin.y)
+            letter7.frame.origin = CGPoint(x: letter7.frame.origin.x, y: letter7.frame.origin.y)
+            letter8.frame.origin = CGPoint(x: letter8.frame.origin.x, y: letter8.frame.origin.y)
+            letter9.frame.origin = CGPoint(x: letter9.frame.origin.x, y: letter9.frame.origin.y)
+            
+            treeletterword.center = self.view.center
+            treeletterword.font = treeletterword.font.withSize(80)
+            treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 150)
+            
+            turnoutlet.center = self.view.center
+            turnoutlet.frame = CGRect(x: 40, y: 600, width: 295.2, height: 84)
+            
+            turnwordoutlet.center = turnoutlet.center
+            
+            chanceoutlet.center = self.view.center
+            againturnoutlet.center = self.view.center
+            hintoutlet.center = self.view.center
+            
+            chanceoutlet.frame = CGRect(x: chanceoutlet.frame.origin.x - 115, y: 580, width: 90, height: 90)
+            againturnoutlet.frame = CGRect(x: againturnoutlet.frame.origin.x - 2.5, y: 580, width: 90, height: 90)
+            hintoutlet.frame = CGRect(x: hintoutlet.frame.origin.x + 110, y: 580, width: 90, height: 90)
+            
+            chanceplus.center = self.view.center
+            hintplus.center = self.view.center
+            againturnplus.center = self.view.center
+            
+            chanceplus.frame = CGRect(x: chanceplus.frame.origin.x - 80, y: 667, width: 35, height: 35)
+            hintplus.frame = CGRect(x: hintplus.frame.origin.x + 145, y: 667, width: 35, height: 35)
+            againturnplus.frame = CGRect(x: againturnplus.frame.origin.x + 32, y: 667, width: 35, height: 35)
+            
+            hintnumber.frame.origin = CGPoint(x: 258, y: 662)
+            turnagainnumber.frame.origin = CGPoint(x: 146, y: 662)
+            
+            hinttext.frame.origin = CGPoint(x: 270, y: 674)
+            againturntext.frame.origin = CGPoint(x: 158, y: 672)
+            chancetext.frame.origin = CGPoint(x: 46, y: 668)
+            
+            chancebuythousandcoins.frame = CGRect(x: chancebuythousandcoins.frame.origin.x, y: chancebuythousandcoins.frame.origin.y - 5, width: 158, height: 74)
+            chancebuyads.frame = CGRect(x: chancebuyads.frame.origin.x, y: chancebuyads.frame.origin.y, width: 158, height: 79)
+            
+            againturncoinsbuy.frame = CGRect(x: againturncoinsbuy.frame.origin.x, y: againturncoinsbuy.frame.origin.y - 15, width: 158, height: 74)
+            againturnadsbuy.frame = CGRect(x: againturnadsbuy.frame.origin.x, y: againturnadsbuy.frame.origin.y - 10, width: 158, height: 79)
+            
+            hintbuythousandcoins.frame = CGRect(x: hintbuythousandcoins.frame.origin.x, y: hintbuythousandcoins.frame.origin.y - 15, width: 158, height: 74)
+            hintbuyads.frame = CGRect(x: hintbuyads.frame.origin.x, y: hintbuyads.frame.origin.y - 10, width: 158, height: 79)
+            
+            warningclose.frame = CGRect(x: warningclose.frame.origin.x, y: warningclose.frame.origin.y + 20, width: 60, height: 60)
+            
+            finishpanelnext.frame = CGRect(x: finishpanelnext.frame.origin.x, y: finishpanelnext.frame.origin.y, width: 80, height: 79)
+            finishpanelhome.frame = CGRect(x: finishpanelhome.frame.origin.x, y: finishpanelhome.frame.origin.y, width: 80, height: 79)
         }
             
         else if ratio == 2028 { // iPad Pro 11 inch
