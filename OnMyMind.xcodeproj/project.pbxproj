@@ -52,7 +52,7 @@
 		1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind4.ttf; sourceTree = "<group>"; };
 		1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind5.ttf; sourceTree = "<group>"; };
 		1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind6.ttf; sourceTree = "<group>"; };
-		1EA7D3E522CD260F00C0970B /* OnMyMind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnMyMind.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA7D3E522CD260F00C0970B /* On My Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Mind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1EA7D3ED22CD260F00C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +60,7 @@
 		1EA7D3F222CD261000C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA7D3F422CD261000C0970B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EB3FD6022F35C2C007337ED /* gamegosound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gamegosound.m4a; sourceTree = "<group>"; };
+		1EDA744723807108008B08EF /* OnMyMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnMyMind.entitlements; sourceTree = "<group>"; };
 		41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.release.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.release.xcconfig"; sourceTree = "<group>"; };
 		BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnMyMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,7 +102,7 @@
 		1EA7D3E622CD260F00C0970B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EA7D3E522CD260F00C0970B /* OnMyMind.app */,
+				1EA7D3E522CD260F00C0970B /* On My Mind.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +110,7 @@
 		1EA7D3E722CD260F00C0970B /* OnMyMind */ = {
 			isa = PBXGroup;
 			children = (
+				1EDA744723807108008B08EF /* OnMyMind.entitlements */,
 				1EB3FD5F22F35C11007337ED /* Sound */,
 				1E74D4E022D8DE4600BE965A /* Fonts */,
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
@@ -177,7 +179,7 @@
 			);
 			name = OnMyMind;
 			productName = OnMyMind;
-			productReference = 1EA7D3E522CD260F00C0970B /* OnMyMind.app */;
+			productReference = 1EA7D3E522CD260F00C0970B /* On My Mind.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -439,6 +441,7 @@
 			baseConfigurationReference = 1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OnMyMind/OnMyMind.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q3BR6HQNK;
 				INFOPLIST_FILE = OnMyMind/Info.plist;
@@ -447,7 +450,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = isadiliballi.OnMyMind;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "On My Mind";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +462,7 @@
 			baseConfigurationReference = 41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OnMyMind/OnMyMind.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q3BR6HQNK;
 				INFOPLIST_FILE = OnMyMind/Info.plist;
@@ -466,7 +471,8 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = isadiliballi.OnMyMind;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "On My Mind";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
