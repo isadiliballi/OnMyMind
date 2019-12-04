@@ -199,10 +199,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var finishpanelhome: UIButton!
     
     
+    
+    
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
         
+       
         
         responsive()
         
@@ -1380,7 +1383,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             self.highscorewarningtext.isHidden = false
             self.highscorewarningtext.text = String(self.highscore)
             highscorewarningclose.isHidden = false
-            highscoretext.textColor = UIColor.green
+           // highscoretext.textColor = UIColor.green
             darkbackground.isHidden = false
             self.score = 0
             nextgamesound()
@@ -3044,8 +3047,14 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
          
          coinstexttreeletter.font = coinstexttreeletter.font.withSize(20)
          highscoretext.font = highscoretext.font.withSize(20)
-         coinstexttreeletter.frame.origin.y += 1
-         
+        
+        blurbackgroundtext.center = self.view.center
+        blurbackgroundtext.frame = CGRect(x: blurbackgroundtext.frame.origin.x, y: 250, width: 500, height: 100)
+        blurbackgroundtext.font = blurbackgroundtext.font.withSize(40)
+        blurbackgroundtrtext.center = self.view.center
+        blurbackgroundtrtext.frame.origin = CGPoint(x: blurbackgroundtrtext.frame.origin.x, y: 200)
+        blurbackgroundtrtext.font = blurbackgroundtrtext.font.withSize(50)
+        
          warningtext.font = warningtext.font.withSize(20)
     }
     
@@ -3464,6 +3473,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         winpanelcoins.frame.origin = CGPoint(x: 800, y: 1405)
         winpanelcoinsplus.frame.origin = CGPoint(x: 705, y: 1410)
     }
+    
+    func fireworks() {
+       
+    }
+    
 }
 
 
