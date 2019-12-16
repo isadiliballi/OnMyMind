@@ -411,10 +411,6 @@
                                 <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gamescreencup" translatesAutoresizingMaskIntoConstraints="NO" id="PG3-qI-4oZ">
-                                <rect key="frame" x="16" y="41" width="130" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-jk-Voi" userLabel="home">
                                 <rect key="frame" x="162" y="41" width="50" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -505,6 +501,10 @@
                                     <action selector="hintplusbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="rQo-Ou-alt"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gamescreencup" translatesAutoresizingMaskIntoConstraints="NO" id="PG3-qI-4oZ">
+                                <rect key="frame" x="17" y="41" width="130" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-bx-DhT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -517,7 +517,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmK-q3-yWK">
-                                <rect key="frame" x="227" y="41" width="130" height="49"/>
+                                <rect key="frame" x="228" y="41" width="130" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="gamescreencoins"/>
                             </button>
@@ -535,7 +535,7 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rox-R1-HwI">
                                 <rect key="frame" x="41" y="374" width="144" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="buythousandcoins"/>
+                                <state key="normal" backgroundImage="hintbuythousandcoins"/>
                                 <connections>
                                     <action selector="hintbuythousandcoinsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="gIW-bW-eZW"/>
                                 </connections>
@@ -589,7 +589,7 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEr-s4-Ovg">
                                 <rect key="frame" x="41" y="374" width="144" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="buythousandcoins"/>
+                                <state key="normal" backgroundImage="againturnbuythousandcoins"/>
                                 <connections>
                                     <action selector="againturncoinsbuybutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="0aX-UB-Y0A"/>
                                 </connections>
@@ -597,7 +597,7 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuV-rt-7QJ">
                                 <rect key="frame" x="199" y="374" width="144" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="buyads2"/>
+                                <state key="normal" backgroundImage="againturnbuyads"/>
                                 <connections>
                                     <action selector="againturnadsbuybutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="6YD-CG-TPz"/>
                                     <action selector="hintbuyadsbutton:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="tfB-Fc-rfx"/>
@@ -684,6 +684,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hla-0Q-CKV" userLabel="coinsbuygoshop">
+                                <rect key="frame" x="82" y="332" width="212" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="coinsbuygoshop"/>
+                                <connections>
+                                    <action selector="coinsbuygoshop:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="VCL-K3-Gy1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
@@ -721,6 +729,7 @@
                         <outlet property="chancescreen" destination="55J-dg-NJf" id="voS-mZ-6E6"/>
                         <outlet property="chancescreentext" destination="Rpp-sA-K7s" id="zZ4-Ji-9O4"/>
                         <outlet property="chancetext" destination="kM6-v9-yLT" id="ODM-RM-wDD"/>
+                        <outlet property="coinsbuygoshop" destination="hla-0Q-CKV" id="b2E-zh-Pf5"/>
                         <outlet property="coinsimage" destination="tmK-q3-yWK" id="tTE-F7-HM1"/>
                         <outlet property="coinstexttreeletter" destination="9Qk-2c-FQA" id="ROl-fX-eVY"/>
                         <outlet property="darkbackground" destination="Kvb-bx-DhT" id="7NA-8n-QAW"/>
@@ -784,6 +793,8 @@
     <resources>
         <image name="againturn" width="137" height="143"/>
         <image name="againturnbuy" width="902" height="691"/>
+        <image name="againturnbuyads" width="180" height="77"/>
+        <image name="againturnbuythousandcoins" width="180" height="84"/>
         <image name="againturnplus" width="169" height="169"/>
         <image name="alert" width="1022" height="811"/>
         <image name="back" width="802" height="802"/>
@@ -794,6 +805,7 @@
         <image name="chancebuy" width="902" height="691"/>
         <image name="chanceplus" width="169" height="169"/>
         <image name="close" width="802" height="802"/>
+        <image name="coinsbuygoshop" width="212" height="77"/>
         <image name="cup" width="847" height="846"/>
         <image name="darkbackground" width="751" height="1335"/>
         <image name="gameayarlar" width="767" height="807"/>
@@ -809,6 +821,7 @@
         <image name="highscorewarning2" width="1000" height="878"/>
         <image name="hint" width="137" height="143"/>
         <image name="hintbuy" width="902" height="691"/>
+        <image name="hintbuythousandcoins" width="180" height="84"/>
         <image name="hintnumber" width="115" height="65"/>
         <image name="hintplus" width="169" height="169"/>
         <image name="home" width="130" height="130"/>

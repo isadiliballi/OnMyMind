@@ -198,14 +198,15 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var gamescreencup: UIImageView!
     @IBOutlet weak var finishpanelhome: UIButton!
     
+    @IBOutlet weak var coinsbuygoshop: UIButton!
     
     
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
-        
        
+        Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
         
         responsive()
         
@@ -293,7 +294,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
         letters = kelime.map {String($0)}
         print(letters)
-        var alfabe = ["A","B","C","Ç","D","E","F","G","Ğ","H","I","İ","J","K","L","M","N","O","Ö","P","R","S","Ş","T","U","Ü","V","Y","Z"]
+        let alfabe = ["A","B","C","Ç","D","E","F","G","Ğ","H","I","İ","J","K","L","M","N","O","Ö","P","R","S","Ş","T","U","Ü","V","Y","Z"]
         let looppieces = boxpieces - letters.count
         
         for _ in 0..<looppieces {
@@ -352,6 +353,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func home(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeHomeButtonClick", parameters: nil) // Firebase Events
+        
         buttonsound()
     }
     
@@ -804,6 +808,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     @IBAction func turnbutton(_ sender: Any) {
         
+        Analytics.logEvent("ThreeTurnButtonClick", parameters: nil) // Firebase Events
+        
         self.izin = false
         
         if firstlife == 1 {
@@ -819,8 +825,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     self.allboxturnsound()
                     self.izin = true
                     timer.invalidate()
-                   // self.turnoutlet.isHidden = false
-                   // self.turnwordoutlet.isHidden = false
                     self.chanceoutlet.isHidden = false
                     self.againturnoutlet.isHidden = false
                     self.hintoutlet.isHidden = false
@@ -838,8 +842,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     self.second.text = String(self.time)
                     self.firstlife+=1
                     print(self.firstlife)
-                //    self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                 //    self.turnwordoutlet.isHidden = true
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -963,6 +965,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         againturnoutlet.isUserInteractionEnabled = true
         
         warningtext.isHidden = true
+        coinsbuygoshop.isHidden = true
         warningclose.isHidden = true
         warning.isHidden = true
         darkbackground.isHidden = true
@@ -1065,6 +1068,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func finishpanelnextbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeGameOverPlayAgainButtonClick", parameters: nil) // Firebase Events
+        
         otherwordgofunc()
         finishpanel.isHidden = true
         finishpaneltext.isHidden = true
@@ -1079,10 +1085,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func finishpanelhome(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeGameOverHomeButtonClick", parameters: nil) // Firebase Events
+        
         buttonsound()
     }
     
     @IBAction func winpanelnextbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeOtherWordGoButtonClick", parameters: nil) // Firebase Events
+        
         blurbackgroundeffect()
         otherwordgofunc()
         winpanel.isHidden = true
@@ -1593,22 +1605,22 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 self.winpaneltexttwo.frame.origin.y -= 300
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscore.frame.origin.y -= 350
+                self.winpanelscore.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoins.frame.origin.y -= 350
+                self.winpanelcoins.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcupimage.frame.origin.y -= 350
+                self.winpanelcupimage.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsimage.frame.origin.y -= 350
+                self.winpanelcoinsimage.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 350
+                self.winpanelscoreplus.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 350
+                self.winpanelcoinsplus.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 230
@@ -1774,6 +1786,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func hint(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeHintButtonClick", parameters: nil) // Firebase Events
+        
         if hintint >= 1 {
             hintint -= 1
             oneboxturnsound()
@@ -2074,6 +2089,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func againturn(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeAgainTurnButtonClick", parameters: nil) // Firebase Events
+        
             if againturnint >= 1 {
                 if firstlife >= 2 {
                     allboxturnsound()
@@ -2301,6 +2319,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             }
         }
     @IBAction func chance(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeChanceButtonClick", parameters: nil) // Firebase Events
+        
         if chanceint >= 1 {
             chanceint -= 1
             twoboxturnsound()
@@ -2593,6 +2614,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
     }
     @IBAction func chanceplusbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeChancePlusButtonClick", parameters: nil) // Firebase Events
+        
         chancescreentext.text = String(chanceint)
         box1.isUserInteractionEnabled = false
         box2.isUserInteractionEnabled = false
@@ -2622,6 +2646,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         buttonsound()
     }
     @IBAction func againturnplusbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeAgainTurnPlusButtonClick", parameters: nil) // Firebase Events
+        
         againturnscreentext.text = String(againturnint)
         box1.isUserInteractionEnabled = false
         box2.isUserInteractionEnabled = false
@@ -2651,6 +2678,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         buttonsound()
     }
     @IBAction func hintplusbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeHintPlusButtonClick", parameters: nil) // Firebase Events
+        
         hintbuyscreentext.text = String(hintint)
         box1.isUserInteractionEnabled = false
         box2.isUserInteractionEnabled = false
@@ -2683,8 +2713,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     
     @IBAction func hintbuythousandcoinsbutton(_ sender: Any) {
-        if coins >= 1000 {
-            coins -= 1000
+        
+        Analytics.logEvent("ThreeHintBuyButtonClick", parameters: nil) // Firebase Events
+        
+        if coins >= 1200 {
+            coins -= 1200
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             hintint += 1
@@ -2697,19 +2730,26 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
+            coinsbuygoshop.isHidden = false
             lifeisoversound()
         }
     }
     @IBAction func hintbuyadsbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeHintAdButtonClick", parameters: nil) // Firebase Events
+        
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
     }
     
     @IBAction func againturncoinsbuybutton(_ sender: Any) {
-        if coins >= 1000 {
+        
+        Analytics.logEvent("ThreeAgainTurnBuyButtonClick", parameters: nil) // Firebase Events
+        
+        if coins >= 1500 {
             okaysound()
-            coins -= 1000
+            coins -= 1500
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             againturnint += 1
@@ -2722,15 +2762,22 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
+            coinsbuygoshop.isHidden = false
         }
     }
     @IBAction func againturnadsbuybutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeAgainTurnAdButtonClick", parameters: nil) // Firebase Events
+        
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
     }
     
     @IBAction func chancebuycoinsbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeChanceBuyButtonClick", parameters: nil) // Firebase Events
+        
         if coins >= 1000 {
             coins -= 1000
             UserDefaults.standard.set(coins, forKey: "coinskey")
@@ -2745,10 +2792,14 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             warningclose.isHidden = false
             warning.isHidden = false
             warningtext.isHidden = false
+            coinsbuygoshop.isHidden = false
             lifeisoversound()
         }
     }
     @IBAction func chancebuyadsbutton(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeChanceAdButtonClick", parameters: nil) // Firebase Events
+        
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
@@ -2769,7 +2820,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
         
         if againturnscreen.isHidden == false {
-            againturnint += 2
+            againturnint += 1
             UserDefaults.standard.set(againturnint, forKey: "againturnkey")
             againturntext.text = String(againturnint)
             againturnscreentext.text = String(againturnint)
@@ -2951,29 +3002,29 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
              i2390()
         }
             
-       /* else if 1792...2390 ~= ratio { // iPad Series
-            homeoutlet.frame = CGRect(x: 377, y: 55, width: 80, height: 80)
-            coinsimage.frame = CGRect(x: 515, y: 60, width: 169, height: 63.7)
-            gamescreencup.frame = CGRect(x: 150, y: 60, width: 169, height: 63.7)
+        else if 1792...2390 ~= ratio { // iPad Series
+            homeoutlet.frame = CGRect(x: 344, y: 35, width: 80, height: 80)
+            coinsimage.frame = CGRect(x: 479.5, y: 40, width: 169, height: 63.7)
+            gamescreencup.frame = CGRect(x: 119.5, y: 40, width: 169, height: 63.7)
             
-            coinstexttreeletter.frame.origin = CGPoint(x: 580, y: 70)
+            coinstexttreeletter.frame.origin = CGPoint(x: 540, y: 53)
             coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
             
-            highscoretext.frame.origin = CGPoint(x: 150, y: 72)
+            highscoretext.frame.origin = CGPoint(x: 130, y: 55)
             highscoretext.font = highscoretext.font.withSize(30)
             
-            treeletterword.frame.origin = CGPoint(x: 149.25, y: 200)
-            treeletterword.font = treeletterword.font.withSize(120)
+            treeletterword.frame.origin = CGPoint(x: 137.25, y: 170)
+            treeletterword.font = treeletterword.font.withSize(100)
             
-            box1.frame = CGRect(x: 137, y: 330, width: 180, height: 180)
-            box2.frame = CGRect(x: 327, y: 330, width: 180, height: 180)
-            box3.frame = CGRect(x: 517, y: 330, width: 180, height: 180)
-            box4.frame = CGRect(x: 137, y: 520, width: 180, height: 180)
-            box5.frame = CGRect(x: 327, y: 520, width: 180, height: 180)
-            box6.frame = CGRect(x: 517, y: 520, width: 180, height: 180)
-            box7.frame = CGRect(x: 137, y: 710, width: 180, height: 180)
-            box8.frame = CGRect(x: 327, y: 710, width: 180, height: 180)
-            box9.frame = CGRect(x: 517, y: 710, width: 180, height: 180)
+            box1.frame = CGRect(x: 149, y: 280, width: 150, height: 150)
+            box2.frame = CGRect(x: 309, y: 280, width: 150, height: 150)
+            box3.frame = CGRect(x: 469, y: 280, width: 150, height: 150)
+            box4.frame = CGRect(x: 149, y: 440, width: 150, height: 150)
+            box5.frame = CGRect(x: 309, y: 440, width: 150, height: 150)
+            box6.frame = CGRect(x: 469, y: 440, width: 150, height: 150)
+            box7.frame = CGRect(x: 149, y: 600, width: 150, height: 150)
+            box8.frame = CGRect(x: 309, y: 600, width: 150, height: 150)
+            box9.frame = CGRect(x: 469, y: 600, width: 150, height: 150)
             
             letter1.font = letter1.font.withSize(80)
             letter2.font = letter2.font.withSize(80)
@@ -2985,48 +3036,56 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             letter8.font = letter8.font.withSize(80)
             letter9.font = letter9.font.withSize(80)
             
-            turnoutlet.frame = CGRect(x: 177, y: 930, width: 480, height: 136.5)
+            turnoutlet.frame = CGRect(x: 192, y: 780, width: 384, height: 109.2)
             turnwordoutlet.center = turnoutlet.center
             turnwordoutlet.font = turnwordoutlet.font.withSize(40)
             
-            second.frame.origin = CGPoint(x: second.frame.origin.x, y: 930)
+            second.frame.origin = CGPoint(x: second.frame.origin.x, y: 780)
             
-            againturnoutlet.frame = CGRect(x: 342, y: 910, width: 150, height: 150)
-            chanceoutlet.frame = CGRect(x: 142, y: 910, width: 150, height: 150)
-            hintoutlet.frame = CGRect(x: 542, y: 910, width: 150, height: 150)
+            againturnoutlet.frame = CGRect(x: 324, y: 780, width: 120, height: 120)
+            chanceoutlet.frame = CGRect(x: 154, y: 780, width: 120, height: 120)
+            hintoutlet.frame = CGRect(x: 494, y: 780, width: 120, height: 120)
             
-            chancenumber.frame.origin = CGPoint(x: 125, y: 1040)
-            chanceplus.frame = CGRect(x: 250, y: 1047, width: 50, height: 50)
-            chancetext.frame.origin = CGPoint(x: 155, y: 1047)
-            chancetext.font = chancetext.font.withSize(30)
+            chancenumber.frame.origin = CGPoint(x: 123, y: 890)
+            chanceplus.frame = CGRect(x: 238, y: 894, width: 50, height: 50)
+            chancetext.frame.origin = CGPoint(x: 150, y: 897)
+            chancetext.font = chancetext.font.withSize(27)
             
-            turnagainnumber.frame.origin = CGPoint(x: 320, y: 1040)
-            againturnplus.frame = CGRect(x: 445, y: 1047, width: 50, height: 50)
-            againturntext.frame.origin = CGPoint(x: 350, y: 1053)
-            againturntext.font = againturntext.font.withSize(30)
+            turnagainnumber.frame.origin = CGPoint(x: 290, y: 890)
+            againturnplus.frame = CGRect(x: 405, y: 894, width: 50, height: 50)
+            againturntext.frame.origin = CGPoint(x: 315, y: 902)
+            againturntext.font = againturntext.font.withSize(27)
             
-            hintnumber.frame.origin = CGPoint(x: 520, y: 1040)
-            hintplus.frame = CGRect(x: 645, y: 1047, width: 50, height: 50)
-            hinttext.frame.origin = CGPoint(x: 545, y: 1056)
-            hinttext.font = hinttext.font.withSize(30)
+            hintnumber.frame.origin = CGPoint(x: 460, y: 890)
+            hintplus.frame = CGRect(x: 575, y: 894, width: 50, height: 50)
+            hinttext.frame.origin = CGPoint(x: 485, y: 903)
+            hinttext.font = hinttext.font.withSize(27)
             
-            warningclose.frame = CGRect(x: 630, y: 325, width: 120, height: 120)
+            warningclose.frame = CGRect(x: 570, y: 270, width: 100, height: 100)
             
-            chancebuythousandcoins.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-            chancebuyads.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-            chancescreentext.font = chancescreentext.font.withSize(30)
+            chancebuythousandcoins.frame = CGRect(x: 148.2, y: 580, width: 230.4, height: 107.2)
+            chancebuyads.frame = CGRect(x: 388.8, y: 580, width: 230.4, height: 99.2)
+                     chancescreentext.font = chancescreentext.font.withSize(40)
+                     
+            againturncoinsbuy.frame = CGRect(x: 148.2, y: 570, width: 230.4, height: 107.2)
+            againturnadsbuy.frame = CGRect(x: 388.8, y: 570, width: 230.4, height: 99.2)
+                     againturnscreentext.font = againturnscreentext.font.withSize(40)
+                     
+            hintbuythousandcoins.frame = CGRect(x: 148.2, y: 570, width: 230.4, height: 107.2)
+            hintbuyads.frame = CGRect(x: 388.8, y: 570, width: 230.4, height: 99.2)
+                     hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
+        
+            finishpanelhome.frame = CGRect(x: 244, y: 1100, width: 120, height: 120)
+            finishpanelnext.frame = CGRect(x: 404, y: 1100, width: 120, height: 120)
+            finishpaneltext.frame.origin = CGPoint(x: finishpaneltext.frame.origin.x, y: 1000)
             
-            againturncoinsbuy.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-            againturnadsbuy.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-            againturnscreentext.font = againturnscreentext.font.withSize(30)
+            highscorewarningclose.frame = CGRect(x: 347, y: 680, width: 80, height: 80)
+            highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 580)
+            highscorewarningtext.font = highscorewarningtext.font.withSize(50)
             
-            hintbuythousandcoins.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-            hintbuyads.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-            hintbuyscreentext.font = hintbuyscreentext.font.withSize(30)
-            
-            finishpanelhome.frame = CGRect(x: 277, y: finishpanelhome.frame.origin.y, width: 120, height: 120)
-            finishpanelnext.frame = CGRect(x: 437, y: finishpanelnext.frame.origin.y, width: 120, height: 120)
-        } */
+            warningtext.font = warningtext.font.withSize(35)
+            warningtext.frame = CGRect(x: 130, y: 400, width: 500, height: 100)
+        } 
     }
     
     func i888() { // iPhone 5-5S-5C-SE Series
@@ -3056,46 +3115,33 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         blurbackgroundtrtext.font = blurbackgroundtrtext.font.withSize(50)
         
          warningtext.font = warningtext.font.withSize(20)
+        
+        highscorewarningclose.frame = CGRect(x: 138, y: 360, width: 50, height: 50)
+               highscorewarningtext.font = highscorewarningtext.font.withSize(20)
     }
     
-    func i1187() { // iPhone X - XS Series
-        coinsimage.center = self.view.center
-                   gamescreencup.center = self.view.center
-                   homeoutlet.center = self.view.center
-                   
-                   homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x - 3, y: 55, width: 55, height: 55)
-                   coinsimage.frame = CGRect(x: coinsimage.frame.origin.x + 100, y: 57.5, width: 130, height: 49)
-                   gamescreencup.frame = CGRect(x: gamescreencup.frame.origin.x - 100, y: 57.5, width: 130, height: 49)
-                   
+    func i1187() { // iPhone X - XS - 11 Pro Series
+        homeoutlet.frame = CGRect(x: 160, y: 55, width: 55, height: 55)
+        coinsimage.frame = CGRect(x: 222.5, y: 57.5, width: 130, height: 49)
+        gamescreencup.frame = CGRect(x: 22.5, y: 57.5, width: 130, height: 49)
+        
                    highscoretext.frame.origin = CGPoint(x: 51, y: 68)
                    coinstexttreeletter.frame.origin = CGPoint(x: 274, y: 67)
-                   
-                   box1.center = self.view.center
-                   box2.center = self.view.center
-                   box3.center = self.view.center
-                   box4.center = self.view.center
-                   box5.center = self.view.center
-                   box6.center = self.view.center
-                   box7.center = self.view.center
-                   box8.center = self.view.center
-                   box9.center = self.view.center
-                   
-                   box1.frame = CGRect(x: box1.frame.origin.x - 110.5, y: box1.frame.origin.y - 105, width: 100, height: 100)
-                   box2.frame = CGRect(x: box2.frame.origin.x - 3, y: box2.frame.origin.y - 105, width: 100, height: 100)
-                   box3.frame = CGRect(x: box3.frame.origin.x + 104.5, y: box3.frame.origin.y - 105, width: 100, height: 100)
-                   box4.frame = CGRect(x: box4.frame.origin.x - 110.5, y: box4.frame.origin.y + 2.5, width: 100, height: 100)
-                   box5.frame = CGRect(x: box5.frame.origin.x - 3, y: box5.frame.origin.y + 2.5, width: 100, height: 100)
-                   box6.frame = CGRect(x: box6.frame.origin.x + 104.5, y: box6.frame.origin.y + 2.5, width: 100, height: 100)
-                   box7.frame = CGRect(x: box7.frame.origin.x - 110.5, y: box7.frame.origin.y + 110, width: 100, height: 100)
-                   box8.frame = CGRect(x: box8.frame.origin.x - 3, y: box8.frame.origin.y + 110, width: 100, height: 100)
-                   box9.frame = CGRect(x: box9.frame.origin.x + 104.5, y: box9.frame.origin.y + 110, width: 100, height: 100)
-                   
-                   treeletterword.center = self.view.center
+                  
+        box1.frame = CGRect(x: 32, y: 246, width: 100, height: 100)
+        box2.frame = CGRect(x: 137.5, y: 246, width: 100, height: 100)
+        box3.frame = CGRect(x: 243, y: 246, width: 100, height: 100)
+        box4.frame = CGRect(x: 32, y: 351.5, width: 100, height: 100)
+        box5.frame = CGRect(x: 137.5, y: 351.5, width: 100, height: 100)
+        box6.frame = CGRect(x: 243, y: 351.5, width: 100, height: 100)
+        box7.frame = CGRect(x: 32, y: 457, width: 100, height: 100)
+        box8.frame = CGRect(x: 137.5, y: 457, width: 100, height: 100)
+        box9.frame = CGRect(x: 243, y: 457, width: 100, height: 100)
+        
                    treeletterword.font = treeletterword.font.withSize(80)
-                   treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 150)
-                   
-                   turnoutlet.center = self.view.center
-                   turnoutlet.frame = CGRect(x: 40, y: 600, width: 295.2, height: 84)
+                   treeletterword.frame.origin = CGPoint(x: 67, y: 150)
+        
+                   turnoutlet.frame = CGRect(x: 40, y: 600, width: 295, height: 84)
                   
                    turnwordoutlet.center = turnoutlet.center
                    
@@ -3103,17 +3149,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                    againturnoutlet.center = self.view.center
                    hintoutlet.center = self.view.center
                    
-                   chanceoutlet.frame = CGRect(x: chanceoutlet.frame.origin.x - 115, y: 580, width: 90, height: 90)
-                   againturnoutlet.frame = CGRect(x: againturnoutlet.frame.origin.x - 2.5, y: 580, width: 90, height: 90)
-                   hintoutlet.frame = CGRect(x: hintoutlet.frame.origin.x + 110, y: 580, width: 90, height: 90)
-                   
-                   chanceplus.center = self.view.center
-                   hintplus.center = self.view.center
-                   againturnplus.center = self.view.center
-                   
-                   chanceplus.frame = CGRect(x: chanceplus.frame.origin.x - 80, y: 667, width: 35, height: 35)
-                   hintplus.frame = CGRect(x: hintplus.frame.origin.x + 145, y: 667, width: 35, height: 35)
-                   againturnplus.frame = CGRect(x: againturnplus.frame.origin.x + 32, y: 667, width: 35, height: 35)
+        chanceoutlet.frame = CGRect(x: 27.5, y: 580, width: 90, height: 90)
+        againturnoutlet.frame = CGRect(x: 142.5, y: 580, width: 90, height: 90)
+        hintoutlet.frame = CGRect(x: 257.5, y: 580, width: 90, height: 90)
+        
+        chanceplus.frame = CGRect(x: 94.5, y: 667, width: 35, height: 35)
+        hintplus.frame = CGRect(x: 319.5, y: 667, width: 35, height: 35)
+        againturnplus.frame = CGRect(x: 207, y: 667, width: 35, height: 35)
                    
                    hintnumber.frame.origin = CGPoint(x: 258, y: 662)
                    turnagainnumber.frame.origin = CGPoint(x: 146, y: 662)
@@ -3122,42 +3164,35 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                    againturntext.frame.origin = CGPoint(x: 158, y: 672)
                    chancetext.frame.origin = CGPoint(x: 46, y: 668)
                    
-                  chancebuythousandcoins.frame = CGRect(x: chancebuythousandcoins.frame.origin.x, y: chancebuythousandcoins.frame.origin.y - 5, width: 158, height: 74)
-                  chancebuyads.frame = CGRect(x: chancebuyads.frame.origin.x, y: chancebuyads.frame.origin.y, width: 158, height: 79)
+        chancebuythousandcoins.frame = CGRect(x: 33.3, y: 450, width: 158.4, height: 73.7)
+        chancebuyads.frame = CGRect(x: 188.3, y: 450, width: 158.4, height: 68.2)
+        
+        againturncoinsbuy.frame = CGRect(x: 33.3, y: 440, width: 158.4, height: 73.7)
+        againturnadsbuy.frame = CGRect(x: 188.3, y: 440, width: 158.4, height: 68.2)
                    
-                  againturncoinsbuy.frame = CGRect(x: againturncoinsbuy.frame.origin.x, y: againturncoinsbuy.frame.origin.y - 15, width: 158, height: 74)
-                  againturnadsbuy.frame = CGRect(x: againturnadsbuy.frame.origin.x, y: againturnadsbuy.frame.origin.y - 10, width: 158, height: 79)
+        hintbuythousandcoins.frame = CGRect(x: 33.3, y: 440, width: 158, height: 74)
+        hintbuyads.frame = CGRect(x: 188.3, y: 440, width: 158.4, height: 68.2)
                    
-                  hintbuythousandcoins.frame = CGRect(x: hintbuythousandcoins.frame.origin.x, y: hintbuythousandcoins.frame.origin.y - 15, width: 158, height: 74)
-                  hintbuyads.frame = CGRect(x: hintbuyads.frame.origin.x, y: hintbuyads.frame.origin.y - 10, width: 158, height: 79)
+                  warningclose.frame = CGRect(x: 311, y: 244, width: 60, height: 60)
                    
-                  warningclose.frame = CGRect(x: warningclose.frame.origin.x, y: warningclose.frame.origin.y + 20, width: 60, height: 60)
-                   
-                 finishpanelnext.frame = CGRect(x: finishpanelnext.frame.origin.x, y: finishpanelnext.frame.origin.y, width: 80, height: 79)
-                 finishpanelhome.frame = CGRect(x: finishpanelhome.frame.origin.x, y: finishpanelhome.frame.origin.y, width: 80, height: 79)
+                 finishpanelnext.frame = CGRect(x: 197, y: 913, width: 80, height: 79)
+                 finishpanelhome.frame = CGRect(x: 97, y: 913, width: 80, height: 79)
+               
+        highscorewarningclose.frame.origin = CGPoint(x: 160, y: 490)
+        highscorewarningtext.frame.origin = CGPoint(x: 127, y: 426)
+       
+      coinsbuygoshop.frame = CGRect(x: 81.5, y: 404, width: 212, height: 77)
     }
     
-    func i1310() { // XS MAX - XR Series
-                   coinsimage.center = self.view.center
-                   gamescreencup.center = self.view.center
-                   homeoutlet.center = self.view.center
+    func i1310() { // XS MAX - XR - 11 - 11 Pro Max Series
+
+        homeoutlet.frame = CGRect(x: 179.5, y: 55, width: 55, height: 55)
+        coinsimage.frame = CGRect(x: 252, y: 57.5, width: 130, height: 49)
+        gamescreencup.frame = CGRect(x: 32, y: 57.5, width: 130, height: 49)
                    
-                   homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x, y: 55, width: 55, height: 55)
-                   coinsimage.frame = CGRect(x: 250.25, y: 57.5, width: 130, height: 49)
-                   gamescreencup.frame = CGRect(x: 35.25, y: 57.5, width: 130, height: 49)
+                   highscoretext.frame.origin = CGPoint(x: 60, y: 67)
+                   coinstexttreeletter.frame.origin = CGPoint(x: 300, y: 65)
                    
-                   highscoretext.frame.origin = CGPoint(x: 60, y: 68)
-                   coinstexttreeletter.frame.origin = CGPoint(x: 300, y: 66)
-                   
-                   box1.center = self.view.center
-                   box2.center = self.view.center
-                   box3.center = self.view.center
-                   box4.center = self.view.center
-                   box5.center = self.view.center
-                   box6.center = self.view.center
-                   box7.center = self.view.center
-                   box8.center = self.view.center
-                   box9.center = self.view.center
                    
                    box1.frame = CGRect(x: 27.75, y: 282.5, width: 115, height: 115)
                    box2.frame = CGRect(x: 150.25, y: 282.5, width: 115, height: 115)
@@ -3169,34 +3204,22 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                    box8.frame = CGRect(x: 150.25, y: 527.5, width: 115, height: 115)
                    box9.frame = CGRect(x: 273.75, y: 527.5, width: 115, height: 115)
                    
-                   treeletterword.center = self.view.center
                    treeletterword.font = treeletterword.font.withSize(90)
                    treeletterword.frame.origin = CGPoint(x: 73.75, y: 160)
                    
-                   turnoutlet.center = self.view.center
                    turnoutlet.frame = CGRect(x: 45, y: 670, width: 324.72, height: 92.4)
-                   
-                   second.center = self.view.center
-                   second.frame.origin = CGPoint(x: second.frame.origin.x, y: 650)
-                   
+        
+                   second.frame.origin = CGPoint(x: 143, y: 650)
+        
                    turnwordoutlet.center = turnoutlet.center
                    
-                   chanceoutlet.center = box7.center
-                   againturnoutlet.center = box8.center
-                   hintoutlet.center = box9.center
-                   
-                   chanceoutlet.frame = CGRect(x: chanceoutlet.frame.origin.x, y: 670, width: 90, height: 90)
-                   againturnoutlet.frame = CGRect(x: againturnoutlet.frame.origin.x, y: 670, width: 90, height: 90)
-                   hintoutlet.frame = CGRect(x: hintoutlet.frame.origin.x, y: 670, width: 90, height: 90)
-                   
-                   chanceplus.center = self.view.center
-                   hintplus.center = self.view.center
-                   againturnplus.center = self.view.center
-                   
+                   chanceoutlet.frame = CGRect(x: 41, y: 670, width: 90, height: 90)
+                   againturnoutlet.frame = CGRect(x: 163.5, y: 670, width: 90, height: 90)
+                   hintoutlet.frame = CGRect(x: 288, y: 670, width: 90, height: 90)
+        
                    chanceplus.frame = CGRect(x: 107.5, y: 757, width: 35, height: 35)
                    hintplus.frame = CGRect(x: 347.75, y: 757, width: 35, height: 35)
                    againturnplus.frame = CGRect(x: 227.75, y: 757, width: 35, height: 35)
-                   
                    
                    hintnumber.frame.origin = CGPoint(x: 280, y: 750)
                    chancenumber.frame.origin = CGPoint(x: 40, y: 750)
@@ -3205,20 +3228,25 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                    hinttext.frame.origin = CGPoint(x: 293, y: 763)
                    againturntext.frame.origin = CGPoint(x: 174, y: 760)
                    chancetext.frame.origin = CGPoint(x: 54, y: 756)
+         
+        chancebuythousandcoins.frame = CGRect(x: 47.8, y: 500, width: 158.4, height: 73.7)
+        chancebuyads.frame = CGRect(x: 207.8, y: 500, width: 158.4, height: 68.2)
+        
+        againturncoinsbuy.frame = CGRect(x: 47.8, y: 490, width: 158.4, height: 73.7)
+        againturnadsbuy.frame = CGRect(x: 207.8, y: 490, width: 158.4, height: 68.2)
                    
-                   chancebuythousandcoins.frame = CGRect(x: 56, y: 498.5, width: 158, height: 74)
-                   chancebuyads.frame = CGRect(x: 210.5, y: 486, width: 158, height: 79)
+        hintbuythousandcoins.frame = CGRect(x: 47.8, y: 490, width: 158, height: 74)
+        hintbuyads.frame = CGRect(x: 207.8, y: 490, width: 158, height: 68.2)
                    
-                   againturncoinsbuy.frame = CGRect(x: 56, y: 490, width: 158, height: 74)
-                   againturnadsbuy.frame = CGRect(x: 209.5, y: 476, width: 158, height: 79)
+        warningclose.frame = CGRect(x: 343.3, y: 267, width: 60, height: 60)
                    
-                   hintbuythousandcoins.frame = CGRect(x: 56, y: 488.5, width: 158, height: 74)
-                   hintbuyads.frame = CGRect(x: 210.5, y: 476, width: 158, height: 79)
-                   
-                   warningclose.frame = CGRect(x: warningclose.frame.origin.x, y: warningclose.frame.origin.y + 20, width: 60, height: 60)
-                   
-                   finishpanelnext.frame = CGRect(x: finishpanelnext.frame.origin.x, y: finishpanelnext.frame.origin.y, width: 80, height: 79)
-                   finishpanelhome.frame = CGRect(x: finishpanelhome.frame.origin.x, y: finishpanelhome.frame.origin.y, width: 80, height: 79)
+        finishpanelnext.frame = CGRect(x: 217.3, y: 1007.3, width: 80, height: 79)
+        finishpanelhome.frame = CGRect(x: 107, y: 1007.3, width: 80, height: 79)
+        
+        highscorewarningclose.frame.origin = CGPoint(x: 179, y: 543)
+        highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 470)
+        
+        coinsbuygoshop.frame = CGRect(x: 101, y: 450, width: 212, height: 77)
     }
     
     func i2028() { // iPad Pro 11 inch
@@ -3282,20 +3310,26 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
           
          warningclose.frame = CGRect(x: 630, y: 325, width: 120, height: 120)
           
-        chancebuythousandcoins.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-          chancebuyads.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-          chancescreentext.font = chancescreentext.font.withSize(30)
+        chancebuythousandcoins.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
+          chancebuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+          chancescreentext.font = chancescreentext.font.withSize(40)
           
-          againturncoinsbuy.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-          againturnadsbuy.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-          againturnscreentext.font = againturnscreentext.font.withSize(30)
+          againturncoinsbuy.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
+          againturnadsbuy.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+          againturnscreentext.font = againturnscreentext.font.withSize(40)
           
-          hintbuythousandcoins.frame = CGRect(x: 237, y: 700, width: 165, height: 90)
-          hintbuyads.frame = CGRect(x: 432, y: 686, width: 165, height: 100)
-          hintbuyscreentext.font = hintbuyscreentext.font.withSize(30)
+          hintbuythousandcoins.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
+          hintbuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+          hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
           
-         finishpanelhome.frame = CGRect(x: 277, y: finishpanelhome.frame.origin.y, width: 120, height: 120)
-          finishpanelnext.frame = CGRect(x: 437, y: finishpanelnext.frame.origin.y, width: 120, height: 120)
+        finishpanelhome.frame = CGRect(x: 277, y: 1342.5, width: 120, height: 120)
+        finishpanelnext.frame = CGRect(x: 437, y: 1342.5, width: 120, height: 120)
+        
+        highscorewarningclose.frame = CGRect(x: 370, y: 790, width: 100, height: 100)
+        highscorewarningtext.font = highscorewarningtext.font.withSize(50)
+        highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 675)
+        
+        coinsbuygoshop.frame = CGRect(x: 226.2, y: 600, width: 381.6, height: 138.6)
     }
     
     func i1946() { // iPad Air (3rd Generation)
@@ -3360,17 +3394,17 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                               
                               warningclose.frame = CGRect(x: 630, y: 300, width: 120, height: 120)
                               
-                              chancebuythousandcoins.frame = CGRect(x: 237, y: 650, width: 165, height: 90)
-                              chancebuyads.frame = CGRect(x: 432, y: 636, width: 165, height: 100)
-                              chancescreentext.font = chancescreentext.font.withSize(30)
+        chancebuythousandcoins.frame = CGRect(x: 181.8, y: 630, width: 230.4, height: 107.2)
+        chancebuyads.frame = CGRect(x: 431.8, y: 630, width: 230.4, height: 99.2)
+        chancescreentext.font = chancescreentext.font.withSize(40)
                               
-                              againturncoinsbuy.frame = CGRect(x: 237, y: 650, width: 165, height: 90)
-                              againturnadsbuy.frame = CGRect(x: 432, y: 636, width: 165, height: 100)
-                              againturnscreentext.font = againturnscreentext.font.withSize(30)
+        againturncoinsbuy.frame = CGRect(x: 181.8, y: 620, width: 230.4, height: 107.2)
+        againturnadsbuy.frame = CGRect(x: 431.8, y: 620, width: 230.4, height: 99.2)
+        againturnscreentext.font = againturnscreentext.font.withSize(40)
                               
-                              hintbuythousandcoins.frame = CGRect(x: 237, y: 650, width: 165, height: 90)
-                              hintbuyads.frame = CGRect(x: 432, y: 636, width: 165, height: 100)
-                              hintbuyscreentext.font = hintbuyscreentext.font.withSize(30)
+        hintbuythousandcoins.frame = CGRect(x: 181.8, y: 620, width: 230.4, height: 107.2)
+        hintbuyads.frame = CGRect(x: 431.8, y: 620, width: 230.4, height: 99.2)
+        hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
                    
                               finishpaneltext.frame.origin = CGPoint(x: 112.25, y: 1100)
                               finishpanelhome.frame = CGRect(x: 277, y: 1200, width: 120, height: 120)
@@ -3378,6 +3412,12 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                    
                               warningtext.font = warningtext.font.withSize(30)
                               warningtext.frame = CGRect(x: 170, y: 220, width: 500, height: 500)
+        
+        highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 630)
+        highscorewarningtext.font = highscorewarningtext.font.withSize(50)
+        highscorewarningclose.frame = CGRect(x: 375, y: 740, width: 90, height: 90)
+        
+        coinsbuygoshop.frame = CGRect(x: 227.2, y: 550, width: 381.6, height: 138.6)
     }
     
     func i2390() { // iPad Pro 12.9 inch
@@ -3472,10 +3512,18 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         winpanelcoins.font = winpanelcoins.font.withSize(80)
         winpanelcoins.frame.origin = CGPoint(x: 800, y: 1405)
         winpanelcoinsplus.frame.origin = CGPoint(x: 705, y: 1410)
+        
+        highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 770)
+               highscorewarningtext.font = highscorewarningtext.font.withSize(50)
+        highscorewarningclose.frame = CGRect(x: 466, y: 910, width: 100, height: 100)
+        
+         coinsbuygoshop.frame = CGRect(x: 321.2, y: 670, width: 381.6, height: 138.6)
     }
-    
-    func fireworks() {
-       
+  
+    @IBAction func coinsbuygoshop(_ sender: Any) {
+        
+        Analytics.logEvent("ThreeGoShopButtonClick", parameters: nil) // Firebase Events
+        
     }
     
 }
