@@ -14,6 +14,7 @@
 		1E384061235C9B7B00F366D0 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384060235C9B7A00F366D0 /* okay.wav */; };
 		1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384062235CA0FE00F366D0 /* oneboxturn.wav */; };
 		1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384064235CA10600F366D0 /* twoboxturn.wav */; };
+		1E5786C523B52CBF003D23A0 /* fourlettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5786C423B52CBF003D23A0 /* fourlettergame.swift */; };
 		1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F832F2358E13100D96AD2 /* alarm.m4a */; };
 		1E7F83322358E5CE00D96AD2 /* true.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83312358E5CE00D96AD2 /* true.wav */; };
 		1E7F83342358E7D200D96AD2 /* nextgame.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83332358E7D200D96AD2 /* nextgame.wav */; };
@@ -42,6 +43,7 @@
 		1E384060235C9B7A00F366D0 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
 		1E384062235CA0FE00F366D0 /* oneboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oneboxturn.wav; sourceTree = "<group>"; };
 		1E384064235CA10600F366D0 /* twoboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twoboxturn.wav; sourceTree = "<group>"; };
+		1E5786C423B52CBF003D23A0 /* fourlettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourlettergame.swift; sourceTree = "<group>"; };
 		1E7F832F2358E13100D96AD2 /* alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.m4a; sourceTree = "<group>"; };
 		1E7F83312358E5CE00D96AD2 /* true.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = true.wav; sourceTree = "<group>"; };
 		1E7F83332358E7D200D96AD2 /* nextgame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nextgame.wav; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				1E74D4E022D8DE4600BE965A /* Fonts */,
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
 				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
+				1E5786C423B52CBF003D23A0 /* fourlettergame.swift */,
 				1EA7D3EA22CD260F00C0970B /* ViewController.swift */,
 				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
@@ -294,6 +297,7 @@
 			files = (
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
 				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
+				1E5786C523B52CBF003D23A0 /* fourlettergame.swift in Sources */,
 				1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
