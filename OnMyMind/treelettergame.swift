@@ -14,17 +14,21 @@ import AVFoundation
 
 class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
-   
+    
+    var threelettersectioncontrol = false
+    var fourlettersectioncontrol = false
+    var fivelettersectioncontrol = false
+    var sixlettersectioncontrol = false
     
     var boxpieces = 9
     var randomletter : [String] = []
     var rmix = [String]()
     var nineletter = [String]()
-
+    
     @IBOutlet weak var treeletterword: UILabel!
     
     @IBOutlet weak var second: UILabel!
-    var time = 2
+    var time = Int()
     
     @IBOutlet weak var letter1: UILabel!
     @IBOutlet weak var letter2: UILabel!
@@ -111,7 +115,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     var trreplacementword = String()
     
     var score = Int()
-    var highscore = 0
+    var threeletterhighscore = 0
+    var fourletterhighscore = 0
+    var fiveletterhighscore = 0
+    var sixletterhighscore = 0
+    
     @IBOutlet weak var highscoretext: UILabel!
     @IBOutlet weak var highscorewarning: UIImageView!
     @IBOutlet weak var highscorewarningtext: UILabel!
@@ -200,12 +208,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     @IBOutlet weak var coinsbuygoshop: UIButton!
     
-    
+    var soundcontrol = true
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
-       
+        
+        
         Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
         
         responsive()
@@ -218,21 +227,63 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         interstitial.load(request)
         // GOOGLE ADS
         
-        let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
-        if firsopengame2  {
-            highscore = UserDefaults.standard.object(forKey: "highscorekey") as! Int
-            highscoretext.text = String(highscore)
+        
+        if threelettersectioncontrol == true {
+            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
+            if firsopengame2  {
+                threeletterhighscore = UserDefaults.standard.object(forKey: "threeletterhighscorekey") as! Int
+                /*   highscoretext.text = String(threeletterhighscore)
+                 coins = 40000 // DELETE
+                 UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
+                 threeletterhighscore = 0 // DELETE
+                 UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey") // DELETE */
+            }
+            else {
+                UserDefaults.standard.set(true, forKey: "firsopengame2")
+                highscoretext.text = String(threeletterhighscore)
+                UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey")
+            }
+        }
             
-          /*  coins = 40000 // DELETE
-            UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
-            highscore = 0 // DELETE
-            UserDefaults.standard.set(highscore, forKey: "highscorekey") // DELETE */
+        else if fourlettersectioncontrol == true {
+            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame3")
+            if firsopengame2  {
+                fourletterhighscore = UserDefaults.standard.object(forKey: "fourletterhighscorekey") as! Int
+                highscoretext.text = String(fourletterhighscore)
+            }
+            else {
+                UserDefaults.standard.set(true, forKey: "firsopengame3")
+                highscoretext.text = String(fourletterhighscore)
+                UserDefaults.standard.set(fourletterhighscore, forKey: "fourletterhighscorekey")
+            }
         }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame2")
-            highscoretext.text = String(highscore)
-            UserDefaults.standard.set(highscore, forKey: "highscorekey")
+            
+        else if fivelettersectioncontrol == true {
+            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame4")
+            if firsopengame2  {
+                fiveletterhighscore = UserDefaults.standard.object(forKey: "fiveletterhighscorekey") as! Int
+                highscoretext.text = String(fiveletterhighscore)
+            }
+            else {
+                UserDefaults.standard.set(true, forKey: "firsopengame4")
+                highscoretext.text = String(fiveletterhighscore)
+                UserDefaults.standard.set(fiveletterhighscore, forKey: "fiveletterhighscorekey")
+            }
         }
+            
+        else if sixlettersectioncontrol == true {
+            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame5")
+            if firsopengame2  {
+                sixletterhighscore = UserDefaults.standard.object(forKey: "sixletterhighscorekey") as! Int
+                highscoretext.text = String(sixletterhighscore)
+            }
+            else {
+                UserDefaults.standard.set(true, forKey: "firsopengame5")
+                highscoretext.text = String(sixletterhighscore)
+                UserDefaults.standard.set(sixletterhighscore, forKey: "sixletterhighscorekey")
+            }
+        }
+        else {}
         
         if finishpanelbool == false { // finishpanel sürekli aynı konumdan aşağıdan yukarı hareket etmesini sağlıyor.
             finishpanelx = Int(finishpanel.frame.origin.x)
@@ -271,17 +322,60 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             winpanelnexttexty = Int(winpanelnexttext.frame.origin.y)
             winpanelbool = true
         }
-       
-        let dbrandom = Int.random(in: 1...498)
-        let dbrandomstring = String(dbrandom)
         
-        ref = Database.database().reference()
-        ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-            self.replacementword = snapshot.value as! String
+        if threelettersectioncontrol == true {
+            let dbrandom = Int.random(in: 1...498)
+            let dbrandomstring = String(dbrandom)
+            
+            ref = Database.database().reference()
+            ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.replacementword = snapshot.value as! String
+            }
+            ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.trreplacementword = snapshottwo.value as! String
+            }
         }
-        ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-            self.trreplacementword = snapshottwo.value as! String
+        else if fourlettersectioncontrol == true {
+            let dbrandom = Int.random(in: 1...38)
+            let dbrandomstring = String(dbrandom)
+            
+            ref = Database.database().reference()
+            ref.child("4harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.replacementword = snapshot.value as! String
+            }
+            ref.child("4harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.trreplacementword = snapshottwo.value as! String
+            }
         }
+        else if fivelettersectioncontrol == true {
+            let dbrandom = Int.random(in: 1...1)
+            let dbrandomstring = String(dbrandom)
+            
+            ref = Database.database().reference()
+            ref.child("5harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.replacementword = snapshot.value as! String
+            }
+            ref.child("5harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.trreplacementword = snapshottwo.value as! String
+            }
+        }
+        else if sixlettersectioncontrol == true {
+            let dbrandom = Int.random(in: 1...1)
+            let dbrandomstring = String(dbrandom)
+            
+            ref = Database.database().reference()
+            ref.child("6harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.replacementword = snapshot.value as! String
+            }
+            ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.trreplacementword = snapshottwo.value as! String
+            }
+        }
+        else {
+            
+        }
+        
+        
         
         print(trkelime)
         print(kelime)
@@ -320,7 +414,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         letter7.text = rmix[6]
         letter8.text = rmix[7]
         letter9.text = rmix[8]
-    
+        
         letter1.center = box1.center
         letter2.center = box2.center
         letter3.center = box3.center
@@ -333,6 +427,25 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
         darkbackground.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         background()
+        
+        if threelettersectioncontrol == true {
+            winpanelcoins.text = String(130)
+            time = 2
+        }
+        else if fourlettersectioncontrol == true {
+            winpanelcoins.text = String(140)
+            time = Int(2.5)
+            second.text = String(2)
+        }
+        else if fivelettersectioncontrol == true {
+            winpanelcoins.text = String(150)
+            time = 3
+        }
+        else if sixlettersectioncontrol == true {
+            winpanelcoins.text = String(160)
+            time = Int(3.5)
+        }
+        else {}
         
     }
     
@@ -349,7 +462,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     func backgrounddark() {
-       
+        
     }
     
     @IBAction func home(_ sender: Any) {
@@ -366,44 +479,237 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box1.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter1.text == letters[0] {
-                    scontrol = 2
-                   boxoneIFletteronetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter1.text == letters[0] {
+                        scontrol = 2
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxoneELSEletteronetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter1.text == letters[1] {
+                        scontrol = 3
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter1.text == letters[2] {
+                        scontrol = 4
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                        
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter1.text == letters[1] {
-                    scontrol = 3
-                   boxoneIFletteronetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter1.text == letters[0] {
+                        scontrol = 2
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxoneELSEletteronetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter1.text == letters[1] {
+                        scontrol = 3
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter1.text == letters[2] {
+                        scontrol = 4
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter1.text == letters[3] {
+                        scontrol = 5
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter1.text == letters[2] {
-                    scontrol = 4
-                    boxoneIFletteronetextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
-                    
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter1.text == letters[0] {
+                        scontrol = 2
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxoneELSEletteronetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter1.text == letters[1] {
+                        scontrol = 3
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter1.text == letters[2] {
+                        scontrol = 4
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter1.text == letters[3] {
+                        scontrol = 5
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter1.text == letters[4] {
+                        scontrol = 6
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter1.text == letters[0] {
+                        scontrol = 2
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter1.text == letters[1] {
+                        scontrol = 3
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter1.text == letters[2] {
+                        scontrol = 4
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter1.text == letters[3] {
+                        scontrol = 5
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter1.text == letters[4] {
+                        scontrol = 6
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter1.text == letters[5] {
+                        scontrol = 7
+                        boxoneIFletteronetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxoneELSEletteronetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else {}
+            
         }
         else {
             boxturnwarningsound()
@@ -416,43 +722,237 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box2.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter2.text == letters[0] {
-                    scontrol = 2
-                    boxtwoIFlettertwotextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter2.text == letters[0] {
+                        scontrol = 2
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxtwoELSElettertwotextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter2.text == letters[1] {
+                        scontrol = 3
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter2.text == letters[2] {
+                        scontrol = 4
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                
+            }
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter2.text == letters[0] {
+                        scontrol = 2
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter2.text == letters[1] {
+                        scontrol = 3
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter2.text == letters[2] {
+                        scontrol = 4
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter2.text == letters[3] {
+                        scontrol = 5
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                
+            }
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter2.text == letters[0] {
+                        scontrol = 2
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter2.text == letters[1] {
+                        scontrol = 3
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter2.text == letters[2] {
+                        scontrol = 4
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter2.text == letters[3] {
+                        scontrol = 5
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter2.text == letters[4] {
+                        scontrol = 6
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter2.text == letters[1] {
-                    scontrol = 3
-                    boxtwoIFlettertwotextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter2.text == letters[0] {
+                        scontrol = 2
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxtwoELSElettertwotextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter2.text == letters[1] {
+                        scontrol = 3
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter2.text == letters[2] {
+                        scontrol = 4
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter2.text == letters[3] {
+                        scontrol = 5
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter2.text == letters[4] {
+                        scontrol = 6
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter2.text == letters[5] {
+                        scontrol = 7
+                        boxtwoIFlettertwotextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxtwoELSElettertwotextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter2.text == letters[2] {
-                    scontrol = 4
-                    boxtwoIFlettertwotextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
-                }
-                else {
-                    boxtwoELSElettertwotextequalletters()
-                    ELSElettertextequalletters()
-                }
-            }
+            else {}
         }
         else {
             boxturnwarningsound()
@@ -465,43 +965,235 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box3.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter3.text == letters[0] {
-                    scontrol = 2
-                   boxthreeIFletterthreetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter3.text == letters[0] {
+                        scontrol = 2
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxthreeELSEletterthreetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter3.text == letters[1] {
+                        scontrol = 3
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter3.text == letters[2] {
+                        scontrol = 4
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter3.text == letters[1] {
-                    scontrol = 3
-                    boxthreeIFletterthreetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter3.text == letters[0] {
+                        scontrol = 2
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxthreeELSEletterthreetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter3.text == letters[1] {
+                        scontrol = 3
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter3.text == letters[2] {
+                        scontrol = 4
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter3.text == letters[3] {
+                        scontrol = 5
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter3.text == letters[2] {
-                    scontrol = 4
-                    boxthreeIFletterthreetextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter3.text == letters[0] {
+                        scontrol = 2
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxthreeELSEletterthreetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter3.text == letters[1] {
+                        scontrol = 3
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter3.text == letters[2] {
+                        scontrol = 4
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter3.text == letters[3] {
+                        scontrol = 5
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter3.text == letters[4] {
+                        scontrol = 6
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter3.text == letters[0] {
+                        scontrol = 2
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter3.text == letters[1] {
+                        scontrol = 3
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter3.text == letters[2] {
+                        scontrol = 4
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter3.text == letters[3] {
+                        scontrol = 5
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter3.text == letters[4] {
+                        scontrol = 6
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter3.text == letters[5] {
+                        scontrol = 7
+                        boxthreeIFletterthreetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxthreeELSEletterthreetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else {}
         }
         else {
             boxturnwarningsound()
@@ -514,43 +1206,235 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box4.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter4.text == letters[0] {
-                    scontrol = 2
-                   boxfourIFletterfourtextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter4.text == letters[0] {
+                        scontrol = 2
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxfourELSEletterfourtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter4.text == letters[1] {
+                        scontrol = 3
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter4.text == letters[2] {
+                        scontrol = 4
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter4.text == letters[1] {
-                    scontrol = 3
-                    boxfourIFletterfourtextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter4.text == letters[0] {
+                        scontrol = 2
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxfourELSEletterfourtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter4.text == letters[1] {
+                        scontrol = 3
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter4.text == letters[2] {
+                        scontrol = 4
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter4.text == letters[3] {
+                        scontrol = 5
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter4.text == letters[2] {
-                    scontrol = 4
-                    boxfourIFletterfourtextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter4.text == letters[0] {
+                        scontrol = 2
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxfourELSEletterfourtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter4.text == letters[1] {
+                        scontrol = 3
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter4.text == letters[2] {
+                        scontrol = 4
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter4.text == letters[3] {
+                        scontrol = 5
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter4.text == letters[4] {
+                        scontrol = 6
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter4.text == letters[0] {
+                        scontrol = 2
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter4.text == letters[1] {
+                        scontrol = 3
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter4.text == letters[2] {
+                        scontrol = 4
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter4.text == letters[3] {
+                        scontrol = 5
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter4.text == letters[4] {
+                        scontrol = 6
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter4.text == letters[5] {
+                        scontrol = 7
+                        boxfourIFletterfourtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfourELSEletterfourtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else{}
         }
         else {
             boxturnwarningsound()
@@ -563,43 +1447,235 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box5.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter5.text == letters[0] {
-                    scontrol = 2
-                    boxfiveIFletterfivetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter5.text == letters[0] {
+                        scontrol = 2
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxfiveELSEletterfivetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter5.text == letters[1] {
+                        scontrol = 3
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter5.text == letters[2] {
+                        scontrol = 4
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter5.text == letters[1] {
-                    scontrol = 3
-                    boxfiveIFletterfivetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter5.text == letters[0] {
+                        scontrol = 2
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxfiveELSEletterfivetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter5.text == letters[1] {
+                        scontrol = 3
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter5.text == letters[2] {
+                        scontrol = 4
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter5.text == letters[3] {
+                        scontrol = 5
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter5.text == letters[2] {
-                    scontrol = 4
-                    boxfiveIFletterfivetextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter5.text == letters[0] {
+                        scontrol = 2
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxfiveELSEletterfivetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter5.text == letters[1] {
+                        scontrol = 3
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter5.text == letters[2] {
+                        scontrol = 4
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter5.text == letters[3] {
+                        scontrol = 5
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter5.text == letters[4] {
+                        scontrol = 6
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter5.text == letters[0] {
+                        scontrol = 2
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter5.text == letters[1] {
+                        scontrol = 3
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter5.text == letters[2] {
+                        scontrol = 4
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter5.text == letters[3] {
+                        scontrol = 5
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter5.text == letters[4] {
+                        scontrol = 6
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter5.text == letters[5] {
+                        scontrol = 7
+                        boxfiveIFletterfivetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxfiveELSEletterfivetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else {}
         }
         else {
             boxturnwarningsound()
@@ -612,43 +1688,235 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box6.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter6.text == letters[0] {
-                    scontrol = 2
-                    boxsixIFlettersixtextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter6.text == letters[0] {
+                        scontrol = 2
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxsixELSElettersixtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter6.text == letters[1] {
+                        scontrol = 3
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter6.text == letters[2] {
+                        scontrol = 4
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter6.text == letters[1] {
-                    scontrol = 3
-                    boxsixIFlettersixtextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter6.text == letters[0] {
+                        scontrol = 2
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                   boxsixELSElettersixtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter6.text == letters[1] {
+                        scontrol = 3
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter6.text == letters[2] {
+                        scontrol = 4
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter6.text == letters[3] {
+                        scontrol = 5
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter6.text == letters[2] {
-                    scontrol = 4
-                    boxsixIFlettersixtextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter6.text == letters[0] {
+                        scontrol = 2
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxsixELSElettersixtextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter6.text == letters[1] {
+                        scontrol = 3
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter6.text == letters[2] {
+                        scontrol = 4
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter6.text == letters[3] {
+                        scontrol = 5
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter6.text == letters[4] {
+                        scontrol = 6
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter6.text == letters[0] {
+                        scontrol = 2
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter6.text == letters[1] {
+                        scontrol = 3
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter6.text == letters[2] {
+                        scontrol = 4
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter6.text == letters[3] {
+                        scontrol = 5
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter6.text == letters[4] {
+                        scontrol = 6
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter6.text == letters[5] {
+                        scontrol = 7
+                        boxsixIFlettersixtextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsixELSElettersixtextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else {}
         }
         else {
             boxturnwarningsound()
@@ -661,43 +1929,235 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box7.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter7.text == letters[0] {
-                    scontrol = 2
-                    boxsevenIFletterseventextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter7.text == letters[0] {
+                        scontrol = 2
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxsevenELSEletterseventextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter7.text == letters[1] {
+                        scontrol = 3
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter7.text == letters[2] {
+                        scontrol = 4
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter7.text == letters[1] {
-                    scontrol = 3
-                    boxsevenIFletterseventextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter7.text == letters[0] {
+                        scontrol = 2
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxsevenELSEletterseventextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter7.text == letters[1] {
+                        scontrol = 3
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter7.text == letters[2] {
+                        scontrol = 4
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter7.text == letters[3] {
+                        scontrol = 5
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter7.text == letters[2] {
-                    scontrol = 4
-                    boxsevenIFletterseventextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter7.text == letters[0] {
+                        scontrol = 2
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxsevenELSEletterseventextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter7.text == letters[1] {
+                        scontrol = 3
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter7.text == letters[2] {
+                        scontrol = 4
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter7.text == letters[3] {
+                        scontrol = 5
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter7.text == letters[4] {
+                        scontrol = 6
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter7.text == letters[0] {
+                        scontrol = 2
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter7.text == letters[1] {
+                        scontrol = 3
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter7.text == letters[2] {
+                        scontrol = 4
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter7.text == letters[3] {
+                        scontrol = 5
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter7.text == letters[4] {
+                        scontrol = 6
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter7.text == letters[5] {
+                        scontrol = 7
+                        boxsevenIFletterseventextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxsevenELSEletterseventextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else {}
         }
         else {
             boxturnwarningsound()
@@ -710,48 +2170,243 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box8.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter8.text == letters[0] {
-                    scontrol = 2
-                    boxeightIFlettereightttextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter8.text == letters[0] {
+                        scontrol = 2
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxeightELSElettereightttextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter8.text == letters[1] {
+                        scontrol = 3
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter8.text == letters[2] {
+                        scontrol = 4
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter8.text == letters[1] {
-                    scontrol = 3
-                   boxeightIFlettereightttextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter8.text == letters[0] {
+                        scontrol = 2
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxeightELSElettereightttextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter8.text == letters[1] {
+                        scontrol = 3
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter8.text == letters[2] {
+                        scontrol = 4
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter8.text == letters[3] {
+                        scontrol = 5
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter8.text == letters[2] {
-                    scontrol = 4
-                    boxeightIFlettereightttextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter8.text == letters[0] {
+                        scontrol = 2
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxeightELSElettereightttextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter8.text == letters[1] {
+                        scontrol = 3
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter8.text == letters[2] {
+                        scontrol = 4
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter8.text == letters[3] {
+                        scontrol = 5
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter8.text == letters[4] {
+                        scontrol = 6
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter8.text == letters[0] {
+                        scontrol = 2
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter8.text == letters[1] {
+                        scontrol = 3
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter8.text == letters[2] {
+                        scontrol = 4
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter8.text == letters[3] {
+                        scontrol = 5
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter8.text == letters[4] {
+                        scontrol = 6
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        trueboxsound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter8.text == letters[5] {
+                        scontrol = 7
+                        boxeightIFlettereightttextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxeightELSElettereightttextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else{}
+            
         }
         else {
             boxturnwarningsound()
         }
     }
+    
     @IBAction func boxnine(_ sender: Any) {
         
         izinequalfalse()
@@ -759,44 +2414,240 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         if izin == true {
             box9.isUserInteractionEnabled = false
             
-            if scontrol == 1 {
-                if letter9.text == letters[0] {
-                    scontrol = 2
-                    boxnineIFletterninetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            if threelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter9.text == letters[0] {
+                        scontrol = 2
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxnineELSEletterninetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter9.text == letters[1] {
+                        scontrol = 3
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                        
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter9.text == letters[2] {
+                        scontrol = 4
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 2 {
-                if letter9.text == letters[1] {
-                    scontrol = 3
-                    boxnineIFletterninetextequalletters()
-                    IFlettertextequalletters()
-                    trueboxsound()
+            else if fourlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter9.text == letters[0] {
+                        scontrol = 2
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                    
-                else {
-                    boxnineELSEletterninetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter9.text == letters[1] {
+                        scontrol = 3
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                        
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter9.text == letters[2] {
+                        scontrol = 4
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter9.text == letters[3] {
+                        scontrol = 5
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
-            else if scontrol == 3 {
-                if letter9.text == letters[2] {
-                    scontrol = 4
-                    boxnineIFletterninetextequalletters()
-                    IFlettertextequalletters()
-                    scontrolequalthree()
-                    nextgamesound()
+            else if fivelettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter9.text == letters[0] {
+                        scontrol = 2
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
-                else {
-                    boxnineELSEletterninetextequalletters()
-                    ELSElettertextequalletters()
+                else if scontrol == 2 {
+                    if letter9.text == letters[1] {
+                        scontrol = 3
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                        
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter9.text == letters[2] {
+                        scontrol = 4
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter9.text == letters[3] {
+                        scontrol = 5
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter9.text == letters[4] {
+                        scontrol = 6
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
                 }
             }
+            else if sixlettersectioncontrol == true {
+                if scontrol == 1 {
+                    if letter9.text == letters[0] {
+                        scontrol = 2
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 2 {
+                    if letter9.text == letters[1] {
+                        scontrol = 3
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                        
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 3 {
+                    if letter9.text == letters[2] {
+                        scontrol = 4
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 4 {
+                    if letter9.text == letters[3] {
+                        scontrol = 5
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 5 {
+                    if letter9.text == letters[4] {
+                        scontrol = 6
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        trueboxsound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+                else if scontrol == 6 {
+                    if letter9.text == letters[5] {
+                        scontrol = 7
+                        boxnineIFletterninetextequalletters()
+                        IFlettertextequalletters()
+                        scontrolequalthree()
+                        nextgamesound()
+                    }
+                    else {
+                        boxnineELSEletterninetextequalletters()
+                        ELSElettertextequalletters()
+                    }
+                }
+            }
+            else{}
+            
         }
         else {
             boxturnwarningsound()
@@ -838,7 +2689,21 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                     self.againturnplus.isHidden = false
                     self.hintplus.isHidden = false
                     self.second.isHidden = true
-                    self.time = 2
+                    
+                    if self.threelettersectioncontrol == true {
+                        self.time = 2
+                    }
+                    else if self.fourlettersectioncontrol == true {
+                        self.time = Int(2.5)
+                    }
+                    else if self.fivelettersectioncontrol == true {
+                        self.time = 3
+                    }
+                    else if self.sixlettersectioncontrol == true {
+                        self.time = Int(3.5)
+                    }
+                    else {}
+                    
                     self.second.text = String(self.time)
                     self.firstlife+=1
                     print(self.firstlife)
@@ -1227,7 +3092,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
     }
     
-
+    
     
     func boxoneELSEletteronetextequalletters() {
         box1bool = true
@@ -1373,36 +3238,92 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
             
         else {
-        UIView.animate(withDuration: 0.5) {
-            self.finishpanel.frame.origin.y -= 220
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.finishpaneltext.frame.origin.y -= 220
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.finishpanelbutton.frame.origin.y -= 220
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.finishpanelnext.frame.origin.y -= 220
-        }
+            UIView.animate(withDuration: 0.5) {
+                self.finishpanel.frame.origin.y -= 220
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.finishpaneltext.frame.origin.y -= 220
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.finishpanelbutton.frame.origin.y -= 220
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.finishpanelnext.frame.origin.y -= 220
+            }
         }
         
-        if self.score > self.highscore {
-            highscore = score
-            UserDefaults.standard.set(highscore, forKey: "highscorekey")
-            self.highscoretext.text = String(highscore)
-            self.highscorewarning.isHidden = false
-            self.highscorewarningtext.isHidden = false
-            self.highscorewarningtext.text = String(self.highscore)
-            highscorewarningclose.isHidden = false
-           // highscoretext.textColor = UIColor.green
-            darkbackground.isHidden = false
-            self.score = 0
-            nextgamesound()
+        if threelettersectioncontrol == true {
+            if self.score > self.threeletterhighscore {
+                threeletterhighscore = score
+                UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey")
+                self.highscoretext.text = String(threeletterhighscore)
+                self.highscorewarning.isHidden = false
+                self.highscorewarningtext.isHidden = false
+                self.highscorewarningtext.text = String(self.threeletterhighscore)
+                highscorewarningclose.isHidden = false
+                darkbackground.isHidden = false
+                self.score = 0
+                nextgamesound()
+            }
+            else {
+                self.score = 0
+            }
+        }
+        else if fourlettersectioncontrol == true {
+            if self.score > self.fourletterhighscore {
+                fourletterhighscore = score
+                UserDefaults.standard.set(fourletterhighscore, forKey: "fourletterhighscorekey")
+                self.highscoretext.text = String(fourletterhighscore)
+                self.highscorewarning.isHidden = false
+                self.highscorewarningtext.isHidden = false
+                self.highscorewarningtext.text = String(self.fourletterhighscore)
+                highscorewarningclose.isHidden = false
+                darkbackground.isHidden = false
+                self.score = 0
+                nextgamesound()
+            }
+            else {
+                self.score = 0
+            }
+        }
+        else if fivelettersectioncontrol == true {
+            if self.score > self.fiveletterhighscore {
+                fiveletterhighscore = score
+                UserDefaults.standard.set(fiveletterhighscore, forKey: "fiveletterhighscorekey")
+                self.highscoretext.text = String(fiveletterhighscore)
+                self.highscorewarning.isHidden = false
+                self.highscorewarningtext.isHidden = false
+                self.highscorewarningtext.text = String(self.fiveletterhighscore)
+                highscorewarningclose.isHidden = false
+                darkbackground.isHidden = false
+                self.score = 0
+                nextgamesound()
+            }
+            else {
+                self.score = 0
+            }
+        }
+        else if sixlettersectioncontrol == true {
+            if self.score > self.sixletterhighscore {
+                sixletterhighscore = score
+                UserDefaults.standard.set(sixletterhighscore, forKey: "sixletterhighscorekey")
+                self.highscoretext.text = String(sixletterhighscore)
+                self.highscorewarning.isHidden = false
+                self.highscorewarningtext.isHidden = false
+                self.highscorewarningtext.text = String(self.sixletterhighscore)
+                highscorewarningclose.isHidden = false
+                darkbackground.isHidden = false
+                self.score = 0
+                nextgamesound()
+            }
+            else {
+                self.score = 0
+            }
         }
         else {
-            self.score = 0
+            
         }
+        
         
         finishpanel.isHidden = false
         finishpaneltext.isHidden = false
@@ -1441,7 +3362,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             }
         }
         
-         gameoversound()
+        gameoversound()
     }
     
     func scontrolequalthree() { // 3. kutu doğru olduğunda...
@@ -1466,7 +3387,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         box8.isUserInteractionEnabled = false
         box9.isUserInteractionEnabled = false
         //turnoutlet.isEnabled = false
-      //  turnwordoutlet.isEnabled = false
+        //  turnwordoutlet.isEnabled = false
         self.chanceoutlet.isHidden = true
         self.againturnoutlet.isHidden = true
         self.hintoutlet.isHidden = true
@@ -1484,7 +3405,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
         
-         if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series
+        if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series
             
             UIView.animate(withDuration: 0.5) {
                 self.winpanel.frame.origin.y -= 400
@@ -1521,7 +3442,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             }
         }
         else if ratio == 888 { // iPhone 5-5S-5C-5SE
-           
+            
             UIView.animate(withDuration: 0.5) {
                 self.winpanel.frame.origin.y -= 300
             }
@@ -1667,39 +3588,39 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             
         }
         else if 1792...2390 ~= ratio { // iPad Series
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanel.frame.origin.y -= 500
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpaneltext.frame.origin.y -= 400
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpaneltexttwo.frame.origin.y -= 400
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelscore.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelcoins.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelcupimage.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelcoinsimage.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelscoreplus.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelcoinsplus.frame.origin.y -= 450
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelnext.frame.origin.y -= 330
-                       }
-                       UIView.animate(withDuration: 0.5) {
-                           self.winpanelnexttext.frame.origin.y -= 330
-                       }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanel.frame.origin.y -= 500
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltext.frame.origin.y -= 400
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpaneltexttwo.frame.origin.y -= 400
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscore.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoins.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcupimage.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsimage.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelscoreplus.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelcoinsplus.frame.origin.y -= 450
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnext.frame.origin.y -= 330
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.winpanelnexttext.frame.origin.y -= 330
+            }
         }
         
         winpanel.isHidden = false
@@ -1728,37 +3649,37 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             self.plusonehundredcoins.frame.size.height -= 200
             self.plusonehundredcoins.frame.size.width -= 200
         }
-     /*    self.winpanelnext.isUserInteractionEnabled = false
-       var translatetime = 0
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-            translatetime += 1
-            if translatetime == 1 {
-                timer.invalidate()
-              //  self.blurbackgroundeffect()
-              //  self.winpanelnext.isUserInteractionEnabled = true
-            }
-        } */
-       
+        /*    self.winpanelnext.isUserInteractionEnabled = false
+         var translatetime = 0
+         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+         translatetime += 1
+         if translatetime == 1 {
+         timer.invalidate()
+         //  self.blurbackgroundeffect()
+         //  self.winpanelnext.isUserInteractionEnabled = true
+         }
+         } */
+        
     }
     
     func izinequalfalse() {
         if izin == false {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews, animations: {
-            self.turnoutlet.frame.origin.x -= 15
-            self.turnoutlet.frame.origin.y -= 10
-            self.turnoutlet.frame.size.height += 30
-            self.turnoutlet.frame.size.width += 30
-        //    self.turnwordoutlet.isHidden = false
-            self.turnoutlet.setImage(UIImage(named: "turnerror"), for: UIControl.State.normal)
-        }){_ in
-            self.turnoutlet.frame.origin.x += 15
-            self.turnoutlet.frame.origin.y += 10
-            self.turnoutlet.frame.size.height -= 30
-            self.turnoutlet.frame.size.width -= 30
-       //     self.turnwordoutlet.isHidden = true
-            self.turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
-          }
-       }
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews, animations: {
+                self.turnoutlet.frame.origin.x -= 15
+                self.turnoutlet.frame.origin.y -= 10
+                self.turnoutlet.frame.size.height += 30
+                self.turnoutlet.frame.size.width += 30
+                //    self.turnwordoutlet.isHidden = false
+                self.turnoutlet.setImage(UIImage(named: "turnerror"), for: UIControl.State.normal)
+            }){_ in
+                self.turnoutlet.frame.origin.x += 15
+                self.turnoutlet.frame.origin.y += 10
+                self.turnoutlet.frame.size.height -= 30
+                self.turnoutlet.frame.size.width -= 30
+                //     self.turnwordoutlet.isHidden = true
+                self.turnoutlet.setImage(UIImage(named: "turn"), for: UIControl.State.normal)
+            }
+        }
     }
     
     func blurbackgroundeffect() {
@@ -1771,18 +3692,18 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         blurbackgroundtext.center.x = self.view.center.x
         blurbackgroundtrtext.center.x = self.view.center.x
         
-                var blurbackgroundtime = 0
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
-                    blurbackgroundtime += 1
-                    if blurbackgroundtime == 3 {
-                        timer.invalidate()
-                        blurbackgroundtime = 0
-                        self.blurbackground.isHidden = true
-                        self.blurbackgroundtext.isHidden = true
-                        self.blurbackgroundtrtext.isHidden = true
-                    }
-                })
-    
+        var blurbackgroundtime = 0
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            blurbackgroundtime += 1
+            if blurbackgroundtime == 3 {
+                timer.invalidate()
+                blurbackgroundtime = 0
+                self.blurbackground.isHidden = true
+                self.blurbackgroundtext.isHidden = true
+                self.blurbackgroundtrtext.isHidden = true
+            }
+        })
+        
     }
     
     @IBAction func hint(_ sender: Any) {
@@ -2080,244 +4001,513 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 }){_ in
                     self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                
+                    
+                }
+            }
+        }
+            
+        else if scontrol == 4 {
+            if letter1.text == letters[3] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text == letters[3] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text == letters[3] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text == letters[3] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text == letters[3] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text == letters[3] && letter6bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text == letters[3] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text == letters[3] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text == letters[3] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    
+                }
+            }
+        }
+        else if scontrol == 5 {
+            if letter1.text == letters[4] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text == letters[4] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text == letters[4] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text == letters[4] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text == letters[4] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text == letters[4] && letter6bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text == letters[4] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text == letters[4] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text == letters[4] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    
+                }
+            }
+        }
+        else if scontrol == 6 {
+            if letter1.text == letters[5] && letter1bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    
+                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                }){_ in
+                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter2.text == letters[5] && letter2bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter3.text == letters[5] && letter3bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter4.text == letters[5] && letter4bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter5.text == letters[5] && letter5bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter6.text == letters[5] && letter6bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter7.text == letters[5] && letter7bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter8.text == letters[5] && letter8bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }
+            }
+            else if letter9.text == letters[5] && letter9bool == false {
+                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                }){_ in
+                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    
                 }
             }
         }
         
-    
     }
     
     @IBAction func againturn(_ sender: Any) {
         
         Analytics.logEvent("ThreeAgainTurnButtonClick", parameters: nil) // Firebase Events
         
-            if againturnint >= 1 {
-                if firstlife >= 2 {
-                    allboxturnsound()
-                    againturnint -= 1
-                    againturntext.text = String(againturnint)
-                    UserDefaults.standard.set(againturnint, forKey: "againturnkey")
-                    againturnscreentext.text = String(againturnint)
-                }
+        if againturnint >= 1 {
+            if firstlife >= 2 {
+                allboxturnsound()
+                againturnint -= 1
+                againturntext.text = String(againturnint)
+                UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+                againturnscreentext.text = String(againturnint)
+            }
+            
+            turnoutlet.isHidden = true
+            turnwordoutlet.isHidden = true
+            self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+            self.turnwordoutlet.isHidden = true
+            self.chanceoutlet.isHidden = true
+            self.againturnoutlet.isHidden = true
+            self.hintoutlet.isHidden = true
+            self.chancetext.isHidden = true
+            self.chancenumber.isHidden = true
+            self.againturntext.isHidden = true
+            self.turnagainnumber.isHidden = true
+            self.hinttext.isHidden = true
+            self.hintnumber.isHidden = true
+            self.chanceplus.isHidden = true
+            self.againturnplus.isHidden = true
+            self.hintplus.isHidden = true
+            
+            self.box1.isUserInteractionEnabled = false
+            self.box2.isUserInteractionEnabled = false
+            self.box3.isUserInteractionEnabled = false
+            self.box4.isUserInteractionEnabled = false
+            self.box5.isUserInteractionEnabled = false
+            self.box6.isUserInteractionEnabled = false
+            self.box7.isUserInteractionEnabled = false
+            self.box8.isUserInteractionEnabled = false
+            self.box9.isUserInteractionEnabled = false
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+                self.time -= 1
+                self.second.text = String(self.time)
                 
-                turnoutlet.isHidden = true
-                turnwordoutlet.isHidden = true
-                self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                self.turnwordoutlet.isHidden = true
-                self.chanceoutlet.isHidden = true
-                self.againturnoutlet.isHidden = true
-                self.hintoutlet.isHidden = true
-                self.chancetext.isHidden = true
-                self.chancenumber.isHidden = true
-                self.againturntext.isHidden = true
-                self.turnagainnumber.isHidden = true
-                self.hinttext.isHidden = true
-                self.hintnumber.isHidden = true
-                self.chanceplus.isHidden = true
-                self.againturnplus.isHidden = true
-                self.hintplus.isHidden = true
-                
-                self.box1.isUserInteractionEnabled = false
-                self.box2.isUserInteractionEnabled = false
-                self.box3.isUserInteractionEnabled = false
-                self.box4.isUserInteractionEnabled = false
-                self.box5.isUserInteractionEnabled = false
-                self.box6.isUserInteractionEnabled = false
-                self.box7.isUserInteractionEnabled = false
-                self.box8.isUserInteractionEnabled = false
-                self.box9.isUserInteractionEnabled = false
-                
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
-                    self.time -= 1
-                    self.second.text = String(self.time)
+                if self.time == 0 {
+                    self.allboxturnsound() 
+                    self.izin = true
+                    timer.invalidate()
                     
-                    if self.time == 0 {
-                        self.allboxturnsound() 
-                        self.izin = true
-                        timer.invalidate()
-                        
-                        self.box1.isUserInteractionEnabled = true
-                        self.box2.isUserInteractionEnabled = true
-                        self.box3.isUserInteractionEnabled = true
-                        self.box4.isUserInteractionEnabled = true
-                        self.box5.isUserInteractionEnabled = true
-                        self.box6.isUserInteractionEnabled = true
-                        self.box7.isUserInteractionEnabled = true
-                        self.box8.isUserInteractionEnabled = true
-                        self.box9.isUserInteractionEnabled = true
-                        
-                       // self.turnoutlet.isHidden = false
-                      //  self.turnwordoutlet.isHidden = true
-                      //  self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
-                        self.chanceplus.isHidden = false
-                        self.againturnplus.isHidden = false
-                        self.hintplus.isHidden = false
-                        self.chanceoutlet.isHidden = false
-                        self.againturnoutlet.isHidden = false
-                        self.hintoutlet.isHidden = false
-                        self.chancetext.isHidden = false
-                        self.chancenumber.isHidden = false
-                        self.againturntext.isHidden = false
-                        self.turnagainnumber.isHidden = false
-                        self.hinttext.isHidden = false
-                        self.hintnumber.isHidden = false
-                        self.second.isHidden = true
+                    self.box1.isUserInteractionEnabled = true
+                    self.box2.isUserInteractionEnabled = true
+                    self.box3.isUserInteractionEnabled = true
+                    self.box4.isUserInteractionEnabled = true
+                    self.box5.isUserInteractionEnabled = true
+                    self.box6.isUserInteractionEnabled = true
+                    self.box7.isUserInteractionEnabled = true
+                    self.box8.isUserInteractionEnabled = true
+                    self.box9.isUserInteractionEnabled = true
+                    
+                    // self.turnoutlet.isHidden = false
+                    //  self.turnwordoutlet.isHidden = true
+                    //  self.turnoutlet.setImage(UIImage(named: "turntwo"), for: UIControl.State.normal)
+                    self.chanceplus.isHidden = false
+                    self.againturnplus.isHidden = false
+                    self.hintplus.isHidden = false
+                    self.chanceoutlet.isHidden = false
+                    self.againturnoutlet.isHidden = false
+                    self.hintoutlet.isHidden = false
+                    self.chancetext.isHidden = false
+                    self.chancenumber.isHidden = false
+                    self.againturntext.isHidden = false
+                    self.turnagainnumber.isHidden = false
+                    self.hinttext.isHidden = false
+                    self.hintnumber.isHidden = false
+                    self.second.isHidden = true
+                    
+                    if self.threelettersectioncontrol == true {
                         self.time = 2
-                        self.second.text = String(self.time)
-                        self.firstlife+=1
-                        print(self.firstlife)
-                        
-                        if self.box1bool == false {
-                            self.letter1.isHidden = true
-                            self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box2bool == false {
-                            self.letter2.isHidden = true
-                            self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box3bool == false {
-                            self.letter3.isHidden = true
-                            self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box4bool == false {
-                            self.letter4.isHidden = true
-                            self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box5bool == false {
-                            self.letter5.isHidden = true
-                            self.self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box6bool == false {
-                            self.letter6.isHidden = true
-                            self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box7bool == false {
-                            self.letter7.isHidden = true
-                            self.self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box8bool == false {
-                            self.letter8.isHidden = true
-                            self.self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
-                        
-                        if self.box9bool == false {
-                            self.letter9.isHidden = true
-                            self.self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                            UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                        }
+                    }
+                    else if self.fourlettersectioncontrol == true {
+                        self.time = Int(2.5)
+                    }
+                    else if self.fivelettersectioncontrol == true {
+                        self.time = 2
+                    }
+                    else if self.sixlettersectioncontrol == true {
+                        self.time = 2
+                    }
+                    else {}
+                    
+                    self.second.text = String(self.time)
+                    self.firstlife+=1
+                    print(self.firstlife)
+                    
+                    if self.box1bool == false {
+                        self.letter1.isHidden = true
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box2bool == false {
+                        self.letter2.isHidden = true
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box3bool == false {
+                        self.letter3.isHidden = true
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box4bool == false {
+                        self.letter4.isHidden = true
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box5bool == false {
+                        self.letter5.isHidden = true
+                        self.self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box6bool == false {
+                        self.letter6.isHidden = true
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box7bool == false {
+                        self.letter7.isHidden = true
+                        self.self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box8bool == false {
+                        self.letter8.isHidden = true
+                        self.self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                    
+                    if self.box9bool == false {
+                        self.letter9.isHidden = true
+                        self.self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                     }
                 }
-                self.second.isHidden = false
-                
-                if self.box1bool == false {
-                    self.letter1.isHidden = false
-                    UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box2bool == false {
-                    self.letter2.isHidden = false
-                    UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box3bool == false {
-                    self.letter3.isHidden = false
-                    UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box4bool == false {
-                    self.letter4.isHidden = false
-                    UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box5bool == false {
-                    self.letter5.isHidden = false
-                    UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box6bool == false {
-                    self.letter6.isHidden = false
-                    UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box7bool == false {
-                    self.letter7.isHidden = false
-                    UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box8bool == false {
-                    self.letter8.isHidden = false
-                    UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-                
-                if self.box9bool == false {
-                    self.letter9.isHidden = false
-                    UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
             }
-            else {
-                box1.isUserInteractionEnabled = false
-                box2.isUserInteractionEnabled = false
-                box3.isUserInteractionEnabled = false
-                box4.isUserInteractionEnabled = false
-                box5.isUserInteractionEnabled = false
-                box6.isUserInteractionEnabled = false
-                box7.isUserInteractionEnabled = false
-                box8.isUserInteractionEnabled = false
-                box9.isUserInteractionEnabled = false
-                
-                darkbackground.isHidden = false
-                
-                warningclose.isHidden = false
-                againturnscreen.isHidden = false
-                againturnscreentext.isHidden = false
-                againturncoinsbuy.isHidden = false
-                againturnadsbuy.isHidden = false
-                
-                hintoutlet.isUserInteractionEnabled = false
-                chanceoutlet.isUserInteractionEnabled = false
-                againturnoutlet.isUserInteractionEnabled = false
-                
-                hintplus.isUserInteractionEnabled = false
-                chanceplus.isUserInteractionEnabled = false
-                againturnplus.isUserInteractionEnabled = false
-               
-                lifeisoversound()
+            self.second.isHidden = false
+            
+            if self.box1bool == false {
+                self.letter1.isHidden = false
+                UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box2bool == false {
+                self.letter2.isHidden = false
+                UIView.transition(with: self.letter2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box3bool == false {
+                self.letter3.isHidden = false
+                UIView.transition(with: self.letter3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box4bool == false {
+                self.letter4.isHidden = false
+                UIView.transition(with: self.letter4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box5bool == false {
+                self.letter5.isHidden = false
+                UIView.transition(with: self.letter5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box6bool == false {
+                self.letter6.isHidden = false
+                UIView.transition(with: self.letter6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box7bool == false {
+                self.letter7.isHidden = false
+                UIView.transition(with: self.letter7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box8bool == false {
+                self.letter8.isHidden = false
+                UIView.transition(with: self.letter8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            }
+            
+            if self.box9bool == false {
+                self.letter9.isHidden = false
+                UIView.transition(with: self.letter9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
             }
         }
+        else {
+            box1.isUserInteractionEnabled = false
+            box2.isUserInteractionEnabled = false
+            box3.isUserInteractionEnabled = false
+            box4.isUserInteractionEnabled = false
+            box5.isUserInteractionEnabled = false
+            box6.isUserInteractionEnabled = false
+            box7.isUserInteractionEnabled = false
+            box8.isUserInteractionEnabled = false
+            box9.isUserInteractionEnabled = false
+            
+            darkbackground.isHidden = false
+            
+            warningclose.isHidden = false
+            againturnscreen.isHidden = false
+            againturnscreentext.isHidden = false
+            againturncoinsbuy.isHidden = false
+            againturnadsbuy.isHidden = false
+            
+            hintoutlet.isUserInteractionEnabled = false
+            chanceoutlet.isUserInteractionEnabled = false
+            againturnoutlet.isUserInteractionEnabled = false
+            
+            hintplus.isUserInteractionEnabled = false
+            chanceplus.isUserInteractionEnabled = false
+            againturnplus.isUserInteractionEnabled = false
+            
+            lifeisoversound()
+        }
+    }
     @IBAction func chance(_ sender: Any) {
         
         Analytics.logEvent("ThreeChanceButtonClick", parameters: nil) // Firebase Events
@@ -2328,261 +4518,514 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             chancetext.text = String(chanceint)
             UserDefaults.standard.set(chanceint, forKey: "chancekey")
             chancescreentext.text = String(chanceint)
-        if scontrol == 1 {
-            if letter1.text != letters[0] && letter1bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                }){_ in
-                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            if scontrol == 1 {
+                if letter1.text != letters[0] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[0] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[0] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[0] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[0] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[0] && letter6bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[0] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[0] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[0] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter2.text != letters[0] && letter2bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                
+                
+            else if scontrol == 2 {
+                if letter1.text != letters[1] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[1] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[1] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[1] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[1] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[1] && letter6bool == false{
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[1] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[1] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[1] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter3.text != letters[0] && letter3bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                
+            else if scontrol == 3 {
+                if letter1.text != letters[2] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[2] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[2] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[2] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[2] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[2] && letter6bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[2] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[2] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[2] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter4.text != letters[0] && letter4bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                
+            else if scontrol == 4 {
+                if letter1.text != letters[3] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[3] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[3] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[3] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[3] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[3] && letter6bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[3] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[3] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[3] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter5.text != letters[0] && letter5bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            else if scontrol == 5 {
+                if letter1.text != letters[4] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[4] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[4] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[4] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[4] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[4] && letter6bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[4] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[4] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[4] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter6.text != letters[0] && letter6bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            else if scontrol == 6 {
+                if letter1.text != letters[5] && letter1bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        
+                        UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                        self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                    }){_ in
+                        self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter2.text != letters[5] && letter2bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter3.text != letters[5] && letter3bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter4.text != letters[5] && letter4bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter5.text != letters[5] && letter5bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter6.text != letters[5] && letter6bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter7.text != letters[5] && letter7bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter8.text != letters[5] && letter8bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
+                }
+                else if letter9.text != letters[5] && letter9bool == false {
+                    UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
+                        self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }){_ in
+                        self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
+                        UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+                    }
                 }
             }
-            else if letter7.text != letters[0] && letter7bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter8.text != letters[0] && letter8bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter9.text != letters[0] && letter9bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-        }
-            
-            
-        else if scontrol == 2 {
-            if letter1.text != letters[1] && letter1bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    
-                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                }){_ in
-                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter2.text != letters[1] && letter2bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter3.text != letters[1] && letter3bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter4.text != letters[1] && letter4bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter5.text != letters[1] && letter5bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter6.text != letters[1] && letter6bool == false{
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter7.text != letters[1] && letter7bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter8.text != letters[1] && letter8bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter9.text != letters[1] && letter9bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-        }
-            
-        else if scontrol == 3 {
-            if letter1.text != letters[2] && letter1bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    
-                    UIView.transition(with: self.box1, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                    self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                }){_ in
-                    self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter2.text != letters[2] && letter2bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box2.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box2.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box2, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter3.text != letters[2] && letter3bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box3.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box3.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box3, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter4.text != letters[2] && letter4bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box4.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box4.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box4, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter5.text != letters[2] && letter5bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box5.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box5.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box5, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter6.text != letters[2] && letter6bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box6.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box6.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box6, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter7.text != letters[2] && letter7bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box7.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box7.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box7, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter8.text != letters[2] && letter8bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box8.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box8.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box8, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-            else if letter9.text != letters[2] && letter9bool == false {
-                UIView.animate(withDuration: 0.9, delay: 0, options: .showHideTransitionViews, animations: {
-                    self.box9.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }){_ in
-                    self.box9.setImage(UIImage(named: "box"), for: UIControl.State.normal)
-                    UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-                }
-            }
-        }
-        hintfunc()
+            hintfunc()
         }
         else {
             box1.isUserInteractionEnabled = false
@@ -2804,10 +5247,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
     }
-
+    
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
     }
-   
+    
     func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {     // REKLAM TAMAMEN İZLENDİĞİNDE...
         if hintbuyscreen.isHidden == false {
             hintint += 2
@@ -2843,125 +5286,163 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     
     // SESLER
-
+    
     func boxturnwarningsound() {
-        let path = Bundle.main.path(forResource: "alarm.m4a", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "alarm.m4a", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func trueboxsound() {
-        let path = Bundle.main.path(forResource: "true.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "true.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func nextgamesound() {
-        let path = Bundle.main.path(forResource: "nextgame.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "nextgame.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func gameoversound() {
-        let path = Bundle.main.path(forResource: "gameover.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "gameover.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func allboxturnsound() {
-        let path = Bundle.main.path(forResource: "allboxturn.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "allboxturn.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func lifeisoversound() {
-        let path = Bundle.main.path(forResource: "lifeisover.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "lifeisover.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func buttonsound() {
-           let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
-           let url = URL(fileURLWithPath: path)
-           
-           do {
-               sound = try AVAudioPlayer(contentsOf: url)
-               sound?.play()
-           }
-           catch{
-               
-           }
-       }
-    func okaysound() {
-        let path = Bundle.main.path(forResource: "okay.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+            }
+        }
+    }
+    func okaysound() {
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
+        
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "okay.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func oneboxturnsound() {
-        let path = Bundle.main.path(forResource: "oneboxturn.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "oneboxturn.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+                
+            }
         }
     }
     func twoboxturnsound() {
-        let path = Bundle.main.path(forResource: "twoboxturn.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
-        do {
-            sound = try AVAudioPlayer(contentsOf: url)
-            sound?.play()
-        }
-        catch{
+        if soundcontrol == true {
+            let path = Bundle.main.path(forResource: "twoboxturn.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
             
+            do {
+                sound = try AVAudioPlayer(contentsOf: url)
+                sound?.play()
+            }
+            catch{
+            }
         }
     }
     // SESLER SON
@@ -2975,21 +5456,21 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         print("yükseklik\(screenheight)")
         print("genişlik\(screenwidth)")
         
-       /* if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series } */
-            
+        /* if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series } */
+        
         
         if ratio == 888 { // iPhone 5-5S-5C-5SE
-           i888()
+            i888()
         }
             
         else if 1187 == ratio { // iPhone X-XS Series
-           i1187()
+            i1187()
         }
             
         else if 1310 == ratio { // XS MAX - XR
-           i1310()
+            i1310()
         }
-        
+            
         else if ratio == 2028 { // iPad Pro 11 inch
             i2028()
         }
@@ -2999,7 +5480,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         }
             
         else if ratio == 2390 { // iPad Pro 12.9 inch
-             i2390()
+            i2390()
         }
             
         else if 1792...2390 ~= ratio { // iPad Series
@@ -3065,16 +5546,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             
             chancebuythousandcoins.frame = CGRect(x: 148.2, y: 580, width: 230.4, height: 107.2)
             chancebuyads.frame = CGRect(x: 388.8, y: 580, width: 230.4, height: 99.2)
-                     chancescreentext.font = chancescreentext.font.withSize(40)
-                     
+            chancescreentext.font = chancescreentext.font.withSize(40)
+            
             againturncoinsbuy.frame = CGRect(x: 148.2, y: 570, width: 230.4, height: 107.2)
             againturnadsbuy.frame = CGRect(x: 388.8, y: 570, width: 230.4, height: 99.2)
-                     againturnscreentext.font = againturnscreentext.font.withSize(40)
-                     
+            againturnscreentext.font = againturnscreentext.font.withSize(40)
+            
             hintbuythousandcoins.frame = CGRect(x: 148.2, y: 570, width: 230.4, height: 107.2)
             hintbuyads.frame = CGRect(x: 388.8, y: 570, width: 230.4, height: 99.2)
-                     hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
-        
+            hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
+            
             finishpanelhome.frame = CGRect(x: 244, y: 1100, width: 120, height: 120)
             finishpanelnext.frame = CGRect(x: 404, y: 1100, width: 120, height: 120)
             finishpaneltext.frame.origin = CGPoint(x: finishpaneltext.frame.origin.x, y: 1000)
@@ -3098,14 +5579,14 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         letter7.font = letter7.font.withSize(40)
         letter8.font = letter8.font.withSize(40)
         letter9.font = letter9.font.withSize(40)
-         
-         winpanelcoins.font = winpanelcoins.font.withSize(35)
-         winpanelscore.font = winpanelscore.font.withSize(35)
-         winpaneltext.font = winpaneltext.font.withSize(30)
-         winpaneltexttwo.font = winpaneltexttwo.font.withSize(30)
-         
-         coinstexttreeletter.font = coinstexttreeletter.font.withSize(20)
-         highscoretext.font = highscoretext.font.withSize(20)
+        
+        winpanelcoins.font = winpanelcoins.font.withSize(35)
+        winpanelscore.font = winpanelscore.font.withSize(35)
+        winpaneltext.font = winpaneltext.font.withSize(30)
+        winpaneltexttwo.font = winpaneltexttwo.font.withSize(30)
+        
+        coinstexttreeletter.font = coinstexttreeletter.font.withSize(20)
+        highscoretext.font = highscoretext.font.withSize(20)
         
         blurbackgroundtext.center = self.view.center
         blurbackgroundtext.frame = CGRect(x: blurbackgroundtext.frame.origin.x, y: 250, width: 500, height: 100)
@@ -3114,10 +5595,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         blurbackgroundtrtext.frame.origin = CGPoint(x: blurbackgroundtrtext.frame.origin.x, y: 200)
         blurbackgroundtrtext.font = blurbackgroundtrtext.font.withSize(50)
         
-         warningtext.font = warningtext.font.withSize(20)
+        warningtext.font = warningtext.font.withSize(20)
         
         highscorewarningclose.frame = CGRect(x: 138, y: 360, width: 50, height: 50)
-               highscorewarningtext.font = highscorewarningtext.font.withSize(20)
+        highscorewarningtext.font = highscorewarningtext.font.withSize(20)
     }
     
     func i1187() { // iPhone X - XS - 11 Pro Series
@@ -3125,9 +5606,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         coinsimage.frame = CGRect(x: 222.5, y: 57.5, width: 130, height: 49)
         gamescreencup.frame = CGRect(x: 22.5, y: 57.5, width: 130, height: 49)
         
-                   highscoretext.frame.origin = CGPoint(x: 51, y: 68)
-                   coinstexttreeletter.frame.origin = CGPoint(x: 274, y: 67)
-                  
+        highscoretext.frame.origin = CGPoint(x: 51, y: 68)
+        coinstexttreeletter.frame.origin = CGPoint(x: 274, y: 67)
+        
         box1.frame = CGRect(x: 32, y: 246, width: 100, height: 100)
         box2.frame = CGRect(x: 137.5, y: 246, width: 100, height: 100)
         box3.frame = CGRect(x: 243, y: 246, width: 100, height: 100)
@@ -3138,17 +5619,17 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         box8.frame = CGRect(x: 137.5, y: 457, width: 100, height: 100)
         box9.frame = CGRect(x: 243, y: 457, width: 100, height: 100)
         
-                   treeletterword.font = treeletterword.font.withSize(80)
-                   treeletterword.frame.origin = CGPoint(x: 67, y: 150)
+        treeletterword.font = treeletterword.font.withSize(80)
+        treeletterword.frame.origin = CGPoint(x: 67, y: 150)
         
-                   turnoutlet.frame = CGRect(x: 40, y: 600, width: 295, height: 84)
-                  
-                   turnwordoutlet.center = turnoutlet.center
-                   
-                   chanceoutlet.center = self.view.center
-                   againturnoutlet.center = self.view.center
-                   hintoutlet.center = self.view.center
-                   
+        turnoutlet.frame = CGRect(x: 40, y: 600, width: 295, height: 84)
+        
+        turnwordoutlet.center = turnoutlet.center
+        
+        chanceoutlet.center = self.view.center
+        againturnoutlet.center = self.view.center
+        hintoutlet.center = self.view.center
+        
         chanceoutlet.frame = CGRect(x: 27.5, y: 580, width: 90, height: 90)
         againturnoutlet.frame = CGRect(x: 142.5, y: 580, width: 90, height: 90)
         hintoutlet.frame = CGRect(x: 257.5, y: 580, width: 90, height: 90)
@@ -3156,90 +5637,90 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         chanceplus.frame = CGRect(x: 94.5, y: 667, width: 35, height: 35)
         hintplus.frame = CGRect(x: 319.5, y: 667, width: 35, height: 35)
         againturnplus.frame = CGRect(x: 207, y: 667, width: 35, height: 35)
-                   
-                   hintnumber.frame.origin = CGPoint(x: 258, y: 662)
-                   turnagainnumber.frame.origin = CGPoint(x: 146, y: 662)
-                   
-                   hinttext.frame.origin = CGPoint(x: 270, y: 674)
-                   againturntext.frame.origin = CGPoint(x: 158, y: 672)
-                   chancetext.frame.origin = CGPoint(x: 46, y: 668)
-                   
+        
+        hintnumber.frame.origin = CGPoint(x: 258, y: 662)
+        turnagainnumber.frame.origin = CGPoint(x: 146, y: 662)
+        
+        hinttext.frame.origin = CGPoint(x: 270, y: 674)
+        againturntext.frame.origin = CGPoint(x: 158, y: 672)
+        chancetext.frame.origin = CGPoint(x: 46, y: 668)
+        
         chancebuythousandcoins.frame = CGRect(x: 33.3, y: 450, width: 158.4, height: 73.7)
         chancebuyads.frame = CGRect(x: 188.3, y: 450, width: 158.4, height: 68.2)
         
         againturncoinsbuy.frame = CGRect(x: 33.3, y: 440, width: 158.4, height: 73.7)
         againturnadsbuy.frame = CGRect(x: 188.3, y: 440, width: 158.4, height: 68.2)
-                   
+        
         hintbuythousandcoins.frame = CGRect(x: 33.3, y: 440, width: 158, height: 74)
         hintbuyads.frame = CGRect(x: 188.3, y: 440, width: 158.4, height: 68.2)
-                   
-                  warningclose.frame = CGRect(x: 311, y: 244, width: 60, height: 60)
-                   
-                 finishpanelnext.frame = CGRect(x: 197, y: 913, width: 80, height: 79)
-                 finishpanelhome.frame = CGRect(x: 97, y: 913, width: 80, height: 79)
-               
+        
+        warningclose.frame = CGRect(x: 311, y: 244, width: 60, height: 60)
+        
+        finishpanelnext.frame = CGRect(x: 197, y: 913, width: 80, height: 79)
+        finishpanelhome.frame = CGRect(x: 97, y: 913, width: 80, height: 79)
+        
         highscorewarningclose.frame.origin = CGPoint(x: 160, y: 490)
         highscorewarningtext.frame.origin = CGPoint(x: 127, y: 426)
-       
-      coinsbuygoshop.frame = CGRect(x: 81.5, y: 404, width: 212, height: 77)
+        
+        coinsbuygoshop.frame = CGRect(x: 81.5, y: 404, width: 212, height: 77)
     }
     
     func i1310() { // XS MAX - XR - 11 - 11 Pro Max Series
-
+        
         homeoutlet.frame = CGRect(x: 179.5, y: 55, width: 55, height: 55)
         coinsimage.frame = CGRect(x: 252, y: 57.5, width: 130, height: 49)
         gamescreencup.frame = CGRect(x: 32, y: 57.5, width: 130, height: 49)
-                   
-                   highscoretext.frame.origin = CGPoint(x: 60, y: 67)
-                   coinstexttreeletter.frame.origin = CGPoint(x: 300, y: 65)
-                   
-                   
-                   box1.frame = CGRect(x: 27.75, y: 282.5, width: 115, height: 115)
-                   box2.frame = CGRect(x: 150.25, y: 282.5, width: 115, height: 115)
-                   box3.frame = CGRect(x: 273.75, y: 282.5, width: 115, height: 115)
-                   box4.frame = CGRect(x: 27.75, y: 405, width: 115, height: 115)
-                   box5.frame = CGRect(x: 150.25, y: 405, width: 115, height: 115)
-                   box6.frame = CGRect(x: 273.75, y: 405, width: 115, height: 115)
-                   box7.frame = CGRect(x: 27.75, y: 527.5, width: 115, height: 115)
-                   box8.frame = CGRect(x: 150.25, y: 527.5, width: 115, height: 115)
-                   box9.frame = CGRect(x: 273.75, y: 527.5, width: 115, height: 115)
-                   
-                   treeletterword.font = treeletterword.font.withSize(90)
-                   treeletterword.frame.origin = CGPoint(x: 73.75, y: 160)
-                   
-                   turnoutlet.frame = CGRect(x: 45, y: 670, width: 324.72, height: 92.4)
         
-                   second.frame.origin = CGPoint(x: 143, y: 650)
+        highscoretext.frame.origin = CGPoint(x: 60, y: 67)
+        coinstexttreeletter.frame.origin = CGPoint(x: 300, y: 65)
         
-                   turnwordoutlet.center = turnoutlet.center
-                   
-                   chanceoutlet.frame = CGRect(x: 41, y: 670, width: 90, height: 90)
-                   againturnoutlet.frame = CGRect(x: 163.5, y: 670, width: 90, height: 90)
-                   hintoutlet.frame = CGRect(x: 288, y: 670, width: 90, height: 90)
         
-                   chanceplus.frame = CGRect(x: 107.5, y: 757, width: 35, height: 35)
-                   hintplus.frame = CGRect(x: 347.75, y: 757, width: 35, height: 35)
-                   againturnplus.frame = CGRect(x: 227.75, y: 757, width: 35, height: 35)
-                   
-                   hintnumber.frame.origin = CGPoint(x: 280, y: 750)
-                   chancenumber.frame.origin = CGPoint(x: 40, y: 750)
-                   turnagainnumber.frame.origin = CGPoint(x: 160, y: 750)
-                   
-                   hinttext.frame.origin = CGPoint(x: 293, y: 763)
-                   againturntext.frame.origin = CGPoint(x: 174, y: 760)
-                   chancetext.frame.origin = CGPoint(x: 54, y: 756)
-         
+        box1.frame = CGRect(x: 27.75, y: 282.5, width: 115, height: 115)
+        box2.frame = CGRect(x: 150.25, y: 282.5, width: 115, height: 115)
+        box3.frame = CGRect(x: 273.75, y: 282.5, width: 115, height: 115)
+        box4.frame = CGRect(x: 27.75, y: 405, width: 115, height: 115)
+        box5.frame = CGRect(x: 150.25, y: 405, width: 115, height: 115)
+        box6.frame = CGRect(x: 273.75, y: 405, width: 115, height: 115)
+        box7.frame = CGRect(x: 27.75, y: 527.5, width: 115, height: 115)
+        box8.frame = CGRect(x: 150.25, y: 527.5, width: 115, height: 115)
+        box9.frame = CGRect(x: 273.75, y: 527.5, width: 115, height: 115)
+        
+        treeletterword.font = treeletterword.font.withSize(90)
+        treeletterword.frame.origin = CGPoint(x: 73.75, y: 160)
+        
+        turnoutlet.frame = CGRect(x: 45, y: 670, width: 324.72, height: 92.4)
+        
+        second.frame.origin = CGPoint(x: 143, y: 650)
+        
+        turnwordoutlet.center = turnoutlet.center
+        
+        chanceoutlet.frame = CGRect(x: 41, y: 670, width: 90, height: 90)
+        againturnoutlet.frame = CGRect(x: 163.5, y: 670, width: 90, height: 90)
+        hintoutlet.frame = CGRect(x: 288, y: 670, width: 90, height: 90)
+        
+        chanceplus.frame = CGRect(x: 107.5, y: 757, width: 35, height: 35)
+        hintplus.frame = CGRect(x: 347.75, y: 757, width: 35, height: 35)
+        againturnplus.frame = CGRect(x: 227.75, y: 757, width: 35, height: 35)
+        
+        hintnumber.frame.origin = CGPoint(x: 280, y: 750)
+        chancenumber.frame.origin = CGPoint(x: 40, y: 750)
+        turnagainnumber.frame.origin = CGPoint(x: 160, y: 750)
+        
+        hinttext.frame.origin = CGPoint(x: 293, y: 763)
+        againturntext.frame.origin = CGPoint(x: 174, y: 760)
+        chancetext.frame.origin = CGPoint(x: 54, y: 756)
+        
         chancebuythousandcoins.frame = CGRect(x: 47.8, y: 500, width: 158.4, height: 73.7)
         chancebuyads.frame = CGRect(x: 207.8, y: 500, width: 158.4, height: 68.2)
         
         againturncoinsbuy.frame = CGRect(x: 47.8, y: 490, width: 158.4, height: 73.7)
         againturnadsbuy.frame = CGRect(x: 207.8, y: 490, width: 158.4, height: 68.2)
-                   
+        
         hintbuythousandcoins.frame = CGRect(x: 47.8, y: 490, width: 158, height: 74)
         hintbuyads.frame = CGRect(x: 207.8, y: 490, width: 158, height: 68.2)
-                   
+        
         warningclose.frame = CGRect(x: 343.3, y: 267, width: 60, height: 60)
-                   
+        
         finishpanelnext.frame = CGRect(x: 217.3, y: 1007.3, width: 80, height: 79)
         finishpanelhome.frame = CGRect(x: 107, y: 1007.3, width: 80, height: 79)
         
@@ -3251,77 +5732,77 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func i2028() { // iPad Pro 11 inch
         homeoutlet.frame = CGRect(x: 377, y: 55, width: 80, height: 80)
-          coinsimage.frame = CGRect(x: 515, y: 60, width: 169, height: 63.7)
-          gamescreencup.frame = CGRect(x: 150, y: 60, width: 169, height: 63.7)
-          
-          coinstexttreeletter.frame.origin = CGPoint(x: 580, y: 70)
-          coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
-          
-          highscoretext.frame.origin = CGPoint(x: 150, y: 72)
-          highscoretext.font = highscoretext.font.withSize(30)
-          
-          treeletterword.frame.origin = CGPoint(x: 149.25, y: 200)
-          treeletterword.font = treeletterword.font.withSize(120)
-          
-          box1.frame = CGRect(x: 137, y: 330, width: 180, height: 180)
-          box2.frame = CGRect(x: 327, y: 330, width: 180, height: 180)
-          box3.frame = CGRect(x: 517, y: 330, width: 180, height: 180)
-          box4.frame = CGRect(x: 137, y: 520, width: 180, height: 180)
-          box5.frame = CGRect(x: 327, y: 520, width: 180, height: 180)
-          box6.frame = CGRect(x: 517, y: 520, width: 180, height: 180)
-          box7.frame = CGRect(x: 137, y: 710, width: 180, height: 180)
-          box8.frame = CGRect(x: 327, y: 710, width: 180, height: 180)
-          box9.frame = CGRect(x: 517, y: 710, width: 180, height: 180)
-          
-          letter1.font = letter1.font.withSize(80)
-          letter2.font = letter2.font.withSize(80)
-          letter3.font = letter3.font.withSize(80)
-          letter4.font = letter4.font.withSize(80)
-          letter5.font = letter5.font.withSize(80)
-          letter6.font = letter6.font.withSize(80)
-          letter7.font = letter7.font.withSize(80)
-          letter8.font = letter8.font.withSize(80)
-          letter9.font = letter9.font.withSize(80)
-          
-          turnoutlet.frame = CGRect(x: 177, y: 930, width: 480, height: 136.5)
-          turnwordoutlet.center = turnoutlet.center
-          turnwordoutlet.font = turnwordoutlet.font.withSize(40)
-          
-          second.frame.origin = CGPoint(x: second.frame.origin.x, y: 930)
-          
-          againturnoutlet.frame = CGRect(x: 342, y: 910, width: 150, height: 150)
-          chanceoutlet.frame = CGRect(x: 142, y: 910, width: 150, height: 150)
-          hintoutlet.frame = CGRect(x: 542, y: 910, width: 150, height: 150)
-          
-          chancenumber.frame.origin = CGPoint(x: 125, y: 1040)
-          chanceplus.frame = CGRect(x: 250, y: 1047, width: 50, height: 50)
-          chancetext.frame.origin = CGPoint(x: 155, y: 1047)
-          chancetext.font = chancetext.font.withSize(30)
-          
-          turnagainnumber.frame.origin = CGPoint(x: 320, y: 1040)
-          againturnplus.frame = CGRect(x: 445, y: 1047, width: 50, height: 50)
-          againturntext.frame.origin = CGPoint(x: 350, y: 1053)
-          againturntext.font = againturntext.font.withSize(30)
-          
-          hintnumber.frame.origin = CGPoint(x: 520, y: 1040)
-          hintplus.frame = CGRect(x: 645, y: 1047, width: 50, height: 50)
-          hinttext.frame.origin = CGPoint(x: 545, y: 1056)
-          hinttext.font = hinttext.font.withSize(30)
-          
-         warningclose.frame = CGRect(x: 630, y: 325, width: 120, height: 120)
-          
+        coinsimage.frame = CGRect(x: 515, y: 60, width: 169, height: 63.7)
+        gamescreencup.frame = CGRect(x: 150, y: 60, width: 169, height: 63.7)
+        
+        coinstexttreeletter.frame.origin = CGPoint(x: 580, y: 70)
+        coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
+        
+        highscoretext.frame.origin = CGPoint(x: 150, y: 72)
+        highscoretext.font = highscoretext.font.withSize(30)
+        
+        treeletterword.frame.origin = CGPoint(x: 149.25, y: 200)
+        treeletterword.font = treeletterword.font.withSize(120)
+        
+        box1.frame = CGRect(x: 137, y: 330, width: 180, height: 180)
+        box2.frame = CGRect(x: 327, y: 330, width: 180, height: 180)
+        box3.frame = CGRect(x: 517, y: 330, width: 180, height: 180)
+        box4.frame = CGRect(x: 137, y: 520, width: 180, height: 180)
+        box5.frame = CGRect(x: 327, y: 520, width: 180, height: 180)
+        box6.frame = CGRect(x: 517, y: 520, width: 180, height: 180)
+        box7.frame = CGRect(x: 137, y: 710, width: 180, height: 180)
+        box8.frame = CGRect(x: 327, y: 710, width: 180, height: 180)
+        box9.frame = CGRect(x: 517, y: 710, width: 180, height: 180)
+        
+        letter1.font = letter1.font.withSize(80)
+        letter2.font = letter2.font.withSize(80)
+        letter3.font = letter3.font.withSize(80)
+        letter4.font = letter4.font.withSize(80)
+        letter5.font = letter5.font.withSize(80)
+        letter6.font = letter6.font.withSize(80)
+        letter7.font = letter7.font.withSize(80)
+        letter8.font = letter8.font.withSize(80)
+        letter9.font = letter9.font.withSize(80)
+        
+        turnoutlet.frame = CGRect(x: 177, y: 930, width: 480, height: 136.5)
+        turnwordoutlet.center = turnoutlet.center
+        turnwordoutlet.font = turnwordoutlet.font.withSize(40)
+        
+        second.frame.origin = CGPoint(x: second.frame.origin.x, y: 930)
+        
+        againturnoutlet.frame = CGRect(x: 342, y: 910, width: 150, height: 150)
+        chanceoutlet.frame = CGRect(x: 142, y: 910, width: 150, height: 150)
+        hintoutlet.frame = CGRect(x: 542, y: 910, width: 150, height: 150)
+        
+        chancenumber.frame.origin = CGPoint(x: 125, y: 1040)
+        chanceplus.frame = CGRect(x: 250, y: 1047, width: 50, height: 50)
+        chancetext.frame.origin = CGPoint(x: 155, y: 1047)
+        chancetext.font = chancetext.font.withSize(30)
+        
+        turnagainnumber.frame.origin = CGPoint(x: 320, y: 1040)
+        againturnplus.frame = CGRect(x: 445, y: 1047, width: 50, height: 50)
+        againturntext.frame.origin = CGPoint(x: 350, y: 1053)
+        againturntext.font = againturntext.font.withSize(30)
+        
+        hintnumber.frame.origin = CGPoint(x: 520, y: 1040)
+        hintplus.frame = CGRect(x: 645, y: 1047, width: 50, height: 50)
+        hinttext.frame.origin = CGPoint(x: 545, y: 1056)
+        hinttext.font = hinttext.font.withSize(30)
+        
+        warningclose.frame = CGRect(x: 630, y: 325, width: 120, height: 120)
+        
         chancebuythousandcoins.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
-          chancebuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
-          chancescreentext.font = chancescreentext.font.withSize(40)
-          
-          againturncoinsbuy.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
-          againturnadsbuy.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
-          againturnscreentext.font = againturnscreentext.font.withSize(40)
-          
-          hintbuythousandcoins.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
-          hintbuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
-          hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
-          
+        chancebuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+        chancescreentext.font = chancescreentext.font.withSize(40)
+        
+        againturncoinsbuy.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
+        againturnadsbuy.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+        againturnscreentext.font = againturnscreentext.font.withSize(40)
+        
+        hintbuythousandcoins.frame = CGRect(x: 143, y: 650, width: 288, height: 134)
+        hintbuyads.frame = CGRect(x: 413, y: 650, width: 288, height: 124)
+        hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
+        
         finishpanelhome.frame = CGRect(x: 277, y: 1342.5, width: 120, height: 120)
         finishpanelnext.frame = CGRect(x: 437, y: 1342.5, width: 120, height: 120)
         
@@ -3333,85 +5814,85 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     func i1946() { // iPad Air (3rd Generation)
-                              homeoutlet.frame = CGRect(x: 377, y: 55, width: 80, height: 80)
-                              coinsimage.frame = CGRect(x: 515, y: 60, width: 169, height: 63.7)
-                              gamescreencup.frame = CGRect(x: 150, y: 60, width: 169, height: 63.7)
-                              
-                              coinstexttreeletter.frame.origin = CGPoint(x: 580, y: 70)
-                              coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
-                              
-                              highscoretext.frame.origin = CGPoint(x: 150, y: 72)
-                              highscoretext.font = highscoretext.font.withSize(30)
-                              
-                              treeletterword.frame.origin = CGPoint(x: 149.25, y: 200)
-                              treeletterword.font = treeletterword.font.withSize(120)
-                  
-                              
-                              box1.frame = CGRect(x: 177, y: 330, width: 150, height: 150)
-                              box2.frame = CGRect(x: 342, y: 330, width: 150, height: 150)
-                              box3.frame = CGRect(x: 507, y: 330, width: 150, height: 150)
-                              box4.frame = CGRect(x: 177, y: 493, width: 150, height: 150)
-                              box5.frame = CGRect(x: 342, y: 493, width: 150, height: 150)
-                              box6.frame = CGRect(x: 507, y: 493, width: 150, height: 150)
-                              box7.frame = CGRect(x: 177, y: 656, width: 150, height: 150)
-                              box8.frame = CGRect(x: 342, y: 656, width: 150, height: 150)
-                              box9.frame = CGRect(x: 507, y: 656, width: 150, height: 150)
-                             
-                              letter1.font = letter1.font.withSize(80)
-                              letter2.font = letter2.font.withSize(80)
-                              letter3.font = letter3.font.withSize(80)
-                              letter4.font = letter4.font.withSize(80)
-                              letter5.font = letter5.font.withSize(80)
-                              letter6.font = letter6.font.withSize(80)
-                              letter7.font = letter7.font.withSize(80)
-                              letter8.font = letter8.font.withSize(80)
-                              letter9.font = letter9.font.withSize(80)
-                              
-                              turnoutlet.frame = CGRect(x: 220, y: 850, width: 384, height: 109.2)
-                              turnwordoutlet.center = turnoutlet.center
-                              turnwordoutlet.font = turnwordoutlet.font.withSize(40)
-                              
-                              second.frame.origin = CGPoint(x: second.frame.origin.x, y: 850)
-                              
-                              againturnoutlet.frame = CGRect(x: 342, y: 830, width: 150, height: 150)
-                              chanceoutlet.frame = CGRect(x: 142, y: 830, width: 150, height: 150)
-                              hintoutlet.frame = CGRect(x: 542, y: 830, width: 150, height: 150)
-                              
-                              chancenumber.frame.origin = CGPoint(x: 125, y: 965)
-                              chanceplus.frame = CGRect(x: 250, y: 972, width: 50, height: 50)
-                              chancetext.frame.origin = CGPoint(x: 155, y: 972)
-                              chancetext.font = chancetext.font.withSize(30)
-                              
-                              turnagainnumber.frame.origin = CGPoint(x: 320, y: 965)
-                              againturnplus.frame = CGRect(x: 445, y: 972, width: 50, height: 50)
-                              againturntext.frame.origin = CGPoint(x: 350, y: 978)
-                              againturntext.font = againturntext.font.withSize(30)
-                              
-                              hintnumber.frame.origin = CGPoint(x: 520, y: 965)
-                              hintplus.frame = CGRect(x: 645, y: 972, width: 50, height: 50)
-                              hinttext.frame.origin = CGPoint(x: 545, y: 981)
-                              hinttext.font = hinttext.font.withSize(30)
-                              
-                              warningclose.frame = CGRect(x: 630, y: 300, width: 120, height: 120)
-                              
+        homeoutlet.frame = CGRect(x: 377, y: 55, width: 80, height: 80)
+        coinsimage.frame = CGRect(x: 515, y: 60, width: 169, height: 63.7)
+        gamescreencup.frame = CGRect(x: 150, y: 60, width: 169, height: 63.7)
+        
+        coinstexttreeletter.frame.origin = CGPoint(x: 580, y: 70)
+        coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
+        
+        highscoretext.frame.origin = CGPoint(x: 150, y: 72)
+        highscoretext.font = highscoretext.font.withSize(30)
+        
+        treeletterword.frame.origin = CGPoint(x: 149.25, y: 200)
+        treeletterword.font = treeletterword.font.withSize(120)
+        
+        
+        box1.frame = CGRect(x: 177, y: 330, width: 150, height: 150)
+        box2.frame = CGRect(x: 342, y: 330, width: 150, height: 150)
+        box3.frame = CGRect(x: 507, y: 330, width: 150, height: 150)
+        box4.frame = CGRect(x: 177, y: 493, width: 150, height: 150)
+        box5.frame = CGRect(x: 342, y: 493, width: 150, height: 150)
+        box6.frame = CGRect(x: 507, y: 493, width: 150, height: 150)
+        box7.frame = CGRect(x: 177, y: 656, width: 150, height: 150)
+        box8.frame = CGRect(x: 342, y: 656, width: 150, height: 150)
+        box9.frame = CGRect(x: 507, y: 656, width: 150, height: 150)
+        
+        letter1.font = letter1.font.withSize(80)
+        letter2.font = letter2.font.withSize(80)
+        letter3.font = letter3.font.withSize(80)
+        letter4.font = letter4.font.withSize(80)
+        letter5.font = letter5.font.withSize(80)
+        letter6.font = letter6.font.withSize(80)
+        letter7.font = letter7.font.withSize(80)
+        letter8.font = letter8.font.withSize(80)
+        letter9.font = letter9.font.withSize(80)
+        
+        turnoutlet.frame = CGRect(x: 220, y: 850, width: 384, height: 109.2)
+        turnwordoutlet.center = turnoutlet.center
+        turnwordoutlet.font = turnwordoutlet.font.withSize(40)
+        
+        second.frame.origin = CGPoint(x: second.frame.origin.x, y: 850)
+        
+        againturnoutlet.frame = CGRect(x: 342, y: 830, width: 150, height: 150)
+        chanceoutlet.frame = CGRect(x: 142, y: 830, width: 150, height: 150)
+        hintoutlet.frame = CGRect(x: 542, y: 830, width: 150, height: 150)
+        
+        chancenumber.frame.origin = CGPoint(x: 125, y: 965)
+        chanceplus.frame = CGRect(x: 250, y: 972, width: 50, height: 50)
+        chancetext.frame.origin = CGPoint(x: 155, y: 972)
+        chancetext.font = chancetext.font.withSize(30)
+        
+        turnagainnumber.frame.origin = CGPoint(x: 320, y: 965)
+        againturnplus.frame = CGRect(x: 445, y: 972, width: 50, height: 50)
+        againturntext.frame.origin = CGPoint(x: 350, y: 978)
+        againturntext.font = againturntext.font.withSize(30)
+        
+        hintnumber.frame.origin = CGPoint(x: 520, y: 965)
+        hintplus.frame = CGRect(x: 645, y: 972, width: 50, height: 50)
+        hinttext.frame.origin = CGPoint(x: 545, y: 981)
+        hinttext.font = hinttext.font.withSize(30)
+        
+        warningclose.frame = CGRect(x: 630, y: 300, width: 120, height: 120)
+        
         chancebuythousandcoins.frame = CGRect(x: 181.8, y: 630, width: 230.4, height: 107.2)
         chancebuyads.frame = CGRect(x: 431.8, y: 630, width: 230.4, height: 99.2)
         chancescreentext.font = chancescreentext.font.withSize(40)
-                              
+        
         againturncoinsbuy.frame = CGRect(x: 181.8, y: 620, width: 230.4, height: 107.2)
         againturnadsbuy.frame = CGRect(x: 431.8, y: 620, width: 230.4, height: 99.2)
         againturnscreentext.font = againturnscreentext.font.withSize(40)
-                              
+        
         hintbuythousandcoins.frame = CGRect(x: 181.8, y: 620, width: 230.4, height: 107.2)
         hintbuyads.frame = CGRect(x: 431.8, y: 620, width: 230.4, height: 99.2)
         hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
-                   
-                              finishpaneltext.frame.origin = CGPoint(x: 112.25, y: 1100)
-                              finishpanelhome.frame = CGRect(x: 277, y: 1200, width: 120, height: 120)
-                              finishpanelnext.frame = CGRect(x: 437, y: 1200, width: 120, height: 120)
-                   
-                              warningtext.font = warningtext.font.withSize(30)
-                              warningtext.frame = CGRect(x: 170, y: 220, width: 500, height: 500)
+        
+        finishpaneltext.frame.origin = CGPoint(x: 112.25, y: 1100)
+        finishpanelhome.frame = CGRect(x: 277, y: 1200, width: 120, height: 120)
+        finishpanelnext.frame = CGRect(x: 437, y: 1200, width: 120, height: 120)
+        
+        warningtext.font = warningtext.font.withSize(30)
+        warningtext.frame = CGRect(x: 170, y: 220, width: 500, height: 500)
         
         highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 630)
         highscorewarningtext.font = highscorewarningtext.font.withSize(50)
@@ -3421,86 +5902,86 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     func i2390() { // iPad Pro 12.9 inch
-                      homeoutlet.frame = CGRect(x: 472, y: 55, width: 80, height: 80)
-                      coinsimage.frame = CGRect(x: 627.5, y: 60, width: 169, height: 63.7)
-                      gamescreencup.frame = CGRect(x: 227.5, y: 60, width: 169, height: 63.7)
-                      
-                      coinstexttreeletter.frame.origin = CGPoint(x: 690, y: 65)
-                      coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
-                      
-                      highscoretext.frame.origin = CGPoint(x: 200, y: 67)
-                      highscoretext.font = highscoretext.font.withSize(30)
-                      
-                      treeletterword.center = self.view.center
-                      treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 200)
-                      treeletterword.font = treeletterword.font.withSize(120)
-          
-                      
-                      box1.frame = CGRect(x: 192, y: 350, width: 200, height: 200)
-                      box2.frame = CGRect(x: 412, y: 350, width: 200, height: 200)
-                      box3.frame = CGRect(x: 632, y: 350, width: 200, height: 200)
-                      box4.frame = CGRect(x: 192, y: 568, width: 200, height: 200)
-                      box5.frame = CGRect(x: 412, y: 568, width: 200, height: 200)
-                      box6.frame = CGRect(x: 632, y: 568, width: 200, height: 200)
-                      box7.frame = CGRect(x: 192, y: 786, width: 200, height: 200)
-                      box8.frame = CGRect(x: 412, y: 786, width: 200, height: 200)
-                      box9.frame = CGRect(x: 632, y: 786, width: 200, height: 200)
-                     
-                      letter1.font = letter1.font.withSize(90)
-                      letter2.font = letter2.font.withSize(90)
-                      letter3.font = letter3.font.withSize(90)
-                      letter4.font = letter4.font.withSize(90)
-                      letter5.font = letter5.font.withSize(90)
-                      letter6.font = letter6.font.withSize(90)
-                      letter7.font = letter7.font.withSize(90)
-                      letter8.font = letter8.font.withSize(90)
-                      letter9.font = letter9.font.withSize(90)
-                      
-                      turnoutlet.frame = CGRect(x: 262.4, y: 1050, width: 499.2, height: 141.96)
-                      turnwordoutlet.center = turnoutlet.center
-                      turnwordoutlet.font = turnwordoutlet.font.withSize(40)
-                      
-                      second.frame.origin = CGPoint(x: second.frame.origin.x, y: 1050)
-                      
-                      againturnoutlet.frame = CGRect(x: 437, y: 1030, width: 150, height: 150)
-                      chanceoutlet.frame = CGRect(x: 207, y: 1030, width: 150, height: 150)
-                      hintoutlet.frame = CGRect(x: 667, y: 1030, width: 150, height: 150)
-                      
-                      chancenumber.frame.origin = CGPoint(x: 170, y: 1165)
-                      chanceplus.frame = CGRect(x: 324, y: 1178, width: 50, height: 50)
-                      chancetext.frame.origin = CGPoint(x: 205, y: 1174)
-                      chancetext.font = chancetext.font.withSize(30)
-                      
-                      turnagainnumber.frame.origin = CGPoint(x: 400, y: 1165)
-                      againturnplus.frame = CGRect(x: 555, y: 1178, width: 50, height: 50)
-                      againturntext.frame.origin = CGPoint(x: 435, y: 1180)
-                      againturntext.font = againturntext.font.withSize(30)
-                      
-                      hintnumber.frame.origin = CGPoint(x: 630, y: 1165)
-                      hintplus.frame = CGRect(x: 785, y: 1178, width: 50, height: 50)
-                      hinttext.frame.origin = CGPoint(x: 665, y: 1184)
-                      hinttext.font = hinttext.font.withSize(30)
-                      
-                      warningclose.frame = CGRect(x: 770, y: 360, width: 120, height: 120)
-                      
-                      chancebuythousandcoins.frame = CGRect(x: 226.25, y: 750, width: 288, height: 134.4)
-                      chancebuyads.frame = CGRect(x: 525.25, y: 750, width: 288, height: 123.2)
-                      chancescreentext.font = chancescreentext.font.withSize(40)
-                      
-                      againturncoinsbuy.frame = CGRect(x: 226.25, y: 750, width: 288, height: 134.4)
-                      againturnadsbuy.frame = CGRect(x: 525.25, y: 750, width: 288, height: 123.2)
-                      againturnscreentext.font = againturnscreentext.font.withSize(40)
-                      
+        homeoutlet.frame = CGRect(x: 472, y: 55, width: 80, height: 80)
+        coinsimage.frame = CGRect(x: 627.5, y: 60, width: 169, height: 63.7)
+        gamescreencup.frame = CGRect(x: 227.5, y: 60, width: 169, height: 63.7)
+        
+        coinstexttreeletter.frame.origin = CGPoint(x: 690, y: 65)
+        coinstexttreeletter.font = coinstexttreeletter.font.withSize(30)
+        
+        highscoretext.frame.origin = CGPoint(x: 200, y: 67)
+        highscoretext.font = highscoretext.font.withSize(30)
+        
+        treeletterword.center = self.view.center
+        treeletterword.frame.origin = CGPoint(x: treeletterword.frame.origin.x, y: 200)
+        treeletterword.font = treeletterword.font.withSize(120)
+        
+        
+        box1.frame = CGRect(x: 192, y: 350, width: 200, height: 200)
+        box2.frame = CGRect(x: 412, y: 350, width: 200, height: 200)
+        box3.frame = CGRect(x: 632, y: 350, width: 200, height: 200)
+        box4.frame = CGRect(x: 192, y: 568, width: 200, height: 200)
+        box5.frame = CGRect(x: 412, y: 568, width: 200, height: 200)
+        box6.frame = CGRect(x: 632, y: 568, width: 200, height: 200)
+        box7.frame = CGRect(x: 192, y: 786, width: 200, height: 200)
+        box8.frame = CGRect(x: 412, y: 786, width: 200, height: 200)
+        box9.frame = CGRect(x: 632, y: 786, width: 200, height: 200)
+        
+        letter1.font = letter1.font.withSize(90)
+        letter2.font = letter2.font.withSize(90)
+        letter3.font = letter3.font.withSize(90)
+        letter4.font = letter4.font.withSize(90)
+        letter5.font = letter5.font.withSize(90)
+        letter6.font = letter6.font.withSize(90)
+        letter7.font = letter7.font.withSize(90)
+        letter8.font = letter8.font.withSize(90)
+        letter9.font = letter9.font.withSize(90)
+        
+        turnoutlet.frame = CGRect(x: 262.4, y: 1050, width: 499.2, height: 141.96)
+        turnwordoutlet.center = turnoutlet.center
+        turnwordoutlet.font = turnwordoutlet.font.withSize(40)
+        
+        second.frame.origin = CGPoint(x: second.frame.origin.x, y: 1050)
+        
+        againturnoutlet.frame = CGRect(x: 437, y: 1030, width: 150, height: 150)
+        chanceoutlet.frame = CGRect(x: 207, y: 1030, width: 150, height: 150)
+        hintoutlet.frame = CGRect(x: 667, y: 1030, width: 150, height: 150)
+        
+        chancenumber.frame.origin = CGPoint(x: 170, y: 1165)
+        chanceplus.frame = CGRect(x: 324, y: 1178, width: 50, height: 50)
+        chancetext.frame.origin = CGPoint(x: 205, y: 1174)
+        chancetext.font = chancetext.font.withSize(30)
+        
+        turnagainnumber.frame.origin = CGPoint(x: 400, y: 1165)
+        againturnplus.frame = CGRect(x: 555, y: 1178, width: 50, height: 50)
+        againturntext.frame.origin = CGPoint(x: 435, y: 1180)
+        againturntext.font = againturntext.font.withSize(30)
+        
+        hintnumber.frame.origin = CGPoint(x: 630, y: 1165)
+        hintplus.frame = CGRect(x: 785, y: 1178, width: 50, height: 50)
+        hinttext.frame.origin = CGPoint(x: 665, y: 1184)
+        hinttext.font = hinttext.font.withSize(30)
+        
+        warningclose.frame = CGRect(x: 770, y: 360, width: 120, height: 120)
+        
+        chancebuythousandcoins.frame = CGRect(x: 226.25, y: 750, width: 288, height: 134.4)
+        chancebuyads.frame = CGRect(x: 525.25, y: 750, width: 288, height: 123.2)
+        chancescreentext.font = chancescreentext.font.withSize(40)
+        
+        againturncoinsbuy.frame = CGRect(x: 226.25, y: 750, width: 288, height: 134.4)
+        againturnadsbuy.frame = CGRect(x: 525.25, y: 750, width: 288, height: 123.2)
+        againturnscreentext.font = againturnscreentext.font.withSize(40)
+        
         hintbuythousandcoins.frame = CGRect(x: 226.25, y: 750, width: 288, height: 134.4)
         hintbuyads.frame = CGRect(x: 525.25, y: 750, width: 288, height: 123.2)
-                      hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
-           
-                      finishpaneltext.frame.origin = CGPoint(x: 135, y: 1320)
-                      finishpanelhome.frame = CGRect(x: 372, y: 1400, width: 120, height: 120)
-                      finishpanelnext.frame = CGRect(x: 532, y: 1400, width: 120, height: 120)
-           
-                      warningtext.font = warningtext.font.withSize(40)
-                      warningtext.frame = CGRect(x: 170, y: 300, width: 680, height: 500)
+        hintbuyscreentext.font = hintbuyscreentext.font.withSize(40)
+        
+        finishpaneltext.frame.origin = CGPoint(x: 135, y: 1320)
+        finishpanelhome.frame = CGRect(x: 372, y: 1400, width: 120, height: 120)
+        finishpanelnext.frame = CGRect(x: 532, y: 1400, width: 120, height: 120)
+        
+        warningtext.font = warningtext.font.withSize(40)
+        warningtext.frame = CGRect(x: 170, y: 300, width: 680, height: 500)
         
         winpanelnext.frame = CGRect(x: 256.4, y: 1500, width: 511.2, height: 158.4)
         winpanelnexttext.center = winpanelnext.center
@@ -3514,12 +5995,12 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         winpanelcoinsplus.frame.origin = CGPoint(x: 705, y: 1410)
         
         highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 770)
-               highscorewarningtext.font = highscorewarningtext.font.withSize(50)
+        highscorewarningtext.font = highscorewarningtext.font.withSize(50)
         highscorewarningclose.frame = CGRect(x: 466, y: 910, width: 100, height: 100)
         
-         coinsbuygoshop.frame = CGRect(x: 321.2, y: 670, width: 381.6, height: 138.6)
+        coinsbuygoshop.frame = CGRect(x: 321.2, y: 670, width: 381.6, height: 138.6)
     }
-  
+    
     @IBAction func coinsbuygoshop(_ sender: Any) {
         
         Analytics.logEvent("ThreeGoShopButtonClick", parameters: nil) // Firebase Events

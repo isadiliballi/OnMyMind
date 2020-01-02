@@ -11,6 +11,9 @@
         <array key="OnMyMind.ttf">
             <string>OnMyMind-Layers</string>
         </array>
+        <array key="OnMyMind5.ttf">
+            <string>DamnNoisyKids</string>
+        </array>
         <array key="OnMyMind6.ttf">
             <string>AlphaEcho</string>
         </array>
@@ -24,15 +27,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xip-QZ-HGu">
-                                <rect key="frame" x="72" y="29" width="231" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="45"/>
-                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzd-UF-QMd">
-                                <rect key="frame" x="51" y="153" width="272" height="88"/>
+                                <rect key="frame" x="70" y="175" width="116" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <state key="normal" image="giris3harfbutton">
@@ -42,31 +38,31 @@
                                     <action selector="treelettergo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njp-f0-Utn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 3 Harf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-Hk-SEb">
-                                <rect key="frame" x="96" y="166" width="183" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-Hk-SEb">
+                                <rect key="frame" x="70" y="195" width="116" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="73"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbS-2N-OEC">
-                                <rect key="frame" x="51" y="249" width="272" height="88"/>
+                                <rect key="frame" x="189" y="175" width="116" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="giris4harfbutton"/>
                                 <connections>
                                     <action selector="fourlettergo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="whU-Ws-AQ6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-iT-mAI">
-                                <rect key="frame" x="96" y="261" width="183" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mZ-iT-mAI">
+                                <rect key="frame" x="190" y="195" width="114" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="73"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HD-zx-HDx">
-                                <rect key="frame" x="51" y="345" width="272" height="87"/>
+                                <rect key="frame" x="70" y="348" width="116" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="giris5harfbutton">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMg-Jr-7hG">
-                                <rect key="frame" x="51" y="441" width="272" height="88"/>
+                                <rect key="frame" x="189" y="348" width="116" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="giris6harfbutton">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,57 +82,131 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFU-Mm-RMV">
-                                <rect key="frame" x="247" y="546" width="76" height="79"/>
+                                <rect key="frame" x="245" y="546" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gameinfo"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 Harf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-Ee-tTl">
-                                <rect key="frame" x="96" y="358" width="183" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-Ee-tTl">
+                                <rect key="frame" x="70" y="368" width="116" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="73"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLa-5R-JZ4">
-                                <rect key="frame" x="158" y="75" width="58" height="57"/>
+                                <rect key="frame" x="137" y="20" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gamecoins"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6 Harf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-ID-swF">
-                                <rect key="frame" x="96" y="454" width="183" height="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-ID-swF">
+                                <rect key="frame" x="190" y="368" width="114" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="73"/>
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCi-82-Ybk">
-                                <rect key="frame" x="51" y="548" width="76" height="79"/>
+                                <rect key="frame" x="29" y="546" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="gameayarlar"/>
                                 <connections>
-                                    <action selector="settingbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xh1-uZ-4ga"/>
+                                    <action selector="settingbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x9A-tp-jfK"/>
+                                    <segue destination="J9p-GB-z24" kind="showDetail" id="sSd-Vg-lty"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blD-z2-z7c">
-                                <rect key="frame" x="149" y="548" width="76" height="76"/>
+                                <rect key="frame" x="137" y="546" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="gamestore"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HARF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLz-PM-Crl">
+                                <rect key="frame" x="70" y="274" width="116" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="20"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HARF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08F-fG-f4u">
+                                <rect key="frame" x="70" y="447" width="116" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="20"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HARF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyX-lv-oig">
+                                <rect key="frame" x="189" y="447" width="116" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="20"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HARF" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNT-tG-G2D">
+                                <rect key="frame" x="189" y="274" width="116" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DamnNoisyKids" family="Damn Noisy Kids" pointSize="20"/>
+                                <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xip-QZ-HGu">
+                                <rect key="frame" x="72" y="114" width="231" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AlphaEcho" family="Alpha Echo" pointSize="45"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="DOq-7K-Dbd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="xKm-ff-Uka">
+                                <rect key="frame" x="8" y="195" width="376" height="302"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LÜTFEN TEKRAR DENEYİN!                       İNTERNET BAĞLANTI SORUNU" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvW-ib-UsM">
+                                <rect key="frame" x="31" y="271" width="316" height="152"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-fH-yzR">
+                                <rect key="frame" x="299" y="193" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="close"/>
+                                <connections>
+                                    <action selector="closebutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T0I-gx-3sO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qRY-NN-CZP"/>
                     <connections>
+                        <outlet property="closebutton" destination="rd0-fH-yzR" id="kQm-ak-4EW"/>
                         <outlet property="coinstext" destination="Xip-QZ-HGu" id="pnz-xb-ehD"/>
+                        <outlet property="darkbackground" destination="DOq-7K-Dbd" id="NnP-L1-hrO"/>
                         <outlet property="fiveletterbuttonoutlet" destination="0HD-zx-HDx" id="izU-2t-P5b"/>
                         <outlet property="fivelettertext" destination="CVE-Ee-tTl" id="BYn-N3-sb1"/>
+                        <outlet property="fivelettertext2" destination="08F-fG-f4u" id="sul-QV-kEb"/>
                         <outlet property="fourletterbuttonoutlet" destination="RbS-2N-OEC" id="4Jw-Hr-0n7"/>
                         <outlet property="fourlettertext" destination="6mZ-iT-mAI" id="EG2-Sw-gtk"/>
-                        <outlet property="settingbuttonoutlet" destination="JCi-82-Ybk" id="n1s-sk-WYj"/>
+                        <outlet property="fourlettertext2" destination="iNT-tG-G2D" id="8ED-Tj-I5s"/>
+                        <outlet property="infobuttonoutlet" destination="YFU-Mm-RMV" id="zJE-m3-3ao"/>
+                        <outlet property="settingbuttonoutlet" destination="JCi-82-Ybk" id="h8K-wV-q4b"/>
+                        <outlet property="shopbuttonoutlet" destination="blD-z2-z7c" id="gEE-kq-AgS"/>
                         <outlet property="sixletterbuttonoutlet" destination="BMg-Jr-7hG" id="AOR-85-JSa"/>
                         <outlet property="sixlettertext" destination="3rd-ID-swF" id="9jq-z8-3Nf"/>
+                        <outlet property="sixlettertext2" destination="QyX-lv-oig" id="fLX-mR-4Lt"/>
                         <outlet property="threeletterbuttonoutlet" destination="fzd-UF-QMd" id="iJr-fE-17o"/>
                         <outlet property="threelettertext" destination="9PM-Hk-SEb" id="sv1-j9-hSL"/>
+                        <outlet property="threelettertext2" destination="mLz-PM-Crl" id="8jT-Pu-u2z"/>
+                        <outlet property="warning" destination="xKm-ff-Uka" id="zif-Y5-atz"/>
+                        <outlet property="warningtext" destination="NvW-ib-UsM" id="nEp-Nz-Ucm"/>
                         <segue destination="Rpr-nQ-7GY" kind="showDetail" identifier="threelettergo" id="F3s-t0-71G"/>
                     </connections>
                 </viewController>
@@ -144,20 +214,106 @@
             </objects>
             <point key="canvasLocation" x="132" y="126.38680659670166"/>
         </scene>
-        <!--fourlettergame-->
-        <scene sceneID="MlW-F8-YKF">
+        <!--Setting-->
+        <scene sceneID="7Xl-lK-uAD">
             <objects>
-                <viewController id="XfP-uF-gv5" userLabel="fourlettergame" customClass="fourlettergame" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="a2s-V7-KrC">
+                <viewController modalPresentationStyle="fullScreen" id="J9p-GB-z24" customClass="setting" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="28t-PS-qxk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cT-Y0-rud">
+                                <rect key="frame" x="165" y="218" width="45" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TAKİP ET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm0-Qf-n30">
+                                <rect key="frame" x="134" y="552" width="107" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k51-4v-XxT">
+                                <rect key="frame" x="137" y="245" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="soundon"/>
+                                <connections>
+                                    <action selector="soundon:" destination="J9p-GB-z24" eventType="touchUpInside" id="ezZ-4q-I5p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zn9-tx-BzG">
+                                <rect key="frame" x="158" y="48" width="58" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="4" height="4"/>
+                                <state key="normal" image="home">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="g8n-AE-MjY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYM-j5-me1">
+                                <rect key="frame" x="123" y="587" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="twitter"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giI-7R-ebz">
+                                <rect key="frame" x="191" y="587" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="instagram"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2Z-5S-Yr0">
+                                <rect key="frame" x="0.0" y="404" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="otherbutton"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWp-Qp-joh">
+                                <rect key="frame" x="0.0" y="464" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="otherbutton"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GİZLİLİK POLİTİKASI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ON0-Vt-YkR">
+                                <rect key="frame" x="71" y="479" width="233" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SATIN ALINANLARI GERİ YÜKLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AO-mM-5zq">
+                                <rect key="frame" x="71" y="419" width="233" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AYARLAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBc-kR-f3L">
+                                <rect key="frame" x="48" y="131" width="292" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="80"/>
+                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="4" height="4"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="MqE-ug-d62"/>
+                        <viewLayoutGuide key="safeArea" id="bTb-Yr-K9K"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TeA-Xd-Pia"/>
+                    <connections>
+                        <outlet property="soundoutlet" destination="k51-4v-XxT" id="D2a-hg-p1n"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MTL-jE-WcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWJ-4T-MM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="148"/>
+            <point key="canvasLocation" x="1036" y="133.5832083958021"/>
         </scene>
         <!--Treelettergame-->
         <scene sceneID="bfa-DY-b4P">
@@ -823,16 +979,16 @@
         <image name="coinsbuygoshop" width="212" height="77"/>
         <image name="cup" width="847" height="846"/>
         <image name="darkbackground" width="751" height="1335"/>
-        <image name="gameayarlar" width="767" height="807"/>
-        <image name="gamecoins" width="676" height="696"/>
-        <image name="gameinfo" width="823" height="908.5"/>
+        <image name="gameayarlar" width="1000" height="1000"/>
+        <image name="gamecoins" width="1000" height="1000"/>
+        <image name="gameinfo" width="1000" height="1000"/>
         <image name="gamescreencoins" width="166" height="64"/>
         <image name="gamescreencup" width="166" height="64"/>
-        <image name="gamestore" width="823" height="863"/>
-        <image name="giris3harfbutton" width="908" height="295"/>
-        <image name="giris4harfbutton" width="908" height="295"/>
-        <image name="giris5harfbutton" width="908" height="295"/>
-        <image name="giris6harfbutton" width="908" height="295"/>
+        <image name="gamestore" width="1000" height="1000"/>
+        <image name="giris3harfbutton" width="200.5" height="300"/>
+        <image name="giris4harfbutton" width="200.5" height="300"/>
+        <image name="giris5harfbutton" width="200.5" height="300"/>
+        <image name="giris6harfbutton" width="200.5" height="300"/>
         <image name="highscorewarning2" width="1000" height="878"/>
         <image name="hint" width="137" height="143"/>
         <image name="hintbuy" width="902" height="691"/>
@@ -840,16 +996,20 @@
         <image name="hintnumber" width="115" height="65"/>
         <image name="hintplus" width="169" height="169"/>
         <image name="home" width="130" height="130"/>
+        <image name="instagram" width="200" height="200"/>
         <image name="next" width="802" height="802"/>
+        <image name="otherbutton" width="270" height="60"/>
         <image name="plus" width="741" height="741"/>
         <image name="plusonehundredcoins" width="951" height="383"/>
         <image name="plustencoins" width="626" height="332"/>
+        <image name="soundon" width="200" height="200"/>
         <image name="truenext" width="995" height="322"/>
         <image name="turn" width="904.5" height="251.5"/>
+        <image name="twitter" width="200" height="200"/>
         <image name="warning" width="902" height="488.5"/>
         <image name="win" width="902" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9IX-d8-s5X"/>
+        <segue reference="g8n-AE-MjY"/>
     </inferredMetricsTieBreakers>
 </document>

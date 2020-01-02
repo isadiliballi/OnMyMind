@@ -14,7 +14,6 @@
 		1E384061235C9B7B00F366D0 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384060235C9B7A00F366D0 /* okay.wav */; };
 		1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384062235CA0FE00F366D0 /* oneboxturn.wav */; };
 		1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384064235CA10600F366D0 /* twoboxturn.wav */; };
-		1E5786C523B52CBF003D23A0 /* fourlettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5786C423B52CBF003D23A0 /* fourlettergame.swift */; };
 		1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F832F2358E13100D96AD2 /* alarm.m4a */; };
 		1E7F83322358E5CE00D96AD2 /* true.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83312358E5CE00D96AD2 /* true.wav */; };
 		1E7F83342358E7D200D96AD2 /* nextgame.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83332358E7D200D96AD2 /* nextgame.wav */; };
@@ -31,6 +30,7 @@
 		1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EF22CD261000C0970B /* Assets.xcassets */; };
 		1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */; };
 		1EB3FD6122F35C2C007337ED /* gamegosound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3FD6022F35C2C007337ED /* gamegosound.m4a */; };
+		1EC3BD0623BD312C00B87849 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3BD0523BD312C00B87849 /* setting.swift */; };
 		EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,6 @@
 		1E384060235C9B7A00F366D0 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
 		1E384062235CA0FE00F366D0 /* oneboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oneboxturn.wav; sourceTree = "<group>"; };
 		1E384064235CA10600F366D0 /* twoboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twoboxturn.wav; sourceTree = "<group>"; };
-		1E5786C423B52CBF003D23A0 /* fourlettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourlettergame.swift; sourceTree = "<group>"; };
 		1E7F832F2358E13100D96AD2 /* alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.m4a; sourceTree = "<group>"; };
 		1E7F83312358E5CE00D96AD2 /* true.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = true.wav; sourceTree = "<group>"; };
 		1E7F83332358E7D200D96AD2 /* nextgame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nextgame.wav; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		1EA7D3F222CD261000C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA7D3F422CD261000C0970B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EB3FD6022F35C2C007337ED /* gamegosound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gamegosound.m4a; sourceTree = "<group>"; };
+		1EC3BD0523BD312C00B87849 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		1EDA744723807108008B08EF /* OnMyMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnMyMind.entitlements; sourceTree = "<group>"; };
 		41517F77A0E051B8AB92E67D /* Pods-OnMyMind.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.release.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.release.xcconfig"; sourceTree = "<group>"; };
 		BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnMyMind.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,10 +117,10 @@
 				1E74D4E022D8DE4600BE965A /* Fonts */,
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
 				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
-				1E5786C423B52CBF003D23A0 /* fourlettergame.swift */,
 				1EA7D3EA22CD260F00C0970B /* ViewController.swift */,
 				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
+				1EC3BD0523BD312C00B87849 /* setting.swift */,
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
@@ -297,7 +297,7 @@
 			files = (
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
 				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
-				1E5786C523B52CBF003D23A0 /* fourlettergame.swift in Sources */,
+				1EC3BD0623BD312C00B87849 /* setting.swift in Sources */,
 				1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
