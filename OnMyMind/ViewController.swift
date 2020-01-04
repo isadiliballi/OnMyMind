@@ -66,8 +66,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var warningtext: UILabel!
     @IBOutlet weak var closebutton: UIButton!
     
-    
-    
     var gamegobuttonsound : AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -108,7 +106,7 @@ class ViewController: UIViewController {
         soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
         
         if soundcontrol == true {
-            let path = Bundle.main.path(forResource: "gamegosound.m4a", ofType: nil)!
+            let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
             let url = URL(fileURLWithPath: path)
             
             do {
@@ -340,7 +338,9 @@ class ViewController: UIViewController {
     @IBAction func settingbutton(_ sender: Any) {
         UIView.transition(with: settingbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
-        //performSegue(withIdentifier: "setting", sender: nil)
+        if sound == true {
+            gamegobuttonsoundfunc()
+        }
     }
     func threeletterwordstart() {
         let dbrandom = Int.random(in: 1...498)
