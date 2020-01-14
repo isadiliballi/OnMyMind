@@ -233,7 +233,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             if firsopengame2  {
                 threeletterhighscore = UserDefaults.standard.object(forKey: "threeletterhighscorekey") as! Int
                 /*   highscoretext.text = String(threeletterhighscore)
-                 coins = 40000 // DELETE
+                 coins = 90000 // DELETE
                  UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
                  threeletterhighscore = 0 // DELETE
                  UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey") // DELETE */
@@ -429,21 +429,21 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         background()
         
         if threelettersectioncontrol == true {
-            winpanelcoins.text = String(130)
+            winpanelcoins.text = String(36)
             time = 2
         }
         else if fourlettersectioncontrol == true {
-            winpanelcoins.text = String(140)
+            winpanelcoins.text = String(48)
             time = Int(2.5)
             second.text = String(2)
         }
         else if fivelettersectioncontrol == true {
-            winpanelcoins.text = String(150)
+            winpanelcoins.text = String(60)
             time = 3
         }
         else if sixlettersectioncontrol == true {
-            winpanelcoins.text = String(160)
-            time = Int(3.5)
+            winpanelcoins.text = String(72)
+            time = 4
         }
         else {}
         
@@ -461,9 +461,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         backgroundImageView.layer.zPosition = -1
     }
     
-    func backgrounddark() {
-        
-    }
     
     @IBAction func home(_ sender: Any) {
         
@@ -3061,7 +3058,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     
     func IFlettertextequalletters() {
-        self.coins+=10
+        
+        self.coins+=2
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 20, options: .curveEaseInOut, animations: {
             self.coinsimage.frame.origin.y -= 20
             UIView.transition(with: self.coinsimage, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -3365,7 +3363,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         gameoversound()
     }
     
-    func scontrolequalthree() { // 3. kutu doğru olduğunda...
+    func scontrolequalthree() { // Son Kutu Doğru Olduğunda...
         adscontrol += 1
         if adscontrol % 2 == 0 {
             if interstitial.isReady {
@@ -3374,7 +3372,19 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             else {
             }
         }
-        self.coins+=100
+        if threelettersectioncontrol == true {
+            self.coins+=30
+        }
+        else if fourlettersectioncontrol == true {
+            self.coins+=40
+        }
+        else if fivelettersectioncontrol == true {
+            self.coins+=50
+        }
+        else if sixlettersectioncontrol == true {
+            self.coins+=60
+        }
+        
         self.coinstexttreeletter.text = String(self.coins)
         self.score += 10
         box1.isUserInteractionEnabled = false
@@ -3636,19 +3646,36 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         winpanelnexttext.isHidden = false
         winpanelscore.text = String(score)
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 10, initialSpringVelocity: 20, options: .transitionCurlUp, animations: {
-            self.plusonehundredcoins.isHidden = false
-            self.plusonehundredcoins.frame.origin.x -= 90
-            self.plusonehundredcoins.frame.origin.y -= 60
-            self.plusonehundredcoins.frame.size.height += 200
-            self.plusonehundredcoins.frame.size.width += 200
-        }){_ in
-            self.plusonehundredcoins.isHidden = true
-            self.plusonehundredcoins.frame.origin.x += 90
-            self.plusonehundredcoins.frame.origin.y += 60
-            self.plusonehundredcoins.frame.size.height -= 200
-            self.plusonehundredcoins.frame.size.width -= 200
+        if threelettersectioncontrol == true {
+            plusonehundredcoins.image = UIImage(named:"plusthirtycoins")
         }
+        else if fourlettersectioncontrol == true {
+            plusonehundredcoins.image = UIImage(named:"plusfourtycoins")
+        }
+        else if fivelettersectioncontrol == true {
+            plusonehundredcoins.image = UIImage(named:"plusfiftycoins")
+        }
+        else if sixlettersectioncontrol == true {
+            plusonehundredcoins.image = UIImage(named:"plustsixycoins")
+        }
+        else {
+            
+        }
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 10, initialSpringVelocity: 20, options: .transitionCurlUp, animations: {
+                       self.plusonehundredcoins.isHidden = false
+                       self.plusonehundredcoins.frame.origin.x -= 90
+                       self.plusonehundredcoins.frame.origin.y -= 60
+                       self.plusonehundredcoins.frame.size.height += 200
+                       self.plusonehundredcoins.frame.size.width += 200
+                   }){_ in
+                       self.plusonehundredcoins.isHidden = true
+                       self.plusonehundredcoins.frame.origin.x += 90
+                       self.plusonehundredcoins.frame.origin.y += 60
+                       self.plusonehundredcoins.frame.size.height -= 200
+                       self.plusonehundredcoins.frame.size.width -= 200
+                   }
+        
         /*    self.winpanelnext.isUserInteractionEnabled = false
          var translatetime = 0
          Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
@@ -5159,8 +5186,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
         Analytics.logEvent("ThreeHintBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 1200 {
-            coins -= 1200
+        if coins >= 125 {
+            coins -= 125
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             hintint += 1
@@ -5190,9 +5217,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
         Analytics.logEvent("ThreeAgainTurnBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 1500 {
+        if coins >= 150 {
             okaysound()
-            coins -= 1500
+            coins -= 150
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             againturnint += 1
@@ -5221,8 +5248,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         
         Analytics.logEvent("ThreeChanceBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 1000 {
-            coins -= 1000
+        if coins >= 100 {
+            coins -= 100
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             chanceint += 1
@@ -5249,39 +5276,45 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
+        if hintbuyscreen.isHidden == false {
+                   hintint += 2
+                   UserDefaults.standard.set(hintint, forKey: "hintkey")
+                   hinttext.text = String(hintint)
+                   hintbuyscreentext.text = String(hintint)
+               }
+               else {
+                   okaysound()
+               }
+               
+               if againturnscreen.isHidden == false {
+                   againturnint += 1
+                   UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+                   againturntext.text = String(againturnint)
+                   againturnscreentext.text = String(againturnint)
+               }
+               else {
+                   okaysound()
+               }
+               
+               if chancescreen.isHidden == false {
+                   chanceint += 2
+                   UserDefaults.standard.set(chanceint, forKey: "chancekey")
+                   chancetext.text = String(chanceint)
+                   chancescreentext.text = String(chanceint)
+               }
+               else {
+                   okaysound()
+               }
     }
     
     func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {     // REKLAM TAMAMEN İZLENDİĞİNDE...
-        if hintbuyscreen.isHidden == false {
-            hintint += 2
-            UserDefaults.standard.set(hintint, forKey: "hintkey")
-            hinttext.text = String(hintint)
-            hintbuyscreentext.text = String(hintint)
-        }
-        else {
-            okaysound()
-        }
-        
-        if againturnscreen.isHidden == false {
-            againturnint += 1
-            UserDefaults.standard.set(againturnint, forKey: "againturnkey")
-            againturntext.text = String(againturnint)
-            againturnscreentext.text = String(againturnint)
-        }
-        else {
-            okaysound()
-        }
-        
-        if chancescreen.isHidden == false {
-            chanceint += 2
-            UserDefaults.standard.set(chanceint, forKey: "chancekey")
-            chancetext.text = String(chanceint)
-            chancescreentext.text = String(chanceint)
-        }
-        else {
-            okaysound()
-        }
-        
+       
+    }
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
+        // GOOGLE ADS
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        // GOOGLE ADS
     }
     
     

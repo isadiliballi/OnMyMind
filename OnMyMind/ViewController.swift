@@ -342,6 +342,16 @@ class ViewController: UIViewController {
             gamegobuttonsoundfunc()
         }
     }
+    
+    @IBAction func shopbutton(_ sender: Any) {
+        UIView.transition(with: shopbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        
+        if sound == true {
+            gamegobuttonsoundfunc()
+        }
+    }
+    
+    
     func threeletterwordstart() {
         let dbrandom = Int.random(in: 1...498)
         let dbrandomstring = String(dbrandom)

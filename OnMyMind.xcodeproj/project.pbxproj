@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1F6D9D23C672780038A752 /* shopfree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1F6D9C23C672780038A752 /* shopfree.swift */; };
 		1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E20D85522CE0BF700F1E236 /* treelettergame.swift */; };
 		1E20D85822CE25C600F1E236 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */; };
 		1E38405D235C886400F366D0 /* lifeisover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E38405C235C886400F366D0 /* lifeisover.wav */; };
@@ -24,6 +25,7 @@
 		1E941ECC2300AF89009B4ABD /* OnMyMind4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */; };
 		1E941ECE2300B232009B4ABD /* OnMyMind5.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */; };
 		1E941ED02300B526009B4ABD /* OnMyMind6.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */; };
+		1E9EAEEC23CA37370097105B /* shopstore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9EAEEB23CA37370097105B /* shopstore.swift */; };
 		1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3E822CD260F00C0970B /* AppDelegate.swift */; };
 		1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EA22CD260F00C0970B /* ViewController.swift */; };
 		1EA7D3EE22CD260F00C0970B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EC22CD260F00C0970B /* Main.storyboard */; };
@@ -37,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		1C24642F60C7A495C8DD8FF1 /* Pods-OnMyMind.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnMyMind.debug.xcconfig"; path = "Target Support Files/Pods-OnMyMind/Pods-OnMyMind.debug.xcconfig"; sourceTree = "<group>"; };
+		1E1F6D9C23C672780038A752 /* shopfree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopfree.swift; sourceTree = "<group>"; };
 		1E20D85522CE0BF700F1E236 /* treelettergame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treelettergame.swift; sourceTree = "<group>"; };
 		1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E38405C235C886400F366D0 /* lifeisover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lifeisover.wav; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind4.ttf; sourceTree = "<group>"; };
 		1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind5.ttf; sourceTree = "<group>"; };
 		1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind6.ttf; sourceTree = "<group>"; };
+		1E9EAEEB23CA37370097105B /* shopstore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopstore.swift; sourceTree = "<group>"; };
 		1EA7D3E522CD260F00C0970B /* On My Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Mind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
 				1EC3BD0523BD312C00B87849 /* setting.swift */,
 				1ECB43EC23C12449003DC469 /* shop.swift */,
+				1E1F6D9C23C672780038A752 /* shopfree.swift */,
+				1E9EAEEB23CA37370097105B /* shopstore.swift */,
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
@@ -301,6 +307,8 @@
 				1ECB43ED23C12449003DC469 /* shop.swift in Sources */,
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
 				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
+				1E9EAEEC23CA37370097105B /* shopstore.swift in Sources */,
+				1E1F6D9D23C672780038A752 /* shopfree.swift in Sources */,
 				1EC3BD0623BD312C00B87849 /* setting.swift in Sources */,
 				1EA7D3E922CD260F00C0970B /* AppDelegate.swift in Sources */,
 			);
