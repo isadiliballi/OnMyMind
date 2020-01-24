@@ -15,6 +15,7 @@
 		1E384061235C9B7B00F366D0 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384060235C9B7A00F366D0 /* okay.wav */; };
 		1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384062235CA0FE00F366D0 /* oneboxturn.wav */; };
 		1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384064235CA10600F366D0 /* twoboxturn.wav */; };
+		1E51FF1923D621FA00D69974 /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51FF1823D621FA00D69974 /* info.swift */; };
 		1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F832F2358E13100D96AD2 /* alarm.m4a */; };
 		1E7F83322358E5CE00D96AD2 /* true.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83312358E5CE00D96AD2 /* true.wav */; };
 		1E7F83342358E7D200D96AD2 /* nextgame.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83332358E7D200D96AD2 /* nextgame.wav */; };
@@ -47,6 +48,7 @@
 		1E384060235C9B7A00F366D0 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
 		1E384062235CA0FE00F366D0 /* oneboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oneboxturn.wav; sourceTree = "<group>"; };
 		1E384064235CA10600F366D0 /* twoboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twoboxturn.wav; sourceTree = "<group>"; };
+		1E51FF1823D621FA00D69974 /* info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
 		1E7F832F2358E13100D96AD2 /* alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.m4a; sourceTree = "<group>"; };
 		1E7F83312358E5CE00D96AD2 /* true.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = true.wav; sourceTree = "<group>"; };
 		1E7F83332358E7D200D96AD2 /* nextgame.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = nextgame.wav; sourceTree = "<group>"; };
@@ -93,6 +95,8 @@
 				1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */,
 				1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */,
 				1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */,
+				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
+				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -122,14 +126,13 @@
 				1EB3FD5F22F35C11007337ED /* Sound */,
 				1E74D4E022D8DE4600BE965A /* Fonts */,
 				1EA7D3E822CD260F00C0970B /* AppDelegate.swift */,
-				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
 				1EA7D3EA22CD260F00C0970B /* ViewController.swift */,
-				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
-				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
+				1E20D85522CE0BF700F1E236 /* treelettergame.swift */,
 				1EC3BD0523BD312C00B87849 /* setting.swift */,
 				1ECB43EC23C12449003DC469 /* shop.swift */,
 				1E1F6D9C23C672780038A752 /* shopfree.swift */,
 				1E9EAEEB23CA37370097105B /* shopstore.swift */,
+				1E51FF1823D621FA00D69974 /* info.swift */,
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
@@ -305,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ECB43ED23C12449003DC469 /* shop.swift in Sources */,
+				1E51FF1923D621FA00D69974 /* info.swift in Sources */,
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
 				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
 				1E9EAEEC23CA37370097105B /* shopstore.swift in Sources */,

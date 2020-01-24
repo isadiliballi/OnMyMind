@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     var soundcontrol = true
     
     @IBOutlet weak var coinstext: UILabel!
+    @IBOutlet weak var coinsbutton: UIButton!
     
     
     @IBOutlet weak var threelettertext: UILabel!
@@ -61,15 +62,42 @@ class ViewController: UIViewController {
     var hint = 6
     var sound = true
     
-    @IBOutlet weak var darkbackground: UIImageView!
-    @IBOutlet weak var warning: UIImageView!
-    @IBOutlet weak var warningtext: UILabel!
-    @IBOutlet weak var closebutton: UIButton!
     
     var gamegobuttonsound : AVAudioPlayer?
+    var dark = false
+    
+    @IBOutlet weak var logoi: UIImageView!
+    @IBOutlet weak var logo: UIImageView!
+    
+    @IBOutlet weak var darkbackground: UIImageView!
+    @IBOutlet weak var homewarning: UIImageView!
+    @IBOutlet weak var homewarningtext: UILabel!
+    @IBOutlet weak var homewarningcloseoutlet: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        threelettertext.font = threelettertext.font.withSize(view.frame.size.width / 6)
+        threelettertext2.font = threelettertext2.font.withSize(view.frame.size.width / 20)
+        
+        fourlettertext.font = fourlettertext.font.withSize(view.frame.size.width / 6)
+        fourlettertext2.font = fourlettertext2.font.withSize(view.frame.size.width / 20)
+        
+        fivelettertext.font = fivelettertext.font.withSize(view.frame.size.width / 6)
+        fivelettertext2.font = fivelettertext2.font.withSize(view.frame.size.width / 20)
+        
+        sixlettertext.font = sixlettertext.font.withSize(view.frame.size.width / 6)
+        sixlettertext2.font = sixlettertext2.font.withSize(view.frame.size.width / 20)
+        
+        coinstext.font = coinstext.font.withSize(view.frame.size.width / 15)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.25, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: .repeat, animations: {
+            self.logoi.frame.origin.y -= 20
+                  
+               }){_ in
+                  self.logoi.frame.origin.y += 20
+               }
         
         let firsopengame = UserDefaults.standard.bool(forKey: "firsopengame")
         if firsopengame  {
@@ -93,6 +121,16 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(sound, forKey: "sound")
         }
         
+        // KOYU MOD
+               let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
+               if firsopengame7  {
+                   dark = UserDefaults.standard.object(forKey: "dark") as! Bool
+               }
+               else {
+                   UserDefaults.standard.set(true, forKey: "firsopengame7")
+                   UserDefaults.standard.set(dark, forKey: "dark")
+               }
+        
         
         threeletterwordstart()
         fourletterwordstart()
@@ -100,7 +138,35 @@ class ViewController: UIViewController {
         sixletterwordstart()
         background()
         responsive()
+        
     }
+    
+    @IBAction func homewarningclose(_ sender: Any) {
+        homewarning.isHidden = true
+        homewarningtext.isHidden = true
+        homewarningcloseoutlet.isHidden = true
+        darkbackground.isHidden = true
+        
+        threeletterbuttonoutlet.isUserInteractionEnabled = true
+               fourletterbuttonoutlet.isUserInteractionEnabled = true
+               fiveletterbuttonoutlet.isUserInteractionEnabled = true
+               sixletterbuttonoutlet.isUserInteractionEnabled = true
+               settingbuttonoutlet.isUserInteractionEnabled = true
+               shopbuttonoutlet.isUserInteractionEnabled = true
+               infobuttonoutlet.isUserInteractionEnabled = true
+               
+               let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+               let url = URL(fileURLWithPath: path)
+               
+               do {
+                   gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
+                   gamegobuttonsound?.play()
+               }
+               catch{
+                   
+               }
+    }
+    
     
     func gamegobuttonsoundfunc() {
         soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
@@ -129,36 +195,86 @@ class ViewController: UIViewController {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundImageView.image = UIImage(named: "arkaplan")
+        if dark == true {
+            backgroundImageView.image = UIImage(named: "arkaplan")
+            logo.image = UIImage(named: "logo")
+        }
+        else {
+            backgroundImageView.image = UIImage(named: "arkaplan2")
+             logo.image = UIImage(named: "logocolor2")
+        }
         backgroundImageView.layer.zPosition = -1
     }
     
     func responsive() {
+        
         let screenheight = view.frame.size.height
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
         
-        if 888...1150 ~= ratio  { // iPhone Series
-            print("iPhone")
+        if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
+            print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
         }
-        else if 1187...1310 ~= ratio { // iPhone X Series
-            /*   threeletterbuttonoutlet.frame.origin.x = (self.view.bounds.size.width - threeletterbuttonoutlet.frame.size.width) / 2
-             threeletterbuttonoutlet.frame = CGRect(x: threeletterbuttonoutlet.frame.origin.x, y: threeletterbuttonoutlet.frame.origin.y, width: 284, height: 98)
-             
-             fourletterbuttonoutlet.frame.origin.x = (self.view.bounds.size.width - fourletterbuttonoutlet.frame.size.width) / 2
-             fourletterbuttonoutlet.frame = CGRect(x: fourletterbuttonoutlet.frame.origin.x, y: fourletterbuttonoutlet.frame.origin.y, width: 284, height: 98) */
-            print("iPhone X Series")
+        else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
+            print("iPhone 5 - 5S - 5C - SE Series")
         }
-        else if ratio == 2028 { // iPad Pro 11 inch
-            print("iPad Pro 11 inç")
+        else if ratio == 1187 { // iPhone X - XS - 11 Pro Series +
+            print("iPhone X - XS - 11 Pro Series")
+            
+            coinsbutton.frame = CGRect(x: 65.1, y: 240, width: 244.8, height: 88.8)
+            coinstext.font = coinstext.font.withSize(40)
+            settingbuttonoutlet.frame = CGRect(x: 52.5, y: 680, width: 70, height: 70)
+            shopbuttonoutlet.frame = CGRect(x: 152.5, y: 680, width: 70, height: 70)
+            infobuttonoutlet.frame = CGRect(x: 252.5, y: 680, width: 70, height: 70)
+            homewarningcloseoutlet.frame = CGRect(x: 152.5, y: 500, width: 70, height: 70)
         }
-        else if 1792...2390 ~= ratio { // iPad Series
-            threelettertext.frame.origin.x = (threeletterbuttonoutlet.bounds.size.width) / 2
-            threelettertext.frame = CGRect(x: threelettertext.frame.origin.x, y: threelettertext.frame.origin.y, width: 250, height: 70)
-            threelettertext.textAlignment = .center
-            threelettertext.font = UIFont(name: "Helvetica", size: 80)
+        else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max +
+            print("iPhone XR - XS Max - 11 - 11 Pro Max")
+            
+            coinsbutton.frame = CGRect(x: 84.6, y: 272, width: 244.8, height: 88.8)
+            coinstext.font = coinstext.font.withSize(45)
+            settingbuttonoutlet.frame = CGRect(x: 67, y: 750, width: 80, height: 80)
+            shopbuttonoutlet.frame = CGRect(x: 167, y: 750, width: 80, height: 80)
+            infobuttonoutlet.frame = CGRect(x: 267, y: 750, width: 80, height: 80)
+            homewarningcloseoutlet.frame = CGRect(x: 167, y: 550, width: 80, height: 80)
+        }
+        else if ratio == 2028 { // iPad Pro 11 inch +
+            print("iPad Pro 11 inch")
+            
+            coinsbutton.frame = CGRect(x: view.frame.width / 2 - 183.6, y: coinsbutton.frame.origin.y + 15, width: 367.2, height: 133.2)
+            coinstext.font = coinstext.font.withSize(60)
+            coinstext.frame = CGRect(x: coinstext.frame.origin.x, y: coinsbutton.frame.maxY - 65, width: coinstext.frame.width, height: coinstext.frame.height)
+            settingbuttonoutlet.frame = CGRect(x: 152, y: 1000, width: 130, height: 130)
+            shopbuttonoutlet.frame = CGRect(x: 352, y: 1000, width: 130, height: 130)
+            infobuttonoutlet.frame = CGRect(x: 552, y: 1000, width: 130, height: 130)
+            homewarningcloseoutlet.frame = CGRect(x: 367, y: 800, width: 100, height: 100)
+            logoi.frame = CGRect(x: 120, y: 160, width: 36, height: 109.8)
+        }
+        else if ratio == 2390 { // iPad Pro 12.9 inch +
+            print("iPad Pro 12.9 inch")
+            
+            coinsbutton.frame = CGRect(x: view.frame.width / 2 - 183.6, y: coinsbutton.frame.origin.y + 15, width: 367.2, height: 133.2)
+            coinstext.font = coinstext.font.withSize(60)
+            coinstext.frame = CGRect(x: coinstext.frame.origin.x, y: coinsbutton.frame.maxY - 68, width: coinstext.frame.width, height: coinstext.frame.height)
+            settingbuttonoutlet.frame = CGRect(x: 242, y: 1150, width: 140, height: 140)
+            shopbuttonoutlet.frame = CGRect(x: 442, y: 1150, width: 140, height: 140)
+            infobuttonoutlet.frame = CGRect(x: 642, y: 1150, width: 140, height: 140)
+            homewarningcloseoutlet.frame = CGRect(x: 462, y: 900, width: 100, height: 100)
+            logoi.frame = CGRect(x: 180, y: 200, width: 36, height: 109.8)
+        }
+        else if 1792...2390 ~= ratio { // iPad Series +
             print("iPad Series")
+            
+            coinsbutton.frame = CGRect(x: view.frame.width / 2 - 146.88, y: coinsbutton.frame.origin.y, width: 293.76, height: 106.56)
+            coinstext.font = coinstext.font.withSize(55)
+            coinstext.frame = CGRect(x: coinstext.frame.origin.x, y: coinsbutton.frame.maxY - 53, width: coinstext.frame.width, height: coinstext.frame.height)
+            settingbuttonoutlet.frame = CGRect(x: view.frame.width / 2 - 200, y: fiveletterbuttonoutlet.frame.maxY + 50, width: 100, height: 100)
+            shopbuttonoutlet.frame = CGRect(x: view.frame.width / 2 - 50, y: fiveletterbuttonoutlet.frame.maxY + 50, width: 100, height: 100)
+            infobuttonoutlet.frame = CGRect(x: view.frame.width / 2 + 100, y: fiveletterbuttonoutlet.frame.maxY + 50, width: 100, height: 100)
+            homewarningcloseoutlet.frame = CGRect(x: view.frame.width / 2 - 50, y: homewarning.frame.maxY + 50, width: 100, height: 100)
+            logoi.frame = CGRect(x: logo.frame.minX + 20, y: logo.frame.minY + 5, width: 36, height: 109.8)
         }
+      
     }
     
     
@@ -173,9 +289,9 @@ class ViewController: UIViewController {
         UIView.transition(with: threeletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         if threeletteringword.isEmpty == true && threelettertrword.isEmpty == true {
             darkbackground.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            closebutton.isHidden = false
+            homewarning.isHidden = false
+            homewarningtext.isHidden = false
+            homewarningcloseoutlet.isHidden = false
             
             threeletterbuttonoutlet.isUserInteractionEnabled = false
             fourletterbuttonoutlet.isUserInteractionEnabled = false
@@ -202,9 +318,9 @@ class ViewController: UIViewController {
         
         if fourletteringword.isEmpty == true && fourlettertrword.isEmpty == true {
             darkbackground.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            closebutton.isHidden = false
+            homewarning.isHidden = false
+            homewarningtext.isHidden = false
+            homewarningcloseoutlet.isHidden = false
             
             threeletterbuttonoutlet.isUserInteractionEnabled = false
             fourletterbuttonoutlet.isUserInteractionEnabled = false
@@ -229,10 +345,10 @@ class ViewController: UIViewController {
         UIView.transition(with: fivelettertext2, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
         if fiveletteringword.isEmpty == true && fivelettertrword.isEmpty == true {
-            darkbackground.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            closebutton.isHidden = false
+           darkbackground.isHidden = false
+            homewarning.isHidden = false
+            homewarningtext.isHidden = false
+            homewarningcloseoutlet.isHidden = false
             
             threeletterbuttonoutlet.isUserInteractionEnabled = false
             fourletterbuttonoutlet.isUserInteractionEnabled = false
@@ -257,9 +373,9 @@ class ViewController: UIViewController {
         
         if sixletteringword.isEmpty == true && sixlettertrword.isEmpty == true {
             darkbackground.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            closebutton.isHidden = false
+            homewarning.isHidden = false
+            homewarningtext.isHidden = false
+            homewarningcloseoutlet.isHidden = false
             
             threeletterbuttonoutlet.isUserInteractionEnabled = false
             fourletterbuttonoutlet.isUserInteractionEnabled = false
@@ -273,32 +389,7 @@ class ViewController: UIViewController {
             performSegue(withIdentifier: "threelettergo", sender: nil)
         }
     }
-    
-    @IBAction func closebutton(_ sender: Any) {
-        darkbackground.isHidden = true
-        warning.isHidden = true
-        warningtext.isHidden = true
-        closebutton.isHidden = true
-        
-        threeletterbuttonoutlet.isUserInteractionEnabled = true
-        fourletterbuttonoutlet.isUserInteractionEnabled = true
-        fiveletterbuttonoutlet.isUserInteractionEnabled = true
-        sixletterbuttonoutlet.isUserInteractionEnabled = true
-        settingbuttonoutlet.isUserInteractionEnabled = true
-        shopbuttonoutlet.isUserInteractionEnabled = true
-        infobuttonoutlet.isUserInteractionEnabled = true
-        
-        let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
-            gamegobuttonsound?.play()
-        }
-        catch{
-            
-        }
-    }
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -401,6 +492,17 @@ class ViewController: UIViewController {
         }
         ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
             self.sixlettertrword = snapshottwo.value as! String
+        }
+    }
+    
+    @IBAction func coinsgoshop(_ sender: Any) {
+        if sound == true {
+            gamegobuttonsoundfunc()
+        }
+    }
+    @IBAction func info(_ sender: Any) {
+        if sound == true {
+            gamegobuttonsoundfunc()
         }
     }
     

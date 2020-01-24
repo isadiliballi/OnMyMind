@@ -44,6 +44,8 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var freeoutlet: UIButton!
     @IBOutlet weak var storeoutlet: UIButton!
     
+    var dark = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,16 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         // GOOGLE ADS
+        
+        // KOYU MOD
+        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
+        if firsopengame7  {
+            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame7")
+            UserDefaults.standard.set(dark, forKey: "dark")
+        }
         
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
@@ -70,7 +82,12 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundImageView.image = UIImage(named: "arkaplan")
+        if dark == true {
+            backgroundImageView.image = UIImage(named: "arkaplan")
+        }
+        else {
+            backgroundImageView.image = UIImage(named: "arkaplan2")
+        }
         backgroundImageView.layer.zPosition = -1
     }
     

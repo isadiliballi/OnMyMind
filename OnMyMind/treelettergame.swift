@@ -206,9 +206,24 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var gamescreencup: UIImageView!
     @IBOutlet weak var finishpanelhome: UIButton!
     
-    @IBOutlet weak var coinsbuygoshop: UIButton!
+    @IBOutlet weak var coinsbuygoshopoutlet: UIButton!
     
     var soundcontrol = true
+    var dark = false
+    
+    @IBOutlet weak var shopping: UIImageView!
+    @IBOutlet weak var shoppingbuyone: UIButton!
+    @IBOutlet weak var shoppingbuytwo: UIButton!
+    @IBOutlet weak var shoppingbuythree: UIButton!
+    @IBOutlet weak var shoppingbuyfour: UIButton!
+    
+    @IBOutlet weak var translateen: UIImageView!
+    @IBOutlet weak var translatetr: UIImageView!
+    
+    @IBOutlet weak var education: UIImageView!
+    @IBOutlet weak var understoodoutlet: UIButton!
+    var educationcontrol = false
+    
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
@@ -227,6 +242,66 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         interstitial.load(request)
         // GOOGLE ADS
         
+        // KOYU MOD
+        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
+        if firsopengame7  {
+            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame7")
+            UserDefaults.standard.set(dark, forKey: "dark")
+        }
+        
+        // NASIL OYNANIR?
+        let firsopengame8 = UserDefaults.standard.bool(forKey: "firsopengame8")
+        if firsopengame8  {
+            educationcontrol = UserDefaults.standard.object(forKey: "educationcontrol") as! Bool
+            if educationcontrol == true {
+                understoodoutlet.isHidden = true
+                education.isHidden = true
+                darkbackground.isHidden = true
+            }
+            else {
+                understoodoutlet.isHidden = false
+                education.isHidden = false
+                darkbackground.isHidden = false
+                
+                box1.isUserInteractionEnabled = false
+                box2.isUserInteractionEnabled = false
+                box3.isUserInteractionEnabled = false
+                box4.isUserInteractionEnabled = false
+                box5.isUserInteractionEnabled = false
+                box6.isUserInteractionEnabled = false
+                box7.isUserInteractionEnabled = false
+                box8.isUserInteractionEnabled = false
+                box9.isUserInteractionEnabled = false
+                turnoutlet.isUserInteractionEnabled = false
+                homeoutlet.isUserInteractionEnabled = false
+                coinsimage.isUserInteractionEnabled = false
+            }
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame8")
+            UserDefaults.standard.set(educationcontrol, forKey: "educationcontrol")
+            if educationcontrol == false {
+                understoodoutlet.isHidden = false
+                education.isHidden = false
+                darkbackground.isHidden = false
+                
+               box1.isUserInteractionEnabled = false
+                box2.isUserInteractionEnabled = false
+                box3.isUserInteractionEnabled = false
+                box4.isUserInteractionEnabled = false
+                box5.isUserInteractionEnabled = false
+                box6.isUserInteractionEnabled = false
+                box7.isUserInteractionEnabled = false
+                box8.isUserInteractionEnabled = false
+                box9.isUserInteractionEnabled = false
+                turnoutlet.isUserInteractionEnabled = false
+                homeoutlet.isUserInteractionEnabled = false
+                coinsimage.isUserInteractionEnabled = false
+            }
+        }
         
         if threelettersectioncontrol == true {
             let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
@@ -451,14 +526,19 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func background() {
         let backgroundImageView = UIImageView()
-        view.addSubview(backgroundImageView)
-        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        backgroundImageView.image = UIImage(named: "arkaplan")
-        backgroundImageView.layer.zPosition = -1
+               view.addSubview(backgroundImageView)
+               backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+               backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+               backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+               backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+               backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+               if dark == true {
+                  backgroundImageView.image = UIImage(named: "arkaplan")
+               }
+               else {
+                   backgroundImageView.image = UIImage(named: "arkaplan2")
+               }
+               backgroundImageView.layer.zPosition = -1
     }
     
     
@@ -2826,11 +2906,16 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         chanceoutlet.isUserInteractionEnabled = true
         againturnoutlet.isUserInteractionEnabled = true
         
-        warningtext.isHidden = true
-        coinsbuygoshop.isHidden = true
+       // warningtext.isHidden = true
+       // coinsbuygoshopoutlet.isHidden = true
         warningclose.isHidden = true
-        warning.isHidden = true
+       // warning.isHidden = true
         darkbackground.isHidden = true
+        shopping.isHidden = true
+        shoppingbuyone.isHidden = true
+        shoppingbuytwo.isHidden = true
+        shoppingbuythree.isHidden = true
+        shoppingbuyfour.isHidden = true
         izin = true
         
         buttonsound()
@@ -3715,6 +3800,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         self.blurbackground.isHidden = false
         self.blurbackgroundtext.isHidden = false
         self.blurbackgroundtrtext.isHidden = false
+        self.translateen.isHidden = false
+        self.translatetr.isHidden = false
         
         blurbackgroundtext.center.x = self.view.center.x
         blurbackgroundtrtext.center.x = self.view.center.x
@@ -3728,6 +3815,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
                 self.blurbackground.isHidden = true
                 self.blurbackgroundtext.isHidden = true
                 self.blurbackgroundtrtext.isHidden = true
+                self.translateen.isHidden = true
+                self.translatetr.isHidden = true
             }
         })
         
@@ -5197,10 +5286,19 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             okaysound()
         }
         else {
+            hintbuyscreen.isHidden = true
+            hintbuyscreentext.isHidden = true
+            hintbuyads.isHidden = true
+            hintbuythousandcoins.isHidden = true
+            shopping.isHidden = false
+            shoppingbuyone.isHidden = false
+            shoppingbuytwo.isHidden = false
+            shoppingbuythree.isHidden = false
+            shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            coinsbuygoshop.isHidden = false
+         //   warning.isHidden = false
+         //   warningtext.isHidden = false
+        //    coinsbuygoshopoutlet.isHidden = false
             lifeisoversound()
         }
     }
@@ -5228,11 +5326,20 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             againturntext.text = String(againturnint)
         }
         else {
-            lifeisoversound()
+            againturnscreen.isHidden = true
+            againturnscreentext.isHidden = true
+            againturnadsbuy.isHidden = true
+            againturncoinsbuy.isHidden = true
+            shopping.isHidden = false
+            shoppingbuyone.isHidden = false
+            shoppingbuytwo.isHidden = false
+            shoppingbuythree.isHidden = false
+            shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            coinsbuygoshop.isHidden = false
+            lifeisoversound()
+          //  warning.isHidden = false
+          //  warningtext.isHidden = false
+         //   coinsbuygoshopoutlet.isHidden = false
         }
     }
     @IBAction func againturnadsbuybutton(_ sender: Any) {
@@ -5259,10 +5366,19 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             okaysound()
         }
         else {
+            chancescreen.isHidden = true
+            chancescreentext.isHidden = true
+            chancebuyads.isHidden = true
+            chancebuythousandcoins.isHidden = true
+            shopping.isHidden = false
+            shoppingbuyone.isHidden = false
+            shoppingbuytwo.isHidden = false
+            shoppingbuythree.isHidden = false
+            shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
-            warning.isHidden = false
-            warningtext.isHidden = false
-            coinsbuygoshop.isHidden = false
+         //   warning.isHidden = false
+        //    warningtext.isHidden = false
+         //   coinsbuygoshopoutlet.isHidden = false
             lifeisoversound()
         }
     }
@@ -5695,7 +5811,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         highscorewarningclose.frame.origin = CGPoint(x: 160, y: 490)
         highscorewarningtext.frame.origin = CGPoint(x: 127, y: 426)
         
-        coinsbuygoshop.frame = CGRect(x: 81.5, y: 404, width: 212, height: 77)
+        coinsbuygoshopoutlet.frame = CGRect(x: 81.5, y: 404, width: 212, height: 77)
     }
     
     func i1310() { // XS MAX - XR - 11 - 11 Pro Max Series
@@ -5760,7 +5876,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         highscorewarningclose.frame.origin = CGPoint(x: 179, y: 543)
         highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 470)
         
-        coinsbuygoshop.frame = CGRect(x: 101, y: 450, width: 212, height: 77)
+        coinsbuygoshopoutlet.frame = CGRect(x: 101, y: 450, width: 212, height: 77)
     }
     
     func i2028() { // iPad Pro 11 inch
@@ -5843,7 +5959,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         highscorewarningtext.font = highscorewarningtext.font.withSize(50)
         highscorewarningtext.frame.origin = CGPoint(x: highscorewarningtext.frame.origin.x, y: 675)
         
-        coinsbuygoshop.frame = CGRect(x: 226.2, y: 600, width: 381.6, height: 138.6)
+        coinsbuygoshopoutlet.frame = CGRect(x: 226.2, y: 600, width: 381.6, height: 138.6)
     }
     
     func i1946() { // iPad Air (3rd Generation)
@@ -5931,7 +6047,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         highscorewarningtext.font = highscorewarningtext.font.withSize(50)
         highscorewarningclose.frame = CGRect(x: 375, y: 740, width: 90, height: 90)
         
-        coinsbuygoshop.frame = CGRect(x: 227.2, y: 550, width: 381.6, height: 138.6)
+        coinsbuygoshopoutlet.frame = CGRect(x: 227.2, y: 550, width: 381.6, height: 138.6)
     }
     
     func i2390() { // iPad Pro 12.9 inch
@@ -6031,13 +6147,35 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         highscorewarningtext.font = highscorewarningtext.font.withSize(50)
         highscorewarningclose.frame = CGRect(x: 466, y: 910, width: 100, height: 100)
         
-        coinsbuygoshop.frame = CGRect(x: 321.2, y: 670, width: 381.6, height: 138.6)
+        coinsbuygoshopoutlet.frame = CGRect(x: 321.2, y: 670, width: 381.6, height: 138.6)
     }
     
     @IBAction func coinsbuygoshop(_ sender: Any) {
         
         Analytics.logEvent("ThreeGoShopButtonClick", parameters: nil) // Firebase Events
+    }
+    
+    
+    @IBAction func understood(_ sender: Any) {
+        understoodoutlet.isHidden = true
+        education.isHidden = true
+        educationcontrol = true
+        darkbackground.isHidden = true
         
+        box1.isUserInteractionEnabled = true
+        box2.isUserInteractionEnabled = true
+        box3.isUserInteractionEnabled = true
+        box4.isUserInteractionEnabled = true
+        box5.isUserInteractionEnabled = true
+        box6.isUserInteractionEnabled = true
+        box7.isUserInteractionEnabled = true
+        box8.isUserInteractionEnabled = true
+        box9.isUserInteractionEnabled = true
+        turnoutlet.isUserInteractionEnabled = true
+        homeoutlet.isUserInteractionEnabled = true
+        coinsimage.isUserInteractionEnabled = true
+        
+        UserDefaults.standard.set(educationcontrol, forKey: "educationcontrol")
     }
     
 }

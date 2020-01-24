@@ -20,9 +20,6 @@ class shop: UIViewController {
     var sound = true
     
     @IBOutlet weak var darkbackground: UIImageView!
-    @IBOutlet weak var warningoutlet: UIImageView!
-    @IBOutlet weak var warningtextoutlet: UILabel!
-    @IBOutlet weak var warningcloseoutlet: UIButton!
     
     @IBOutlet weak var chanceoutlet: UILabel!
     @IBOutlet weak var againturnoutlet: UILabel!
@@ -37,9 +34,20 @@ class shop: UIViewController {
     @IBOutlet weak var freeoutlet: UIButton!
     @IBOutlet weak var storeoutlet: UIButton!
     
+    var dark = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // KOYU MOD
+        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
+        if firsopengame7  {
+            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame7")
+            UserDefaults.standard.set(dark, forKey: "dark")
+        }
         
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
@@ -54,17 +62,22 @@ class shop: UIViewController {
         darkbackground.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         background()
     }
-     func background() {
-           let backgroundImageView = UIImageView()
-           view.addSubview(backgroundImageView)
-           backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-           backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-           backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-           backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-           backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-           backgroundImageView.image = UIImage(named: "arkaplan")
-           backgroundImageView.layer.zPosition = -1
-       }
+    func background() {
+        let backgroundImageView = UIImageView()
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        if dark == true {
+            backgroundImageView.image = UIImage(named: "arkaplan")
+        }
+        else {
+            backgroundImageView.image = UIImage(named: "arkaplan2")
+        }
+        backgroundImageView.layer.zPosition = -1
+    }
     
     @IBAction func home(_ sender: Any) {
         if sound == true {
@@ -74,12 +87,10 @@ class shop: UIViewController {
     
     
     @IBAction func chancebuy(_ sender: Any) {
-        
-        if sound == true {
-            buysound()
-        }
-        
         if coins >= 100 {
+            if sound == true {
+                buysound()
+            }
             coins -= 100
             UserDefaults.standard.set(coins, forKey: "coinskey")
             chance += 1
@@ -87,6 +98,8 @@ class shop: UIViewController {
             chanceoutlet.text = String(chance)
         }
         else {
+            performSegue(withIdentifier: "shopstore", sender: nil)
+            /*
             warningcloseoutlet.isHidden = false
             warningoutlet.isHidden = false
             warningtextoutlet.isHidden = false
@@ -98,16 +111,14 @@ class shop: UIViewController {
             homeoutlet.isUserInteractionEnabled = false
             coinoutlet.isUserInteractionEnabled = false
             freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false
+            storeoutlet.isUserInteractionEnabled = false  */
         }
     }
     @IBAction func againturn(_ sender: Any) {
-        
-        if sound == true {
-            buysound()
-        }
-        
         if coins >= 150 {
+            if sound == true {
+                buysound()
+            }
             coins -= 150
             UserDefaults.standard.set(coins, forKey: "coinskey")
             againturn += 1
@@ -115,6 +126,8 @@ class shop: UIViewController {
             againturnoutlet.text = String(againturn)
         }
         else {
+            performSegue(withIdentifier: "shopstore", sender: nil)
+            /*
             warningcloseoutlet.isHidden = false
             warningoutlet.isHidden = false
             warningtextoutlet.isHidden = false
@@ -126,16 +139,14 @@ class shop: UIViewController {
             homeoutlet.isUserInteractionEnabled = false
             coinoutlet.isUserInteractionEnabled = false
             freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false
+            storeoutlet.isUserInteractionEnabled = false  */
         }
     }
     @IBAction func hint(_ sender: Any) {
-        
-        if sound == true {
-            buysound()
-        }
-        
         if coins >= 120 {
+            if sound == true {
+                buysound()
+            }
             coins -= 120
             UserDefaults.standard.set(coins, forKey: "coinskey")
             hint += 1
@@ -143,6 +154,8 @@ class shop: UIViewController {
             hintoutlet.text = String(hint)
         }
         else {
+             performSegue(withIdentifier: "shopstore", sender: nil)
+            /*
             warningcloseoutlet.isHidden = false
             warningoutlet.isHidden = false
             warningtextoutlet.isHidden = false
@@ -154,7 +167,7 @@ class shop: UIViewController {
             homeoutlet.isUserInteractionEnabled = false
             coinoutlet.isUserInteractionEnabled = false
             freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false
+            storeoutlet.isUserInteractionEnabled = false */
         }
     }
     
@@ -196,20 +209,6 @@ class shop: UIViewController {
             gamegobuttonsound()
         }
     }
-    
-    @IBAction func warningclose(_ sender: Any) {
-        warningcloseoutlet.isHidden = true
-        warningoutlet.isHidden = true
-        warningtextoutlet.isHidden = true
-        darkbackground.isHidden = true
-        
-        chancebuttonoutlet.isUserInteractionEnabled = true
-        againturnbuttonoutlet.isUserInteractionEnabled = true
-        hintbuttonoutlet.isUserInteractionEnabled = true
-        homeoutlet.isUserInteractionEnabled = true
-        coinoutlet.isUserInteractionEnabled = true
-        freeoutlet.isUserInteractionEnabled = true
-        storeoutlet.isUserInteractionEnabled = true
-    }
+   
     
 }
