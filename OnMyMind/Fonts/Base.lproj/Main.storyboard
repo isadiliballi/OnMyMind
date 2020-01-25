@@ -277,11 +277,11 @@
                                 <state key="normal" image="shopcoins"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopchancebuy" translatesAutoresizingMaskIntoConstraints="NO" id="Iaw-ee-ISs">
-                                <rect key="frame" x="28" y="131" width="319" height="126"/>
+                                <rect key="frame" x="28" y="121" width="319" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pI4-fL-52x">
-                                <rect key="frame" x="44" y="230" width="288" height="30"/>
+                                <rect key="frame" x="44" y="223" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopchancebuybutton"/>
                                 <connections>
@@ -289,19 +289,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wt5-CR-Mgl">
-                                <rect key="frame" x="44" y="207" width="60" height="15"/>
+                                <rect key="frame" x="157" y="177" width="60" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
-                                <color key="textColor" red="0.1412487328" green="0.27850180860000001" blue="0.50198292730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="4" height="4"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopagainturnbuy" translatesAutoresizingMaskIntoConstraints="NO" id="pRb-Ed-KUt">
-                                <rect key="frame" x="28" y="264" width="319" height="126"/>
+                                <rect key="frame" x="29" y="261" width="319" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-zf-G7O">
-                                <rect key="frame" x="44" y="363" width="288" height="30"/>
+                                <rect key="frame" x="44" y="365" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopagainturnbuybutton"/>
                                 <connections>
@@ -309,33 +309,25 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3S-dt-2cR">
-                                <rect key="frame" x="44" y="340" width="60" height="15"/>
+                                <rect key="frame" x="157" y="316" width="60" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
-                                <color key="textColor" red="0.1412487328" green="0.27850180860000001" blue="0.50198292730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="4" height="4"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shophintbuy" translatesAutoresizingMaskIntoConstraints="NO" id="uLa-PS-x3N">
-                                <rect key="frame" x="28" y="397" width="319" height="126"/>
+                                <rect key="frame" x="28" y="403" width="319" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzm-Kp-ZHv">
-                                <rect key="frame" x="44" y="496" width="288" height="30"/>
+                                <rect key="frame" x="43" y="507" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shophintbuybutton"/>
                                 <connections>
                                     <action selector="hint:" destination="szj-0x-ANI" eventType="touchUpInside" id="ZCA-UY-6t3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-Sb-zUt">
-                                <rect key="frame" x="44" y="473" width="60" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
-                                <color key="textColor" red="0.1412487328" green="0.27850180860000001" blue="0.50198292730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="4" height="4"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGt-Cv-L58">
                                 <rect key="frame" x="55" y="570" width="57" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -395,10 +387,14 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="4" height="4"/>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="LaC-JS-mdq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-Sb-zUt">
+                                <rect key="frame" x="158" y="458" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.82958460079999996" blue="0.017946490820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="4" height="4"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4hu-eg-AXZ"/>
@@ -406,21 +402,57 @@
                     <navigationItem key="navigationItem" id="bNj-i0-ocP"/>
                     <connections>
                         <outlet property="againturnbuttonoutlet" destination="SL5-zf-G7O" id="Hvl-Se-o4o"/>
+                        <outlet property="againturnbuy" destination="pRb-Ed-KUt" id="99a-6e-BL1"/>
                         <outlet property="againturnoutlet" destination="e3S-dt-2cR" id="IDf-UC-spy"/>
                         <outlet property="chancebuttonoutlet" destination="pI4-fL-52x" id="LZ3-1s-pZ9"/>
+                        <outlet property="chancebuy" destination="Iaw-ee-ISs" id="brB-63-0cm"/>
                         <outlet property="chanceoutlet" destination="wt5-CR-Mgl" id="6c3-oL-orw"/>
                         <outlet property="coinoutlet" destination="zXM-AL-N0H" id="6FL-TN-hZS"/>
-                        <outlet property="darkbackground" destination="LaC-JS-mdq" id="36W-jg-5ct"/>
+                        <outlet property="coinstext" destination="XAb-jw-Lyz" id="20e-gB-pZC"/>
                         <outlet property="freeoutlet" destination="Swu-wt-slO" id="Rf7-TH-sWB"/>
+                        <outlet property="freetext" destination="fNc-4N-EIP" id="5nf-XM-0pX"/>
                         <outlet property="hintbuttonoutlet" destination="pzm-Kp-ZHv" id="8JX-cj-y1q"/>
+                        <outlet property="hintbuy" destination="uLa-PS-x3N" id="68E-7s-5i9"/>
                         <outlet property="hintoutlet" destination="EoI-Sb-zUt" id="9tf-2l-d6D"/>
                         <outlet property="homeoutlet" destination="jGt-Cv-L58" id="erd-Kk-chB"/>
+                        <outlet property="hometext" destination="8zx-9R-j2i" id="uaw-80-sDi"/>
+                        <outlet property="shoptext" destination="Bd9-V2-g7a" id="Otm-iA-e3a"/>
                         <outlet property="storeoutlet" destination="eq8-Zh-zqD" id="Aq0-Y5-cCx"/>
+                        <outlet property="storetext" destination="bDd-Qw-t3v" id="KbW-ky-L8P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5T-Fy-lla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="940.47976011994012"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mbq-jb-xkw">
+            <objects>
+                <viewController id="6i5-Xc-29i" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N4d-qr-UP6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopchancebuy" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-P5-Xzh">
+                                <rect key="frame" x="2" y="111" width="372" height="146"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8t-nf-m0m">
+                                <rect key="frame" x="25" y="194" width="60" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
+                                <color key="textColor" red="0.1412487328" green="0.27850180860000001" blue="0.50198292730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="4" height="4"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="UWt-pj-9pq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQK-m3-G3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124" y="1611.5442278860571"/>
         </scene>
         <!--Shopfree-->
         <scene sceneID="f1l-mm-pfk">
@@ -431,7 +463,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MARKET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQG-fw-CLR">
-                                <rect key="frame" x="41" y="34" width="292" height="74"/>
+                                <rect key="frame" x="41" y="44" width="292" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="60"/>
                                 <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -555,7 +587,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="4" height="4"/>
                             </label>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Byo-8D-314">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Byo-8D-314">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -585,15 +617,24 @@
                     </view>
                     <navigationItem key="navigationItem" id="knW-2T-fBs"/>
                     <connections>
-                        <outlet property="buyfouroutlet" destination="eZa-h6-hIH" id="utn-dB-h8S"/>
+                        <outlet property="buyfouroutlet" destination="eZa-h6-hIH" id="bQf-si-6ty"/>
                         <outlet property="buyoneoutlet" destination="CB4-HS-AN3" id="QTJ-l4-oTf"/>
                         <outlet property="buythreeoutlet" destination="O2o-Ht-7hQ" id="k4x-eb-iRS"/>
                         <outlet property="buytwooutlet" destination="NP7-tm-Kjs" id="Iuy-mu-dbx"/>
                         <outlet property="coinoutlet" destination="oye-yP-HCj" id="1Wr-k4-Wyo"/>
+                        <outlet property="coinstext" destination="txg-JK-Uov" id="QRW-nD-hxU"/>
                         <outlet property="darkbackground" destination="Byo-8D-314" id="70E-8Z-T9E"/>
+                        <outlet property="freeagainturn" destination="Thm-bf-3pJ" id="LyT-wK-o9P"/>
+                        <outlet property="freechance" destination="yiY-BN-mxg" id="h34-p5-OIB"/>
+                        <outlet property="freehint" destination="PdK-rE-ZzG" id="lip-Vr-txM"/>
                         <outlet property="freeoutlet" destination="tY8-DM-DFl" id="rGA-TS-9I9"/>
+                        <outlet property="freetext" destination="2k3-q9-bAL" id="Fcn-UE-qLA"/>
+                        <outlet property="goldboiler" destination="xv9-ie-J6F" id="4qh-2a-6rL"/>
                         <outlet property="homeoutlet" destination="b03-Mp-JRb" id="VLn-16-3gW"/>
+                        <outlet property="hometext" destination="Wbn-0W-ueP" id="D6v-IQ-wK0"/>
+                        <outlet property="shoptext" destination="kQG-fw-CLR" id="ow8-wx-IEq"/>
                         <outlet property="storeoutlet" destination="rLW-yS-Ttm" id="xVH-QY-U4m"/>
+                        <outlet property="storetext" destination="cOS-3V-cnq" id="73P-S0-14q"/>
                         <outlet property="warningcloseoutlet" destination="4uu-ei-Dwk" id="kKA-iM-fH1"/>
                         <outlet property="warningoutlet" destination="mbe-7C-S90" id="BU3-qG-9n4"/>
                         <outlet property="warningtextoutlet" destination="n5g-4p-kBe" id="rPY-Di-Ccw"/>
@@ -1735,9 +1776,9 @@
         <image name="plusonehundredcoins" width="951" height="383"/>
         <image name="plustwocoins" width="432" height="368"/>
         <image name="shopadwatch" width="178" height="63"/>
-        <image name="shopagainturnbuy" width="980" height="391"/>
+        <image name="shopagainturnbuy" width="978" height="393"/>
         <image name="shopagainturnbuybutton" width="882" height="101"/>
-        <image name="shopchancebuy" width="981" height="392"/>
+        <image name="shopchancebuy" width="978" height="393"/>
         <image name="shopchancebuybutton" width="882" height="101"/>
         <image name="shopcoins" width="200" height="200"/>
         <image name="shopcoins2" width="200" height="200"/>
@@ -1748,7 +1789,7 @@
         <image name="shopfreehint" width="634" height="930"/>
         <image name="shopgoldboiler" width="979" height="394"/>
         <image name="shopgoldboilerbutton" width="459" height="97"/>
-        <image name="shophintbuy" width="980" height="392"/>
+        <image name="shophintbuy" width="978" height="393"/>
         <image name="shophintbuybutton" width="882" height="101"/>
         <image name="shophome" width="200" height="200"/>
         <image name="shopping" width="635" height="904"/>
@@ -1774,9 +1815,9 @@
         <image name="win" width="902" height="817"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r8y-7n-lSB"/>
+        <segue reference="CtC-QU-pH7"/>
         <segue reference="hIb-EJ-ilB"/>
-        <segue reference="4XJ-nh-b3x"/>
-        <segue reference="UpY-nF-dSI"/>
+        <segue reference="QYc-Pd-e2l"/>
+        <segue reference="MEJ-3Z-us0"/>
     </inferredMetricsTieBreakers>
 </document>
