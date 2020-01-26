@@ -667,6 +667,7 @@
                                 <state key="normal" image="shopfree2"/>
                                 <connections>
                                     <action selector="free:" destination="szj-0x-ANI" eventType="touchUpInside" id="sgS-1l-T2l"/>
+                                    <action selector="freeaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="gcU-h9-FLm"/>
                                     <segue destination="qTi-oM-34g" kind="show" id="4iQ-fL-wbP"/>
                                 </connections>
                             </button>
@@ -683,6 +684,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopstore"/>
                                 <connections>
+                                    <action selector="storeaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="7Pn-GE-9QK"/>
                                     <action selector="storebutton:" destination="qTi-oM-34g" eventType="touchUpInside" id="bR3-Ua-eyH"/>
                                 </connections>
                             </button>
@@ -699,6 +701,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopcoins2"/>
                                 <connections>
+                                    <action selector="coinaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="8S3-JA-g4S"/>
                                     <action selector="coinbutton:" destination="qTi-oM-34g" eventType="touchUpInside" id="LPi-DM-h72"/>
                                     <segue destination="szj-0x-ANI" kind="show" id="mRh-GO-L68"/>
                                 </connections>
@@ -709,6 +712,7 @@
                                 <state key="normal" image="shophome"/>
                                 <connections>
                                     <action selector="home:" destination="szj-0x-ANI" eventType="touchUpInside" id="UCk-mi-FM9"/>
+                                    <action selector="homeaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="G97-Am-keD"/>
                                     <action selector="homebutton:" destination="qTi-oM-34g" eventType="touchUpInside" id="JBI-5O-9xb"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="8V9-QS-KRH"/>
                                 </connections>
@@ -749,21 +753,33 @@
                                 <rect key="frame" x="65" y="250" width="106" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopstorebuyonebutton"/>
+                                <connections>
+                                    <action selector="buyoneaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="U06-TC-Uap"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIt-Hq-ACU">
                                 <rect key="frame" x="201" y="250" width="106" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopstorebuytwobutton"/>
+                                <connections>
+                                    <action selector="buytwoaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="CdP-41-bkf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnL-T3-UdK">
                                 <rect key="frame" x="65" y="438" width="106" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopstorebuythreebutton"/>
+                                <connections>
+                                    <action selector="buythreeaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="FiJ-S6-NoA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDF-p5-mh0">
                                 <rect key="frame" x="201" y="438" width="106" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shopstorebuyfourbutton"/>
+                                <connections>
+                                    <action selector="buyfouraction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="GQU-xz-VGj"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="adblock" translatesAutoresizingMaskIntoConstraints="NO" id="Kwm-Vr-wRc">
                                 <rect key="frame" x="42" y="469" width="290" height="102"/>
@@ -773,12 +789,36 @@
                                 <rect key="frame" x="150" y="517" width="79" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="adblockbutton"/>
+                                <connections>
+                                    <action selector="buyfiveaction:" destination="LCi-tM-ZDj" eventType="touchUpInside" id="Kii-4K-3YG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cKy-9G-MCG"/>
                     </view>
                     <navigationItem key="navigationItem" id="dFb-6G-djV"/>
+                    <connections>
+                        <outlet property="buyfive" destination="4yx-EE-fpG" id="C53-n5-D24"/>
+                        <outlet property="buyfiveimage" destination="Kwm-Vr-wRc" id="pVg-b0-WGm"/>
+                        <outlet property="buyfour" destination="GDF-p5-mh0" id="dJl-Ej-fDh"/>
+                        <outlet property="buyfourimage" destination="2mK-2v-JQm" id="knS-0j-bFK"/>
+                        <outlet property="buyone" destination="UVN-Oz-5qu" id="KpY-5B-fQO"/>
+                        <outlet property="buyoneimage" destination="l0w-cl-1TH" id="Qw0-PL-Hpe"/>
+                        <outlet property="buythree" destination="UnL-T3-UdK" id="1Lp-dT-6MS"/>
+                        <outlet property="buythreeimage" destination="Dgj-cS-PFi" id="7Iz-ZT-vVO"/>
+                        <outlet property="buytwo" destination="QIt-Hq-ACU" id="G40-2e-16V"/>
+                        <outlet property="buytwoimage" destination="Wpr-II-hvG" id="uMl-Jk-Edb"/>
+                        <outlet property="coinoutlet" destination="Nyg-t6-dPY" id="sXP-vf-5kc"/>
+                        <outlet property="coinstext" destination="0Ij-Qe-srz" id="wwX-Vm-ACA"/>
+                        <outlet property="freeoutlet" destination="6pI-zh-Wvd" id="7me-Nx-qcG"/>
+                        <outlet property="freetext" destination="2Om-4D-QyQ" id="JPY-nk-rmO"/>
+                        <outlet property="homeoutlet" destination="tFs-sJ-GDn" id="t3O-rJ-V79"/>
+                        <outlet property="hometext" destination="B0R-Ie-US9" id="FaX-RQ-fHV"/>
+                        <outlet property="shoptext" destination="XpO-E8-STd" id="ZbC-2w-gIU"/>
+                        <outlet property="storeoutlet" destination="Xa0-dD-GDA" id="TfS-X9-Eqa"/>
+                        <outlet property="storetext" destination="hZX-9t-7dI" id="ZHS-ta-wju"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEX-Cw-dzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1816,8 +1856,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CtC-QU-pH7"/>
-        <segue reference="hIb-EJ-ilB"/>
-        <segue reference="QYc-Pd-e2l"/>
-        <segue reference="MEJ-3Z-us0"/>
+        <segue reference="4iQ-fL-wbP"/>
+        <segue reference="mRh-GO-L68"/>
+        <segue reference="8V9-QS-KRH"/>
     </inferredMetricsTieBreakers>
 </document>
