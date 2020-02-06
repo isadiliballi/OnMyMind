@@ -60,7 +60,7 @@
 		1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind5.ttf; sourceTree = "<group>"; };
 		1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind6.ttf; sourceTree = "<group>"; };
 		1E9EAEEB23CA37370097105B /* shopstore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopstore.swift; sourceTree = "<group>"; };
-		1EA7D3E522CD260F00C0970B /* On My Mind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On My Mind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA7D3E522CD260F00C0970B /* iLetter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLetter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA7D3E822CD260F00C0970B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA7D3EA22CD260F00C0970B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1EA7D3ED22CD260F00C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		1EA7D3E622CD260F00C0970B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EA7D3E522CD260F00C0970B /* On My Mind.app */,
+				1EA7D3E522CD260F00C0970B /* iLetter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 			);
 			name = OnMyMind;
 			productName = OnMyMind;
-			productReference = 1EA7D3E522CD260F00C0970B /* On My Mind.app */;
+			productReference = 1EA7D3E522CD260F00C0970B /* iLetter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -470,7 +470,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = isadiliballi.OnMyMind;
-				PRODUCT_NAME = "On My Mind";
+				PRODUCT_NAME = iLetter;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -491,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = isadiliballi.OnMyMind;
-				PRODUCT_NAME = "On My Mind";
+				PRODUCT_NAME = iLetter;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
