@@ -119,10 +119,10 @@ class setting: UIViewController {
         }
     }
     @IBAction func goprivacypolicy(_ sender: Any) {
+        if sound == true {
+            gamebuttonsound()
+        }
         if let url = URL(string: "#") {
-            if sound == true {
-                gamebuttonsound()
-            }
             UIApplication.shared.open(url)
         }
     }

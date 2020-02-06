@@ -241,23 +241,32 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
             coins += 250
             UserDefaults.standard.set(coins, forKey: "coinskey")
         }
-        else if buytwo == true {
+        else {
+            adwatch()
+        }
+        if buytwo == true {
             buytwo = false
             chance += 2
             UserDefaults.standard.set(chance, forKey: "chancekey")
         }
-        else if buythree == true {
+        else {
+            adwatch()
+        }
+        if buythree == true {
             buythree = false
-            againturn += 2
+            againturn += 1
             UserDefaults.standard.set(againturn, forKey: "againturnkey")
         }
-        else if buyfour == true {
+        else {
+            adwatch()
+        }
+        if buyfour == true {
             buyfour = false
             hint += 2
             UserDefaults.standard.set(hint, forKey: "hintkey")
         }
         else {
-            
+            adwatch()
         }
     }
     
