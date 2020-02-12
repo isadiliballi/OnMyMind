@@ -15,6 +15,7 @@
 		1E384061235C9B7B00F366D0 /* okay.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384060235C9B7A00F366D0 /* okay.wav */; };
 		1E384063235CA0FE00F366D0 /* oneboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384062235CA0FE00F366D0 /* oneboxturn.wav */; };
 		1E384065235CA10600F366D0 /* twoboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E384064235CA10600F366D0 /* twoboxturn.wav */; };
+		1E48727C23F1D9A500AB755D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E48727B23F1D9A500AB755D /* StoreKit.framework */; };
 		1E51FF1923D621FA00D69974 /* info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E51FF1823D621FA00D69974 /* info.swift */; };
 		1E7F83302358E1A800D96AD2 /* alarm.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F832F2358E13100D96AD2 /* alarm.m4a */; };
 		1E7F83322358E5CE00D96AD2 /* true.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83312358E5CE00D96AD2 /* true.wav */; };
@@ -48,6 +49,7 @@
 		1E384060235C9B7A00F366D0 /* okay.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = okay.wav; sourceTree = "<group>"; };
 		1E384062235CA0FE00F366D0 /* oneboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oneboxturn.wav; sourceTree = "<group>"; };
 		1E384064235CA10600F366D0 /* twoboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twoboxturn.wav; sourceTree = "<group>"; };
+		1E48727B23F1D9A500AB755D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1E51FF1823D621FA00D69974 /* info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info.swift; sourceTree = "<group>"; };
 		1E7F832F2358E13100D96AD2 /* alarm.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm.m4a; sourceTree = "<group>"; };
 		1E7F83312358E5CE00D96AD2 /* true.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = true.wav; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */,
+				1E48727C23F1D9A500AB755D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +98,6 @@
 				1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */,
 				1E941ECD2300B232009B4ABD /* OnMyMind5.ttf */,
 				1E941ECF2300B526009B4ABD /* OnMyMind6.ttf */,
-				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
-				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -136,6 +137,8 @@
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
+				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
+				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
 			);
 			path = OnMyMind;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 		93C47AD39BA3187918434B3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E48727B23F1D9A500AB755D /* StoreKit.framework */,
 				BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */,
 			);
 			name = Frameworks;

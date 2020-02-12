@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import StoreKit
 
-class shopstore: UIViewController {
+class shopstore: UIViewController, SKPaymentTransactionObserver {
     
     var coins = Int()
     
@@ -37,9 +38,24 @@ class shopstore: UIViewController {
     @IBOutlet weak var freetext: UILabel!
     @IBOutlet weak var storetext: UILabel!
     
+    var buyonecontrol = false
+    var buytwocontrol = false
+    var buythreecontrol = false
+    var buyfourcontrol = false
+    var buyfivecontrol = false
+    
+    let productID = "isadiliballi.OnMyMind2"
+    let productID2 = "isadiliballi.OnMyMind3"
+    let productID3 = "isadiliballi.OnMyMind4"
+    let productID4 = "isadiliballi.OnMyMind5"
+    let productID5 = "isadiliballi.OnMyMind6"
+    var adblock = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SKPaymentQueue.default().add(self)
+        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         
         // KOYU MOD
         let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
@@ -51,13 +67,25 @@ class shopstore: UIViewController {
             UserDefaults.standard.set(dark, forKey: "dark")
         }
         
+        // ADBLOCK
+        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
+        if firsopengame9  {
+            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame9")
+            UserDefaults.standard.set(adblock, forKey: "adblock")
+        }
+        
         sound = UserDefaults.standard.object(forKey: "sound") as! Bool
         background()
         responsive()
+        
+        SKPaymentQueue.default().add(self)
     }
     
     func background() {
-       let backgroundImageView = UIImageView()
+        let backgroundImageView = UIImageView()
         view.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -74,28 +102,95 @@ class shopstore: UIViewController {
     }
     
     @IBAction func buyoneaction(_ sender: Any) {
+        buyonecontrol = true
+        buytwocontrol = false
+        buythreecontrol = false
+        buyfourcontrol = false
+        buyfivecontrol = false
         if sound == true {
             gamesound()
+        }
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID2
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buytwoaction(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = true
+        buythreecontrol = false
+        buyfourcontrol = false
+        buyfivecontrol = false
         if sound == true {
             gamesound()
+        }
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID3
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buythreeaction(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = false
+        buythreecontrol = true
+        buyfourcontrol = false
+        buyfivecontrol = false
         if sound == true {
             gamesound()
+        }
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID4
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buyfouraction(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = false
+        buythreecontrol = false
+        buyfourcontrol = true
+        buyfivecontrol = false
         if sound == true {
             gamesound()
         }
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID5
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
+        }
     }
     @IBAction func buyfiveaction(_ sender: Any) {
+        
+        buyonecontrol = false
+        buytwocontrol = false
+        buythreecontrol = false
+        buyfourcontrol = false
+        buyfivecontrol = true
+        
         if sound == true {
             gamesound()
+        }
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func homeaction(_ sender: Any) {
@@ -169,9 +264,9 @@ class shopstore: UIViewController {
             buyfive.frame = CGRect(x: buyfiveimage.frame.midX - buyfivewidth / 2, y: buyfiveimage.frame.maxY - 65, width: buyfivewidth, height: buyfiveheight)
             
         }/*
-        else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
-            print("iPhone XR - XS Max - 11 - 11 Pro Max")
-        }
+             else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
+             print("iPhone XR - XS Max - 11 - 11 Pro Max")
+             }
              else if ratio == 2028 { // iPad Pro 11 inch
              print("iPad Pro 11 inch")
              }
@@ -260,6 +355,41 @@ class shopstore: UIViewController {
                 gamegosound?.play()
             }
             catch{
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            if transaction.transactionState == .purchased {
+                if buyonecontrol == true {
+                    coins += 8000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYONE")
+                }
+                else if buytwocontrol == true {
+                    coins += 18000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYTWO")
+                }
+                else if buythreecontrol == true {
+                    coins += 30000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYTHREE")
+                }
+                else if buyfourcontrol == true {
+                    coins += 80000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYFOUR")
+                }
+                else if buyfourcontrol == true {
+                    adblock = true
+                    UserDefaults.standard.set(adblock, forKey: "adblock")
+                    print("REMOVEADS.............................................")
+                }
+            }
+            else if transaction.transactionState == .failed {
+                print("BAŞARISIZ.............................................")
             }
         }
     }

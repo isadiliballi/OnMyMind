@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import StoreKit
 
-class setting: UIViewController {
+class setting: UIViewController, SKPaymentTransactionObserver {
     
     @IBOutlet weak var darkmodeoutlet: UIButton!
     @IBOutlet weak var soundoutlet: UIButton!
@@ -28,7 +29,8 @@ class setting: UIViewController {
     @IBOutlet weak var instagramoutlet: UIButton!
     @IBOutlet weak var homeoutlet: UIButton!
     
-    
+    let productID = "isadiliballi.OnMyMind2"
+    var adblock = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,16 @@ class setting: UIViewController {
         else {
             UserDefaults.standard.set(true, forKey: "firsopengame7")
             UserDefaults.standard.set(dark, forKey: "dark")
+        }
+        
+        // ADBLOCK
+        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
+        if firsopengame9  {
+            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame9")
+            UserDefaults.standard.set(adblock, forKey: "adblock")
         }
         
         if sound == true {
@@ -136,6 +148,7 @@ class setting: UIViewController {
     }
     
     @IBAction func restorepurchases(_ sender: Any) {
+        SKPaymentQueue.default().restoreCompletedTransactions()
         if sound == true {
             gamebuttonsound()
         }
@@ -336,6 +349,16 @@ class setting: UIViewController {
             followtext.frame = CGRect(x: followtext.frame.origin.x, y: followtext.frame.origin.y - 50, width: followtext.frame.width, height: followtext.frame.height)
         }
         
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            if transaction.transactionState == .restored {
+                adblock = true
+                UserDefaults.standard.set(adblock, forKey: "adblock")
+                print("Restore Edildi..............................")
+            }
+        }
     }
     
 }

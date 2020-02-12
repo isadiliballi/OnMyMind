@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +25,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +260,7 @@
         <!--Shop-->
         <scene sceneID="ZPg-wp-V6O">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="szj-0x-ANI" customClass="shop" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="szj-0x-ANI" customClass="shop" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ymn-w8-zLl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,39 +428,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="940.47976011994012"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="mbq-jb-xkw">
-            <objects>
-                <viewController id="6i5-Xc-29i" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N4d-qr-UP6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shopchancebuy" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-P5-Xzh">
-                                <rect key="frame" x="2" y="111" width="372" height="146"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8t-nf-m0m">
-                                <rect key="frame" x="25" y="194" width="60" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="14"/>
-                                <color key="textColor" red="0.1412487328" green="0.27850180860000001" blue="0.50198292730000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="4" height="4"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="UWt-pj-9pq"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RQK-m3-G3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="124" y="1611.5442278860571"/>
-        </scene>
         <!--Shopfree-->
         <scene sceneID="f1l-mm-pfk">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="qTi-oM-34g" customClass="shopfree" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="qTi-oM-34g" customClass="shopfree" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OjE-mv-dOz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -649,7 +621,7 @@
         <!--Shopstore-->
         <scene sceneID="Fmt-ca-7aE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="LCi-tM-ZDj" customClass="shopstore" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="LCi-tM-ZDj" customClass="shopstore" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jfv-qL-DDb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -829,7 +801,7 @@
         <!--Info-->
         <scene sceneID="ngJ-jT-UHo">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Jd8-as-UmM" customClass="info" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Jd8-as-UmM" customClass="info" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ITc-xb-WQh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -935,7 +907,7 @@
         <!--Setting-->
         <scene sceneID="7Xl-lK-uAD">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="J9p-GB-z24" customClass="setting" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="J9p-GB-z24" customClass="setting" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="28t-PS-qxk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1078,7 +1050,7 @@
         <!--Treelettergame-->
         <scene sceneID="bfa-DY-b4P">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Rpr-nQ-7GY" customClass="treelettergame" customModule="On_My_Mind" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Rpr-nQ-7GY" customClass="treelettergame" customModule="iLetter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xWZ-GJ-W4A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1373,7 +1345,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YKG-Ov-KW4">
-                                <rect key="frame" x="153" y="555" width="47" height="18"/>
+                                <rect key="frame" x="153" y="553" width="47" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="CreativeBlockBBBold" family="CreativeBlock BB" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.40392156862745099" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1384,7 +1356,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-v9-yLT">
-                                <rect key="frame" x="45" y="555" width="47" height="18"/>
+                                <rect key="frame" x="45" y="553" width="47" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="CreativeBlockBBBold" family="CreativeBlock BB" pointSize="14"/>
                                 <color key="textColor" red="0.019607843137254902" green="0.75686274509803919" blue="0.054901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1411,7 +1383,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ka2-s6-gqX">
-                                <rect key="frame" x="259" y="555" width="47" height="18"/>
+                                <rect key="frame" x="259" y="553" width="47" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="CreativeBlockBBBold" family="CreativeBlock BB" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1868,7 +1840,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="3mv-Ea-lzT"/>
         <segue reference="4iQ-fL-wbP"/>
-        <segue reference="4XJ-nh-b3x"/>
+        <segue reference="mRh-GO-L68"/>
         <segue reference="Z3q-Xn-3ZY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1EA7D3E422CD260F00C0970B"
-               BuildableName = "On My Mind.app"
+               BuildableName = "iLetter.app"
                BlueprintName = "OnMyMind"
                ReferencedContainer = "container:OnMyMind.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1EA7D3E422CD260F00C0970B"
-            BuildableName = "On My Mind.app"
+            BuildableName = "iLetter.app"
             BlueprintName = "OnMyMind"
             ReferencedContainer = "container:OnMyMind.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1EA7D3E422CD260F00C0970B"
-            BuildableName = "On My Mind.app"
+            BuildableName = "iLetter.app"
             BlueprintName = "OnMyMind"
             ReferencedContainer = "container:OnMyMind.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1EA7D3E422CD260F00C0970B"
-            BuildableName = "On My Mind.app"
+            BuildableName = "iLetter.app"
             BlueprintName = "OnMyMind"
             ReferencedContainer = "container:OnMyMind.xcodeproj">
          </BuildableReference>

@@ -11,8 +11,9 @@ import Firebase
 import FirebaseDatabase
 import GoogleMobileAds
 import AVFoundation
+import StoreKit
 
-class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
+class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPaymentTransactionObserver {
     
     var threelettersectioncontrol = false
     var fourlettersectioncontrol = false
@@ -221,22 +222,27 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     @IBOutlet weak var education: UIImageView!
     @IBOutlet weak var understoodoutlet: UIButton!
     var educationcontrol = false
+    
+    var adblock = false
    
+    var buyonecontrol = false
+    var buytwocontrol = false
+    var buythreecontrol = false
+    var buyfourcontrol = false
+    
+    let productID2 = "isadiliballi.OnMyMind3"
+    let productID3 = "isadiliballi.OnMyMind4"
+    let productID4 = "isadiliballi.OnMyMind5"
+    let productID5 = "isadiliballi.OnMyMind6"
+    
+    
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
         
         Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
-        
+        SKPaymentQueue.default().add(self)
         responsive()
-        
-        // GOOGLE ADS
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
-        GADRewardBasedVideoAd.sharedInstance().delegate = self
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        interstitial.load(request)
-        // GOOGLE ADS
         
         // KOYU MOD
         let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
@@ -247,6 +253,23 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             UserDefaults.standard.set(true, forKey: "firsopengame7")
             UserDefaults.standard.set(dark, forKey: "dark")
         }
+        // ADBLOCK
+        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
+        if firsopengame9  {
+            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame9")
+            UserDefaults.standard.set(adblock, forKey: "adblock")
+        }
+        
+        // GOOGLE ADS
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
+        // GOOGLE ADS
         
         // NASIL OYNANIR?
         let firsopengame8 = UserDefaults.standard.bool(forKey: "firsopengame8")
@@ -3514,6 +3537,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
         box8.isUserInteractionEnabled = false
         box9.isUserInteractionEnabled = false
         
+        if adblock == false {
         adscontrol += 1
         if adscontrol % 2 == 0 {
             if interstitial.isReady {
@@ -3522,11 +3546,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             else {
             }
         }
+    }
         
         gameoversound()
     }
     
     func scontrolequalthree() { // Son Kutu Doğru Olduğunda...
+        if adblock == false {
         adscontrol += 1
         if adscontrol % 2 == 0 {
             if interstitial.isReady {
@@ -3535,6 +3561,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             else {
             }
         }
+    }
         if threelettersectioncontrol == true {
             self.coins+=30
         }
@@ -5409,8 +5436,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             shoppingbuythree.isHidden = false
             shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
-         //   warning.isHidden = false
-        //    coinsbuygoshopoutlet.isHidden = false
             lifeisoversound()
         }
     }
@@ -5449,8 +5474,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
             lifeisoversound()
-          //  warning.isHidden = false
-         //   coinsbuygoshopoutlet.isHidden = false
         }
     }
     @IBAction func againturnadsbuybutton(_ sender: Any) {
@@ -5487,8 +5510,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
             shoppingbuythree.isHidden = false
             shoppingbuyfour.isHidden = false
             warningclose.isHidden = false
-         //   warning.isHidden = false
-         //   coinsbuygoshopoutlet.isHidden = false
             lifeisoversound()
         }
     }
@@ -5503,34 +5524,34 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd, didRewardUserWith reward: GADAdReward) {
         if hintbuyscreen.isHidden == false {
-                   hintint += 2
-                   UserDefaults.standard.set(hintint, forKey: "hintkey")
-                   hinttext.text = String(hintint)
-                   hintbuyscreentext.text = String(hintint)
-               }
-               else {
-                   okaysound()
-               }
-               
-               if againturnscreen.isHidden == false {
-                   againturnint += 1
-                   UserDefaults.standard.set(againturnint, forKey: "againturnkey")
-                   againturntext.text = String(againturnint)
-                   againturnscreentext.text = String(againturnint)
-               }
-               else {
-                   okaysound()
-               }
-               
-               if chancescreen.isHidden == false {
-                   chanceint += 2
-                   UserDefaults.standard.set(chanceint, forKey: "chancekey")
-                   chancetext.text = String(chanceint)
-                   chancescreentext.text = String(chanceint)
-               }
-               else {
-                   okaysound()
-               }
+            hintint += 2
+            UserDefaults.standard.set(hintint, forKey: "hintkey")
+            hinttext.text = String(hintint)
+            hintbuyscreentext.text = String(hintint)
+        }
+        else {
+            okaysound()
+        }
+        
+        if againturnscreen.isHidden == false {
+            againturnint += 1
+            UserDefaults.standard.set(againturnint, forKey: "againturnkey")
+            againturntext.text = String(againturnint)
+            againturnscreentext.text = String(againturnint)
+        }
+        else {
+            okaysound()
+        }
+        
+        if chancescreen.isHidden == false {
+            chanceint += 2
+            UserDefaults.standard.set(chanceint, forKey: "chancekey")
+            chancetext.text = String(chanceint)
+            chancescreentext.text = String(chanceint)
+        }
+        else {
+            okaysound()
+        }
     }
     
     func rewardBasedVideoAdDidCompletePlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {     // REKLAM TAMAMEN İZLENDİĞİNDE...
@@ -6198,18 +6219,101 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func buyone(_ sender: Any) {
-        buttonsound()
-    }
-    @IBAction func buytwo(_ sender: Any) {
-        buttonsound()
-    }
-    @IBAction func buythree(_ sender: Any) {
-        buttonsound()
-    }
-    @IBAction func buyfour(_ sender: Any) {
+        buyonecontrol = true
+        buytwocontrol = false
+        buythreecontrol = false
+        buyfourcontrol = false
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID2
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
+        }
         buttonsound()
     }
     
+    @IBAction func buytwo(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = true
+        buythreecontrol = false
+        buyfourcontrol = false
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID3
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
+        }
+        buttonsound()
+    }
+    
+    @IBAction func buythree(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = false
+        buythreecontrol = true
+        buyfourcontrol = false
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID4
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
+        }
+        buttonsound()
+    }
+    
+    @IBAction func buyfour(_ sender: Any) {
+        buyonecontrol = false
+        buytwocontrol = false
+        buythreecontrol = false
+        buyfourcontrol = true
+        
+        if SKPaymentQueue.canMakePayments() {
+            let paymentRequest = SKMutablePayment()
+            paymentRequest.productIdentifier = productID5
+            SKPaymentQueue.default().add(paymentRequest)
+        }
+        else {
+            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
+        }
+        buttonsound()
+    }
+    
+    
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            if transaction.transactionState == .purchased {
+                if buyonecontrol == true {
+                    coins += 8000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYONE")
+                }
+                else if buytwocontrol == true {
+                    coins += 18000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYTWO")
+                }
+                else if buythreecontrol == true {
+                    coins += 30000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYTHREE")
+                }
+                else if buyfourcontrol == true {
+                    coins += 80000
+                    UserDefaults.standard.set(coins, forKey: "coinskey")
+                    print("BUYFOUR")
+                }
+            }
+            else if transaction.transactionState == .failed {
+                print("BAŞARISIZ.............................................")
+            }
+        }
+    }
 }
 
 
