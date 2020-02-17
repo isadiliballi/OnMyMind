@@ -469,7 +469,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if fourlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...38)
+            let dbrandom = Int.random(in: 1...198)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -481,7 +481,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if fivelettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...1)
+            let dbrandom = Int.random(in: 1...35)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -493,7 +493,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if sixlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...1)
+            let dbrandom = Int.random(in: 1...31)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -546,6 +546,14 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         letter8.text = rmix[7]
         letter9.text = rmix[8]
         
+        
+        // GOOGLE ADS
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().delegate = self
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
+        // GOOGLE ADS
     }
     // ALGORİTMA SON
     
@@ -3432,9 +3440,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
        
         finishpanel.frame = CGRect(x: finishpanel.frame.origin.x, y: finishpanel.frame.origin.y, width: finishpanel.frame.width, height: self.view.frame.height - self.box8.frame.origin.y)
         
-        print("View...............\(self.view.frame.height)")
-        print("Box8................\(self.box8.frame.minY)")
-        print("FinishPanel.............\(self.finishpanel.frame.height)")
         
         if threelettersectioncontrol == true {
             if self.score > self.threeletterhighscore {
@@ -3543,8 +3548,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             if interstitial.isReady {
                 interstitial.present(fromRootViewController: self)
             }
-            else {
-            }
         }
     }
         
@@ -3557,8 +3560,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         if adscontrol % 2 == 0 {
             if interstitial.isReady {
                 interstitial.present(fromRootViewController: self)
-            }
-            else {
             }
         }
     }
@@ -3611,34 +3612,34 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanel.frame.origin.y -= 251
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpaneltext.frame.origin.y -= 255
+                self.winpaneltext.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpaneltexttwo.frame.origin.y -= 255
+                self.winpaneltexttwo.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscore.frame.origin.y -= 255
+                self.winpanelscore.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoins.frame.origin.y -= 255
+                self.winpanelcoins.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcupimage.frame.origin.y -= 255
+                self.winpanelcupimage.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsimage.frame.origin.y -= 255
+                self.winpanelcoinsimage.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 350
+                self.winpanelscoreplus.frame.origin.y -= 360
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 350
+                self.winpanelcoinsplus.frame.origin.y -= 360
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelnext.frame.origin.y -= 250
+                self.winpanelnext.frame.origin.y -= 270
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelnexttext.frame.origin.y -= 250
+                self.winpanelnexttext.frame.origin.y -= 272
             }
         }
         else if ratio == 888 { // iPhone 5-5S-5C-5SE
@@ -6219,6 +6220,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     @IBAction func buyone(_ sender: Any) {
+        Analytics.logEvent("GameBuyOne", parameters: nil) // Firebase Events
         buyonecontrol = true
         buytwocontrol = false
         buythreecontrol = false
@@ -6235,6 +6237,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     @IBAction func buytwo(_ sender: Any) {
+        Analytics.logEvent("GameBuyTwo", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = true
         buythreecontrol = false
@@ -6251,6 +6254,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     @IBAction func buythree(_ sender: Any) {
+        Analytics.logEvent("GameBuyThree", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = false
         buythreecontrol = true
@@ -6267,6 +6271,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     @IBAction func buyfour(_ sender: Any) {
+        Analytics.logEvent("GameBuyFour", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = false
         buythreecontrol = false

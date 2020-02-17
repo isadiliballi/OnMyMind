@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import StoreKit
+import FirebaseAnalytics
 
 class setting: UIViewController, SKPaymentTransactionObserver {
     
@@ -100,6 +101,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     }
     
     @IBAction func darkmode(_ sender: Any) {
+        Analytics.logEvent("SettingDarkMode", parameters: nil) // Firebase Events
         gamebuttonsound()
         
         if dark == false {
@@ -118,6 +120,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     
     
     @IBAction func soundon(_ sender: Any) {
+        Analytics.logEvent("SettingSoundControl", parameters: nil) // Firebase Events
         if sound == true {
             sound = false
             soundoutlet.setImage(UIImage(named: "soundoff"), for: UIControl.State.normal)
@@ -131,15 +134,17 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func goprivacypolicy(_ sender: Any) {
+        Analytics.logEvent("SettingGoPrivacyPolicy", parameters: nil) // Firebase Events
         if sound == true {
             gamebuttonsound()
         }
-        if let url = URL(string: "#") {
+        if let url = URL(string: "http://www.isadiliballi.com") {
             UIApplication.shared.open(url)
         }
     }
     @IBAction func gotwitter(_ sender: Any) {
-        if let url = URL(string: "https://www.twitter.com/onmymindgame") {
+        Analytics.logEvent("SettingGoTwitter", parameters: nil) // Firebase Events
+        if let url = URL(string: "https://www.twitter.com/ilettergame") {
             if sound == true {
                 gamebuttonsound()
             }
@@ -148,6 +153,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     }
     
     @IBAction func restorepurchases(_ sender: Any) {
+        Analytics.logEvent("SettingRestore", parameters: nil) // Firebase Events
         SKPaymentQueue.default().restoreCompletedTransactions()
         if sound == true {
             gamebuttonsound()
@@ -155,7 +161,8 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     }
     
     @IBAction func goinstagram(_ sender: Any) {
-        if let url = URL(string: "https://www.instagram.com/onmymindgame") {
+        Analytics.logEvent("SettingGoInstagram", parameters: nil) // Firebase Events
+        if let url = URL(string: "https://www.instagram.com/ilettergame") {
             if sound == true {
                 gamebuttonsound()
             }
@@ -163,6 +170,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func gohome(_ sender: Any) {
+        Analytics.logEvent("SettingGoHome", parameters: nil) // Firebase Events
         if sound == true {
             gamebuttonsound()
         }

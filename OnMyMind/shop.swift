@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import FirebaseAnalytics
 
 class shop: UIViewController {
     
@@ -92,6 +93,7 @@ class shop: UIViewController {
     }
     
     @IBAction func home(_ sender: Any) {
+        Analytics.logEvent("ShopGoHome", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsound()
         }
@@ -99,6 +101,7 @@ class shop: UIViewController {
     
     
     @IBAction func chancebuy(_ sender: Any) {
+        Analytics.logEvent("ShopChance", parameters: nil) // Firebase Events
         if coins >= 100 {
             if sound == true {
                 buysound()
@@ -127,6 +130,7 @@ class shop: UIViewController {
         }
     }
     @IBAction func againturn(_ sender: Any) {
+        Analytics.logEvent("ShopAgainTurn", parameters: nil) // Firebase Events
         if coins >= 150 {
             if sound == true {
                 buysound()
@@ -155,6 +159,7 @@ class shop: UIViewController {
         }
     }
     @IBAction func hint(_ sender: Any) {
+        Analytics.logEvent("ShopHint", parameters: nil) // Firebase Events
         if coins >= 120 {
             if sound == true {
                 buysound()
@@ -212,11 +217,13 @@ class shop: UIViewController {
     }
     
     @IBAction func free(_ sender: Any) {
+        Analytics.logEvent("ShopGoFree", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsound()
         }
     }
     @IBAction func store(_ sender: Any) {
+        Analytics.logEvent("ShopGoStore", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsound()
         }

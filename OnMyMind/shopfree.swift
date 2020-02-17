@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import GoogleMobileAds
+import FirebaseAnalytics
 
 class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     
@@ -103,22 +104,26 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func coinbutton(_ sender: Any) {
+        Analytics.logEvent("FreeGoCoins", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func storebutton(_ sender: Any) {
+        Analytics.logEvent("FreeGoStore", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func homebutton(_ sender: Any) {
+        Analytics.logEvent("FreeGoHome", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     
     @IBAction func coinwin(_ sender: Any) {
+        Analytics.logEvent("FreeCoinsWin", parameters: nil) // Firebase Events
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
             buyone = true
@@ -141,6 +146,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         }
     }
     @IBAction func chancewin(_ sender: Any) {
+        Analytics.logEvent("FreeChanceWin", parameters: nil) // Firebase Events
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
             buytwo = true
@@ -163,6 +169,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         }
     }
     @IBAction func againturnwin(_ sender: Any) {
+        Analytics.logEvent("FreeAgainTurnWin", parameters: nil) // Firebase Events
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
             buythree = true
@@ -185,6 +192,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         }
     }
     @IBAction func hintwin(_ sender: Any) {
+        Analytics.logEvent("FreeHintWin", parameters: nil) // Firebase Events
         if GADRewardBasedVideoAd.sharedInstance().isReady == true {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
             buyfour = true

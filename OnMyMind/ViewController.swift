@@ -74,13 +74,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var homewarningtext: UILabel!
     @IBOutlet weak var homewarningcloseoutlet: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         threelettertext.font = threelettertext.font.withSize(view.frame.size.width / 6)
         threelettertext2.font = threelettertext2.font.withSize(view.frame.size.width / 20)
-        
+    
         fourlettertext.font = fourlettertext.font.withSize(view.frame.size.width / 6)
         fourlettertext2.font = fourlettertext2.font.withSize(view.frame.size.width / 20)
         
@@ -280,6 +279,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func treelettergo(_ sender: Any) {
+        Analytics.logEvent("ThreeLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
         threelettersectioncontrol = true
         lettersectioncontrol = true
@@ -308,6 +308,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fourlettergo(_ sender: Any) {
+        Analytics.logEvent("FourLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
         fourlettersectioncontrol = true
         lettersectioncontrol = true
@@ -336,6 +337,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fivelettergo(_ sender: Any) {
+        Analytics.logEvent("FiveLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
         fivelettersectioncontrol = true
         lettersectioncontrol = true
@@ -363,6 +365,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func sixlettergo(_ sender: Any) {
+        Analytics.logEvent("SixLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
         sixlettersectioncontrol = true
         lettersectioncontrol = true
@@ -427,6 +430,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func settingbutton(_ sender: Any) {
+        Analytics.logEvent("SettingClick", parameters: nil) // Firebase Events
         UIView.transition(with: settingbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
         if sound == true {
@@ -435,6 +439,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func shopbutton(_ sender: Any) {
+        Analytics.logEvent("ShopClick", parameters: nil) // Firebase Events
         UIView.transition(with: shopbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
         if sound == true {
@@ -457,7 +462,7 @@ class ViewController: UIViewController {
     }
     
     func fourletterwordstart() {
-        let dbrandom = Int.random(in: 1...38)
+        let dbrandom = Int.random(in: 1...198)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -470,7 +475,7 @@ class ViewController: UIViewController {
     }
     
     func fiveletterwordstart() {
-        let dbrandom = Int.random(in: 1...1)
+        let dbrandom = Int.random(in: 1...35)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -483,7 +488,7 @@ class ViewController: UIViewController {
     }
     
     func sixletterwordstart() {
-        let dbrandom = Int.random(in: 1...1)
+        let dbrandom = Int.random(in: 1...31)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -496,11 +501,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func coinsgoshop(_ sender: Any) {
+        Analytics.logEvent("CoinsGoShop", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsoundfunc()
         }
     }
     @IBAction func info(_ sender: Any) {
+        Analytics.logEvent("SettingClick", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsoundfunc()
         }

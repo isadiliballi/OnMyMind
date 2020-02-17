@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import StoreKit
+import FirebaseAnalytics
 
 class shopstore: UIViewController, SKPaymentTransactionObserver {
     
@@ -102,6 +103,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     }
     
     @IBAction func buyoneaction(_ sender: Any) {
+        Analytics.logEvent("StoreBuyOne", parameters: nil) // Firebase Events
         buyonecontrol = true
         buytwocontrol = false
         buythreecontrol = false
@@ -120,6 +122,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func buytwoaction(_ sender: Any) {
+        Analytics.logEvent("StoreBuyTwo", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = true
         buythreecontrol = false
@@ -138,6 +141,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func buythreeaction(_ sender: Any) {
+        Analytics.logEvent("StoreBuyThree", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = false
         buythreecontrol = true
@@ -156,6 +160,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func buyfouraction(_ sender: Any) {
+        Analytics.logEvent("StoreBuyFour", parameters: nil) // Firebase Events
         buyonecontrol = false
         buytwocontrol = false
         buythreecontrol = false
@@ -174,6 +179,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func buyfiveaction(_ sender: Any) {
+        Analytics.logEvent("StoreRemoveAds", parameters: nil) // Firebase Events
         
         buyonecontrol = false
         buytwocontrol = false
@@ -194,16 +200,19 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func homeaction(_ sender: Any) {
+        Analytics.logEvent("StoreGoHome", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func coinaction(_ sender: Any) {
+        Analytics.logEvent("StoreGoCoins", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func freeaction(_ sender: Any) {
+        Analytics.logEvent("StoreGoFree", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }

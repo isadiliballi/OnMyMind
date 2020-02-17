@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import FirebaseAnalytics
 
 class info: UIViewController {
     
@@ -78,6 +79,7 @@ class info: UIViewController {
                education.isHidden = true
     }
     @IBAction func gameinfo(_ sender: Any) {
+        Analytics.logEvent("InfoGameInfo", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsoundfunc()
         }
@@ -87,6 +89,7 @@ class info: UIViewController {
     }
     
     @IBAction func home(_ sender: Any) {
+        Analytics.logEvent("InfoGoHome", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsoundfunc()
         }
