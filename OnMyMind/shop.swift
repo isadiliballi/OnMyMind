@@ -102,11 +102,11 @@ class shop: UIViewController {
     
     @IBAction func chancebuy(_ sender: Any) {
         Analytics.logEvent("ShopChance", parameters: nil) // Firebase Events
-        if coins >= 100 {
+        if coins >= 180 {
             if sound == true {
                 buysound()
             }
-            coins -= 100
+            coins -= 180
             UserDefaults.standard.set(coins, forKey: "coinskey")
             chance += 1
             UserDefaults.standard.set(chance, forKey: "chancekey")
@@ -131,11 +131,11 @@ class shop: UIViewController {
     }
     @IBAction func againturn(_ sender: Any) {
         Analytics.logEvent("ShopAgainTurn", parameters: nil) // Firebase Events
-        if coins >= 150 {
+        if coins >= 350 {
             if sound == true {
                 buysound()
             }
-            coins -= 150
+            coins -= 350
             UserDefaults.standard.set(coins, forKey: "coinskey")
             againturn += 1
             UserDefaults.standard.set(againturn, forKey: "againturnkey")
@@ -160,11 +160,11 @@ class shop: UIViewController {
     }
     @IBAction func hint(_ sender: Any) {
         Analytics.logEvent("ShopHint", parameters: nil) // Firebase Events
-        if coins >= 120 {
+        if coins >= 250 {
             if sound == true {
                 buysound()
             }
-            coins -= 120
+            coins -= 250
             UserDefaults.standard.set(coins, forKey: "coinskey")
             hint += 1
             UserDefaults.standard.set(hint, forKey: "hintkey")

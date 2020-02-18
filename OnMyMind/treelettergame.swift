@@ -327,7 +327,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             if firsopengame2  {
                 threeletterhighscore = UserDefaults.standard.object(forKey: "threeletterhighscorekey") as! Int
                    highscoretext.text = String(threeletterhighscore)
-             /*    coins = 129 // DELETE
+                /* coins = 8000 // DELETE
                  UserDefaults.standard.set(coins, forKey: "coinskey") // DELETE
                  threeletterhighscore = 0 // DELETE
                  UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey") // DELETE */
@@ -435,6 +435,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         if threelettersectioncontrol == true {
             winpanelcoins.text = String(36)
             time = 2
+            second.text = String(2)
         }
         else if fourlettersectioncontrol == true {
             winpanelcoins.text = String(48)
@@ -444,10 +445,12 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         else if fivelettersectioncontrol == true {
             winpanelcoins.text = String(60)
             time = 3
+            second.text = String(3)
         }
         else if sixlettersectioncontrol == true {
             winpanelcoins.text = String(72)
-            time = 4
+            time = Int(3.5)
+            second.text = String(3)
         }
         else {}
         
@@ -469,7 +472,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if fourlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...198)
+            let dbrandom = Int.random(in: 1...551)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -481,7 +484,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if fivelettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...35)
+            let dbrandom = Int.random(in: 1...107)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -493,7 +496,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if sixlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...31)
+            let dbrandom = Int.random(in: 1...102)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -3882,7 +3885,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             plusonehundredcoins.image = UIImage(named:"plusfiftycoins")
         }
         else if sixlettersectioncontrol == true {
-            plusonehundredcoins.image = UIImage(named:"plustsixycoins")
+            plusonehundredcoins.image = UIImage(named:"plussixtycoins")
         }
         else {
             
@@ -4604,10 +4607,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                         self.time = Int(2.5)
                     }
                     else if self.fivelettersectioncontrol == true {
-                        self.time = 2
+                        self.time = 3
                     }
                     else if self.sixlettersectioncontrol == true {
-                        self.time = 2
+                        self.time = Int(3.5)
                     }
                     else {}
                     
@@ -5416,8 +5419,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         Analytics.logEvent("ThreeHintBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 125 {
-            coins -= 125
+        if coins >= 250 {
+            coins -= 250
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             hintint += 1
@@ -5453,9 +5456,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         Analytics.logEvent("ThreeAgainTurnBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 150 {
+        if coins >= 350 {
             okaysound()
-            coins -= 150
+            coins -= 350
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             againturnint += 1
@@ -5490,8 +5493,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         Analytics.logEvent("ThreeChanceBuyButtonClick", parameters: nil) // Firebase Events
         
-        if coins >= 100 {
-            coins -= 100
+        if coins >= 180 {
+            coins -= 180
             UserDefaults.standard.set(coins, forKey: "coinskey")
             coinstexttreeletter.text = String(coins)
             chanceint += 1

@@ -147,30 +147,14 @@ class ViewController: UIViewController {
         darkbackground.isHidden = true
         
         threeletterbuttonoutlet.isUserInteractionEnabled = true
-               fourletterbuttonoutlet.isUserInteractionEnabled = true
-               fiveletterbuttonoutlet.isUserInteractionEnabled = true
-               sixletterbuttonoutlet.isUserInteractionEnabled = true
-               settingbuttonoutlet.isUserInteractionEnabled = true
-               shopbuttonoutlet.isUserInteractionEnabled = true
-               infobuttonoutlet.isUserInteractionEnabled = true
-               
-               let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
-               let url = URL(fileURLWithPath: path)
-               
-               do {
-                   gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
-                   gamegobuttonsound?.play()
-               }
-               catch{
-                   
-               }
-    }
-    
-    
-    func gamegobuttonsoundfunc() {
-        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
+        fourletterbuttonoutlet.isUserInteractionEnabled = true
+        fiveletterbuttonoutlet.isUserInteractionEnabled = true
+        sixletterbuttonoutlet.isUserInteractionEnabled = true
+        settingbuttonoutlet.isUserInteractionEnabled = true
+        shopbuttonoutlet.isUserInteractionEnabled = true
+        infobuttonoutlet.isUserInteractionEnabled = true
         
-        if soundcontrol == true {
+        if sound == true {
             let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
             let url = URL(fileURLWithPath: path)
             
@@ -179,7 +163,26 @@ class ViewController: UIViewController {
                 gamegobuttonsound?.play()
             }
             catch{
+            }
+        }
+    }
+    
+    
+    func gamegobuttonsoundfunc() {
+        soundcontrol = UserDefaults.standard.object(forKey: "sound") as! Bool
+        
+        if sound == true {
+            if soundcontrol == true {
+                let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+                let url = URL(fileURLWithPath: path)
                 
+                do {
+                    gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
+                    gamegobuttonsound?.play()
+                }
+                catch{
+                    
+                }
             }
         }
     }
@@ -282,6 +285,9 @@ class ViewController: UIViewController {
         Analytics.logEvent("ThreeLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
         threelettersectioncontrol = true
+        fourlettersectioncontrol = false
+        fivelettersectioncontrol = false
+        sixlettersectioncontrol = false
         lettersectioncontrol = true
         
         UIView.transition(with: threelettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -310,7 +316,10 @@ class ViewController: UIViewController {
     @IBAction func fourlettergo(_ sender: Any) {
         Analytics.logEvent("FourLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
+        threelettersectioncontrol = false
         fourlettersectioncontrol = true
+        fivelettersectioncontrol = false
+        sixlettersectioncontrol = false
         lettersectioncontrol = true
         
         UIView.transition(with: fourlettertext, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -339,7 +348,10 @@ class ViewController: UIViewController {
     @IBAction func fivelettergo(_ sender: Any) {
         Analytics.logEvent("FiveLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
+        threelettersectioncontrol = false
+        fourlettersectioncontrol = false
         fivelettersectioncontrol = true
+        sixlettersectioncontrol = false
         lettersectioncontrol = true
         
         UIView.transition(with: fiveletterbuttonoutlet, duration: 0.2, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -367,6 +379,9 @@ class ViewController: UIViewController {
     @IBAction func sixlettergo(_ sender: Any) {
         Analytics.logEvent("SixLetterGame", parameters: nil) // Firebase Events
         gamegobuttonsoundfunc()
+        threelettersectioncontrol = false
+        fourlettersectioncontrol = false
+        fivelettersectioncontrol = false
         sixlettersectioncontrol = true
         lettersectioncontrol = true
         
@@ -462,7 +477,7 @@ class ViewController: UIViewController {
     }
     
     func fourletterwordstart() {
-        let dbrandom = Int.random(in: 1...198)
+        let dbrandom = Int.random(in: 1...551)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -475,7 +490,7 @@ class ViewController: UIViewController {
     }
     
     func fiveletterwordstart() {
-        let dbrandom = Int.random(in: 1...35)
+        let dbrandom = Int.random(in: 1...107)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -488,7 +503,7 @@ class ViewController: UIViewController {
     }
     
     func sixletterwordstart() {
-        let dbrandom = Int.random(in: 1...31)
+        let dbrandom = Int.random(in: 1...102)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
