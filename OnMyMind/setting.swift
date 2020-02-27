@@ -33,6 +33,8 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     let productID = "isadiliballi.OnMyMind2"
     var adblock = false
     
+    var firstopencontrol = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -195,19 +197,14 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         let screenheight = view.frame.size.height
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
-        print(ratio)
-        print(screenwidth)
         
         if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-            print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
         }
         else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series +
-            print("iPhone 5 - 5S - 5C - SE Series")
             
             settingtext.font = settingtext.font.withSize(55)
         }
         else if ratio == 1187 { // iPhone X - XS - 11 Pro Series  +
-            print("iPhone X - XS - 11 Pro Series")
             
             soundoutlet.frame = CGRect(x: soundoutlet.frame.origin.x, y: soundoutlet.frame.origin.y, width: 100, height: 100)
             darkmodeoutlet.frame = CGRect(x: darkmodeoutlet.frame.origin.x, y: darkmodeoutlet.frame.origin.y, width: 100, height: 100)
@@ -216,7 +213,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y, width: 60, height: 60)
         }
         else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max  +
-            print("iPhone XR - XS Max - 11 - 11 Pro Max")
             
             soundoutlet.frame = CGRect(x: soundoutlet.frame.origin.x, y: soundoutlet.frame.origin.y, width: 120, height: 120)
             soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 30, width: soundtext.frame.width, height: soundtext.frame.height)
@@ -226,96 +222,9 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y, width: 60, height: 60)
             instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y, width: 60, height: 60)
         }
-            
-            /*
-        else if ratio == 2028 { // iPad Pro 11 inch +
-            print("iPad Pro 11 inch")
-            
-           let homewidth = homeoutlet.frame.width * 0.8
-            homeoutlet.frame = CGRect(x: view.frame.width / 2 - homewidth / 2, y: homeoutlet.frame.origin.y - 20, width: homewidth, height: homewidth)
-            
-            settingtext.font = settingtext.font.withSize(view.frame.width / 7)
-            
-            let soundwidth = soundoutlet.frame.width * 0.7
-            soundoutlet.frame = CGRect(x: view.frame.width / 2 - soundwidth / 2 - 100 , y: soundoutlet.frame.origin.y, width: soundwidth, height: soundwidth)
-            soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 40, width: soundtext.frame.width, height: soundtext.frame.height)
-            soundtext.font = soundtext.font.withSize(view.frame.width / 20)
-            
-            let darkmodewidth = darkmodeoutlet.frame.width * 0.7
-            darkmodeoutlet.frame = CGRect(x: view.frame.width / 2 - darkmodewidth / 2 + 100, y: darkmodeoutlet.frame.origin.y, width: darkmodewidth, height: darkmodewidth)
-            darktext.frame = CGRect(x: darkmodeoutlet.frame.midX - darktext.frame.width / 2, y: darkmodeoutlet.frame.minY - 40, width: darktext.frame.width, height: darktext.frame.height)
-            darktext.font = darktext.font.withSize(view.frame.width / 20)
-            
-            let restorepurchasehigh = restorepurchasesoutlet.frame.width / 4.533333 * 0.8
-            let restorepurchasewidth = restorepurchasesoutlet.frame.width * 0.8
-            restorepurchasesoutlet.frame = CGRect(x: view.frame.width / 2 - restorepurchasewidth / 2, y: restorepurchasesoutlet.frame.origin.y - 60, width: restorepurchasewidth, height: restorepurchasehigh)
-            
-            restorepurchasestext.font = restorepurchasestext.font.withSize(view.frame.width / 25)
-            restorepurchasestext.frame = CGRect(x: restorepurchasestext.frame.origin.x, y: restorepurchasesoutlet.frame.midY - restorepurchasestext.frame.height / 2, width: restorepurchasestext.frame.width, height: restorepurchasestext.frame.height)
-            
-            let privatehigh = privacypolicyoutlet.frame.width / 4.533333 * 0.8
-            let privatewidth = privacypolicyoutlet.frame.width * 0.8
-            privacypolicyoutlet.frame = CGRect(x: view.frame.width / 2 - privatewidth / 2, y: privacypolicyoutlet.frame.origin.y - 50, width: privatewidth, height: privatehigh)
-            
-            privacypolicytext.font = privacypolicytext.font.withSize(view.frame.width / 25)
-            privacypolicytext.frame = CGRect(x: privacypolicytext.frame.origin.x, y: privacypolicyoutlet.frame.midY - privacypolicytext.frame.height / 2, width: privacypolicytext.frame.width, height: privacypolicytext.frame.height)
-            
-            let twitterhight = twitteroutlet.frame.width
-            twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y - 60, width: twitterhight, height: twitterhight)
-            
-            let instagramhight = instagramoutlet.frame.width
-            instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y - 60, width: instagramhight, height: instagramhight)
-            
-            followtext.font = followtext.font.withSize(view.frame.width / 35)
-            followtext.frame = CGRect(x: followtext.frame.origin.x, y: followtext.frame.origin.y - 50, width: followtext.frame.width, height: followtext.frame.height)
-        }
-        else if ratio == 2390 { // iPad Pro 12.9 inch  +
-            print("iPad Pro 12.9 inch")
-            
-            let homewidth = homeoutlet.frame.width * 0.8
-            homeoutlet.frame = CGRect(x: view.frame.width / 2 - homewidth / 2, y: homeoutlet.frame.origin.y - 20, width: homewidth, height: homewidth)
-            
-            settingtext.font = settingtext.font.withSize(view.frame.width / 7)
-            
-            let soundwidth = soundoutlet.frame.width * 0.7
-            soundoutlet.frame = CGRect(x: view.frame.width / 2 - soundwidth / 2 - 100 , y: soundoutlet.frame.origin.y, width: soundwidth, height: soundwidth)
-            soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 40, width: soundtext.frame.width, height: soundtext.frame.height)
-            soundtext.font = soundtext.font.withSize(view.frame.width / 20)
-            
-            let darkmodewidth = darkmodeoutlet.frame.width * 0.7
-            darkmodeoutlet.frame = CGRect(x: view.frame.width / 2 - darkmodewidth / 2 + 100, y: darkmodeoutlet.frame.origin.y, width: darkmodewidth, height: darkmodewidth)
-            darktext.frame = CGRect(x: darkmodeoutlet.frame.midX - darktext.frame.width / 2, y: darkmodeoutlet.frame.minY - 40, width: darktext.frame.width, height: darktext.frame.height)
-            darktext.font = darktext.font.withSize(view.frame.width / 20)
-            
-            let restorepurchasehigh = restorepurchasesoutlet.frame.width / 4.533333 * 0.8
-            let restorepurchasewidth = restorepurchasesoutlet.frame.width * 0.8
-            restorepurchasesoutlet.frame = CGRect(x: view.frame.width / 2 - restorepurchasewidth / 2, y: restorepurchasesoutlet.frame.origin.y - 60, width: restorepurchasewidth, height: restorepurchasehigh)
-            
-            restorepurchasestext.font = restorepurchasestext.font.withSize(view.frame.width / 25)
-            restorepurchasestext.frame = CGRect(x: restorepurchasestext.frame.origin.x, y: restorepurchasesoutlet.frame.midY - restorepurchasestext.frame.height / 2, width: restorepurchasestext.frame.width, height: restorepurchasestext.frame.height)
-            
-            
-            let privatehigh = privacypolicyoutlet.frame.width / 4.533333 * 0.8
-            let privatewidth = privacypolicyoutlet.frame.width * 0.8
-            privacypolicyoutlet.frame = CGRect(x: view.frame.width / 2 - privatewidth / 2, y: privacypolicyoutlet.frame.origin.y - 50, width: privatewidth, height: privatehigh)
-            
-            privacypolicytext.font = privacypolicytext.font.withSize(view.frame.width / 25)
-            privacypolicytext.frame = CGRect(x: privacypolicytext.frame.origin.x, y: privacypolicyoutlet.frame.midY - privacypolicytext.frame.height / 2, width: privacypolicytext.frame.width, height: privacypolicytext.frame.height)
-            
-            let twitterhight = twitteroutlet.frame.width
-            twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y - 60, width: twitterhight, height: twitterhight)
-            
-            let instagramhight = instagramoutlet.frame.width
-            instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y - 60, width: instagramhight, height: instagramhight)
-            
-            followtext.font = followtext.font.withSize(view.frame.width / 35)
-            followtext.frame = CGRect(x: followtext.frame.origin.x, y: followtext.frame.origin.y - 50, width: followtext.frame.width, height: followtext.frame.height)
-        }
-                   */
-            
+        
  
         else if 1792...2390 ~= ratio { // iPad Series  +
-            print("iPad Series")
             
             let homewidth = homeoutlet.frame.width * 0.8
             homeoutlet.frame = CGRect(x: view.frame.width / 2 - homewidth / 2, y: homeoutlet.frame.origin.y - 20, width: homewidth, height: homewidth)
@@ -364,9 +273,12 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             if transaction.transactionState == .restored {
                 adblock = true
                 UserDefaults.standard.set(adblock, forKey: "adblock")
-                print("Restore Edildi..............................")
             }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let vc = segue.destination as! ViewController
+            vc.firstopencontrol = firstopencontrol
+    }
 }

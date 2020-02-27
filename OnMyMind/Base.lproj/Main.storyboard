@@ -221,6 +221,29 @@
                                     <action selector="warningclose:" destination="szj-0x-ANI" eventType="touchUpInside" id="xBb-Xc-BNi"/>
                                 </connections>
                             </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6gB-yj-eBO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="kRn-qc-2dN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="md8-Rf-An9">
+                                            <rect key="frame" x="165" y="377" width="44" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="color" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KELİME İNDİRİLİYOR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XpQ-Z0-6ay">
+                                            <rect key="frame" x="0.0" y="241" width="375" height="136"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="40"/>
+                                            <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="systemThickMaterialDark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -230,6 +253,9 @@
                         <outlet property="coinsbutton" destination="uLa-5R-JZ4" id="4Yr-D0-UJZ"/>
                         <outlet property="coinstext" destination="Xip-QZ-HGu" id="pnz-xb-ehD"/>
                         <outlet property="darkbackground" destination="035-W6-aMI" id="LwA-dh-1rI"/>
+                        <outlet property="firstopendownload" destination="md8-Rf-An9" id="gcz-qX-Usb"/>
+                        <outlet property="firstopenscreen" destination="6gB-yj-eBO" id="sVo-5e-6t0"/>
+                        <outlet property="firstopentext" destination="XpQ-Z0-6ay" id="f3g-mw-IfZ"/>
                         <outlet property="fiveletterbuttonoutlet" destination="0HD-zx-HDx" id="izU-2t-P5b"/>
                         <outlet property="fivelettertext" destination="CVE-Ee-tTl" id="BYn-N3-sb1"/>
                         <outlet property="fivelettertext2" destination="08F-fG-f4u" id="sul-QV-kEb"/>
@@ -379,7 +405,6 @@
                                 <state key="normal" image="shopstore2"/>
                                 <connections>
                                     <action selector="store:" destination="szj-0x-ANI" eventType="touchUpInside" id="6M1-Xc-tui"/>
-                                    <segue destination="LCi-tM-ZDj" kind="show" identifier="shopstore" id="CtC-QU-pH7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAĞAZA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDd-Qw-t3v">
@@ -422,6 +447,7 @@
                         <outlet property="shoptext" destination="Bd9-V2-g7a" id="Otm-iA-e3a"/>
                         <outlet property="storeoutlet" destination="eq8-Zh-zqD" id="Aq0-Y5-cCx"/>
                         <outlet property="storetext" destination="bDd-Qw-t3v" id="KbW-ky-L8P"/>
+                        <segue destination="LCi-tM-ZDj" kind="show" identifier="shopstore" id="4Mu-YI-fqz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5T-Fy-lla" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -515,7 +541,6 @@
                                 <state key="normal" image="shopstore2"/>
                                 <connections>
                                     <action selector="storebutton:" destination="qTi-oM-34g" eventType="touchUpInside" id="fJX-da-DcG"/>
-                                    <segue destination="LCi-tM-ZDj" kind="show" id="uVq-D1-3Zb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MAĞAZA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOS-3V-cnq">
@@ -612,6 +637,7 @@
                         <outlet property="warningcloseoutlet" destination="4uu-ei-Dwk" id="kKA-iM-fH1"/>
                         <outlet property="warningoutlet" destination="mbe-7C-S90" id="BU3-qG-9n4"/>
                         <outlet property="warningtextoutlet" destination="n5g-4p-kBe" id="rPY-Di-Ccw"/>
+                        <segue destination="LCi-tM-ZDj" kind="show" identifier="shopstore" id="L5c-m9-My3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQa-AQ-u4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1212,13 +1238,6 @@
                                 <color key="textColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="Su4-lf-iui">
-                                <rect key="frame" x="148" y="490" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="80"/>
-                                <color key="textColor" red="1" green="0.50574867097090326" blue="0.066731866105275262" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="2O9-0b-Cau">
                                 <rect key="frame" x="0.0" y="670" width="375" height="205"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
@@ -1574,10 +1593,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="fBz-xR-S7H">
-                                <rect key="frame" x="307" y="389" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCJ-pK-mr8">
                                 <rect key="frame" x="127" y="367" width="122" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -1641,20 +1656,9 @@
                                     <action selector="understood:" destination="Rpr-nQ-7GY" eventType="touchUpInside" id="jf8-LQ-xZ8"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="MUy-A1-P9K">
-                                <rect key="frame" x="73" y="672" width="30" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KhM-tj-gCa"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Su4-lf-iui"/>
-                                <exclude reference="fBz-xR-S7H"/>
-                                <exclude reference="MUy-A1-P9K"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="againturnadsbuy" destination="EuV-rt-7QJ" id="gMD-vu-or0"/>
@@ -1719,7 +1723,6 @@
                         <outlet property="letter9" destination="oM5-NE-3Bg" id="NVd-Km-mnQ"/>
                         <outlet property="plusonehundredcoins" destination="Q2o-jt-xLm" id="KBq-rR-R84"/>
                         <outlet property="plustencoins" destination="OOr-mY-JIl" id="exU-n3-jRj"/>
-                        <outlet property="second" destination="Su4-lf-iui" id="0pV-C9-e5P"/>
                         <outlet property="shopping" destination="Bas-oK-9tG" id="acl-1u-nOl"/>
                         <outlet property="shoppingbuyfour" destination="zVG-hj-YRY" id="xlR-ld-TqT"/>
                         <outlet property="shoppingbuyone" destination="uQh-rD-JMA" id="9OX-fR-nmf"/>
@@ -1737,12 +1740,10 @@
                         <outlet property="winpanel" destination="18k-9x-S5p" id="giL-ZN-YuO"/>
                         <outlet property="winpanelcoins" destination="su8-HJ-RRP" id="pSk-MW-gMW"/>
                         <outlet property="winpanelcoinsimage" destination="ybj-CW-0EE" id="b45-bv-se6"/>
-                        <outlet property="winpanelcoinsplus" destination="fBz-xR-S7H" id="b8W-JV-i0i"/>
                         <outlet property="winpanelcupimage" destination="r0v-3S-FQG" id="KBn-AL-NWm"/>
                         <outlet property="winpanelnext" destination="jYF-2H-G9S" id="6nN-r3-iOs"/>
                         <outlet property="winpanelnexttext" destination="ztB-y8-o0Y" id="TUY-3I-5CI"/>
                         <outlet property="winpanelscore" destination="N6y-g2-ifU" id="Wdp-59-W34"/>
-                        <outlet property="winpanelscoreplus" destination="MUy-A1-P9K" id="IGr-fM-UmX"/>
                         <outlet property="winpaneltext" destination="wQU-pl-7KW" id="8Z9-wA-8se"/>
                         <outlet property="winpaneltexttwo" destination="9Ae-hk-p9D" id="8FX-b5-lqK"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="go" id="1UY-SD-ARG"/>
@@ -1794,7 +1795,6 @@
         <image name="logo2" width="137.5" height="418"/>
         <image name="next" width="190" height="190"/>
         <image name="otherbutton" width="270" height="60"/>
-        <image name="plus" width="741" height="741"/>
         <image name="plusonehundredcoins" width="951" height="383"/>
         <image name="plustwocoins" width="432" height="368"/>
         <image name="shopadwatch" width="178" height="63"/>
@@ -1839,9 +1839,9 @@
         <image name="winpanelscore" width="500" height="172.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3mv-Ea-lzT"/>
+        <segue reference="r8y-7n-lSB"/>
         <segue reference="4iQ-fL-wbP"/>
-        <segue reference="mRh-GO-L68"/>
+        <segue reference="4XJ-nh-b3x"/>
         <segue reference="9IX-d8-s5X"/>
     </inferredMetricsTieBreakers>
 </document>

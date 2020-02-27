@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import AVFoundation
+import Network
 
 class ViewController: UIViewController {
     
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
     var fivelettertrword = String()
     var sixletteringword = String()
     var sixlettertrword = String()
-    var coins = Int()
+    var coins = 200
     
     var soundcontrol = true
     
@@ -57,9 +58,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var fivelettertext2: UILabel!
     @IBOutlet weak var sixlettertext2: UILabel!
     
-    var chance = 6
-    var againturn = 6
-    var hint = 6
+    var chance = 5
+    var againturn = 5
+    var hint = 5
     var sound = true
     
     
@@ -74,8 +75,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var homewarningtext: UILabel!
     @IBOutlet weak var homewarningcloseoutlet: UIButton!
     
+    @IBOutlet weak var firstopenscreen: UIVisualEffectView!
+    @IBOutlet weak var firstopentext: UILabel!
+    @IBOutlet weak var firstopendownload: UIActivityIndicatorView!
+    var firstopencontrol = false
+    let monitor = NWPathMonitor()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if firstopencontrol == false {
+            self.firstopendownload.startAnimating()
+            self.monitor.pathUpdateHandler = { path in
+                if path.status == .satisfied {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        self.firstopenscreen.removeFromSuperview()
+                        self.firstopentext.removeFromSuperview()
+                        self.firstopendownload.removeFromSuperview()
+                        self.firstopencontrol = true
+                        self.monitor.cancel()
+                    }
+                    
+                    
+                } else {
+                    self.firstopentext.text = "İNTERNET BAĞLANTINIZ YOK OYUNDAN ÇIKILIYOR"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        exit(0)
+                    }
+                }
+            }
+            let queue = DispatchQueue(label: "Monitor")
+            monitor.start(queue: queue)
+        }
+        else {
+            self.firstopenscreen.removeFromSuperview()
+            self.firstopentext.removeFromSuperview()
+            self.firstopendownload.removeFromSuperview()
+        }
         
         threelettertext.font = threelettertext.font.withSize(view.frame.size.width / 6)
         threelettertext2.font = threelettertext2.font.withSize(view.frame.size.width / 20)
@@ -139,7 +176,6 @@ class ViewController: UIViewController {
         responsive()
         
     }
-    
     @IBAction func homewarningclose(_ sender: Any) {
         homewarning.isHidden = true
         homewarningtext.isHidden = true
@@ -215,13 +251,14 @@ class ViewController: UIViewController {
         let ratio = screenheight + screenwidth
         
         if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-            print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
-            print("iPhone 5 - 5S - 5C - SE Series")
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if ratio == 1187 { // iPhone X - XS - 11 Pro Series +
-            print("iPhone X - XS - 11 Pro Series")
             
             coinsbutton.frame = CGRect(x: 65.1, y: 240, width: 244.8, height: 88.8)
             coinstext.font = coinstext.font.withSize(40)
@@ -229,9 +266,10 @@ class ViewController: UIViewController {
             shopbuttonoutlet.frame = CGRect(x: 152.5, y: 680, width: 70, height: 70)
             infobuttonoutlet.frame = CGRect(x: 252.5, y: 680, width: 70, height: 70)
             homewarningcloseoutlet.frame = CGRect(x: 152.5, y: 500, width: 70, height: 70)
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max +
-            print("iPhone XR - XS Max - 11 - 11 Pro Max")
             
             coinsbutton.frame = CGRect(x: 84.6, y: 272, width: 244.8, height: 88.8)
             coinstext.font = coinstext.font.withSize(45)
@@ -239,9 +277,10 @@ class ViewController: UIViewController {
             shopbuttonoutlet.frame = CGRect(x: 167, y: 750, width: 80, height: 80)
             infobuttonoutlet.frame = CGRect(x: 267, y: 750, width: 80, height: 80)
             homewarningcloseoutlet.frame = CGRect(x: 167, y: 550, width: 80, height: 80)
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if ratio == 2028 { // iPad Pro 11 inch +
-            print("iPad Pro 11 inch")
             
             coinsbutton.frame = CGRect(x: view.frame.width / 2 - 183.6, y: coinsbutton.frame.origin.y + 15, width: 367.2, height: 133.2)
             coinstext.font = coinstext.font.withSize(60)
@@ -251,9 +290,10 @@ class ViewController: UIViewController {
             infobuttonoutlet.frame = CGRect(x: 552, y: 1000, width: 130, height: 130)
             homewarningcloseoutlet.frame = CGRect(x: 367, y: 800, width: 100, height: 100)
             logoi.frame = CGRect(x: 120, y: 160, width: 36, height: 109.8)
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if ratio == 2390 { // iPad Pro 12.9 inch +
-            print("iPad Pro 12.9 inch")
             
             coinsbutton.frame = CGRect(x: view.frame.width / 2 - 183.6, y: coinsbutton.frame.origin.y + 15, width: 367.2, height: 133.2)
             coinstext.font = coinstext.font.withSize(60)
@@ -263,9 +303,10 @@ class ViewController: UIViewController {
             infobuttonoutlet.frame = CGRect(x: 642, y: 1150, width: 140, height: 140)
             homewarningcloseoutlet.frame = CGRect(x: 462, y: 900, width: 100, height: 100)
             logoi.frame = CGRect(x: 180, y: 200, width: 36, height: 109.8)
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
         else if 1792...2390 ~= ratio { // iPad Series +
-            print("iPad Series")
             
             coinsbutton.frame = CGRect(x: view.frame.width / 2 - 146.88, y: coinsbutton.frame.origin.y, width: 293.76, height: 106.56)
             coinstext.font = coinstext.font.withSize(55)
@@ -275,6 +316,8 @@ class ViewController: UIViewController {
             infobuttonoutlet.frame = CGRect(x: view.frame.width / 2 + 100, y: fiveletterbuttonoutlet.frame.maxY + 50, width: 100, height: 100)
             homewarningcloseoutlet.frame = CGRect(x: view.frame.width / 2 - 50, y: homewarning.frame.maxY + 50, width: 100, height: 100)
             logoi.frame = CGRect(x: logo.frame.minX + 20, y: logo.frame.minY + 5, width: 36, height: 109.8)
+            firstopentext.frame.origin = CGPoint(x: view.frame.width / 2 - firstopentext.frame.width / 2, y: view.frame.height / 2 - firstopentext.frame.height / 2)
+            firstopendownload.frame.origin = CGPoint(x: view.frame.width / 2 - firstopendownload.frame.width / 2, y: firstopentext.frame.maxY)
         }
       
     }
@@ -431,9 +474,7 @@ class ViewController: UIViewController {
                 vc.trkelime = sixlettertrword
             }
             else {
-                
             }
-            
             vc.coins = coins
             vc.chanceint = chance
             vc.againturnint = againturn
@@ -490,7 +531,7 @@ class ViewController: UIViewController {
     }
     
     func fiveletterwordstart() {
-        let dbrandom = Int.random(in: 1...107)
+        let dbrandom = Int.random(in: 1...505)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()
@@ -503,7 +544,7 @@ class ViewController: UIViewController {
     }
     
     func sixletterwordstart() {
-        let dbrandom = Int.random(in: 1...102)
+        let dbrandom = Int.random(in: 1...404)
         let dbrandomstring = String(dbrandom)
         
         ref = Database.database().reference()

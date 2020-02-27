@@ -27,7 +27,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     @IBOutlet weak var treeletterword: UILabel!
     
-    @IBOutlet weak var second: UILabel!
     var time = Int()
     
     @IBOutlet weak var letter1: UILabel!
@@ -104,8 +103,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBOutlet weak var winpanelcoins: UILabel!
     @IBOutlet weak var winpanelcupimage: UIImageView!
     @IBOutlet weak var winpanelcoinsimage: UIImageView!
-    @IBOutlet weak var winpanelscoreplus: UIImageView!
-    @IBOutlet weak var winpanelcoinsplus: UIImageView!
     @IBOutlet weak var winpanelnext: UIButton!
     @IBOutlet weak var winpanelnexttext: UILabel!
     
@@ -150,10 +147,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     var winpanelcupimagey = Int()
     var winpanelcoinsimagex = Int()
     var winpanelcoinsimagey = Int()
-    var winpanelscoreplusx = Int()
-    var winpanelscoreplusy = Int()
-    var winpanelcoinsplusx = Int()
-    var winpanelcoinsplusy = Int()
     var winpanelnextx = Int()
     var winpanelnexty = Int()
     var winpanelnexttextx = Int()
@@ -167,9 +160,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBOutlet weak var hintoutlet: UIButton!
     @IBOutlet weak var againturnoutlet: UIButton!
     @IBOutlet weak var chanceoutlet: UIButton!
-    var chanceint = 6
-    var againturnint = 6
-    var hintint = 6
+    var chanceint = 5
+    var againturnint = 5
+    var hintint = 5
     @IBOutlet weak var chancetext: UILabel!
     @IBOutlet weak var againturntext: UILabel!
     @IBOutlet weak var hinttext: UILabel!
@@ -197,7 +190,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBOutlet weak var hintplus: UIButton!
     
     var interstitial: GADInterstitial!
-    var adscontrol = 0
+    var adscontrol = 2
     
     var sound : AVAudioPlayer?
     
@@ -235,6 +228,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     let productID4 = "isadiliballi.OnMyMind5"
     let productID5 = "isadiliballi.OnMyMind6"
     
+    var firstopencontrol = true
     
     override func viewDidLoad() {
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
@@ -406,10 +400,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             winpanelcupimagey = Int(winpanelcupimage.frame.origin.y)
             winpanelcoinsimagex = Int(winpanelcoinsimage.frame.origin.x)
             winpanelcoinsimagey = Int(winpanelcoinsimage.frame.origin.y)
-            winpanelscoreplusx = Int(winpanelscoreplus.frame.origin.x)
-            winpanelscoreplusy = Int(winpanelscoreplus.frame.origin.y)
-            winpanelcoinsplusx = Int(winpanelcoinsplus.frame.origin.x)
-            winpanelcoinsplusy = Int(winpanelcoinsplus.frame.origin.y)
             winpanelnextx = Int(winpanelnext.frame.origin.x)
             winpanelnexty = Int(winpanelnext.frame.origin.y)
             winpanelnexttextx = Int(winpanelnexttext.frame.origin.x)
@@ -435,22 +425,18 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         if threelettersectioncontrol == true {
             winpanelcoins.text = String(36)
             time = 2
-            second.text = String(2)
         }
         else if fourlettersectioncontrol == true {
             winpanelcoins.text = String(48)
             time = Int(2.5)
-            second.text = String(2)
         }
         else if fivelettersectioncontrol == true {
             winpanelcoins.text = String(60)
             time = 3
-            second.text = String(3)
         }
         else if sixlettersectioncontrol == true {
             winpanelcoins.text = String(72)
             time = Int(3.5)
-            second.text = String(3)
         }
         else {}
         
@@ -484,7 +470,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if fivelettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...107)
+            let dbrandom = Int.random(in: 1...505)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -496,7 +482,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
         else if sixlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...102)
+            let dbrandom = Int.random(in: 1...404)
             let dbrandomstring = String(dbrandom)
             
             ref = Database.database().reference()
@@ -511,8 +497,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             
         }
         
-        print(trkelime)
-        print(kelime)
         
         chancetext.text = String(chanceint)
         againturntext.text = String(againturnint)
@@ -521,7 +505,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         treeletterword.text = kelime
         
         letters = kelime.map {String($0)}
-        print(letters)
         let alfabe = ["A","B","C","Ç","D","E","F","G","Ğ","H","I","İ","J","K","L","M","N","O","Ö","P","R","S","Ş","T","U","Ü","V","Y","Z"]
         let looppieces = boxpieces - letters.count
         
@@ -538,7 +521,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             _ = rmix.joined(separator: "")
             
         }
-        print(rmix)
         letter1.text = rmix[0]
         letter2.text = rmix[1]
         letter3.text = rmix[2]
@@ -2783,7 +2765,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
                 self.time -= 1
-                self.second.text = String(self.time)
                 
                 if self.time == 0 {
                     self.allboxturnsound()
@@ -2801,7 +2782,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     self.chanceplus.isHidden = false
                     self.againturnplus.isHidden = false
                     self.hintplus.isHidden = false
-                    self.second.isHidden = true
                     
                     if self.threelettersectioncontrol == true {
                         self.time = 2
@@ -2817,9 +2797,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     }
                     else {}
                     
-                    self.second.text = String(self.time)
                     self.firstlife+=1
-                    print(self.firstlife)
                     
                     self.letter1.isHidden = true
                     self.box1.setImage(UIImage(named: "box"), for: UIControl.State.normal)
@@ -2858,7 +2836,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     UIView.transition(with: self.box9, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
                 }
             }
-            self.second.isHidden = false
             
             self.letter1.isHidden = false
             UIView.transition(with: self.letter1, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -2969,7 +2946,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         UserDefaults.standard.set(coins, forKey: "coinskey")
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         vc.coins = coins
-        
+        vc.firstopencontrol = firstopencontrol
     }
     func otherwordgofunc() {
         buttonsound()
@@ -3086,8 +3063,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         winpanelcoins.isHidden = true
         winpanelcupimage.isHidden = true
         winpanelcoinsimage.isHidden = true
-        winpanelscoreplus.isHidden = true
-        winpanelcoinsplus.isHidden = true
         winpanelnext.isHidden = true
         winpanelnexttext.isHidden = true
         winpanel.frame = CGRect(origin: CGPoint(x: winpanelx, y: winpanely), size: winpanel.bounds.size)
@@ -3097,8 +3072,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         winpanelcoins.frame = CGRect(origin: CGPoint(x: winpanelcoinsx, y: winpanelcoinsy), size: winpanelcoins.bounds.size)
         winpanelcupimage.frame = CGRect(origin: CGPoint(x: winpanelcupimagex, y: winpanelcupimagey), size: winpanelcupimage.bounds.size)
         winpanelcoinsimage.frame = CGRect(origin: CGPoint(x: winpanelcoinsimagex, y: winpanelcoinsimagey), size: winpanelcoinsimage.bounds.size)
-        winpanelscoreplus.frame = CGRect(origin: CGPoint(x: winpanelscoreplusx, y: winpanelscoreplusy), size: winpanelscoreplus.bounds.size)
-        winpanelcoinsplus.frame = CGRect(origin: CGPoint(x: winpanelcoinsplusx, y: winpanelcoinsplusy), size: winpanelcoinsplus.bounds.size)
         winpanelnext.frame = CGRect(origin: CGPoint(x: winpanelnextx, y: winpanelnexty), size: winpanelnext.bounds.size)
         winpanelnexttext.frame = CGRect(origin: CGPoint(x: winpanelnexttextx, y: winpanelnexttexty), size: winpanelnexttext.bounds.size)
     }
@@ -3336,8 +3309,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
         
-        print(ratio)
-        print(screenwidth)
        
         if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series
             UIView.animate(withDuration: 0.5) {
@@ -3547,7 +3518,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         if adblock == false {
         adscontrol += 1
-        if adscontrol % 2 == 0 {
+        if adscontrol % 3 == 0 {
             if interstitial.isReady {
                 interstitial.present(fromRootViewController: self)
             }
@@ -3560,7 +3531,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     func scontrolequalthree() { // Son Kutu Doğru Olduğunda...
         if adblock == false {
         adscontrol += 1
-        if adscontrol % 2 == 0 {
+        if adscontrol % 3 == 0 {
             if interstitial.isReady {
                 interstitial.present(fromRootViewController: self)
             }
@@ -3633,12 +3604,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanelcoinsimage.frame.origin.y -= 265
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 360
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 360
-            }
-            UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 270
             }
             UIView.animate(withDuration: 0.5) {
@@ -3669,12 +3634,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanelcoinsimage.frame.origin.y -= 220
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 220
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 220
-            }
-            UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 210
             }
             UIView.animate(withDuration: 0.5) {
@@ -3703,12 +3662,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelcoinsimage.frame.origin.y -= 310
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 320
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 320
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 320
@@ -3742,12 +3695,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanelcoinsimage.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 330
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 330
-            }
-            UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 330
             }
             UIView.animate(withDuration: 0.5) {
@@ -3776,12 +3723,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelcoinsimage.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 450
             }
             UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 290
@@ -3814,12 +3755,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanelcoinsimage.frame.origin.y -= 510
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 320
             }
             UIView.animate(withDuration: 0.5) {
@@ -3849,12 +3784,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 self.winpanelcoinsimage.frame.origin.y -= 410
             }
             UIView.animate(withDuration: 0.5) {
-                self.winpanelscoreplus.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
-                self.winpanelcoinsplus.frame.origin.y -= 450
-            }
-            UIView.animate(withDuration: 0.5) {
                 self.winpanelnext.frame.origin.y -= 260
             }
             UIView.animate(withDuration: 0.5) {
@@ -3869,8 +3798,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         winpanelcoins.isHidden = false
         winpanelcupimage.isHidden = false
         winpanelcoinsimage.isHidden = false
-        winpanelscoreplus.isHidden = false
-        winpanelcoinsplus.isHidden = false
         winpanelnext.isHidden = false
         winpanelnexttext.isHidden = false
         winpanelscore.text = String(score)
@@ -4566,7 +4493,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
                 self.time -= 1
-                self.second.text = String(self.time)
                 
                 if self.time == 0 {
                     self.allboxturnsound() 
@@ -4598,7 +4524,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     self.turnagainnumber.isHidden = false
                     self.hinttext.isHidden = false
                     self.hintnumber.isHidden = false
-                    self.second.isHidden = true
                     
                     if self.threelettersectioncontrol == true {
                         self.time = 2
@@ -4614,9 +4539,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     }
                     else {}
                     
-                    self.second.text = String(self.time)
                     self.firstlife+=1
-                    print(self.firstlife)
                     
                     if self.box1bool == false {
                         self.letter1.isHidden = true
@@ -4673,7 +4596,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                     }
                 }
             }
-            self.second.isHidden = false
             
             if self.box1bool == false {
                 self.letter1.isHidden = false
@@ -5739,9 +5661,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         let screenwidth = view.frame.size.width
         let ratio = screenheight + screenwidth
         
-        print(ratio)
-        print("yükseklik\(screenheight)")
-        print("genişlik\(screenwidth)")
         
         /* if ratio == 1042 || ratio == 1150  { // iPhone 6-7-8 Series } */
         
@@ -5823,12 +5742,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             
             let turnwidth = box1.frame.height * 2.92
             let turnheight = turnwidth / 3.5142
-            print(turnwidth)
             turnoutlet.frame = CGRect(x: view.frame.width / 2 - turnwidth / 2, y: box8.frame.maxY + 40, width: turnwidth, height: turnheight)
             turnwordoutlet.center = turnoutlet.center
             turnwordoutlet.font = turnwordoutlet.font.withSize(40)
             
-            second.frame.origin = CGPoint(x: second.frame.origin.x, y: box8.frame.maxY + 40)
             
             let againturnheight = box1.frame.height / 1.202
             againturnoutlet.frame = CGRect(x: view.frame.width / 2 - againturnheight / 2 , y: box8.frame.maxY + 35, width: againturnheight, height: againturnheight)
@@ -5993,7 +5910,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         turnwordoutlet.center = turnoutlet.center
         turnwordoutlet.font = turnwordoutlet.font.withSize(30)
         
-        second.frame.origin = CGPoint(x: second.frame.origin.x, y: box8.frame.maxY + 40)
         
         let againturnheight = box1.frame.height / 1.202
         againturnoutlet.frame = CGRect(x: view.frame.width / 2 - againturnheight / 2 , y: box8.frame.maxY + 35, width: againturnheight, height: againturnheight)
@@ -6111,7 +6027,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             turnwordoutlet.center = turnoutlet.center
             turnwordoutlet.font = turnwordoutlet.font.withSize(30)
             
-            second.frame.origin = CGPoint(x: second.frame.origin.x, y: box8.frame.maxY + 40)
             
             let againturnheight = box1.frame.height / 1.202
             againturnoutlet.frame = CGRect(x: view.frame.width / 2 - againturnheight / 2 , y: box8.frame.maxY + 35, width: againturnheight, height: againturnheight)
@@ -6234,7 +6149,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
         buttonsound()
     }
@@ -6251,7 +6165,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
         buttonsound()
     }
@@ -6268,7 +6181,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
         buttonsound()
     }
@@ -6286,7 +6198,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
         buttonsound()
     }
@@ -6299,29 +6210,29 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                 if buyonecontrol == true {
                     coins += 8000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYONE")
+                    okaysound()
                 }
                 else if buytwocontrol == true {
                     coins += 18000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYTWO")
+                    okaysound()
                 }
                 else if buythreecontrol == true {
                     coins += 30000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYTHREE")
+                    okaysound()
                 }
                 else if buyfourcontrol == true {
                     coins += 80000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYFOUR")
+                    okaysound()
                 }
             }
             else if transaction.transactionState == .failed {
-                print("BAŞARISIZ.............................................")
             }
         }
     }
+    
 }
 
 

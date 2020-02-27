@@ -57,6 +57,8 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     
     var dark = false
     
+    var firstopencontrol = true
+    var vccontrol = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,12 +106,15 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     }
     
     @IBAction func coinbutton(_ sender: Any) {
+        vccontrol = false
         Analytics.logEvent("FreeGoCoins", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func storebutton(_ sender: Any) {
+        vccontrol = false
+        performSegue(withIdentifier: "shopstore", sender: nil)
         Analytics.logEvent("FreeGoStore", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
@@ -308,13 +313,11 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
                  let ratio = screenheight + screenwidth
                  
                  if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-                     print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
                  }
                  else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
-                     print("iPhone 5 - 5S - 5C - SE Series")
+                    
                  }
                  else if ratio == 1187 || ratio == 1310 { // iPhone X - XS - 11 Pro Series +
-                     print("iPhone X - XS - 11 Pro Series")
                     
                     shoptext.font = shoptext.font.withSize(70)
                     
@@ -349,16 +352,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
                     buyfouroutlet.frame = CGRect(x: buyfouroutlet.frame.origin.x, y: freehint.frame.maxY - 55, width: buyfouroutlet.frame.width, height: buyfourheight)
                     
                     warningcloseoutlet.frame = CGRect(x: warningcloseoutlet.frame.origin.x, y: warningcloseoutlet.frame.origin.y, width: warningcloseoutlet.frame.width, height: warningcloseoutlet.frame.width)
-                 }/*
-                 else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
-                  print("iPhone XR - XS Max - 11 - 11 Pro Max")
                  }
-                 else if ratio == 2028 { // iPad Pro 11 inch
-                     print("iPad Pro 11 inch")
-                 }
-                 else if ratio == 2390 { // iPad Pro 12.9 inch
-                     print("iPad Pro 12.9 inch")
-                 } */
                  else if 1792...2390 ~= ratio { // iPad Series +
                     
                     shoptext.font = shoptext.font.withSize(view.frame.width / 7)
@@ -422,7 +416,6 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
                     warningcloseoutlet.frame = CGRect(x: warningcloseoutlet.frame.origin.x, y: warningcloseoutlet.frame.origin.y, width: warningcloseoutlet.frame.width, height: warningcloseoutlet.frame.width)
                     
                     if ratio == 2390 { // iPad Pro 12.9 inch
-                        print("iPad Pro 12.9 inch")
                         
                         let buythreewidth = buythreeoutlet.frame.width * 0.9
                         let buythreeheight = buythreewidth / 2.807
@@ -442,4 +435,10 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
                     }
                  }
              }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if vccontrol == true {
+           let vc = segue.destination as! ViewController
+           vc.firstopencontrol = firstopencontrol
+        }
+       }
 }

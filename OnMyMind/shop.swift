@@ -48,6 +48,9 @@ class shop: UIViewController {
     
     var dark = false
     
+    var firstopencontrol = true
+    var vccontrol = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -113,20 +116,8 @@ class shop: UIViewController {
             chanceoutlet.text = String(chance)
         }
         else {
+            vccontrol = false
             performSegue(withIdentifier: "shopstore", sender: nil)
-            /*
-            warningcloseoutlet.isHidden = false
-            warningoutlet.isHidden = false
-            warningtextoutlet.isHidden = false
-            darkbackground.isHidden = false
-            
-            chancebuttonoutlet.isUserInteractionEnabled = false
-            againturnbuttonoutlet.isUserInteractionEnabled = false
-            hintbuttonoutlet.isUserInteractionEnabled = false
-            homeoutlet.isUserInteractionEnabled = false
-            coinoutlet.isUserInteractionEnabled = false
-            freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false  */
         }
     }
     @IBAction func againturn(_ sender: Any) {
@@ -142,20 +133,8 @@ class shop: UIViewController {
             againturnoutlet.text = String(againturn)
         }
         else {
+            vccontrol = false
             performSegue(withIdentifier: "shopstore", sender: nil)
-            /*
-            warningcloseoutlet.isHidden = false
-            warningoutlet.isHidden = false
-            warningtextoutlet.isHidden = false
-            darkbackground.isHidden = false
-            
-            chancebuttonoutlet.isUserInteractionEnabled = false
-            againturnbuttonoutlet.isUserInteractionEnabled = false
-            hintbuttonoutlet.isUserInteractionEnabled = false
-            homeoutlet.isUserInteractionEnabled = false
-            coinoutlet.isUserInteractionEnabled = false
-            freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false  */
         }
     }
     @IBAction func hint(_ sender: Any) {
@@ -171,20 +150,8 @@ class shop: UIViewController {
             hintoutlet.text = String(hint)
         }
         else {
+            vccontrol = false
              performSegue(withIdentifier: "shopstore", sender: nil)
-            /*
-            warningcloseoutlet.isHidden = false
-            warningoutlet.isHidden = false
-            warningtextoutlet.isHidden = false
-            darkbackground.isHidden = false
-            
-            chancebuttonoutlet.isUserInteractionEnabled = false
-            againturnbuttonoutlet.isUserInteractionEnabled = false
-            hintbuttonoutlet.isUserInteractionEnabled = false
-            homeoutlet.isUserInteractionEnabled = false
-            coinoutlet.isUserInteractionEnabled = false
-            freeoutlet.isUserInteractionEnabled = false
-            storeoutlet.isUserInteractionEnabled = false */
         }
     }
     
@@ -217,12 +184,15 @@ class shop: UIViewController {
     }
     
     @IBAction func free(_ sender: Any) {
+        vccontrol = false
         Analytics.logEvent("ShopGoFree", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsound()
         }
     }
     @IBAction func store(_ sender: Any) {
+        vccontrol = false
+        performSegue(withIdentifier: "shopstore", sender: nil)
         Analytics.logEvent("ShopGoStore", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsound()
@@ -237,13 +207,10 @@ class shop: UIViewController {
               let ratio = screenheight + screenwidth
               
               if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-                  print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
               }
               else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
-                  print("iPhone 5 - 5S - 5C - SE Series")
               }
               else if ratio == 1187 || ratio == 1310 { // iPhone X - XS - 11 Pro - XR - XS Max - 11 - 11 Pro Max Series  +
-                  print("iPhone X - XS - 11 Pro - XR - XS Max - 11 - 11 Pro Max Series")
                 
                 shoptext.font = shoptext.font.withSize(70)
                 
@@ -272,45 +239,8 @@ class shop: UIViewController {
                 againturnoutlet.font = againturnoutlet.font.withSize(20)
                 hintoutlet.font = hintoutlet.font.withSize(20)
               }
-                /*
-              else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
-               print("iPhone XR - XS Max - 11 - 11 Pro Max")
-                
-                shoptext.font = shoptext.font.withSize(70)
-                
-                homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x, y: homeoutlet.frame.origin.y, width: homeoutlet.frame.width, height: homeoutlet.frame.width)
-                hometext.frame = CGRect(x: hometext.frame.origin.x, y: homeoutlet.frame.maxY, width: hometext.frame.width, height: hometext.frame.height)
-                
-                freeoutlet.frame = CGRect(x: freeoutlet.frame.origin.x, y: freeoutlet.frame.origin.y, width: freeoutlet.frame.width, height: freeoutlet.frame.width)
-                freetext.frame = CGRect(x: freetext.frame.origin.x, y: freeoutlet.frame.maxY, width: freetext.frame.width, height: freetext.frame.height)
-                
-                coinoutlet.frame = CGRect(x: coinoutlet.frame.origin.x, y: coinoutlet.frame.origin.y, width: coinoutlet.frame.width, height: coinoutlet.frame.width)
-                coinstext.frame = CGRect(x: coinstext.frame.origin.x, y: coinoutlet.frame.maxY, width: coinstext.frame.width, height: coinstext.frame.height)
-                
-                storeoutlet.frame = CGRect(x: storeoutlet.frame.origin.x, y: storeoutlet.frame.origin.y, width: storeoutlet.frame.width, height: storeoutlet.frame.width)
-                storetext.frame = CGRect(x: storetext.frame.origin.x, y: storeoutlet.frame.maxY, width: storetext.frame.width, height: storetext.frame.height)
-                
-                let chancebuttonhight = chancebuttonoutlet.frame.width / 9.6
-                chancebuttonoutlet.frame = CGRect(x: chancebuttonoutlet.frame.origin.x, y: chancebuttonoutlet.frame.origin.y - 10, width: chancebuttonoutlet.frame.width, height: chancebuttonhight)
-                
-                let againturnbuttonhight = againturnbuttonoutlet.frame.width / 9.6
-                againturnbuttonoutlet.frame = CGRect(x: againturnbuttonoutlet.frame.origin.x, y: againturnbuttonoutlet.frame.origin.y - 10, width: againturnbuttonoutlet.frame.width, height: againturnbuttonhight)
-                
-                let hintbuttonhight = hintbuttonoutlet.frame.width / 9.6
-                hintbuttonoutlet.frame = CGRect(x: hintbuttonoutlet.frame.origin.x, y: hintbuttonoutlet.frame.origin.y - 10, width: hintbuttonoutlet.frame.width, height: hintbuttonhight)
-                
-                chanceoutlet.font = chanceoutlet.font.withSize(20)
-                againturnoutlet.font = againturnoutlet.font.withSize(20)
-                hintoutlet.font = hintoutlet.font.withSize(20)
-              } 
-              else if ratio == 2028 { // iPad Pro 11 inch
-                  print("iPad Pro 11 inch")
-              }
-              else if ratio == 2390 { // iPad Pro 12.9 inch
-                  print("iPad Pro 12.9 inch")
-              } */
+             
               else if 1792...2390 ~= ratio { // iPad Series
-                  print("iPad Series")
                 
                 shoptext.font = shoptext.font.withSize(view.frame.width / 7)
                 
@@ -357,4 +287,11 @@ class shop: UIViewController {
                             
               }
           }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if vccontrol == true {
+        let vc = segue.destination as! ViewController
+        vc.firstopencontrol = firstopencontrol
+        }
+    }
 }

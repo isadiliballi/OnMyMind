@@ -52,6 +52,9 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     let productID5 = "isadiliballi.OnMyMind6"
     var adblock = false
     
+    var firstopencontrol = true
+    var vccontrol = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -118,7 +121,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buytwoaction(_ sender: Any) {
@@ -137,7 +139,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buythreeaction(_ sender: Any) {
@@ -156,7 +157,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buyfouraction(_ sender: Any) {
@@ -175,7 +175,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func buyfiveaction(_ sender: Any) {
@@ -196,7 +195,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
-            print("Bu Kullanıcı Ödeme Yapamıyor.............................................")
         }
     }
     @IBAction func homeaction(_ sender: Any) {
@@ -206,12 +204,14 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
     }
     @IBAction func coinaction(_ sender: Any) {
+        vccontrol = false
         Analytics.logEvent("StoreGoCoins", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
         }
     }
     @IBAction func freeaction(_ sender: Any) {
+        vccontrol = false
         Analytics.logEvent("StoreGoFree", parameters: nil) // Firebase Events
         if sound == true {
             gamesound()
@@ -230,13 +230,10 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         let ratio = screenheight + screenwidth
         
         if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-            print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
         }
         else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
-            print("iPhone 5 - 5S - 5C - SE Series")
         }
         else if ratio == 1187 || ratio == 1310 { // iPhone X - XS - 11 Pro - iPhone XR - XS Max - 11 - 11 Pro Max Series +
-            print("iPhone X - XS - 11 Pro - iPhone XR - XS Max - 11 - 11 Pro Max Series")
             
             shoptext.font = shoptext.font.withSize(70)
             
@@ -272,16 +269,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             let buyfiveheight = buyfivewidth / 3.26
             buyfive.frame = CGRect(x: buyfiveimage.frame.midX - buyfivewidth / 2, y: buyfiveimage.frame.maxY - 65, width: buyfivewidth, height: buyfiveheight)
             
-        }/*
-             else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
-             print("iPhone XR - XS Max - 11 - 11 Pro Max")
-             }
-             else if ratio == 2028 { // iPad Pro 11 inch
-             print("iPad Pro 11 inch")
-             }
-             else if ratio == 2390 { // iPad Pro 12.9 inch
-             print("iPad Pro 12.9 inch")
-             } */
+        }
         else if 1792...2390 ~= ratio { // iPad Series +
             
             shoptext.font = shoptext.font.withSize(view.frame.width / 7)
@@ -340,7 +328,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             buyfive.frame = CGRect(x: buyfiveimage.frame.midX - buyfivewidth / 2, y: buyfiveimage.frame.maxY - 85, width: buyfivewidth, height: buyfiveheight)
             
             if ratio == 2390 { // iPad Pro 12.9 inch
-                print("iPad Pro 12.9 inch")
                 
                 buyone.frame = CGRect(x: buyone.frame.origin.x, y: buyone.frame.origin.y - 25, width: buyone.frame.width, height: buyone.frame.height)
                 
@@ -367,6 +354,19 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             }
         }
     }
+    func okaysound() {
+        if sound == true {
+            let path = Bundle.main.path(forResource: "okay.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                gamegosound = try AVAudioPlayer(contentsOf: url)
+                gamegosound?.play()
+            }
+            catch{
+            }
+        }
+    }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
@@ -374,32 +374,37 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
                 if buyonecontrol == true {
                     coins += 8000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYONE")
+                    okaysound()
                 }
                 else if buytwocontrol == true {
                     coins += 18000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYTWO")
+                    okaysound()
                 }
                 else if buythreecontrol == true {
                     coins += 30000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYTHREE")
+                    okaysound()
                 }
                 else if buyfourcontrol == true {
                     coins += 80000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
-                    print("BUYFOUR")
+                    okaysound()
                 }
                 else if buyfourcontrol == true {
                     adblock = true
                     UserDefaults.standard.set(adblock, forKey: "adblock")
-                    print("REMOVEADS.............................................")
+                    okaysound()
                 }
             }
             else if transaction.transactionState == .failed {
-                print("BAŞARISIZ.............................................")
             }
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if vccontrol == true {
+              let vc = segue.destination as! ViewController
+              vc.firstopencontrol = firstopencontrol
+        }
+          }
 }

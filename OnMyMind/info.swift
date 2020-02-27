@@ -29,7 +29,7 @@ class info: UIViewController {
     @IBOutlet weak var contactinfotext: UILabel!
     @IBOutlet weak var howtoplayoutlet: UIButton!
     
-    
+    var firstopencontrol = true
     
     
     
@@ -122,23 +122,19 @@ class info: UIViewController {
            let ratio = screenheight + screenwidth
            
            if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
-               print("iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series")
            }
            else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series +
-               print("iPhone 5 - 5S - 5C - SE Series")
             
             contacttext.font = contacttext.font.withSize(25)
             howtoplayoutlet.titleLabel?.font = UIFont(name: "OnMyMind", size: 25)
            }
            else if ratio == 1187 { // iPhone X - XS - 11 Pro Series  +
-               print("iPhone X - XS - 11 Pro Series")
             
             let homewidth = homeoutlet.frame.width
             homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x, y: homeoutlet.frame.origin.y, width: homewidth, height: homewidth)
             understoodoutlet.frame = CGRect(x: understoodoutlet.frame.origin.x, y: howtoplayoutlet.frame.minY - 190, width: understoodoutlet.frame.width, height: understoodoutlet.frame.height)
            }
            else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max   +
-            print("iPhone XR - XS Max - 11 - 11 Pro Max")
             
             infotext.font = infotext.font.withSize(80)
             developertext.font = developertext.font.withSize(40)
@@ -148,15 +144,8 @@ class info: UIViewController {
             let homewidth = homeoutlet.frame.width
             homeoutlet.frame = CGRect(x: homeoutlet.frame.origin.x, y: homeoutlet.frame.origin.y, width: homewidth, height: homewidth)
             understoodoutlet.frame = CGRect(x: understoodoutlet.frame.origin.x, y: howtoplayoutlet.frame.minY - 210, width: understoodoutlet.frame.width, height: understoodoutlet.frame.height)
-           } /*
-           else if ratio == 2028 { // iPad Pro 11 inch
-               print("iPad Pro 11 inch")
            }
-           else if ratio == 2390 { // iPad Pro 12.9 inch
-               print("iPad Pro 12.9 inch")
-           } */
            else if 1792...2390 ~= ratio { // iPad Series  +
-               print("iPad Series")
             
             let homewidth = homeoutlet.frame.width * 0.8
             homeoutlet.frame = CGRect(x: view.frame.width / 2 - homewidth / 2, y: homeoutlet.frame.origin.y - 20, width: homewidth, height: homewidth)
@@ -169,5 +158,9 @@ class info: UIViewController {
            }
          
        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+              let vc = segue.destination as! ViewController
+              vc.firstopencontrol = firstopencontrol
+          }
     
 }
