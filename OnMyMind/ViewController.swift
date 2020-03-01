@@ -505,54 +505,77 @@ class ViewController: UIViewController {
     
     
     func threeletterwordstart() {
-        let dbrandom = Int.random(in: 1...498)
-        let dbrandomstring = String(dbrandom)
-        
         ref = Database.database().reference()
-        ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-            self.threeletteringword = snapshot.value as! String
-        }
-        ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-            self.threelettertrword = snapshottwo.value as! String
+        ref.child("3harf").observeSingleEvent(of: .value) { (snapshot) in
+            let threeletterwordcount = snapshot.childrenCount
+            let threewordcount = Int(threeletterwordcount)
+            
+            let dbrandom = Int.random(in: 1...threewordcount)
+            let dbrandomstring = String(dbrandom)
+            
+            self.ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.threeletteringword = snapshot.value as! String
+            }
+            self.ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.threelettertrword = snapshottwo.value as! String
+            }
         }
     }
     
     func fourletterwordstart() {
-        let dbrandom = Int.random(in: 1...551)
-        let dbrandomstring = String(dbrandom)
-        
         ref = Database.database().reference()
-        ref.child("4harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-            self.fourletteringword = snapshot.value as! String
-        }
-        ref.child("4harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-            self.fourlettertrword = snapshottwo.value as! String
+        ref.child("4harf").observeSingleEvent(of: .value) { (snapshot) in
+            let fourletterwordcount = snapshot.childrenCount
+            let fourwordcount = Int(fourletterwordcount)
+            
+            let dbrandom = Int.random(in: 1...fourwordcount)
+            let dbrandomstring = String(dbrandom)
+            
+            self.ref.child("4harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.fourletteringword = snapshot.value as! String
+                
+            }
+            self.ref.child("4harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.fourlettertrword = snapshottwo.value as! String
+            }
         }
     }
     
     func fiveletterwordstart() {
-        let dbrandom = Int.random(in: 1...505)
-        let dbrandomstring = String(dbrandom)
-        
         ref = Database.database().reference()
-        ref.child("5harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-            self.fiveletteringword = snapshot.value as! String
-        }
-        ref.child("5harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-            self.fivelettertrword = snapshottwo.value as! String
+        ref.child("5harf").observeSingleEvent(of: .value) { (snapshot) in
+            let fiveletterwordcount = snapshot.childrenCount
+            let fivewordcount = Int(fiveletterwordcount)
+            
+            let dbrandom = Int.random(in: 1...fivewordcount)
+            let dbrandomstring = String(dbrandom)
+            
+            self.ref.child("5harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.fiveletteringword = snapshot.value as! String
+                
+            }
+            self.ref.child("5harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.fivelettertrword = snapshottwo.value as! String
+            }
         }
     }
     
     func sixletterwordstart() {
-        let dbrandom = Int.random(in: 1...404)
-        let dbrandomstring = String(dbrandom)
-        
         ref = Database.database().reference()
-        ref.child("6harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-            self.sixletteringword = snapshot.value as! String
-        }
-        ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-            self.sixlettertrword = snapshottwo.value as! String
+        ref.child("6harf").observeSingleEvent(of: .value) { (snapshot) in
+            let sixletterwordcount = snapshot.childrenCount
+            let sixwordcount = Int(sixletterwordcount)
+            
+            let dbrandom = Int.random(in: 1...sixwordcount)
+            let dbrandomstring = String(dbrandom)
+            
+            self.ref.child("6harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                self.sixletteringword = snapshot.value as! String
+                
+            }
+            self.ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                self.sixlettertrword = snapshottwo.value as! String
+            }
         }
     }
     

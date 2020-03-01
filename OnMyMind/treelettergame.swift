@@ -446,51 +446,75 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     func algorithm() {
         
         if threelettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...498)
-            let dbrandomstring = String(dbrandom)
-            
             ref = Database.database().reference()
-            ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-                self.replacementword = snapshot.value as! String
-            }
-            ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-                self.trreplacementword = snapshottwo.value as! String
+            ref.child("3harf").observeSingleEvent(of: .value) { (snapshot) in
+                let letterwordcount = snapshot.childrenCount
+                let wordcount = Int(letterwordcount)
+                
+                let dbrandom = Int.random(in: 1...wordcount)
+                let dbrandomstring = String(dbrandom)
+                
+                self.ref.child("3harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                    self.replacementword = snapshot.value as! String
+                    
+                }
+                self.ref.child("3harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                    self.trreplacementword = snapshottwo.value as! String
+                }
             }
         }
         else if fourlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...551)
-            let dbrandomstring = String(dbrandom)
-            
             ref = Database.database().reference()
-            ref.child("4harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-                self.replacementword = snapshot.value as! String
-            }
-            ref.child("4harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-                self.trreplacementword = snapshottwo.value as! String
+            ref.child("4harf").observeSingleEvent(of: .value) { (snapshot) in
+                let letterwordcount = snapshot.childrenCount
+                let wordcount = Int(letterwordcount)
+                
+                let dbrandom = Int.random(in: 1...wordcount)
+                let dbrandomstring = String(dbrandom)
+                
+                self.ref.child("4harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                    self.replacementword = snapshot.value as! String
+                    
+                }
+                self.ref.child("4harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                    self.trreplacementword = snapshottwo.value as! String
+                }
             }
         }
         else if fivelettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...505)
-            let dbrandomstring = String(dbrandom)
-            
             ref = Database.database().reference()
-            ref.child("5harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-                self.replacementword = snapshot.value as! String
-            }
-            ref.child("5harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-                self.trreplacementword = snapshottwo.value as! String
+            ref.child("5harf").observeSingleEvent(of: .value) { (snapshot) in
+                let letterwordcount = snapshot.childrenCount
+                let wordcount = Int(letterwordcount)
+                
+                let dbrandom = Int.random(in: 1...wordcount)
+                let dbrandomstring = String(dbrandom)
+                
+                self.ref.child("5harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                    self.replacementword = snapshot.value as! String
+                    
+                }
+                self.ref.child("5harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                    self.trreplacementword = snapshottwo.value as! String
+                }
             }
         }
         else if sixlettersectioncontrol == true {
-            let dbrandom = Int.random(in: 1...404)
-            let dbrandomstring = String(dbrandom)
-            
             ref = Database.database().reference()
-            ref.child("6harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
-                self.replacementword = snapshot.value as! String
-            }
-            ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
-                self.trreplacementword = snapshottwo.value as! String
+            ref.child("6harf").observeSingleEvent(of: .value) { (snapshot) in
+                let letterwordcount = snapshot.childrenCount
+                let wordcount = Int(letterwordcount)
+                
+                let dbrandom = Int.random(in: 1...wordcount)
+                let dbrandomstring = String(dbrandom)
+                
+                self.ref.child("6harf").child(dbrandomstring).child("ing").observeSingleEvent(of: .value) { (snapshot) in
+                    self.replacementword = snapshot.value as! String
+                    
+                }
+                self.ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
+                    self.trreplacementword = snapshottwo.value as! String
+                }
             }
         }
         else {
