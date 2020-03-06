@@ -269,6 +269,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             if transaction.transactionState == .restored {
                 SKPaymentQueue.default().restoreCompletedTransactions() 
                 adblock = true
+                UserDefaults.standard.set(true, forKey: "adblockbuttoncontrol")
                 UserDefaults.standard.set(true, forKey: "removeAd")
                 restored.append(transaction)
                 restorepurchasestext.text = "TAMAMLANDI"

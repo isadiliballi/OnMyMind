@@ -55,6 +55,8 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     var firstopencontrol = true
     var vccontrol = true
     
+    var adblockbuttoncontrol = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
@@ -76,6 +78,20 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         responsive()
         
         SKPaymentQueue.default().add(self)
+        
+        let firsopengame11 = UserDefaults.standard.bool(forKey: "firsopengame11")
+        if firsopengame11  {
+            adblockbuttoncontrol = UserDefaults.standard.object(forKey: "adblockbuttoncontrol") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame11")
+            UserDefaults.standard.set(adblockbuttoncontrol, forKey: "adblockbuttoncontrol")
+        }
+        
+        if adblockbuttoncontrol == true {
+            buyfive.isHidden = true
+            buyfiveimage.isHidden = true
+        }
     }
     
     func background() {
@@ -365,37 +381,34 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
                     coins += 8000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
-                    print("8000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buytwocontrol == true {
                     coins += 18000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
-                    print("18000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buythreecontrol == true {
                     coins += 30000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
-                    print("30000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buyfourcontrol == true {
                     coins += 80000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
-                    print("80000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buyfivecontrol == true {
                     adblock = true
                     UserDefaults.standard.set(adblock, forKey: "removeAd")
                     okaysound()
-                    print("REKLAMLAR KALDIRILDI //////////////////////////////////////////////////")
-                    print("İSA//////////////////////////////////////////////////////////////////////////\(adblock)")
+                    adblockbuttoncontrol = true
+                    UserDefaults.standard.set(adblockbuttoncontrol, forKey: "adblockbuttoncontrol")
+                    buyfive.isHidden = true
+                    buyfiveimage.isHidden = true
                 }
                  SKPaymentQueue.default().finishTransaction(transaction)
             }
             else if transaction.transactionState == .failed {
-                print("BAŞARISIZ //////////////////////////////////////////////////")
             }
         }
     }
