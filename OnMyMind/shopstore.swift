@@ -45,11 +45,11 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     var buyfourcontrol = false
     var buyfivecontrol = false
     
-    let productID = "isadiliballi.OnMyMind2"
-    let productID2 = "isadiliballi.OnMyMind3"
-    let productID3 = "isadiliballi.OnMyMind4"
-    let productID4 = "isadiliballi.OnMyMind5"
-    let productID5 = "isadiliballi.OnMyMind6"
+    let productID1 = "com.isadiliballi.iLetterOne"
+    let productID2 = "com.isadiliballi.iLetterTwo"
+    let productID3 = "com.isadiliballi.iLetterThree"
+    let productID4 = "com.isadiliballi.iLetterFour"
+    let productID5 = "com.isadiliballi.iLetterFive"
     var adblock = false
     
     var firstopencontrol = true
@@ -57,7 +57,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         SKPaymentQueue.default().add(self)
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         
@@ -70,17 +70,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
             UserDefaults.standard.set(true, forKey: "firsopengame7")
             UserDefaults.standard.set(dark, forKey: "dark")
         }
-        
-        // ADBLOCK
-        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
-        if firsopengame9  {
-            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame9")
-            UserDefaults.standard.set(adblock, forKey: "adblock")
-        }
-        
+        adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         sound = UserDefaults.standard.object(forKey: "sound") as! Bool
         background()
         responsive()
@@ -117,7 +107,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID2
+            paymentRequest.productIdentifier = productID1
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -135,7 +125,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID3
+            paymentRequest.productIdentifier = productID2
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -153,7 +143,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID4
+            paymentRequest.productIdentifier = productID3
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -171,7 +161,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID5
+            paymentRequest.productIdentifier = productID4
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -191,7 +181,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         }
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID
+            paymentRequest.productIdentifier = productID5
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -375,29 +365,37 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
                     coins += 8000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
+                    print("8000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buytwocontrol == true {
                     coins += 18000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
+                    print("18000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buythreecontrol == true {
                     coins += 30000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
+                    print("30000 ALTIN //////////////////////////////////////////////////")
                 }
                 else if buyfourcontrol == true {
                     coins += 80000
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
+                    print("80000 ALTIN //////////////////////////////////////////////////")
                 }
-                else if buyfourcontrol == true {
+                else if buyfivecontrol == true {
                     adblock = true
-                    UserDefaults.standard.set(adblock, forKey: "adblock")
+                    UserDefaults.standard.set(adblock, forKey: "removeAd")
                     okaysound()
+                    print("REKLAMLAR KALDIRILDI //////////////////////////////////////////////////")
+                    print("İSA//////////////////////////////////////////////////////////////////////////\(adblock)")
                 }
+                 SKPaymentQueue.default().finishTransaction(transaction)
             }
             else if transaction.transactionState == .failed {
+                print("BAŞARISIZ //////////////////////////////////////////////////")
             }
         }
     }

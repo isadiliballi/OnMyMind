@@ -63,6 +63,7 @@ class ViewController: UIViewController {
     var hint = 5
     var sound = true
     
+    var adblock = false
     
     var gamegobuttonsound : AVAudioPlayer?
     var dark = false
@@ -135,6 +136,16 @@ class ViewController: UIViewController {
                   self.logoi.frame.origin.y += 20
                }
         
+        // ADBLOCK
+        let firsopengame10 = UserDefaults.standard.bool(forKey: "firsopengame10")
+        if firsopengame10  {
+            adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame10")
+            UserDefaults.standard.set(adblock, forKey: "removeAd")
+        }
+        
         let firsopengame = UserDefaults.standard.bool(forKey: "firsopengame")
         if firsopengame  {
             coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
@@ -156,6 +167,8 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(hint, forKey: "hintkey")
             UserDefaults.standard.set(sound, forKey: "sound")
         }
+        
+        
         
         // KOYU MOD
                let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")

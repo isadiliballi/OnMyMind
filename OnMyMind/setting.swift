@@ -30,7 +30,8 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     @IBOutlet weak var instagramoutlet: UIButton!
     @IBOutlet weak var homeoutlet: UIButton!
     
-    let productID = "isadiliballi.OnMyMind2"
+    let productID = "com.isadiliballi.iLetterFive"
+    var restored = [SKPaymentTransaction]()
     var adblock = false
     
     var firstopencontrol = true
@@ -38,6 +39,8 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(self)
         
         let firsopengame6 = UserDefaults.standard.bool(forKey: "firsopengame6")
         if firsopengame6  {
@@ -58,14 +61,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         }
         
         // ADBLOCK
-        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
-        if firsopengame9  {
-            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame9")
-            UserDefaults.standard.set(adblock, forKey: "adblock")
-        }
+            adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         
         if sound == true {
             soundoutlet.setImage(UIImage(named: "soundon"), for: UIControl.State.normal)
@@ -271,8 +267,14 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             if transaction.transactionState == .restored {
+                SKPaymentQueue.default().restoreCompletedTransactions() 
                 adblock = true
-                UserDefaults.standard.set(adblock, forKey: "adblock")
+                UserDefaults.standard.set(true, forKey: "removeAd")
+                restored.append(transaction)
+                restorepurchasestext.text = "TAMAMLANDI"
+                SKPaymentQueue.default().finishTransaction(transaction)
+            }
+            else if transaction.transactionState == .failed {
             }
         }
     }

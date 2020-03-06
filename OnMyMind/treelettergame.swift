@@ -223,10 +223,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     var buythreecontrol = false
     var buyfourcontrol = false
     
-    let productID2 = "isadiliballi.OnMyMind3"
-    let productID3 = "isadiliballi.OnMyMind4"
-    let productID4 = "isadiliballi.OnMyMind5"
-    let productID5 = "isadiliballi.OnMyMind6"
+    let productID1 = "com.isadiliballi.iLetterOne"
+    let productID2 = "com.isadiliballi.iLetterTwo"
+    let productID3 = "com.isadiliballi.iLetterThree"
+    let productID4 = "com.isadiliballi.iLetterFour"
     
     var firstopencontrol = true
     
@@ -247,15 +247,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             UserDefaults.standard.set(true, forKey: "firsopengame7")
             UserDefaults.standard.set(dark, forKey: "dark")
         }
-        // ADBLOCK
-        let firsopengame9 = UserDefaults.standard.bool(forKey: "firsopengame9")
-        if firsopengame9  {
-            adblock = UserDefaults.standard.object(forKey: "adblock") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame9")
-            UserDefaults.standard.set(adblock, forKey: "adblock")
-        }
+       
+        adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
@@ -2496,7 +2489,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                         scontrol = 6
                         boxeightIFlettereightttextequalletters()
                         IFlettertextequalletters()
-                        scontrolequalthree()
                         trueboxsound()
                     }
                     else {
@@ -6169,7 +6161,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buyfourcontrol = false
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID2
+            paymentRequest.productIdentifier = productID1
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -6185,7 +6177,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buyfourcontrol = false
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID3
+            paymentRequest.productIdentifier = productID2
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -6201,7 +6193,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buyfourcontrol = false
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID4
+            paymentRequest.productIdentifier = productID3
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
@@ -6218,7 +6210,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
-            paymentRequest.productIdentifier = productID5
+            paymentRequest.productIdentifier = productID4
             SKPaymentQueue.default().add(paymentRequest)
         }
         else {
