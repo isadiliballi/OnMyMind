@@ -251,9 +251,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         
         // GOOGLE ADS
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-6889162326402006/3055729011")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6889162326402006/3989363974")
         let request = GADRequest()
         interstitial.load(request)
         // GOOGLE ADS
@@ -550,9 +550,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         
         
         // GOOGLE ADS
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-6889162326402006/3055729011")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-6889162326402006/3989363974")
         let request = GADRequest()
         interstitial.load(request)
         // GOOGLE ADS
@@ -5501,7 +5501,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         // GOOGLE ADS
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-6889162326402006/3055729011")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         // GOOGLE ADS
     }

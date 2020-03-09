@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5842"
             endingLineNumber = "5842"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "responsive()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,8 +32,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5841"
             endingLineNumber = "5841"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "responsive()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
