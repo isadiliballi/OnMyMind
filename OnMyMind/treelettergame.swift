@@ -223,6 +223,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     var buythreecontrol = false
     var buyfourcontrol = false
     
+    @IBOutlet weak var buywaitbackground: UIVisualEffectView!
+    @IBOutlet weak var buywait: UIActivityIndicatorView!
+    
+    
     let productID1 = "com.isadiliballi.iLetterOne"
     let productID2 = "com.isadiliballi.iLetterTwo"
     let productID3 = "com.isadiliballi.iLetterThree"
@@ -230,9 +234,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     var firstopencontrol = true
     
+    
     override func viewDidLoad() {
-        UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         super.viewDidLoad()
+        UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
         
         Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
         SKPaymentQueue.default().add(self)
@@ -264,7 +269,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             educationcontrol = UserDefaults.standard.object(forKey: "educationcontrol") as! Bool
             if educationcontrol == true {
                 understoodoutlet.isHidden = true
-                education.isHidden = true
+                education.isHidden = true 
                 darkbackground.isHidden = true
             }
             else {
@@ -6159,6 +6164,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buytwocontrol = false
         buythreecontrol = false
         buyfourcontrol = false
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID1
@@ -6175,6 +6185,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buytwocontrol = true
         buythreecontrol = false
         buyfourcontrol = false
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID2
@@ -6191,6 +6206,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buytwocontrol = false
         buythreecontrol = true
         buyfourcontrol = false
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID3
@@ -6207,6 +6227,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         buytwocontrol = false
         buythreecontrol = false
         buyfourcontrol = true
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
         
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
@@ -6225,26 +6249,37 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             if transaction.transactionState == .purchased {
                 if buyonecontrol == true {
                     coins += 8000
+                    coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
                 }
                 else if buytwocontrol == true {
                     coins += 18000
+                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
                 }
                 else if buythreecontrol == true {
                     coins += 30000
+                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
                 }
                 else if buyfourcontrol == true {
                     coins += 80000
+                     coinstexttreeletter.text = String(coins)
                     UserDefaults.standard.set(coins, forKey: "coinskey")
                     okaysound()
                 }
+                 SKPaymentQueue.default().finishTransaction(transaction)
+                buywaitbackground.isHidden = true
+                buywait.isHidden = true
+                buywait.stopAnimating()
             }
             else if transaction.transactionState == .failed {
+                buywaitbackground.isHidden = true
+                buywait.isHidden = true
+                buywait.stopAnimating()
             }
         }
     }

@@ -64,7 +64,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         super.viewDidLoad()
         
         // GOOGLE ADS
-        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-3940256099942544/1712485313")
+        GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-6889162326402006/3055729011")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
         // GOOGLE ADS
         

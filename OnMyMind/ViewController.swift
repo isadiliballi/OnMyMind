@@ -599,7 +599,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func info(_ sender: Any) {
-        Analytics.logEvent("SettingClick", parameters: nil) // Firebase Events
+        Analytics.logEvent("InfoClick", parameters: nil) // Firebase Events
         if sound == true {
             gamegobuttonsoundfunc()
         }

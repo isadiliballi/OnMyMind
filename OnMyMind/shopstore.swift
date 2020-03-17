@@ -39,6 +39,10 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     @IBOutlet weak var freetext: UILabel!
     @IBOutlet weak var storetext: UILabel!
     
+    @IBOutlet weak var buywaitbackground: UIVisualEffectView!
+    @IBOutlet weak var buywait: UIActivityIndicatorView!
+    
+    
     var buyonecontrol = false
     var buytwocontrol = false
     var buythreecontrol = false
@@ -121,6 +125,11 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         if sound == true {
             gamesound()
         }
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID1
@@ -139,6 +148,10 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         if sound == true {
             gamesound()
         }
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID2
@@ -157,6 +170,11 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         if sound == true {
             gamesound()
         }
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID3
@@ -175,6 +193,11 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         if sound == true {
             gamesound()
         }
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID4
@@ -195,6 +218,11 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         if sound == true {
             gamesound()
         }
+        
+        buywaitbackground.isHidden = false
+        buywait.isHidden = false
+        buywait.startAnimating()
+        
         if SKPaymentQueue.canMakePayments() {
             let paymentRequest = SKMutablePayment()
             paymentRequest.productIdentifier = productID5
@@ -407,8 +435,15 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
                     buyfiveimage.isHidden = true
                 }
                  SKPaymentQueue.default().finishTransaction(transaction)
+                
+                buywaitbackground.isHidden = true
+                buywait.isHidden = true
+                buywait.stopAnimating()
             }
             else if transaction.transactionState == .failed {
+                buywaitbackground.isHidden = true
+                buywait.isHidden = true
+                buywait.stopAnimating()
             }
         }
     }
