@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class achievements: UIViewController {
 
     @IBOutlet weak var home: UIButton!
@@ -41,47 +42,77 @@ class achievements: UIViewController {
     var topla6control = false
     
     var firstopencontrol = true
-    var coins = 0
+    var coins = Int()
     @IBOutlet weak var coinimage: UIImageView!
     
-    var kelime = 100
+    var truewordcount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        wordcount.text = "\(kelime) KELİME"
+        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
+        // KELİME SAYISI
+        let firsopengamewordcount = UserDefaults.standard.bool(forKey: "firsopengamewordcount")
+        if firsopengamewordcount  {
+            truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengamewordcount")
+            UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
+        }
         
-        if kelime >= 10 {
+        let firsopengamecontrol = UserDefaults.standard.bool(forKey: "firsopengamecontrol")
+        if firsopengamecontrol  {
+            topla1control = UserDefaults.standard.object(forKey: "topla1") as! Bool
+            topla2control = UserDefaults.standard.object(forKey: "topla2") as! Bool
+            topla3control = UserDefaults.standard.object(forKey: "topla3") as! Bool
+            topla4control = UserDefaults.standard.object(forKey: "topla4") as! Bool
+            topla5control = UserDefaults.standard.object(forKey: "topla5") as! Bool
+            topla6control = UserDefaults.standard.object(forKey: "topla6") as! Bool
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengamecontrol")
+            UserDefaults.standard.set(topla1control, forKey: "topla1")
+            UserDefaults.standard.set(topla2control, forKey: "topla2")
+            UserDefaults.standard.set(topla3control, forKey: "topla3")
+            UserDefaults.standard.set(topla4control, forKey: "topla4")
+            UserDefaults.standard.set(topla5control, forKey: "topla5")
+            UserDefaults.standard.set(topla6control, forKey: "topla6")
+        }
+        
+        wordcount.text = "\(truewordcount) KELİME"
+        
+        if truewordcount >= 10 {
             success10.image = UIImage(named: "successcompleted")
             if topla1control == false {
             topla1.isHidden = false
             }
         }
-        if kelime >= 50 {
+        if truewordcount >= 50 {
             success50.image = UIImage(named: "successcompleted")
             if topla2control == false {
             topla2.isHidden = false
             }
         }
-        if kelime >= 100 {
+        if truewordcount >= 100 {
             success100.image = UIImage(named: "successcompleted")
             if topla3control == false {
             topla3.isHidden = false
             }
         }
-        if kelime >= 200 {
+        if truewordcount >= 200 {
             success200.image = UIImage(named: "successcompleted")
             if topla4control == false {
             topla4.isHidden = false
             }
         }
-        if kelime >= 500 {
+        if truewordcount >= 500 {
             success500.image = UIImage(named: "successcompleted")
             if topla5control == false {
             topla5.isHidden = false
             }
         }
-        if kelime >= 1000 {
+        if truewordcount >= 1000 {
             success1000.image = UIImage(named: "successcompleted")
             if topla6control == false {
             topla6.isHidden = false
@@ -95,38 +126,50 @@ class achievements: UIViewController {
     
     @IBAction func topla1action(_ sender: Any) {
         topla1control = true
-        coins += 10
+        coins += 50
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla1.isHidden = true
+        UserDefaults.standard.set(topla1control, forKey: "topla1")
         coinimageturn()
     }
     @IBAction func topla2action(_ sender: Any) {
         topla2control = true
-        coins += 50
+        coins += 250
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla2.isHidden = true
+        UserDefaults.standard.set(topla2control, forKey: "topla2")
         coinimageturn()
     }
     @IBAction func topla3action(_ sender: Any) {
         topla3control = true
-        coins += 100
+        coins += 500
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla3.isHidden = true
+        UserDefaults.standard.set(topla3control, forKey: "topla3")
         coinimageturn()
     }
     @IBAction func topla4action(_ sender: Any) {
         topla4control = true
-        coins += 200
+        coins += 1000
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla4.isHidden = true
+        UserDefaults.standard.set(topla4control, forKey: "topla4")
         coinimageturn()
     }
     @IBAction func topla5action(_ sender: Any) {
         topla5control = true
-        coins += 500
+        coins += 2500
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla5.isHidden = true
+        UserDefaults.standard.set(topla5control, forKey: "topla5")
         coinimageturn()
     }
     @IBAction func topla6action(_ sender: Any) {
         topla6control = true
-        coins += 1000
+        coins += 5000
+        UserDefaults.standard.set(coins, forKey: "coinskey")
         topla6.isHidden = true
+        UserDefaults.standard.set(topla6control, forKey: "topla6")
         coinimageturn()
     }
     

@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import CoreData
+
+
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: Set<Iterator.Element> = []
+        return filter { seen.insert($0).inserted }
+    }
+}
 
 class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -20,38 +29,48 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var firstopencontrol = true
     
+    var wording = [String]()
+    var wordtr = [String]()
     var kelimeing = [String]()
     var kelimetr = [String]()
     
 
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
-        kelimeing.append("DARK")
-        kelimetr.append("KOYU")
-        kelimeing.append("BLACK")
-        kelimetr.append("SİYAH")
-        kelimeing.append("MOTHER")
-        kelimetr.append("ANNE")
-        kelimeing.append("FATHER")
-        kelimetr.append("BABA")
-        kelimeing.append("DOOR")
-        kelimetr.append("KAPI")
-        kelimeing.append("RED")
-        kelimetr.append("KIRMIZI")
-        kelimeing.append("WİNDOW")
-        kelimetr.append("PENCERE")
-        kelimeing.append("YES")
-        kelimetr.append("EVET") 
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Words")
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for result in results as! [NSManagedObject] {
+                if let ing = result.value(forKey: "ingword") as? String {
+                    self.kelimeing.append(ing)
+                    wording = kelimeing.unique()
+                }
+                if let tr = result.value(forKey: "trword") as? String {
+                    self.kelimetr.append(tr)
+                    wordtr = kelimetr.unique()
+                }
+            }
+        }
+        catch {
+            print("HATA")
+        }
 
-        wordcount.text = "\(kelimeing.count) KELİME"
+        wordcount.text = "\(wording.count) KELİME"
         words.delegate = self
         words.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return kelimeing.count
+        return wording.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,7 +79,7 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.textColor = .yellow
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont.init(name:"OnMyMind", size: 30)
-        cell.textLabel?.text = "\(kelimeing[indexPath.row]) : \(kelimetr[indexPath.row])"
+        cell.textLabel?.text = "\(wording[indexPath.row]) : \(wordtr[indexPath.row])"
  
         return cell
     }

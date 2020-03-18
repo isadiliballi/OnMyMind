@@ -12,6 +12,7 @@ import FirebaseDatabase
 import GoogleMobileAds
 import AVFoundation
 import StoreKit
+import CoreData
 
 class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPaymentTransactionObserver {
     
@@ -201,7 +202,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBOutlet weak var coinsbuygoshopoutlet: UIButton!
     
     var soundcontrol = true
-    var dark = false
     
     @IBOutlet weak var shopping: UIImageView!
     @IBOutlet weak var shoppingbuyone: UIButton!
@@ -243,16 +243,6 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
         SKPaymentQueue.default().add(self)
         responsive()
-        
-        // KOYU MOD
-        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
-        if firsopengame7  {
-            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame7")
-            UserDefaults.standard.set(dark, forKey: "dark")
-        }
         
         // KELİME SAYISI
         let firsopengamewordcount = UserDefaults.standard.bool(forKey: "firsopengamewordcount")
@@ -585,12 +575,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
                backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-               if dark == true {
                   backgroundImageView.image = UIImage(named: "arkaplan")
-               }
-               else {
-                   backgroundImageView.image = UIImage(named: "arkaplan2")
-               }
                backgroundImageView.layer.zPosition = -1
     }
     
@@ -2975,11 +2960,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-/*        let vc = segue.destination as! ViewController
+        let vc = segue.destination as! gamesection
         UserDefaults.standard.set(coins, forKey: "coinskey")
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
-       // vc.coins = coins
-        vc.firstopencontrol = firstopencontrol */
+        vc.coins = coins
+        vc.firstopencontrol = firstopencontrol
     }
     func otherwordgofunc() {
         buttonsound()
@@ -3575,6 +3560,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
     }
+        
         truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
         truewordcount += 1
         UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
@@ -3884,6 +3870,20 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
          //  self.winpanelnext.isUserInteractionEnabled = true
          }
          } */
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+               let context = appDelegate.persistentContainer.viewContext
+               
+               let word = NSEntityDescription.insertNewObject(forEntityName: "Words", into: context)
+               word.setValue(kelime, forKey: "ingword")
+               word.setValue(trkelime, forKey: "trword")
+               
+               do {
+                   try context.save()
+               }
+               catch {
+                   print("HATA")
+               }
         
     }
     

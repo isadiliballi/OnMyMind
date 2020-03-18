@@ -128,9 +128,9 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "firsopengame")
             UserDefaults.standard.set(coins, forKey: "coinskey")
             UserDefaults.standard.set(sound, forKey: "sound")
-            chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
-            againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
-            hint = UserDefaults.standard.object(forKey: "hintkey") as! Int
+           UserDefaults.standard.set(chance, forKey: "chancekey")
+            UserDefaults.standard.set(againturn, forKey: "againturnkey")
+            UserDefaults.standard.set(hint, forKey: "hintkey")
         }
         
         responsive()
@@ -202,6 +202,7 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "achievements", sender: nil)
     }
     @IBAction func statisticsaction(_ sender: Any) {
+        performSegue(withIdentifier: "statistics", sender: nil)
     }
     @IBAction func rankingaction(_ sender: Any) {
     }
@@ -336,6 +337,10 @@ class ViewController: UIViewController {
         vc.sixletteringword = sixletteringword
         vc.sixlettertrword = sixlettertrword
         }
+            vc.coins = coins
+            vc.chance = chance
+            vc.againturn = againturn
+            vc.hint = hint
     }
     }
     

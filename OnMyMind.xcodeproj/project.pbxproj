@@ -23,6 +23,8 @@
 		1E7F83362358E8E800D96AD2 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83352358E8E800D96AD2 /* gameover.wav */; };
 		1E7F833A2358EF7100D96AD2 /* allboxturn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1E7F83392358EF7100D96AD2 /* allboxturn.wav */; };
 		1E83C37524222E4000F4D6D4 /* gamesection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E83C37424222E4000F4D6D4 /* gamesection.swift */; };
+		1E83FF3D242259170052717D /* words.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E83FF3B242259170052717D /* words.xcdatamodeld */; };
+		1E83FF622422C1BC0052717D /* statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E83FF612422C1BC0052717D /* statistics.swift */; };
 		1E86105522D95B33006E985B /* OnMyMind.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E86105422D95B33006E985B /* OnMyMind.ttf */; };
 		1E941ECA2300ACE4009B4ABD /* OnMyMind3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941EC92300ACE3009B4ABD /* OnMyMind3.ttf */; };
 		1E941ECC2300AF89009B4ABD /* OnMyMind4.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */; };
@@ -60,6 +62,8 @@
 		1E7F83352358E8E800D96AD2 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		1E7F83392358EF7100D96AD2 /* allboxturn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = allboxturn.wav; sourceTree = "<group>"; };
 		1E83C37424222E4000F4D6D4 /* gamesection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamesection.swift; sourceTree = "<group>"; };
+		1E83FF3C242259170052717D /* words.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = words.xcdatamodel; sourceTree = "<group>"; };
+		1E83FF612422C1BC0052717D /* statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statistics.swift; sourceTree = "<group>"; };
 		1E86105422D95B33006E985B /* OnMyMind.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind.ttf; sourceTree = "<group>"; };
 		1E941EC92300ACE3009B4ABD /* OnMyMind3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind3.ttf; sourceTree = "<group>"; };
 		1E941ECB2300AF89009B4ABD /* OnMyMind4.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OnMyMind4.ttf; sourceTree = "<group>"; };
@@ -143,11 +147,13 @@
 				1E51FF1823D621FA00D69974 /* info.swift */,
 				1EE0B36F242147AD0066F897 /* library.swift */,
 				1EE0B37124216B790066F897 /* achievements.swift */,
+				1E83FF612422C1BC0052717D /* statistics.swift */,
 				1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */,
 				1EA7D3F422CD261000C0970B /* Info.plist */,
 				1E20D85722CE25C600F1E236 /* GoogleService-Info.plist */,
 				1EA7D3EF22CD261000C0970B /* Assets.xcassets */,
 				1EA7D3EC22CD260F00C0970B /* Main.storyboard */,
+				1E83FF3B242259170052717D /* words.xcdatamodeld */,
 			);
 			path = OnMyMind;
 			sourceTree = "<group>";
@@ -321,8 +327,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ECB43ED23C12449003DC469 /* shop.swift in Sources */,
+				1E83FF3D242259170052717D /* words.xcdatamodeld in Sources */,
 				1E51FF1923D621FA00D69974 /* info.swift in Sources */,
 				1EA7D3EB22CD260F00C0970B /* ViewController.swift in Sources */,
+				1E83FF622422C1BC0052717D /* statistics.swift in Sources */,
 				1EE0B370242147AD0066F897 /* library.swift in Sources */,
 				1E20D85622CE0BF700F1E236 /* treelettergame.swift in Sources */,
 				1E83C37524222E4000F4D6D4 /* gamesection.swift in Sources */,
@@ -542,6 +550,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1E83FF3B242259170052717D /* words.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E83FF3C242259170052717D /* words.xcdatamodel */,
+			);
+			currentVersion = 1E83FF3C242259170052717D /* words.xcdatamodel */;
+			path = words.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1EA7D3DD22CD260F00C0970B /* Project object */;
 }

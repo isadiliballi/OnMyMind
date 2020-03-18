@@ -97,6 +97,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             backgroundImageView.image = UIImage(named: "arkaplan")
+        backgroundImageView.layer.zPosition = -1
     }
     
     @IBAction func buyoneaction(_ sender: Any) {

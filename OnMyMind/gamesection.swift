@@ -39,9 +39,19 @@ class gamesection: UIViewController {
     var sixletteringword = "ORANGE"
     var sixlettertrword = "TURUNCU"
     
+    var coins = 200
+    var chance = 5
+    var againturn = 5
+    var hint = 5
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
+        chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
+        againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
+        hint = UserDefaults.standard.object(forKey: "hintkey") as! Int
 
         threeletterwordstart()
         fourletterwordstart()
@@ -120,6 +130,11 @@ class gamesection: UIViewController {
             vc.fourlettersectioncontrol = fourlettersectioncontrol
             vc.fivelettersectioncontrol = fivelettersectioncontrol
             vc.sixlettersectioncontrol = sixlettersectioncontrol
+            
+            vc.coins = coins
+            vc.chanceint = chance
+            vc.againturnint = againturn
+            vc.hintint = hint
         }
     }
     

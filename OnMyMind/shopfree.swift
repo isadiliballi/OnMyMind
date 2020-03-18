@@ -85,6 +85,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             backgroundImageView.image = UIImage(named: "arkaplan")
+        backgroundImageView.layer.zPosition = -1
     }
     
     @IBAction func coinbutton(_ sender: Any) {

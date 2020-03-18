@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arkaplan" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-Qv-f22">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="K8v-Qv-f22">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -180,6 +180,7 @@
                         <segue destination="szj-0x-ANI" kind="show" identifier="shop" id="5zo-1P-3zW"/>
                         <segue destination="0xF-16-xp0" kind="show" identifier="achievements" id="lii-wc-lhj"/>
                         <segue destination="8HM-OP-bxP" kind="show" identifier="gamesection" id="sLG-gy-wPC"/>
+                        <segue destination="neD-nL-ByN" kind="show" identifier="statistics" id="MvM-mv-CyS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -392,6 +393,109 @@
             </objects>
             <point key="canvasLocation" x="-1386.4000000000001" y="125.4872563718141"/>
         </scene>
+        <!--Statistics-->
+        <scene sceneID="W33-Xb-xed">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="neD-nL-ByN" customClass="statistics" customModule="iLetter" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TPV-OL-Kp1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="İSTATİSTİK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n67-s9-E7u">
+                                <rect key="frame" x="87" y="58" width="201" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="YardSale" family="Yard Sale" pointSize="36"/>
+                                <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjh-6j-AcW">
+                                <rect key="frame" x="158" y="559" width="58" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="home"/>
+                                <connections>
+                                    <action selector="homeaction:" destination="0xF-16-xp0" eventType="touchUpInside" id="5BW-nv-S8U"/>
+                                    <action selector="homeaction:" destination="9Jy-Fs-ih1" eventType="touchUpInside" id="pLs-8R-E4O"/>
+                                    <action selector="homeaction:" destination="neD-nL-ByN" eventType="touchUpInside" id="vkA-vx-Ljb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DOĞRU BİLENEN KELİME SAYISI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-l6-Jcy">
+                                <rect key="frame" x="0.0" y="134" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syr-oW-nXV">
+                                <rect key="frame" x="0.0" y="175" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
+                                <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YANLIŞ BİLENEN KELİME SAYISI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vny-sZ-H5D">
+                                <rect key="frame" x="0.0" y="227" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Sc-uM-1dY">
+                                <rect key="frame" x="0.0" y="269" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
+                                <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DOĞRU BİLENEN HARF SAYISI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHv-v4-llS">
+                                <rect key="frame" x="0.0" y="324" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ1-hP-5g4">
+                                <rect key="frame" x="0.0" y="366" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
+                                <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YANLIŞ BİLENEN HARF SAYISI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdA-Oj-GqU">
+                                <rect key="frame" x="0.0" y="419" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT7-6Q-ZXB">
+                                <rect key="frame" x="0.0" y="461" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="OnMyMind-Layers" family="OnMyMind" pointSize="50"/>
+                                <color key="textColor" red="0.980237782" green="0.8088126779" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="KZY-C5-i58"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9qg-Yp-I5R"/>
+                    <connections>
+                        <outlet property="falselettercounttext" destination="yT7-6Q-ZXB" id="PKV-Ht-GbF"/>
+                        <outlet property="falselettertext" destination="FdA-Oj-GqU" id="UFf-b3-swA"/>
+                        <outlet property="falsewordcounttext" destination="9Sc-uM-1dY" id="l06-Wt-0hD"/>
+                        <outlet property="falsewordtext" destination="vny-sZ-H5D" id="uEv-M2-BCX"/>
+                        <outlet property="statisticstext" destination="n67-s9-E7u" id="5On-02-bzZ"/>
+                        <outlet property="truelettercounttext" destination="sJ1-hP-5g4" id="DLw-iB-Rji"/>
+                        <outlet property="truelettertext" destination="WHv-v4-llS" id="JXW-Vf-Gtk"/>
+                        <outlet property="truewordcounttext" destination="syr-oW-nXV" id="tR8-wG-tQp"/>
+                        <outlet property="truewordtext" destination="8rU-l6-Jcy" id="gPF-mE-Y9F"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="home" id="8RZ-FW-Rvh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6uv-AJ-ciE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1456.8" y="-690.40479760119945"/>
+        </scene>
         <!--Gamesection-->
         <scene sceneID="094-Bn-yNa">
             <objects>
@@ -400,7 +504,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Mop-QR-thk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Mop-QR-thk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -2058,7 +2162,6 @@
         <image name="againturnbuythousandcoins" width="200" height="63"/>
         <image name="againturnplus" width="169" height="169"/>
         <image name="alert" width="1000" height="1000"/>
-        <image name="arkaplan" width="750" height="1335"/>
         <image name="back" width="190" height="190"/>
         <image name="box" width="500" height="500"/>
         <image name="chance" width="200" height="200"/>
@@ -2148,10 +2251,10 @@
         <image name="winpanelscore" width="500" height="172.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3mv-Ea-lzT"/>
+        <segue reference="4Mu-YI-fqz"/>
         <segue reference="hIb-EJ-ilB"/>
         <segue reference="5zo-1P-3zW"/>
-        <segue reference="cOV-2y-bV0"/>
-        <segue reference="nLZ-uD-Lpx"/>
+        <segue reference="sLG-gy-wPC"/>
+        <segue reference="8RZ-FW-Rvh"/>
     </inferredMetricsTieBreakers>
 </document>
