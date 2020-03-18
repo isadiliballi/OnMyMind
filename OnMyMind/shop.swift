@@ -45,24 +45,12 @@ class shop: UIViewController {
     @IBOutlet weak var againturnbuy: UIImageView!
     @IBOutlet weak var hintbuy: UIImageView!
     
-    
-    var dark = false
-    
     var firstopencontrol = true
     var vccontrol = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // KOYU MOD
-        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
-        if firsopengame7  {
-            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame7")
-            UserDefaults.standard.set(dark, forKey: "dark")
-        }
+     
         
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
@@ -86,13 +74,7 @@ class shop: UIViewController {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        if dark == true {
             backgroundImageView.image = UIImage(named: "arkaplan")
-        }
-        else {
-            backgroundImageView.image = UIImage(named: "arkaplan2")
-        }
-        backgroundImageView.layer.zPosition = -1
     }
     
     @IBAction func home(_ sender: Any) {

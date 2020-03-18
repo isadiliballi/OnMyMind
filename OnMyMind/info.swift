@@ -12,8 +12,6 @@ import FirebaseAnalytics
 
 class info: UIViewController {
     
-    
-    var dark = false
     @IBOutlet weak var darkbackground: UIImageView!
     @IBOutlet weak var education: UIImageView!
     @IBOutlet weak var understoodoutlet: UIButton!
@@ -37,15 +35,7 @@ class info: UIViewController {
         super.viewDidLoad()
         
         sound = UserDefaults.standard.object(forKey: "sound") as! Bool
-        
-        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
-        if firsopengame7  {
-            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame7")
-            UserDefaults.standard.set(dark, forKey: "dark")
-        }
+     
         
         background()
         responsive()
@@ -60,14 +50,7 @@ class info: UIViewController {
            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-           if dark == true {
               backgroundImageView.image = UIImage(named: "arkaplan")
-           }
-           else {
-               backgroundImageView.image = UIImage(named: "arkaplan2")
-           }
-           backgroundImageView.layer.zPosition = -1
- 
     }
     
     @IBAction func understood(_ sender: Any) {

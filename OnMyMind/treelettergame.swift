@@ -233,7 +233,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     let productID4 = "com.isadiliballi.iLetterFour"
     
     var firstopencontrol = true
-    
+    var truewordcount = Int()
+    var falsewordcount = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -251,6 +252,18 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         else {
             UserDefaults.standard.set(true, forKey: "firsopengame7")
             UserDefaults.standard.set(dark, forKey: "dark")
+        }
+        
+        // KELİME SAYISI
+        let firsopengamewordcount = UserDefaults.standard.bool(forKey: "firsopengamewordcount")
+        if firsopengamewordcount  {
+            truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
+            falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengamewordcount")
+            UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
+            UserDefaults.standard.set(falsewordcount, forKey: "falsewordcount")
         }
        
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
@@ -583,10 +596,9 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     
     @IBAction func home(_ sender: Any) {
-        
         Analytics.logEvent("ThreeHomeButtonClick", parameters: nil) // Firebase Events
-        
         buttonsound()
+        performSegue(withIdentifier: "gamesection", sender: nil)
     }
     
     @IBAction func boxone(_ sender: Any) {
@@ -2963,11 +2975,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let vc = segue.destination as! ViewController
+/*        let vc = segue.destination as! ViewController
         UserDefaults.standard.set(coins, forKey: "coinskey")
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
-        vc.coins = coins
-        vc.firstopencontrol = firstopencontrol
+       // vc.coins = coins
+        vc.firstopencontrol = firstopencontrol */
     }
     func otherwordgofunc() {
         buttonsound()
@@ -3067,8 +3079,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBAction func finishpanelhome(_ sender: Any) {
         
         Analytics.logEvent("ThreeGameOverHomeButtonClick", parameters: nil) // Firebase Events
-        
         buttonsound()
+        performSegue(withIdentifier: "gamesection", sender: nil)
     }
     
     @IBAction func winpanelnextbutton(_ sender: Any) {
@@ -3271,6 +3283,11 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     func ELSElettertextequalletters() {
+        
+        falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
+        falsewordcount += 1
+        UserDefaults.standard.set(falsewordcount, forKey: "falsewordcount")
+        
         if box1bool == false {
             letter1.isHidden = false
             self.box1.setImage(UIImage(named: "boxbackground"), for: UIControl.State.normal)
@@ -3558,6 +3575,10 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
     }
+        truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
+        truewordcount += 1
+        UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
+        
         if threelettersectioncontrol == true {
             self.coins+=30
         }

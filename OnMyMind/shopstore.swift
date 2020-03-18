@@ -17,7 +17,6 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     
     var gamegosound : AVAudioPlayer?
     var sound = true
-    var dark = false
     
     @IBOutlet weak var shoptext: UILabel!
     @IBOutlet weak var buyoneimage: UIImageView!
@@ -66,16 +65,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         SKPaymentQueue.default().add(self)
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
-        
-        // KOYU MOD
-        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
-        if firsopengame7  {
-            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame7")
-            UserDefaults.standard.set(dark, forKey: "dark")
-        }
+    
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         sound = UserDefaults.standard.object(forKey: "sound") as! Bool
         background()
@@ -106,13 +96,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        if dark == true {
             backgroundImageView.image = UIImage(named: "arkaplan")
-        }
-        else {
-            backgroundImageView.image = UIImage(named: "arkaplan2")
-        }
-        backgroundImageView.layer.zPosition = -1
     }
     
     @IBAction func buyoneaction(_ sender: Any) {

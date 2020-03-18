@@ -16,11 +16,9 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     @IBOutlet weak var darkmodeoutlet: UIButton!
     @IBOutlet weak var soundoutlet: UIButton!
     var sound = true
-    var dark = false
     var gamegosound : AVAudioPlayer?
     @IBOutlet weak var settingtext: UILabel!
     @IBOutlet weak var soundtext: UILabel!
-    @IBOutlet weak var darktext: UILabel!
     @IBOutlet weak var restorepurchasesoutlet: UIButton!
     @IBOutlet weak var restorepurchasestext: UILabel!
     @IBOutlet weak var privacypolicyoutlet: UIButton!
@@ -51,14 +49,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             UserDefaults.standard.set(sound, forKey: "sound")
         }
         
-        let firsopengame7 = UserDefaults.standard.bool(forKey: "firsopengame7")
-        if firsopengame7  {
-            dark = UserDefaults.standard.object(forKey: "dark") as! Bool
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengame7")
-            UserDefaults.standard.set(dark, forKey: "dark")
-        }
         
         // ADBLOCK
             adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
@@ -70,12 +60,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             soundoutlet.setImage(UIImage(named: "soundoff"), for: UIControl.State.normal)
         }
         
-        if dark == true {
-                   darkmodeoutlet.setImage(UIImage(named: "koyumodon"), for: UIControl.State.normal)
-               }
-               else {
-                   darkmodeoutlet.setImage(UIImage(named: "koyumodoff"), for: UIControl.State.normal)
-               }
         
         background()
         responsive()
@@ -89,33 +73,9 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        if dark == true {
            backgroundImageView.image = UIImage(named: "arkaplan")
-        }
-        else {
-            backgroundImageView.image = UIImage(named: "arkaplan2")
-        }
         backgroundImageView.layer.zPosition = -1
     }
-    
-    @IBAction func darkmode(_ sender: Any) {
-        Analytics.logEvent("SettingDarkMode", parameters: nil) // Firebase Events
-        gamebuttonsound()
-        
-        if dark == false {
-            dark = true
-            darkmodeoutlet.setImage(UIImage(named: "koyumodon"), for: UIControl.State.normal)
-            UserDefaults.standard.set(dark, forKey: "dark")
-            background()
-        }
-        else {
-            dark = false
-            darkmodeoutlet.setImage(UIImage(named: "koyumodoff"), for: UIControl.State.normal)
-            UserDefaults.standard.set(dark, forKey: "dark")
-            background()
-        }
-    }
-    
     
     @IBAction func soundon(_ sender: Any) {
         Analytics.logEvent("SettingSoundControl", parameters: nil) // Firebase Events
@@ -213,7 +173,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             soundoutlet.frame = CGRect(x: soundoutlet.frame.origin.x, y: soundoutlet.frame.origin.y, width: 120, height: 120)
             soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 30, width: soundtext.frame.width, height: soundtext.frame.height)
             darkmodeoutlet.frame = CGRect(x: darkmodeoutlet.frame.origin.x, y: darkmodeoutlet.frame.origin.y, width: 120, height: 120)
-            darktext.frame = CGRect(x: darkmodeoutlet.frame.midX - darktext.frame.width / 2, y: darkmodeoutlet.frame.minY - 30, width: darktext.frame.width, height: darktext.frame.height)
             homeoutlet.frame = CGRect(x: view.frame.width / 2 - 30, y: homeoutlet.frame.origin.y, width: 60, height: 60)
             twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y, width: 60, height: 60)
             instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y, width: 60, height: 60)
@@ -228,14 +187,10 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             settingtext.font = settingtext.font.withSize(view.frame.width / 7)
             
             let soundwidth = soundoutlet.frame.width * 0.7
-            soundoutlet.frame = CGRect(x: view.frame.width / 2 - soundwidth / 2 - 100 , y: soundoutlet.frame.origin.y, width: soundwidth, height: soundwidth)
+            soundoutlet.frame = CGRect(x: view.frame.width / 2 - soundwidth / 2 , y: soundoutlet.frame.origin.y, width: soundwidth, height: soundwidth)
             soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 40, width: soundtext.frame.width, height: soundtext.frame.height)
             soundtext.font = soundtext.font.withSize(view.frame.width / 20)
             
-            let darkmodewidth = darkmodeoutlet.frame.width * 0.7
-            darkmodeoutlet.frame = CGRect(x: view.frame.width / 2 - darkmodewidth / 2 + 100, y: darkmodeoutlet.frame.origin.y, width: darkmodewidth, height: darkmodewidth)
-            darktext.frame = CGRect(x: darkmodeoutlet.frame.midX - darktext.frame.width / 2, y: darkmodeoutlet.frame.minY - 40, width: darktext.frame.width, height: darktext.frame.height)
-            darktext.font = darktext.font.withSize(view.frame.width / 20)
             
             let restorepurchasehigh = restorepurchasesoutlet.frame.width / 4.533333 * 0.8
             let restorepurchasewidth = restorepurchasesoutlet.frame.width * 0.8
