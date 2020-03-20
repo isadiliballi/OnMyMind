@@ -37,6 +37,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prefersStatusBarHidden = true
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().add(self)
         
@@ -238,5 +239,16 @@ class setting: UIViewController, SKPaymentTransactionObserver {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let vc = segue.destination as! ViewController
             vc.firstopencontrol = firstopencontrol
+    }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
     }
 }

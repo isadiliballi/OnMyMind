@@ -34,9 +34,9 @@ class info: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prefersStatusBarHidden = true
         sound = UserDefaults.standard.object(forKey: "sound") as! Bool
      
-        
         background()
         responsive()
     }
@@ -146,5 +146,16 @@ class info: UIViewController {
               let vc = segue.destination as! ViewController
               vc.firstopencontrol = firstopencontrol
           }
-    
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 }
+

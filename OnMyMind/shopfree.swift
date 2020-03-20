@@ -61,6 +61,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prefersStatusBarHidden = true
         // GOOGLE ADS
         GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),withAdUnitID: "ca-app-pub-6889162326402006/3055729011")
         GADRewardBasedVideoAd.sharedInstance().delegate = self
@@ -424,4 +425,15 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
            vc.firstopencontrol = firstopencontrol
         }
        }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 }

@@ -51,7 +51,7 @@ class shop: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        
+        prefersStatusBarHidden = true
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
         againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
@@ -277,4 +277,16 @@ class shop: UIViewController {
         vc.firstopencontrol = firstopencontrol
         }
     }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 }
+

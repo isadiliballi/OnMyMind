@@ -117,6 +117,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     var fiveletterhighscore = 0
     var sixletterhighscore = 0
     
+    
     @IBOutlet weak var highscoretext: UILabel!
     @IBOutlet weak var highscorewarning: UIImageView!
     @IBOutlet weak var highscorewarningtext: UILabel!
@@ -235,10 +236,13 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     var firstopencontrol = true
     var truewordcount = Int()
     var falsewordcount = Int()
+    var truelettercount = 0
+    var falselettercount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UIView.appearance().isExclusiveTouch = false // Multitouch Kapalı.
+        prefersStatusBarHidden = true
         
         Analytics.logEvent("ThreeLetterSection", parameters: nil) // Firebase Events
         SKPaymentQueue.default().add(self)
@@ -249,11 +253,15 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         if firsopengamewordcount  {
             truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
             falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
+            truelettercount = UserDefaults.standard.object(forKey: "truelettercount") as! Int
+            falselettercount = UserDefaults.standard.object(forKey: "falselettercount") as! Int
         }
         else {
             UserDefaults.standard.set(true, forKey: "firsopengamewordcount")
             UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
             UserDefaults.standard.set(falsewordcount, forKey: "falsewordcount")
+            UserDefaults.standard.set(truelettercount, forKey: "truelettercount")
+            UserDefaults.standard.set(falselettercount, forKey: "falselettercount")
         }
        
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
@@ -335,8 +343,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         }
             
         else if fourlettersectioncontrol == true {
-            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame3")
-            if firsopengame2  {
+            let firsopengame3 = UserDefaults.standard.bool(forKey: "firsopengame3")
+            if firsopengame3  {
                 fourletterhighscore = UserDefaults.standard.object(forKey: "fourletterhighscorekey") as! Int
                 highscoretext.text = String(fourletterhighscore)
             }
@@ -348,8 +356,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         }
             
         else if fivelettersectioncontrol == true {
-            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame4")
-            if firsopengame2  {
+            let firsopengame4 = UserDefaults.standard.bool(forKey: "firsopengame4")
+            if firsopengame4  {
                 fiveletterhighscore = UserDefaults.standard.object(forKey: "fiveletterhighscorekey") as! Int
                 highscoretext.text = String(fiveletterhighscore)
             }
@@ -361,8 +369,8 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         }
             
         else if sixlettersectioncontrol == true {
-            let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame5")
-            if firsopengame2  {
+            let firsopengame5 = UserDefaults.standard.bool(forKey: "firsopengame5")
+            if firsopengame5  {
                 sixletterhighscore = UserDefaults.standard.object(forKey: "sixletterhighscorekey") as! Int
                 highscoretext.text = String(sixletterhighscore)
             }
@@ -442,6 +450,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
         else {}
         
     }
+   
     
     // ALGORİTMA
     func algorithm() {
@@ -583,6 +592,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     @IBAction func home(_ sender: Any) {
         Analytics.logEvent("ThreeHomeButtonClick", parameters: nil) // Firebase Events
         buttonsound()
+        URLCache.shared.removeAllCachedResponses()
         performSegue(withIdentifier: "gamesection", sender: nil)
     }
     
@@ -3170,6 +3180,12 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     
     func IFlettertextequalletters() {
         
+        // DOĞRU HARF SAYISI
+        truelettercount = UserDefaults.standard.object(forKey: "truelettercount") as! Int
+        truelettercount += 1
+        UserDefaults.standard.set(truelettercount, forKey: "truelettercount")
+        //
+        
         self.coins+=2
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 20, options: .curveEaseInOut, animations: {
             self.coinsimage.frame.origin.y -= 20
@@ -3268,6 +3284,12 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
     }
     
     func ELSElettertextequalletters() {
+        
+        // YANLIŞ HARF SAYISI
+        falselettercount = UserDefaults.standard.object(forKey: "falselettercount") as! Int
+        falselettercount += 1
+        UserDefaults.standard.set(falselettercount, forKey: "falselettercount")
+        //
         
         falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
         falsewordcount += 1
@@ -3870,7 +3892,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
          //  self.winpanelnext.isUserInteractionEnabled = true
          }
          } */
-        
+        if kelime != "" && trkelime != "" {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                let context = appDelegate.persistentContainer.viewContext
                
@@ -3884,7 +3906,7 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
                catch {
                    print("HATA")
                }
-        
+        }
     }
     
     func izinequalfalse() {
@@ -6304,8 +6326,17 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
             }
         }
     }
-    
-}
+    var statusBarHidden : Bool?
 
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+}
 
 

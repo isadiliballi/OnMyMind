@@ -43,11 +43,11 @@ class gamesection: UIViewController {
     var chance = 5
     var againturn = 5
     var hint = 5
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prefersStatusBarHidden = true
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
         againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
@@ -210,6 +210,17 @@ class gamesection: UIViewController {
             self.ref.child("6harf").child(dbrandomstring).child("tr").observeSingleEvent(of: .value) { (snapshottwo) in
                 self.sixlettertrword = snapshottwo.value as! String
             }
+        }
+    }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
         }
     }
 }

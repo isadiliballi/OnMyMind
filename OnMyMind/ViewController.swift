@@ -10,9 +10,9 @@ import Firebase
 import FirebaseDatabase
 import AVFoundation
 import Network
+import GameKit
 
 class ViewController: UIViewController {
-    
    
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var play: UIButton!
@@ -36,6 +36,13 @@ class ViewController: UIViewController {
     var coins = 20
     var truewordcount = 0
     var falsewordcount = 0
+    var truelettercount = 0
+    var falselettercount = 0
+    
+    var threeletterhighscore = 0
+    var fourletterhighscore = 0
+    var fiveletterhighscore = 0
+    var sixletterhighscore = 0
     
     var adblock = false
     var gamegobuttonsound : AVAudioPlayer?
@@ -58,11 +65,27 @@ class ViewController: UIViewController {
     var sixletteringword = String()
     var sixlettertrword = String()
     
+    var highscore = 0
+    var gamecenterscore = 0
     
     var vccontrol = false
     
+  var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prefersStatusBarHidden = true
         
         if firstopencontrol == false {
             self.firstopendownload.startAnimating()
@@ -92,8 +115,6 @@ class ViewController: UIViewController {
             self.firstopendownload.removeFromSuperview()
         }
         
-        
-        
         // ADBLOCK
         let firsopengame10 = UserDefaults.standard.bool(forKey: "firsopengame10")
         if firsopengame10  {
@@ -109,11 +130,15 @@ class ViewController: UIViewController {
         if firsopengamewordcount  {
             truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
             falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
+            truelettercount = UserDefaults.standard.object(forKey: "truelettercount") as! Int
+            falselettercount = UserDefaults.standard.object(forKey: "falselettercount") as! Int
         }
         else {
             UserDefaults.standard.set(true, forKey: "firsopengamewordcount")
             UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
             UserDefaults.standard.set(falsewordcount, forKey: "falsewordcount")
+            UserDefaults.standard.set(truelettercount, forKey: "truelettercount")
+            UserDefaults.standard.set(falselettercount, forKey: "falselettercount")
         }
         
         let firsopengame = UserDefaults.standard.bool(forKey: "firsopengame")
@@ -133,12 +158,75 @@ class ViewController: UIViewController {
             UserDefaults.standard.set(hint, forKey: "hintkey")
         }
         
+        let firsopengame2 = UserDefaults.standard.bool(forKey: "firsopengame2")
+        if firsopengame2  {
+            threeletterhighscore = UserDefaults.standard.object(forKey: "threeletterhighscorekey") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame2")
+            UserDefaults.standard.set(threeletterhighscore, forKey: "threeletterhighscorekey")
+        }
+        
+        let firsopengame3 = UserDefaults.standard.bool(forKey: "firsopengame3")
+        if firsopengame3  {
+            fourletterhighscore = UserDefaults.standard.object(forKey: "fourletterhighscorekey") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame3")
+            UserDefaults.standard.set(fourletterhighscore, forKey: "fourletterhighscorekey")
+        }
+        
+        
+        let firsopengame4 = UserDefaults.standard.bool(forKey: "firsopengame4")
+        if firsopengame4  {
+            fiveletterhighscore = UserDefaults.standard.object(forKey: "fiveletterhighscorekey") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame4")
+            UserDefaults.standard.set(fiveletterhighscore, forKey: "fiveletterhighscorekey")
+        }
+        
+        
+        let firsopengame5 = UserDefaults.standard.bool(forKey: "firsopengame5")
+        if firsopengame5  {
+            sixletterhighscore = UserDefaults.standard.object(forKey: "sixletterhighscorekey") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengame5")
+            UserDefaults.standard.set(sixletterhighscore, forKey: "sixletterhighscorekey")
+        }
+        
+        let firsopengamegamecenterscore = UserDefaults.standard.bool(forKey: "firsopengamegamecenterscore")
+        if firsopengamegamecenterscore  {
+            gamecenterscore = UserDefaults.standard.object(forKey: "sixletterhighscorekey") as! Int
+        }
+        else {
+            UserDefaults.standard.set(true, forKey: "firsopengamegamecenterscore")
+            UserDefaults.standard.set(gamecenterscore, forKey: "gamecenterscore")
+        }
+        
+       gamecenterscore = ((threeletterhighscore * 3) + (fourletterhighscore * 4) + (fiveletterhighscore * 5) + (sixletterhighscore * 6)) / 4
+              UserDefaults.standard.set(gamecenterscore, forKey: "gamecenterscore")
+               
         responsive()
         threeletterwordstart()
         fourletterwordstart()
         fiveletterwordstart()
         sixletterwordstart()
-        
+        authenticateUser()
+    }
+    private func authenticateUser() {
+        let player = GKLocalPlayer.local
+        player.authenticateHandler = {vc, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            if let vc = vc {
+                self.present(vc, animated: true,
+                completion: nil)
+            }
+        }
     }
     
     func gamegobuttonsoundfunc() {
@@ -205,6 +293,20 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "statistics", sender: nil)
     }
     @IBAction func rankingaction(_ sender: Any) {
+        let score = GKScore(leaderboardIdentifier: "isadiliballi.OnMyMind.Rekor")
+        score.value = Int64(gamecenterscore)
+        GKScore.report([score]) { error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+        }
+        UserDefaults.standard.set(gamecenterscore, forKey: "gamecenterscore")
+        let vc = GKGameCenterViewController()
+        vc.gameCenterDelegate = self
+        vc.viewState = .leaderboards
+        vc.leaderboardIdentifier = "isadiliballi.OnMyMind.Rekor"
+        present(vc, animated: true, completion: nil)
     }
     @IBAction func settingaction(_ sender: Any) {
         performSegue(withIdentifier: "setting", sender: nil)
@@ -344,7 +446,16 @@ class ViewController: UIViewController {
     }
     }
     
+    
+    
 }
 
 
 
+extension ViewController:
+GKGameCenterControllerDelegate {
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+}

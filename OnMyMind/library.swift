@@ -35,12 +35,10 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var kelimetr = [String]()
     
 
-    
-   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        prefersStatusBarHidden = true
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
@@ -53,10 +51,15 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 if let ing = result.value(forKey: "ingword") as? String {
                     self.kelimeing.append(ing)
                     wording = kelimeing.unique()
+                    let reverseing : [String] = Array(wording.reversed())
+                    wording = reverseing
                 }
+    
                 if let tr = result.value(forKey: "trword") as? String {
                     self.kelimetr.append(tr)
                     wordtr = kelimetr.unique()
+                    let reversetr : [String] = Array(wordtr.reversed())
+                    wordtr = reversetr
                 }
             }
         }
@@ -74,6 +77,9 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(wording)
+        print(wordtr)
+        
         let cell = UITableViewCell()
         cell.backgroundColor = .black
         cell.textLabel?.textColor = .yellow
@@ -92,4 +98,16 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let vc = segue.destination as! ViewController
         vc.firstopencontrol = firstopencontrol
     }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 }
+

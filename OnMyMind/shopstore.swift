@@ -62,6 +62,8 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prefersStatusBarHidden = true
         adblock = UserDefaults.standard.object(forKey: "removeAd") as! Bool
         SKPaymentQueue.default().add(self)
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
@@ -96,7 +98,7 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            backgroundImageView.image = UIImage(named: "arkaplan")
+            backgroundImageView.image = UIImage(named: "darkbackground")
         backgroundImageView.layer.zPosition = -1
     }
     
@@ -438,4 +440,15 @@ class shopstore: UIViewController, SKPaymentTransactionObserver {
               vc.firstopencontrol = firstopencontrol
         }
           }
+   var statusBarHidden : Bool?
+
+   override var prefersStatusBarHidden: Bool {
+       get {
+           if let status = statusBarHidden { return status } else { return false }
+       }
+       set(status) {
+           statusBarHidden = status
+           setNeedsStatusBarAppearanceUpdate()
+       }
+   }
 }

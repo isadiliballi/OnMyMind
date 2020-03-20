@@ -49,7 +49,8 @@ class achievements: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        prefersStatusBarHidden = true
         coins = UserDefaults.standard.object(forKey: "coinskey") as! Int
         // KELİME SAYISI
         let firsopengamewordcount = UserDefaults.standard.bool(forKey: "firsopengamewordcount")
@@ -192,6 +193,17 @@ class achievements: UIViewController {
             self.coinimage.frame.origin.y += 40
             self.coinimage.frame.size.height -= 100
             self.coinimage.frame.size.width -= 100
+        }
+    }
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
         }
     }
 }

@@ -14,6 +14,8 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     var window: UIWindow?
 let gcmMessageIDKey = "gcm.message_id"
@@ -81,6 +83,7 @@ let gcmMessageIDKey = "gcm.message_id"
 
       // Print full message.
       print(userInfo)
+        
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -199,8 +202,5 @@ extension AppDelegate: MessagingDelegate {
       // TODO: If necessary send token to application server.
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
-    
-    
-   
-}
 
+}

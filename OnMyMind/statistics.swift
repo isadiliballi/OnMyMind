@@ -25,28 +25,55 @@ class statistics: UIViewController {
     var truelettercount = 0
     var falselettercount = 0
     
+    var firstopencontrol = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let firsopengamewordcount = UserDefaults.standard.bool(forKey: "firsopengamewordcount")
-        if firsopengamewordcount  {
-            truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
-            falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
-        }
-        else {
-            UserDefaults.standard.set(true, forKey: "firsopengamewordcount")
-            UserDefaults.standard.set(truewordcount, forKey: "truewordcount")
-            UserDefaults.standard.set(falsewordcount, forKey: "falsewordcount")
-        }
-        
+        prefersStatusBarHidden = true
+        truewordcount = UserDefaults.standard.object(forKey: "truewordcount") as! Int
+        falsewordcount = UserDefaults.standard.object(forKey: "falsewordcount") as! Int
+        truelettercount = UserDefaults.standard.object(forKey: "truelettercount") as! Int
+        falselettercount = UserDefaults.standard.object(forKey: "falselettercount") as! Int
         
         truewordcounttext.text = String(truewordcount)
         falsewordcounttext.text = String(falsewordcount)
         truelettercounttext.text = String(truelettercount)
         falselettercounttext.text = String(falselettercount)
+        
+        background()
     }
+    
+    func background() {
+        let backgroundImageView = UIImageView()
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            backgroundImageView.image = UIImage(named: "arkaplan")
+        backgroundImageView.layer.zPosition = -1
+    }
+    
     @IBAction func homeaction(_ sender: Any) {
         performSegue(withIdentifier: "home", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let vc = segue.destination as! ViewController
+            vc.firstopencontrol = firstopencontrol
+    }
+    
+    var statusBarHidden : Bool?
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            if let status = statusBarHidden { return status } else { return false }
+        }
+        set(status) {
+            statusBarHidden = status
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
 }
+
