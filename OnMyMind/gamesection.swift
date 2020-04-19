@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import AVFoundation
 
 class gamesection: UIViewController {
     
@@ -43,6 +44,8 @@ class gamesection: UIViewController {
     var chance = 5
     var againturn = 5
     var hint = 5
+    var sound = true
+    var gamegobuttonsound : AVAudioPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +55,34 @@ class gamesection: UIViewController {
         chance = UserDefaults.standard.object(forKey: "chancekey") as! Int
         againturn = UserDefaults.standard.object(forKey: "againturnkey") as! Int
         hint = UserDefaults.standard.object(forKey: "hintkey") as! Int
+        sound = UserDefaults.standard.object(forKey: "sound") as! Bool
 
         threeletterwordstart()
         fourletterwordstart()
         fiveletterwordstart()
         sixletterwordstart()
+        
+        responsive()
     }
     
+    func gamegobuttonsoundfunc() {
+        if sound == true {
+            let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
+            do {
+                gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
+                gamegobuttonsound?.play()
+            }
+            catch{
+                
+            }
+        }
+    }
+    
+    
     @IBAction func sixlettergameaction(_ sender: Any) {
+        Analytics.logEvent("altıharflioyun", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         threelettersectioncontrol = false
          fourlettersectioncontrol = false
          fivelettersectioncontrol = false
@@ -69,6 +92,8 @@ class gamesection: UIViewController {
         performSegue(withIdentifier: "gamego", sender: nil)
     }
     @IBAction func fivelettergameaction(_ sender: Any) {
+        Analytics.logEvent("beşharflioyun", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         threelettersectioncontrol = false
          fourlettersectioncontrol = false
          fivelettersectioncontrol = true
@@ -78,6 +103,8 @@ class gamesection: UIViewController {
         performSegue(withIdentifier: "gamego", sender: nil)
     }
     @IBAction func fourlettergameaction(_ sender: Any) {
+        Analytics.logEvent("dörtharflioyun", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         threelettersectioncontrol = false
          fourlettersectioncontrol = true
          fivelettersectioncontrol = false
@@ -87,6 +114,8 @@ class gamesection: UIViewController {
         performSegue(withIdentifier: "gamego", sender: nil)
     }
     @IBAction func threelettergameaction(_ sender: Any) {
+        Analytics.logEvent("üçharflioyun", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         threelettersectioncontrol = true
         fourlettersectioncontrol = false
         fivelettersectioncontrol = false
@@ -96,6 +125,8 @@ class gamesection: UIViewController {
        performSegue(withIdentifier: "gamego", sender: nil)
     }
     @IBAction func homeaction(_ sender: Any) {
+        Analytics.logEvent("oyunekranıanasayfa", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         vccontrol = true
         performSegue(withIdentifier: "home", sender: nil)
     }
@@ -221,6 +252,39 @@ class gamesection: UIViewController {
         set(status) {
             statusBarHidden = status
             setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    func responsive() {
+        
+        let screenheight = view.frame.size.height
+        let screenwidth = view.frame.size.width
+        let ratio = screenheight + screenwidth
+        
+        if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
+        }
+        else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
+        }
+        else if ratio == 1187 { // iPhone X - XS - 11 Pro Series
+          sixlettergame.frame = CGRect(x: view.frame.width / 2 - sixlettergame.frame.height / 2, y: sixlettergame.frame.origin.y, width: sixlettergame.frame.height, height: sixlettergame.frame.height)
+            fivelettergame.frame = CGRect(x: view.frame.width / 2 - fivelettergame.frame.height / 2, y: fivelettergame.frame.origin.y, width: fivelettergame.frame.height, height: fivelettergame.frame.height)
+            fourlettergame.frame = CGRect(x: view.frame.width / 2 - fourlettergame.frame.height / 2, y: fourlettergame.frame.origin.y, width: fourlettergame.frame.height, height: fourlettergame.frame.height)
+            threelettergame.frame = CGRect(x: view.frame.width / 2 - threelettergame.frame.height / 2, y: threelettergame.frame.origin.y, width: threelettergame.frame.height, height: threelettergame.frame.height)
+            home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
+            sixlettergame.frame = CGRect(x: view.frame.width / 2 - sixlettergame.frame.height / 2, y: sixlettergame.frame.origin.y, width: sixlettergame.frame.height, height: sixlettergame.frame.height)
+            fivelettergame.frame = CGRect(x: view.frame.width / 2 - fivelettergame.frame.height / 2, y: fivelettergame.frame.origin.y, width: fivelettergame.frame.height, height: fivelettergame.frame.height)
+            fourlettergame.frame = CGRect(x: view.frame.width / 2 - fourlettergame.frame.height / 2, y: fourlettergame.frame.origin.y, width: fourlettergame.frame.height, height: fourlettergame.frame.height)
+            threelettergame.frame = CGRect(x: view.frame.width / 2 - threelettergame.frame.height / 2, y: threelettergame.frame.origin.y, width: threelettergame.frame.height, height: threelettergame.frame.height)
+            home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if 1792...2390 ~= ratio { // iPad Series
+            sixlettergame.frame = CGRect(x: view.frame.width / 2 - sixlettergame.frame.height / 2, y: sixlettergame.frame.origin.y, width: sixlettergame.frame.height, height: sixlettergame.frame.height)
+            fivelettergame.frame = CGRect(x: view.frame.width / 2 - fivelettergame.frame.height / 2, y: fivelettergame.frame.origin.y, width: fivelettergame.frame.height, height: fivelettergame.frame.height)
+            fourlettergame.frame = CGRect(x: view.frame.width / 2 - fourlettergame.frame.height / 2, y: fourlettergame.frame.origin.y, width: fourlettergame.frame.height, height: fourlettergame.frame.height)
+            threelettergame.frame = CGRect(x: view.frame.width / 2 - threelettergame.frame.height / 2, y: threelettergame.frame.origin.y, width: threelettergame.frame.height, height: threelettergame.frame.height)
+            home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
         }
     }
 }

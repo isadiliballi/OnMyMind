@@ -250,13 +250,19 @@ class ViewController: UIViewController {
     
     
     @IBAction func playaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("oyunekranınagiriş", parameters: nil) // Firebase Events
         vccontrol = true
         performSegue(withIdentifier: "gamesection", sender: nil)
     }
     @IBAction func libraryaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("kütüphaneyegiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "library", sender: nil)
     }
     @IBAction func menuaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("menü", parameters: nil) // Firebase Events
         menuimage.isHidden = false
         close.isHidden = false
         darkbackground.isHidden = false
@@ -272,6 +278,8 @@ class ViewController: UIViewController {
         menu.isEnabled = false
     }
     @IBAction func closeaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("menüyükapat", parameters: nil) // Firebase Events
         menuimage.isHidden = true
         close.isHidden = true
         darkbackground.isHidden = true
@@ -287,12 +295,17 @@ class ViewController: UIViewController {
         menu.isEnabled = true
     }
     @IBAction func achievementsaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("başarılaragiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "achievements", sender: nil)
     }
     @IBAction func statisticsaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("istatistiğegiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "statistics", sender: nil)
     }
     @IBAction func rankingaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
         let score = GKScore(leaderboardIdentifier: "isadiliballi.OnMyMind.Rekor")
         score.value = Int64(gamecenterscore)
         GKScore.report([score]) { error in
@@ -309,12 +322,18 @@ class ViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     @IBAction func settingaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("ayarlaragiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "setting", sender: nil)
     }
     @IBAction func shopaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("marketegiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "shop", sender: nil)
     }
     @IBAction func infoaction(_ sender: Any) {
+        gamegobuttonsoundfunc()
+        Analytics.logEvent("hakkındayagiriş", parameters: nil) // Firebase Events
         performSegue(withIdentifier: "info", sender: nil)
     }
     
@@ -335,14 +354,82 @@ class ViewController: UIViewController {
         else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
         }
         else if ratio == 1187 { // iPhone X - XS - 11 Pro Series
+            play.frame = CGRect(x: play.frame.origin.x, y: play.frame.origin.y, width: play.frame.width, height: play.frame.width)
+            library.frame = CGRect(x: library.frame.origin.x, y: library.frame.origin.y, width: library.frame.width, height: library.frame.width)
+            menu.frame = CGRect(x: menu.frame.origin.x, y: menu.frame.origin.y, width: menu.frame.width, height: menu.frame.width)
+            close.frame = CGRect(x: close.frame.origin.x, y: close.frame.origin.y, width: close.frame.width, height: close.frame.width)
+            achievements.frame = CGRect(x: achievements.frame.origin.x, y: achievements.frame.origin.y + 20, width: achievements.frame.width, height: achievements.frame.width)
+            statistics.frame = CGRect(x: statistics.frame.origin.x, y: statistics.frame.origin.y + 20, width: statistics.frame.width, height: statistics.frame.width)
+            ranking.frame = CGRect(x: ranking.frame.origin.x, y: ranking.frame.origin.y + 20, width: ranking.frame.width, height: ranking.frame.width)
+            setting.frame = CGRect(x: setting.frame.origin.x, y: setting.frame.origin.y - 20, width: setting.frame.width, height: setting.frame.width)
+            shop.frame = CGRect(x: shop.frame.origin.x, y: shop.frame.origin.y - 20, width: shop.frame.width, height: shop.frame.width)
+            info.frame = CGRect(x: info.frame.origin.x, y: info.frame.origin.y - 20, width: info.frame.width, height: info.frame.width)
         }
         else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
+            play.frame = CGRect(x: play.frame.origin.x, y: play.frame.origin.y, width: play.frame.width, height: play.frame.width)
+            library.frame = CGRect(x: library.frame.origin.x, y: library.frame.origin.y, width: library.frame.width, height: library.frame.width)
+            menu.frame = CGRect(x: menu.frame.origin.x, y: menu.frame.origin.y, width: menu.frame.width, height: menu.frame.width)
+            close.frame = CGRect(x: close.frame.origin.x, y: close.frame.origin.y, width: close.frame.width, height: close.frame.width)
+            achievements.frame = CGRect(x: achievements.frame.origin.x, y: achievements.frame.origin.y + 20, width: achievements.frame.width, height: achievements.frame.width)
+            statistics.frame = CGRect(x: statistics.frame.origin.x, y: statistics.frame.origin.y + 20, width: statistics.frame.width, height: statistics.frame.width)
+            ranking.frame = CGRect(x: ranking.frame.origin.x, y: ranking.frame.origin.y + 20, width: ranking.frame.width, height: ranking.frame.width)
+            setting.frame = CGRect(x: setting.frame.origin.x, y: setting.frame.origin.y - 20, width: setting.frame.width, height: setting.frame.width)
+            shop.frame = CGRect(x: shop.frame.origin.x, y: shop.frame.origin.y - 20, width: shop.frame.width, height: shop.frame.width)
+            info.frame = CGRect(x: info.frame.origin.x, y: info.frame.origin.y - 20, width: info.frame.width, height: info.frame.width)
         }
         else if ratio == 2028 { // iPad Pro 11 inch
+            let playwidth = play.frame.height
+            play.frame = CGRect(x: view.frame.width / 2 - playwidth / 2, y: play.frame.origin.y, width: play.frame.height, height: play.frame.height)
+            let librarywidth = library.frame.height
+            library.frame = CGRect(x: view.frame.width / 2 - librarywidth / 2, y: library.frame.origin.y, width: library.frame.height, height: library.frame.height)
+            let menuwidth = menu.frame.height
+            menu.frame = CGRect(x: view.frame.width / 2 - menuwidth / 2, y: menu.frame.origin.y, width: menu.frame.height, height: menu.frame.height)
+            let closewidth = close.frame.height
+            close.frame = CGRect(x: view.frame.width / 2 - closewidth / 2, y: close.frame.origin.y, width: close.frame.height, height: close.frame.height)
+            achievements.frame = CGRect(x: menuimage.frame.minX + achievements.frame.height, y: achievements.frame.origin.y, width: achievements.frame.height, height: achievements.frame.height)
+            let statisticswidth = statistics.frame.height
+            statistics.frame = CGRect(x: view.frame.width / 2 - statisticswidth / 2, y: statistics.frame.origin.y, width: statistics.frame.height, height: statistics.frame.height)
+            ranking.frame = CGRect(x: menuimage.frame.maxX - ranking.frame.height * 2, y: ranking.frame.origin.y, width: ranking.frame.height, height: ranking.frame.height)
+            setting.frame = CGRect(x: menuimage.frame.minX + setting.frame.height, y: setting.frame.origin.y, width: setting.frame.height, height: setting.frame.height)
+            let shopwidth = shop.frame.height
+            shop.frame = CGRect(x: view.frame.width / 2 - shopwidth / 2, y: shop.frame.origin.y, width: shop.frame.height, height: shop.frame.height)
+            info.frame = CGRect(x: menuimage.frame.maxX - info.frame.height * 2, y: info.frame.origin.y, width: info.frame.height, height: info.frame.height)
         }
         else if ratio == 2390 { // iPad Pro 12.9 inch
+            let playwidth = play.frame.height
+            play.frame = CGRect(x: view.frame.width / 2 - playwidth / 2, y: play.frame.origin.y, width: play.frame.height, height: play.frame.height)
+            let librarywidth = library.frame.height
+            library.frame = CGRect(x: view.frame.width / 2 - librarywidth / 2, y: library.frame.origin.y, width: library.frame.height, height: library.frame.height)
+            let menuwidth = menu.frame.height
+            menu.frame = CGRect(x: view.frame.width / 2 - menuwidth / 2, y: menu.frame.origin.y, width: menu.frame.height, height: menu.frame.height)
+            let closewidth = close.frame.height
+            close.frame = CGRect(x: view.frame.width / 2 - closewidth / 2, y: close.frame.origin.y, width: close.frame.height, height: close.frame.height)
+            achievements.frame = CGRect(x: menuimage.frame.minX + achievements.frame.height + 50, y: achievements.frame.origin.y, width: achievements.frame.height, height: achievements.frame.height)
+            let statisticswidth = statistics.frame.height
+            statistics.frame = CGRect(x: view.frame.width / 2 - statisticswidth / 2, y: statistics.frame.origin.y, width: statistics.frame.height, height: statistics.frame.height)
+            ranking.frame = CGRect(x: menuimage.frame.maxX - ranking.frame.height * 2 - 50, y: ranking.frame.origin.y, width: ranking.frame.height, height: ranking.frame.height)
+            setting.frame = CGRect(x: menuimage.frame.minX + setting.frame.height + 50, y: setting.frame.origin.y, width: setting.frame.height, height: setting.frame.height)
+            let shopwidth = shop.frame.height
+            shop.frame = CGRect(x: view.frame.width / 2 - shopwidth / 2, y: shop.frame.origin.y, width: shop.frame.height, height: shop.frame.height)
+            info.frame = CGRect(x: menuimage.frame.maxX - info.frame.height *  2 - 50, y: info.frame.origin.y, width: info.frame.height, height: info.frame.height)
         }
         else if 1792...2390 ~= ratio { // iPad Series
+            let playwidth = play.frame.height
+            play.frame = CGRect(x: view.frame.width / 2 - playwidth / 2, y: play.frame.origin.y, width: play.frame.height, height: play.frame.height)
+            let librarywidth = library.frame.height
+            library.frame = CGRect(x: view.frame.width / 2 - librarywidth / 2, y: library.frame.origin.y, width: library.frame.height, height: library.frame.height)
+            let menuwidth = menu.frame.height
+            menu.frame = CGRect(x: view.frame.width / 2 - menuwidth / 2, y: menu.frame.origin.y, width: menu.frame.height, height: menu.frame.height)
+            let closewidth = close.frame.height
+            close.frame = CGRect(x: view.frame.width / 2 - closewidth / 2, y: close.frame.origin.y, width: close.frame.height, height: close.frame.height)
+            achievements.frame = CGRect(x: menuimage.frame.minX + achievements.frame.height + 50, y: achievements.frame.origin.y, width: achievements.frame.height, height: achievements.frame.height)
+            let statisticswidth = statistics.frame.height
+            statistics.frame = CGRect(x: view.frame.width / 2 - statisticswidth / 2, y: statistics.frame.origin.y, width: statistics.frame.height, height: statistics.frame.height)
+            ranking.frame = CGRect(x: menuimage.frame.maxX - ranking.frame.height * 2 - 50, y: ranking.frame.origin.y, width: ranking.frame.height, height: ranking.frame.height)
+            setting.frame = CGRect(x: menuimage.frame.minX + setting.frame.height + 50, y: setting.frame.origin.y, width: setting.frame.height, height: setting.frame.height)
+            let shopwidth = shop.frame.height
+            shop.frame = CGRect(x: view.frame.width / 2 - shopwidth / 2, y: shop.frame.origin.y, width: shop.frame.height, height: shop.frame.height)
+            info.frame = CGRect(x: menuimage.frame.maxX - info.frame.height *  2 - 50, y: info.frame.origin.y, width: info.frame.height, height: info.frame.height)
         }
     }
     

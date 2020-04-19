@@ -3892,20 +3892,25 @@ class treelettergame: UIViewController, GADRewardBasedVideoAdDelegate, SKPayment
          //  self.winpanelnext.isUserInteractionEnabled = true
          }
          } */
-        if kelime != "" && trkelime != "" {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-               let context = appDelegate.persistentContainer.viewContext
-               
-               let word = NSEntityDescription.insertNewObject(forEntityName: "Words", into: context)
-               word.setValue(kelime, forKey: "ingword")
-               word.setValue(trkelime, forKey: "trword")
-               
-               do {
-                   try context.save()
-               }
-               catch {
-                   print("HATA")
-               }
+        
+        if kelime.isEmpty{}
+        else {
+            if trkelime.isEmpty {}
+            else {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                
+                let word = NSEntityDescription.insertNewObject(forEntityName: "Words", into: context)
+                word.setValue(kelime, forKey: "ingword")
+                word.setValue(trkelime, forKey: "trword")
+                
+                do {
+                    try context.save()
+                }
+                catch {
+                    print("HATA")
+                }
+            }
         }
     }
     

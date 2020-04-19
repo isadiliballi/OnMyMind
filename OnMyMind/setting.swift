@@ -13,7 +13,6 @@ import FirebaseAnalytics
 
 class setting: UIViewController, SKPaymentTransactionObserver {
     
-    @IBOutlet weak var darkmodeoutlet: UIButton!
     @IBOutlet weak var soundoutlet: UIButton!
     var sound = true
     var gamegosound : AVAudioPlayer?
@@ -74,7 +73,7 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-           backgroundImageView.image = UIImage(named: "arkaplan")
+           backgroundImageView.image = UIImage(named: "darkbackground")
         backgroundImageView.layer.zPosition = -1
     }
     
@@ -164,7 +163,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
         else if ratio == 1187 { // iPhone X - XS - 11 Pro Series  +
             
             soundoutlet.frame = CGRect(x: soundoutlet.frame.origin.x, y: soundoutlet.frame.origin.y, width: 100, height: 100)
-            darkmodeoutlet.frame = CGRect(x: darkmodeoutlet.frame.origin.x, y: darkmodeoutlet.frame.origin.y, width: 100, height: 100)
             homeoutlet.frame = CGRect(x: view.frame.width / 2 - 30, y: homeoutlet.frame.origin.y, width: 60, height: 60)
             twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y, width: 60, height: 60)
             instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y, width: 60, height: 60)
@@ -173,7 +171,6 @@ class setting: UIViewController, SKPaymentTransactionObserver {
             
             soundoutlet.frame = CGRect(x: soundoutlet.frame.origin.x, y: soundoutlet.frame.origin.y, width: 120, height: 120)
             soundtext.frame = CGRect(x: soundoutlet.frame.midX - soundtext.frame.width / 2, y: soundoutlet.frame.minY - 30, width: soundtext.frame.width, height: soundtext.frame.height)
-            darkmodeoutlet.frame = CGRect(x: darkmodeoutlet.frame.origin.x, y: darkmodeoutlet.frame.origin.y, width: 120, height: 120)
             homeoutlet.frame = CGRect(x: view.frame.width / 2 - 30, y: homeoutlet.frame.origin.y, width: 60, height: 60)
             twitteroutlet.frame = CGRect(x: twitteroutlet.frame.origin.x, y: twitteroutlet.frame.origin.y, width: 60, height: 60)
             instagramoutlet.frame = CGRect(x: instagramoutlet.frame.origin.x, y: instagramoutlet.frame.origin.y, width: 60, height: 60)

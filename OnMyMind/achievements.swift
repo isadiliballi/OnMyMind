@@ -119,6 +119,8 @@ class achievements: UIViewController {
             topla6.isHidden = false
             }
         }
+        
+        responsive()
     }
     @IBAction func homeaction(_ sender: Any) {
         performSegue(withIdentifier: "home", sender: nil)
@@ -204,6 +206,41 @@ class achievements: UIViewController {
         set(status) {
             statusBarHidden = status
             setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    func responsive() {
+        
+        let screenheight = view.frame.size.height
+        let screenwidth = view.frame.size.width
+        let ratio = screenheight + screenwidth
+        
+        if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
+        }
+        else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
+        }
+        else if ratio == 1187 { // iPhone X - XS - 11 Pro Series
+             home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
+             home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if 1792...2390 ~= ratio { // iPad Series
+            achievementstext.font = achievementstext.font.withSize(50)
+            wordcount.font = wordcount.font.withSize(40)
+            topla1.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            topla2.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            topla3.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            topla4.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            topla5.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            topla6.titleLabel?.font = UIFont(name: "Damn Noisy Kids", size: 35)
+            
+            word10.font = word10.font.withSize(20)
+            word50.font = word10.font.withSize(20)
+            word100.font = word10.font.withSize(20)
+            word200.font = word10.font.withSize(20)
+            word500.font = word10.font.withSize(20)
+            word1000.font = word10.font.withSize(20)
+            home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
         }
     }
 }

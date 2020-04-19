@@ -85,7 +85,7 @@ class shopfree: UIViewController, GADRewardBasedVideoAdDelegate {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            backgroundImageView.image = UIImage(named: "arkaplan")
+            backgroundImageView.image = UIImage(named: "darkbackground")
         backgroundImageView.layer.zPosition = -1
     }
     

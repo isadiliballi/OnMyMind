@@ -8,10 +8,8 @@
 #import <Foundation/Foundation.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-@class GADRequest;
-
 /// Google AdMob Ads error domain.
-GAD_EXTERN NSString *const kGADErrorDomain;
+GAD_EXTERN NSString *_Nonnull const kGADErrorDomain;
 
 /// NSError codes for GAD error domain.
 typedef NS_ENUM(NSInteger, GADErrorCode) {
@@ -66,7 +64,7 @@ typedef NS_ENUM(NSInteger, GADErrorCode) {
   kGADErrorAdAlreadyUsed = 19,
 
   /// Will not send request because the application identifier is missing.
-  kGADErrorAppIDMissing = 20,
+  kGADErrorApplicationIdentifierMissing = 20,
 };
 
 /// Represents the error generated due to invalid request parameters.

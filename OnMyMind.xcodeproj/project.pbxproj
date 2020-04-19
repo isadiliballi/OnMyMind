@@ -37,6 +37,7 @@
 		1EA7D3F022CD261000C0970B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3EF22CD261000C0970B /* Assets.xcassets */; };
 		1EA7D3F322CD261000C0970B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA7D3F122CD261000C0970B /* LaunchScreen.storyboard */; };
 		1EB3FD6122F35C2C007337ED /* gamegosound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1EB3FD6022F35C2C007337ED /* gamegosound.m4a */; };
+		1EB84E852427AB5500969DEB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB84E842427AB5500969DEB /* GameKit.framework */; };
 		1EC3BD0623BD312C00B87849 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3BD0523BD312C00B87849 /* setting.swift */; };
 		1ECB43ED23C12449003DC469 /* shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECB43EC23C12449003DC469 /* shop.swift */; };
 		1EE0B370242147AD0066F897 /* library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE0B36F242147AD0066F897 /* library.swift */; };
@@ -78,6 +79,7 @@
 		1EA7D3F222CD261000C0970B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA7D3F422CD261000C0970B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EB3FD6022F35C2C007337ED /* gamegosound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gamegosound.m4a; sourceTree = "<group>"; };
+		1EB84E842427AB5500969DEB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		1EC3BD0523BD312C00B87849 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		1ECB43EC23C12449003DC469 /* shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shop.swift; sourceTree = "<group>"; };
 		1EDA744723807108008B08EF /* OnMyMind.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnMyMind.entitlements; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EB84E852427AB5500969DEB /* GameKit.framework in Frameworks */,
 				EDE601D68C59A1DABAC5C979 /* Pods_OnMyMind.framework in Frameworks */,
 				1E48727C23F1D9A500AB755D /* StoreKit.framework in Frameworks */,
 			);
@@ -188,6 +191,7 @@
 		93C47AD39BA3187918434B3D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1EB84E842427AB5500969DEB /* GameKit.framework */,
 				1E48727B23F1D9A500AB755D /* StoreKit.framework */,
 				BB1317BF99C7E4A8F8103B7A /* Pods_OnMyMind.framework */,
 			);

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import AVFoundation
+import Firebase
 
 
 extension Sequence where Iterator.Element: Hashable {
@@ -33,6 +35,8 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var wordtr = [String]()
     var kelimeing = [String]()
     var kelimetr = [String]()
+    var sound = true
+    var gamegobuttonsound : AVAudioPlayer?
     
 
     override func viewDidLoad() {
@@ -70,6 +74,22 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
         wordcount.text = "\(wording.count) KELİME"
         words.delegate = self
         words.dataSource = self
+        
+        responsive()
+    }
+    
+    func gamegobuttonsoundfunc() {
+        if sound == true {
+            let path = Bundle.main.path(forResource: "button.wav", ofType: nil)!
+            let url = URL(fileURLWithPath: path)
+            do {
+                gamegobuttonsound = try AVAudioPlayer(contentsOf: url)
+                gamegobuttonsound?.play()
+            }
+            catch{
+                
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,9 +97,6 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(wording)
-        print(wordtr)
-        
         let cell = UITableViewCell()
         cell.backgroundColor = .black
         cell.textLabel?.textColor = .yellow
@@ -91,6 +108,8 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     @IBAction func homeaction(_ sender: Any) {
+        Analytics.logEvent("kütüphaneanasayfa", parameters: nil) // Firebase Events
+        gamegobuttonsoundfunc()
         performSegue(withIdentifier: "home", sender: nil)
     }
     
@@ -107,6 +126,27 @@ class library: UIViewController, UITableViewDelegate, UITableViewDataSource {
         set(status) {
             statusBarHidden = status
             setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    func responsive() {
+        
+        let screenheight = view.frame.size.height
+        let screenwidth = view.frame.size.width
+        let ratio = screenheight + screenwidth
+        
+        if 1042...1150 ~= ratio  { // iPhone 6 - 6 Plus - 6S - 6S Plus - 7 - 7 Plus - 8 - 8 Plus Series
+        }
+        else if ratio == 888 { // iPhone 5 - 5S - 5C - SE Series
+        }
+        else if ratio == 1187 { // iPhone X - XS - 11 Pro Series
+             home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if ratio == 1310 { // iPhone XR - XS Max - 11 - 11 Pro Max
+             home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
+        }
+        else if 1792...2390 ~= ratio { // iPad Series
+            librarytext.font = librarytext.font.withSize(50)
+            home.frame = CGRect(x: view.frame.width / 2 - home.frame.height / 2, y: home.frame.origin.y, width: home.frame.height, height: home.frame.height)
         }
     }
 }
